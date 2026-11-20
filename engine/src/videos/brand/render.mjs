@@ -7,7 +7,7 @@ import path from "node:path";
 const { bundle } = await import("@remotion/bundler");
 const { renderStill, selectComposition } = await import("@remotion/renderer");
 const [outDir, ...ids] = process.argv.slice(2);
-const browserExecutable = "C:/Program Files/Google/Chrome/Application/chrome.exe";
+const browserExecutable = (process.env.CHROME_PATH||"C:/Program Files/Google/Chrome/Application/chrome.exe");
 const chromiumOptions = { gl: "angle" };
 const serveUrl = await bundle({ entryPoint: path.resolve("src/sandboxes/brand/index.tsx"), publicDir: path.resolve("src/videos/brand/public") });
 fs.mkdirSync(outDir, { recursive: true });

@@ -6,7 +6,7 @@ import path from "node:path";
 const { bundle } = await import("@remotion/bundler");
 const { renderStill, renderMedia, selectComposition } = await import("@remotion/renderer");
 const [mode, out, a3, a4] = process.argv.slice(2);
-const browserExecutable = "C:/Program Files/Google/Chrome/Application/chrome.exe";
+const browserExecutable = (process.env.CHROME_PATH||"C:/Program Files/Google/Chrome/Application/chrome.exe");
 const chromiumOptions = { gl: "angle" };
 const serveUrl = await bundle({ entryPoint: path.resolve("src/sandboxes/dubai3d/index.tsx"), publicDir: path.resolve("src/videos/brand/public") });
 const composition = await selectComposition({ serveUrl, id: "Dubai3D", browserExecutable, chromiumOptions });

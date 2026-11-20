@@ -27,7 +27,7 @@ const pub=path.join(scratch,"public");fs.mkdirSync(pub);
 const wav=Buffer.alloc(44+8000*2);wav.write("RIFF",0);wav.writeUInt32LE(36+16000,4);wav.write("WAVEfmt ",8);wav.writeUInt32LE(16,16);wav.writeUInt16LE(1,20);wav.writeUInt16LE(1,22);
 wav.writeUInt32LE(8000,24);wav.writeUInt32LE(16000,28);wav.writeUInt16LE(2,32);wav.writeUInt16LE(16,34);wav.write("data",36);wav.writeUInt32LE(16000,40);
 fs.writeFileSync(path.join(pub,"master.wav"),wav);
-const browserExecutable="C:/Program Files/Google/Chrome/Application/chrome.exe",chromiumOptions={gl:"angle"};
+const browserExecutable=(process.env.CHROME_PATH||"C:/Program Files/Google/Chrome/Application/chrome.exe"),chromiumOptions={gl:"angle"};
 let browser;
 try{
   const {bundle}=await import("@remotion/bundler"),{openBrowser,renderStill,selectComposition}=await import("@remotion/renderer");

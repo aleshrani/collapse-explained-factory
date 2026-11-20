@@ -46,13 +46,23 @@ if ((Run "py -3.14 --version >nul 2>nul") -ne 0) { Winget "Python.Python.3.14" }
 if (-not (Have "ffmpeg")) { Winget "Gyan.FFmpeg" }
 if (-not (Have "ollama")) { Winget "Ollama.Ollama" }
 if (-not (Have "gh"))     { Winget "GitHub.cli" }
-$chrome = "C:\Program Files\Google\Chrome\Application\chrome.exe"   # path used by the render scripts
-if (-not (Test-Path $chrome)) { Winget "Google.Chrome" "--scope machine" }
+function Find-Chrome {
+    foreach ($p in "$env:ProgramFiles\Google\Chrome\Application\chrome.exe",
+                   "${env:ProgramFiles(x86)}\Google\Chrome\Application\chrome.exe",
+                   "$env:LOCALAPPDATA\Google\Chrome\Application\chrome.exe") { if (Test-Path $p) { return $p } }
+    return $null
+}
+$chrome = Find-Chrome
+if (-not $chrome) { Winget "Google.Chrome"; $chrome = Find-Chrome }
 foreach ($c in "node", "npm", "ffmpeg", "ollama", "gh") {
     if (-not (Have $c)) { throw "$c is still not on PATH. Close this window, open a new PowerShell and run setup.ps1 again." }
 }
 if ((Run "py -3.14 --version >nul 2>nul") -ne 0) { throw "Python 3.14 not found. Open a new PowerShell and run setup.ps1 again." }
-if (-not (Test-Path $chrome)) { throw "Chrome must be installed for all users at $chrome (the render scripts use this path)." }
+if (-not $chrome) { throw "Google Chrome not found after install. Install Chrome manually, then run setup.ps1 again." }
+# The render scripts read CHROME_PATH (user variable, so the factory sees it at every logon).
+[Environment]::SetEnvironmentVariable("CHROME_PATH", $chrome, "User")
+$env:CHROME_PATH = $chrome
+Write-Host "Chrome: $chrome"
 
 # 1b. GitHub login (once): status and finished videos go to the PRIVATE repo -----
 Step "GitHub login (once)"

@@ -17,7 +17,7 @@ const entry=path.join(engine,"src","sandboxes","kit_gallery");
 const schedule=JSON.parse(fs.readFileSync(path.join(entry,"shots.json"),"utf8"));
 const names=schedule.places.flatMap(place=>schedule.shots.flatMap(shot=>schedule.lights.map(light=>[place,shot,light].join("-"))));
 const filters=process.argv.slice(2);
-const browserExecutable="C:/Program Files/Google/Chrome/Application/chrome.exe";
+const browserExecutable=(process.env.CHROME_PATH||"C:/Program Files/Google/Chrome/Application/chrome.exe");
 const chromiumOptions={gl:"angle"};
 let browser;
 try{

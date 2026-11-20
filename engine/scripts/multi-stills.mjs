@@ -5,7 +5,7 @@ import { bundle } from "@remotion/bundler";
 import { renderStill, selectComposition } from "@remotion/renderer";
 import path from "node:path";
 const [entry, outDir, list, scale = "0.5"] = process.argv.slice(2);
-const browserExecutable = "C:/Program Files/Google/Chrome/Application/chrome.exe";
+const browserExecutable = (process.env.CHROME_PATH||"C:/Program Files/Google/Chrome/Application/chrome.exe");
 const chromiumOptions = { gl: "angle" };
 const serveUrl = await bundle({ entryPoint: path.resolve(entry), publicDir: path.resolve("public") });
 fs.mkdirSync(outDir, { recursive: true });

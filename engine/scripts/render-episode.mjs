@@ -34,7 +34,7 @@ try{
   const inputProps={...read(path.join(scratch,"levels.json")),shots,words};
   const {bundle}=await import("@remotion/bundler"),{renderMedia,selectComposition,openBrowser}=await import("@remotion/renderer");
   const serveUrl=await bundle({entryPoint:path.join(engine,"src","episode","index.tsx"),publicDir:pub,outDir:path.join(scratch,"bundle"),enableCaching:false});
-  const opts={serveUrl,inputProps,browserExecutable:"C:/Program Files/Google/Chrome/Application/chrome.exe",chromiumOptions:{gl:"angle"},timeoutInMilliseconds:180000,logLevel:"error"};
+  const opts={serveUrl,inputProps,browserExecutable:(process.env.CHROME_PATH||"C:/Program Files/Google/Chrome/Application/chrome.exe"),chromiumOptions:{gl:"angle"},timeoutInMilliseconds:180000,logLevel:"error"};
   const composition=await selectComposition({...opts,id:"Episode"});
   const pictureStart=Date.now();let reused=0,rendered=0;
   if(fs.existsSync(path.join(ep,"narration-timing.json"))){
