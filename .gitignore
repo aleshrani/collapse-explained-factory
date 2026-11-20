@@ -33,3 +33,6 @@ episodes/[0-9][0-9]-*/proof-v2/
 episodes/[0-9][0-9]-*/.fails
 episodes/[0-9][0-9]-*/factory-node.log
 .cache/
+data/refs/**/*.jpg
+data/refs/**/*.png
+data/refs/**/*.webp

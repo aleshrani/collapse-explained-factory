@@ -41,14 +41,14 @@ def evaluate(plan, expected_runtime=None, full=None):
         cards.extend(n.get("label","") for n in overlay.get("nodes",[]))
         if overlay:cards.append(" ".join(cards))
         props=s.get("params",{})
-        variant=props.get("state") if s.get("kit") in ("property-office","courtroom","hotel-interior") else None
+        variant=props.get("state") if s.get("kit") in ("property-office","courtroom","hotel-interior","finance-wall") else None
         location=(s.get("kit"),props.get("station") or props.get("variant") or variant or (props.get("subject") if s.get("kit")=="dubai" else None))
         recent=[(t,loc) for t,loc in recent if a-t<60]
         if recent and location==recent[-1][1]:errors.append(context+" repeats the previous physical setup.")
         if sum(loc==location for _,loc in recent)>=2:errors.append(context+" uses this physical setup a third time within sixty seconds.")
         recent.append((a,location))
-        view=(s.get("kit"),s.get("camera"))
-        if any(v==view and a-t<90 for t,v in views):errors.append(context+" shows the same kit from the same camera within ninety seconds.")
+        view=(location,s.get("camera"))  # same place from the same camera; a multi-place kit (dubai) counts per place
+        if any(v==view and a-t<90 for t,v in views):errors.append(context+" shows the same place from the same camera within ninety seconds.")
         views.append((a,view))
         for k in ("subject","detail","value"):
             if props.get(k):cards.append(props[k])

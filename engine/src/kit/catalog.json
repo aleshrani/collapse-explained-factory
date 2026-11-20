@@ -435,7 +435,7 @@
     {
       "id": "dubai",
       "module": "./dubai.ts",
-      "description": "Dubai World Islands, working survey launch, removable milk cargo, dock, dredger, beach, resort and freight fridge. Choose the exact physical subject of the line.",
+      "description": "The World islands off Dubai as in the 2022 ISS photo: oval rock breakwater, bare sand islands in continent shapes, city skyline with Burj Khalifa and Burj Al Arab to the east, Palm Jumeirah to the south. Subjects: archipelago (whole map), coast (from an island toward the skyline), palm, ireland (the island sold to Irish investors, flag + sign), villa (one developed island with a diesel generator), breakwater, dredger (spraying a rainbow of sand), beach (a bare island), delivery/landing (boat and jetty), hotel.",
       "params": {
         "subject": {
           "type": "string",
@@ -447,7 +447,12 @@
             "dredger",
             "beach",
             "hotel",
-            "fridge"
+            "fridge",
+            "coast",
+            "palm",
+            "ireland",
+            "villa",
+            "breakwater"
           ],
           "default": "archipelago"
         },

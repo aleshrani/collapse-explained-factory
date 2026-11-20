@@ -346,7 +346,7 @@ export function build(id:Project,p:ProjectParams,ctx:{light?:"day"|"golden"}){
     group.cameras.low=camera([-3.14,1.82,6.52],target,49);
     group.cameras.dolly=camera([3.15,3.36,5.54],target,46);
   }
-  const feet:Point=water?[0,id==="caspian"?3.35:1.72,1.1]:museum?[3.9,0,4.05]:[d*.32,0,d*.19];
+  const feet:Point=water?[0,1.72,1.1]:museum?[3.9,0,4.05]:[d*.32,0,d*.19];
   return {group,feet,place:id};
 }
 

@@ -8,7 +8,7 @@ import { BlendFunction, BloomEffect, ToneMappingEffect, ToneMappingMode } from "
 import { InkPass } from "../../videos/bridge/ink";
 import { LensBlur } from "../../videos/bridge/lensblur";
 import { GradeEffect, GRADES, GRADE_STRENGTH } from "../../videos/bridge/grade";
-import * as construction from "../../kit/oilrig_test";
+import * as construction from "../../kit/construction";
 import * as ghostcity from "../../kit/ghostcity";
 import * as bunker from "../../kit/bunker";
 import * as ship from "../../kit/ship";
