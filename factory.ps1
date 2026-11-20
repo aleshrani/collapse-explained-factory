@@ -24,6 +24,7 @@ $StatusDir = Join-Path (Split-Path $Root -Parent) "collapse-explained-status"
 $env:GIT_TERMINAL_PROMPT = "0"      # never wait for a credential prompt nobody sees
 $env:GCM_INTERACTIVE = "never"
 $env:PYTHONUTF8 = "1"
+$Private = "aleshrani/collapse-explained"     # status + finished videos go here (code comes from the public repo)
 
 function Say($msg) { $line = "$(Get-Date -Format s) $msg"; Write-Host $line; Add-Content -Path $Log -Value $line -Encoding UTF8 }
 function Invoke-Git { & git.exe -c credential.interactive=never @args 2>&1 | ForEach-Object { "$_" } }
@@ -83,13 +84,33 @@ function Build-Pending {
         $code = $LASTEXITCODE
         Pop-Location
         $min = [math]::Round(((Get-Date) - $t).TotalMinutes, 1)
-        if ($code -eq 0) { Say "OK    $($ep.Name) in $min min"; Remove-Item $failFile -ErrorAction SilentlyContinue }
+        if ($code -eq 0) { Say "OK    $($ep.Name) in $min min"; Remove-Item $failFile -ErrorAction SilentlyContinue; Send-Videos $ep.FullName $ep.Name }
         else {
             $fails++; Set-Content $failFile "$head $fails"
             Say "FAIL  $($ep.Name) after $min min (attempt $fails/3): $(Get-Content $nodeLog -Tail 2)"
         }
         Publish-Status
     }
+}
+
+# Finished videos -> GitHub Release "<slug>" in the private repo (files up to 2 GB; too big for git itself).
+function Send-Videos($dir, $tag) {
+    $files = @(Join-Path $dir "episode.mp4") + @(Get-ChildItem (Join-Path $dir "shorts") -Filter "*.mp4" -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })
+    $files = $files | Where-Object { (Test-Path $_) -and ((Get-Item $_).Length -lt 2GB) }
+    if (-not $files) { return }
+    $marker = Join-Path $dir ".uploaded"
+    $stamp = ($files | ForEach-Object { (Get-Item $_).LastWriteTimeUtc.Ticks }) -join ","
+    if ((Test-Path $marker) -and ((Get-Content $marker -Raw).Trim() -eq $stamp)) { return }
+    $q = ($files | ForEach-Object { "`"$_`"" }) -join " "
+    cmd /c "gh release view $tag --repo $Private >nul 2>nul"
+    if ($LASTEXITCODE) { cmd /c "gh release create $tag $q --repo $Private --title $tag --notes `"factory build`" >nul 2>&1" }
+    else { cmd /c "gh release upload $tag $q --repo $Private --clobber >nul 2>&1" }
+    if ($LASTEXITCODE) { Say "video upload failed for $tag" } else { Set-Content $marker $stamp; Say "UPLOADED $tag ($($files.Count) videos)" }
+}
+
+function Send-Proof {
+    $proof = Get-ChildItem (Join-Path $Root "episodes") -Directory | ForEach-Object { Join-Path $_.FullName "proof-v2" } | Where-Object { Test-Path (Join-Path $_ "episode.mp4") }
+    foreach ($p in $proof) { Send-Videos $p ("proof-" + (Split-Path (Split-Path $p) -Leaf)) }
 }
 
 function Test-Kit14b {
@@ -150,14 +171,15 @@ function Publish-Status {
         Invoke-Git -C $StatusDir add -A | Out-Null
         Invoke-Git -C $StatusDir commit -q -m "factory status $(Get-Date -Format s)" | Out-Null
         # Disposable branch, content replaced each time: force-push is fine.
-        $out = Invoke-Git -C $StatusDir push -q --force origin HEAD:refs/heads/factory-status
-        if ($LASTEXITCODE) { Say "status push off (no GitHub write access on this PC): $($out | Select-Object -Last 1)"; $script:StatusOff = $true }
+        $out = Invoke-Git -C $StatusDir push -q --force "https://github.com/$Private.git" HEAD:refs/heads/factory-status
+        if ($LASTEXITCODE) { Say "status push off (GitHub login missing on this PC?): $($out | Select-Object -Last 1)"; $script:StatusOff = $true }
     } catch { Say "status error: $($_.Exception.Message)" }
 }
 
 do {
     try {
         Update-Repo
+        Send-Proof
         Build-Pending
         Test-Kit14b
         Publish-Status

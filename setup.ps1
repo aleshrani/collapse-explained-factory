@@ -39,13 +39,25 @@ if (-not (Have "node"))   { Winget "OpenJS.NodeJS.LTS" }
 if ((Run "py -3.14 --version >nul 2>nul") -ne 0) { Winget "Python.Python.3.14" }
 if (-not (Have "ffmpeg")) { Winget "Gyan.FFmpeg" }
 if (-not (Have "ollama")) { Winget "Ollama.Ollama" }
+if (-not (Have "gh"))     { Winget "GitHub.cli" }
 $chrome = "C:\Program Files\Google\Chrome\Application\chrome.exe"   # path used by the render scripts
 if (-not (Test-Path $chrome)) { Winget "Google.Chrome" "--scope machine" }
-foreach ($c in "node", "npm", "ffmpeg", "ollama") {
+foreach ($c in "node", "npm", "ffmpeg", "ollama", "gh") {
     if (-not (Have $c)) { throw "$c is still not on PATH. Close this window, open a new PowerShell and run setup.ps1 again." }
 }
 if ((Run "py -3.14 --version >nul 2>nul") -ne 0) { throw "Python 3.14 not found. Open a new PowerShell and run setup.ps1 again." }
 if (-not (Test-Path $chrome)) { throw "Chrome must be installed for all users at $chrome (the render scripts use this path)." }
+
+# 1b. GitHub login (once): status and finished videos go to the PRIVATE repo -----
+Step "GitHub login (once)"
+$Private = "aleshrani/collapse-explained"
+if ((Run "gh auth status >nul 2>nul") -ne 0) {
+    Write-Host "A browser window opens: log in to GitHub as aleshrani and confirm the code shown here." -ForegroundColor Yellow
+    & gh auth login --hostname github.com --git-protocol https --web
+    if ($LASTEXITCODE) { throw "GitHub login failed" }
+}
+Run "gh auth setup-git" | Out-Null
+if ((Run "gh repo view $Private --json name >nul 2>nul") -ne 0) { throw "This GitHub login cannot see $Private (status and videos go there). Log in as the owner and run again." }
 
 # 2. Engine (Remotion + three.js) -------------------------------------------
 Step "Engine packages (npm ci)"
