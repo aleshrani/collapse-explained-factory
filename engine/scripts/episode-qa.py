@@ -38,7 +38,9 @@ def bounded_audit():
             bounds.write_text(json.dumps({"shots":[dict(s,a=max(0,s["a"]-a),b=min(b,s["b"])-a) for s in meta["shots"] if s["b"]>a and s["a"]<b],"planned":[[x-a,y-a] for x,y in meta.get("planned",[]) if y>=a and x<b]}))
             subprocess.run(["ffmpeg","-v","error","-y","-ss",f"{float(a/fps):.9f}","-i",str(video),"-frames:v",str(b-a),"-an","-vf","scale=180:320:flags=area,format=rgb24","-c:v","ffv1","-pix_fmt","bgr0",str(clip)],check=True)
             result=official(clip,folder,bounds)
-            if f"FRAMES {b-a};" not in result:raise RuntimeError(f"Audit length mismatch near frame {a}")
+            got=re.search(r"FRAMES (\d+);",result)
+            # the last block can decode a frame or two short after an input seek near the end of the file
+            if not got or not (int(got[1])==b-a or (b==total and 0<=b-a-int(got[1])<=3)):raise RuntimeError(f"Audit length mismatch near frame {a}")
             for key,pattern in regex.items():
                 for hit in ast.literal_eval(re.search(pattern,result)[1]):
                     if isinstance(hit,tuple):
