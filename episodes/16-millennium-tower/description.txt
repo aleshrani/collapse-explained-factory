@@ -1,0 +1,7 @@
+In twenty twenty-four San Francisco was still publishing a map of a building's movement where the date beside the ruler mattered as much as the number on it.
+
+A sequence of survey readings can tell a resident more than a single dramatic number. San Francisco’s monitoring reports show what was measured, when and against which reference.
+
+Research and further reading
+[1] https://media.api.sf.gov/documents/20230919_Monitoring_Report_121.pdf
+[2] https://media.api.sf.gov/documents/06.17.2024_Monitoring_Report_134_0.pdf

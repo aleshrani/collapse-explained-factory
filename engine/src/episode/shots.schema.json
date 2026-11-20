@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Collapse Explained episode shot plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "shots"
+  ],
+  "properties": {
+    "shots": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "start",
+          "line",
+          "visual_idea",
+          "direction",
+          "end",
+          "kit",
+          "params",
+          "camera",
+          "light",
+          "action",
+          "expression",
+          "overlay",
+          "transition",
+          "beat",
+          "reframeX"
+        ],
+        "properties": {
+          "line": {"type":"string","minLength":3},
+          "visual_idea": {"type":"string","minLength":12},
+          "direction": {"type":"object","additionalProperties":false,"required":["subject","environment","mood","move","action"],"properties":{"subject":{"type":"string","minLength":2},"environment":{"type":"string","minLength":2},"mood":{"type":"string","minLength":2},"move":{"type":"string","enum":["push-in","pull-back","truck","orbit","crane","tilt"]},"action":{"type":"string","minLength":3}}},
+          "start": {
+            "type": "number",
+            "minimum": 0
+          },
+          "end": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "kit": {
+            "type": "string",
+            "minLength": 1
+          },
+          "params": {
+            "type": "object"
+          },
+          "camera": {
+            "enum": [
+              "wide",
+              "medium",
+              "close","low","aerial","dolly"
+            ]
+          },
+          "light": {
+            "enum": [
+              "day",
+              "golden"
+            ]
+          },
+          "action": {
+            "enum": [
+              "stand",
+              "walk-in",
+              "point",
+              "shrug",
+              "facepalm",
+              "shocked-jump",
+              "laugh",
+              "explain"
+            ]
+          },
+          "expression": {
+            "enum": [
+              "neutral",
+              "shocked",
+              "laughing",
+              "explaining",
+              "smug",
+              "facepalm"
+            ]
+          },
+          "overlay": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "text"
+                ],
+                "properties": {
+                  "kind": {
+                    "enum": [
+                      "number",
+                      "label",
+                      "map",
+                      "diagram"
+                    ]
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 65
+                  },
+                  "detail": {
+                    "type": "string",
+                    "maxLength": 95
+                  },
+                  "nodes": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 5,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "x",
+                        "y",
+                        "label"
+                      ],
+                      "properties": {
+                        "x": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "y": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
+                          "maxLength": 35
+                        }
+                      }
+                    }
+                  }
+                },
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "kind": {
+                          "enum": [
+                            "map",
+                            "diagram"
+                          ]
+                        }
+                      }
+                    },
+                    "then": {
+                      "required": [
+                        "nodes"
+                      ]
+                    },
+                    "else": {
+                      "not": {
+                        "required": [
+                          "nodes"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "transition": {
+            "enum": [
+              "cut",
+              "whip"
+            ]
+          },
+          "beat": {
+            "enum": [
+              "hook",
+              "lock-in",
+              "point",
+              "rehook",
+              "closing",
+              "cta"
+            ]
+          },
+          "reframeX": {
+            "type": "number",
+            "minimum": 0.158,
+            "maximum": 0.842
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "places": [
+    "construction",
+    "ghostcity",
+    "entrance",
+    "tunnel",
+    "ship"
+  ],
+  "shots": [
+    "wide",
+    "medium"
+  ],
+  "lights": [
+    "day",
+    "golden"
+  ],
+  "hold": 48
+}

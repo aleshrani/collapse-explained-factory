@@ -1,0 +1,2004 @@
+{
+  "coordinates": "Metres, Y up. Host positions are foot anchors [x,y,z] for the named camera.",
+  "build": "build(partialParams, {light}) returns a THREE.Group with .cameras[name] = {pos,look,fov}; light is day (default) or golden; fov is vertical degrees.",
+  "kits": [
+    {
+      "id": "construction",
+      "module": "./construction.ts",
+      "description": "A half-glazed tower rises beside a lattice crane, scaffold decks and portable site offices.",
+      "params": {
+        "floorsBuilt": {
+          "type": "integer",
+          "min": 1,
+          "max": 24,
+          "default": 7,
+          "maximumFrom": "totalFloors"
+        },
+        "totalFloors": {
+          "type": "integer",
+          "min": 2,
+          "max": 24,
+          "default": 12
+        },
+        "craneAngle": {
+          "type": "number",
+          "min": -180,
+          "max": 180,
+          "default": -14,
+          "unit": "degrees about Y"
+        },
+        "abandoned": {
+          "type": "boolean",
+          "default": false
+        },
+        "subject": {
+          "maxLength": 55,
+          "minLength": 3,
+          "type": "string"
+        },
+        "detail": {
+          "maxLength": 65,
+          "minLength": 3,
+          "type": "string"
+        },
+        "weather": {
+          "default": "clear",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "type": "string"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ],
+      "hostPositions": {
+        "wide": [
+          22,
+          0,
+          46
+        ],
+        "medium": [
+          -7.61,
+          0.015,
+          14.65
+        ],
+        "close": [
+          2,
+          0,
+          10
+        ],
+        "low": [
+          -7.61,
+          0.015,
+          14.65
+        ],
+        "aerial": [
+          22,
+          0,
+          46
+        ],
+        "dolly": [
+          -7.61,
+          0.015,
+          14.65
+        ]
+      },
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ]
+    },
+    {
+      "id": "ghostcity",
+      "module": "./ghostcity.ts",
+      "description": "Repeated apartment blocks line a deserted boulevard as windblown sand accumulates along its edges.",
+      "params": {
+        "towerCount": {
+          "type": "integer",
+          "min": 2,
+          "max": 40,
+          "default": 18
+        },
+        "lanes": {
+          "type": "integer",
+          "min": 2,
+          "max": 10,
+          "default": 6
+        },
+        "sandLevel": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0.55
+        },
+        "subject": {
+          "maxLength": 55,
+          "minLength": 3,
+          "type": "string"
+        },
+        "detail": {
+          "maxLength": 65,
+          "minLength": 3,
+          "type": "string"
+        },
+        "weather": {
+          "default": "clear",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "type": "string"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ],
+      "hostPositions": {
+        "wide": [
+          -4.8,
+          0.04,
+          24
+        ],
+        "medium": [
+          2.98,
+          0.04,
+          8.95
+        ],
+        "close": [
+          3,
+          0.04,
+          3
+        ],
+        "low": [
+          2.98,
+          0.04,
+          8.95
+        ],
+        "aerial": [
+          -4.8,
+          0.04,
+          24
+        ],
+        "dolly": [
+          2.98,
+          0.04,
+          8.95
+        ]
+      },
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ]
+    },
+    {
+      "id": "bunker",
+      "module": "./bunker.ts",
+      "description": "An icebound steel portal and a lamp-lit underground service tunnel form two views of a Cold War base.",
+      "params": {
+        "variant": {
+          "type": "string",
+          "enum": [
+            "entrance",
+            "tunnel"
+          ],
+          "default": "entrance"
+        },
+        "iceLevel": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0.7
+        },
+        "lightsOn": {
+          "type": "boolean",
+          "default": true
+        },
+        "subject": {
+          "maxLength": 55,
+          "minLength": 3,
+          "type": "string"
+        },
+        "detail": {
+          "maxLength": 65,
+          "minLength": 3,
+          "type": "string"
+        },
+        "weather": {
+          "default": "clear",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "type": "string"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ],
+      "hostPositions": {
+        "entrance": {
+          "wide": [
+            7.4,
+            0.015,
+            18.5
+          ],
+          "medium": [
+            2.06,
+            0.015,
+            10.2
+          ],
+          "close": [
+            1.4,
+            0.015,
+            6
+          ],
+          "low": [
+            2.06,
+            0.015,
+            10.2
+          ],
+          "aerial": [
+            7.4,
+            0.015,
+            18.5
+          ],
+          "dolly": [
+            2.06,
+            0.015,
+            10.2
+          ]
+        },
+        "tunnel": {
+          "wide": [
+            -0.32,
+            0.06,
+            7.5
+          ],
+          "medium": [
+            1.46,
+            0.06,
+            2.82
+          ],
+          "close": [
+            1.15,
+            0.06,
+            -2
+          ],
+          "low": [
+            1.46,
+            0.06,
+            2.82
+          ],
+          "aerial": [
+            -0.32,
+            0.06,
+            7.5
+          ],
+          "dolly": [
+            1.46,
+            0.06,
+            2.82
+          ]
+        }
+      },
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ]
+    },
+    {
+      "id": "ship",
+      "module": "./ship.ts",
+      "description": "A heavy-lift vessel carries a folding derrick above sliding moon-pool doors on a painted sea.",
+      "params": {
+        "derrickUp": {
+          "type": "boolean",
+          "default": true
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0.12
+        },
+        "subject": {
+          "maxLength": 55,
+          "minLength": 3,
+          "type": "string"
+        },
+        "detail": {
+          "maxLength": 65,
+          "minLength": 3,
+          "type": "string"
+        },
+        "weather": {
+          "default": "clear",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "type": "string"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ],
+      "hostPositions": {
+        "wide": [
+          22.9,
+          1.48,
+          49.6
+        ],
+        "medium": [
+          2.65,
+          4.41,
+          14.1
+        ],
+        "close": [
+          2.5,
+          4.41,
+          8.4
+        ],
+        "low": [
+          2.65,
+          4.41,
+          14.1
+        ],
+        "aerial": [
+          22.9,
+          1.48,
+          49.6
+        ],
+        "dolly": [
+          2.65,
+          4.41,
+          14.1
+        ]
+      },
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ]
+    },
+    {
+      "id": "dubai",
+      "module": "./dubai.ts",
+      "description": "Dubai World Islands, working survey launch, removable milk cargo, dock, dredger, beach, resort and freight fridge. Choose the exact physical subject of the line.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "enum": [
+            "archipelago",
+            "delivery",
+            "landing",
+            "survey",
+            "dredger",
+            "beach",
+            "hotel",
+            "fridge"
+          ],
+          "default": "archipelago"
+        },
+        "inset": {
+          "type": "string",
+          "enum": [
+            "milk",
+            "depth"
+          ]
+        },
+        "insetAt": {
+          "default": 0,
+          "min": 0,
+          "type": "number",
+          "max": 5
+        },
+        "weather": {
+          "default": "clear",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "type": "string"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "map",
+      "module": "./explainers.ts",
+      "description": "World chart with geographic pins and a route joining the points in order.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail",
+        "pins"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        "pins": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 6,
+          "items": {
+            "type": "object",
+            "required": [
+              "label",
+              "lat",
+              "lon"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "lat": {
+                "type": "number",
+                "minimum": -90,
+                "maximum": 90
+              },
+              "lon": {
+                "type": "number",
+                "minimum": -180,
+                "maximum": 180
+              }
+            }
+          }
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "documents",
+      "module": "./explainers.ts",
+      "description": "Physical archive desk, project paper and press clippings.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "money",
+      "module": "./explainers.ts",
+      "description": "Project figure on a printed ledger beside banded money.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail",
+        "value"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        "value": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "timeline",
+      "module": "./explainers.ts",
+      "description": "Project milestones printed along a dated timeline wall.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail",
+        "events"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        "events": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 5,
+          "items": {
+            "type": "object",
+            "required": [
+              "date",
+              "label"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "date": {
+                "type": "string",
+                "minLength": 1
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "blueprint",
+      "module": "./explainers.ts",
+      "description": "Drawing table showing the supplied engineering outline in normalized x/y coordinates.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail",
+        "outline"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        "outline": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 70,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "boardroom",
+      "module": "./explainers.ts",
+      "description": "Decision board with a project heading, agenda and seated generic figures.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "studio",
+      "module": "./explainers.ts",
+      "description": "Project bulletin on an inked studio monitor beside the news desk.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "skyline",
+      "module": "./explainers.ts",
+      "description": "Layered city blocks with painted facades and a named project display.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "caspian",
+      "module": "./projects.ts",
+      "description": "Caspian ekranoplan moored over the water, with a long low-wing silhouette and cockpit glazing.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "railway-exhibit",
+      "module": "./projects.ts",
+      "description": "Inert historical railway display with two bogies on parallel tracks for scale.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "pyramid-hotel",
+      "module": "./projects.ts",
+      "description": "The three tapered wings and crown of the Pyongyang pyramid hotel.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "phase": {
+          "type": "string",
+          "enum": [
+            "proposal",
+            "work",
+            "record"
+          ],
+          "default": "record"
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "recovery",
+      "module": "./projects.ts",
+      "description": "Pacific recovery ship with a lifting frame and an exhibit-scale claw.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "viewing-test",
+      "module": "./projects.ts",
+      "description": "Sealed envelope and response sheet on the remote-viewing test desk.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "midtown-tower",
+      "module": "./projects.ts",
+      "description": "Midtown tower with the sloping roof and columns centered on the faces.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "castle-estate",
+      "module": "./projects.ts",
+      "description": "Rows of matching turreted homes in the Mudurnu development.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "capital-road",
+      "module": "./projects.ts",
+      "description": "Broad divided ceremonial road at Naypyidaw with repeated lamps and lane marks.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "senegal-site",
+      "module": "./projects.ts",
+      "description": "Marked site at Mbodiène with a small plinth and survey stakes.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "borehole",
+      "module": "./projects.ts",
+      "description": "Kola drill site with a bolted cap and borefield derrick.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "mars-habitat",
+      "module": "./projects.ts",
+      "description": "Explicitly illustrative Mars settlement proposal, habitats and solar array.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "fleet",
+      "module": "./projects.ts",
+      "description": "Gray faceted destroyer hull for the planned versus commissioned fleet comparison.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "ice-base",
+      "module": "./projects.ts",
+      "description": "Camp Century snow corridor, ribbed roof and modules.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "linear-city",
+      "module": "./projects.ts",
+      "description": "Proposed parallel linear-city facades across the desert.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "settlement",
+      "module": "./projects.ts",
+      "description": "San Francisco tower with survey benchmarks and a level reference.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "tank-proposal",
+      "module": "./projects.ts",
+      "description": "Inert unbuilt land-vehicle study on a model table.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "airport",
+      "module": "./projects.ts",
+      "description": "Berlin Brandenburg glass terminal, lobby structure and passenger gates.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "atomic-concept",
+      "module": "./projects.ts",
+      "description": "Museum-scale historic TV-8 concept with capsule-shaped body.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "canal",
+      "module": "./projects.ts",
+      "description": "Schematic proposed Nicaragua canal alignment in a landscape model.",
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "default": 0,
+          "max": 1,
+          "min": 0,
+          "type": "number"
+        },
+        "crowd": {
+          "default": 0,
+          "max": 6,
+          "min": 0,
+          "type": "integer"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "dubai-service",
+      "module": "./dubai-service.ts",
+      "description": "Project model basin, breakwater, hotel counter or delivery desk.",
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ],
+      "params": {
+        "station": {
+          "type": "string",
+          "enum": [
+            "bath",
+            "seabed",
+            "breakwater",
+            "channel",
+            "kitchen",
+            "reception",
+            "dispatch"
+          ]
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "open",
+            "submerged",
+            "closed"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "maxLength": 50
+        }
+      }
+    },
+    {
+      "id": "property-office",
+      "module": "./property-office.ts",
+      "description": "Original contract desk with deed, stamp, parcel scale model and site registers.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        "size": {
+          "type": "number",
+          "min": 13,
+          "max": 24,
+          "default": 17
+        },
+        "state": {
+          "enum": [
+            "model",
+            "signed"
+          ],
+          "type": "string"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "courtroom",
+      "module": "./courtroom.ts",
+      "description": "Public hearing benches, evidence lectern, legal record and decision panel.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        "size": {
+          "type": "number",
+          "min": 13,
+          "max": 24,
+          "default": 17
+        },
+        "state": {
+          "enum": [
+            "hearing",
+            "exhibit",
+            "custody"
+          ],
+          "type": "string"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    },
+    {
+      "id": "hotel-interior",
+      "module": "./hotel-interior.ts",
+      "description": "Working or closed reception, room keys, luggage and guest register.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        "size": {
+          "type": "number",
+          "min": 13,
+          "max": 24,
+          "default": 17
+        },
+        "state": {
+          "enum": [
+            "open",
+            "closed"
+          ],
+          "type": "string"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
+    }
+  ]
+}
