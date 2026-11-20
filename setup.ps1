@@ -126,12 +126,14 @@ function Test-Parakeet {
 if (Test-Parakeet) { Write-Host "OK  $pkName" }
 else {
     $tar = Join-Path $Cache "$pkName.tar.bz2"
-    try {
+    if (-not ((Test-Path $tar) -and (Get-Item $tar).Length -gt 600MB)) {
         Write-Host "Downloading $pkName (~650 MB) ..."
-        if ((Run "curl.exe -L --fail -o `"$tar`" https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/$pkName.tar.bz2") -ne 0) { throw "Parakeet download failed" }
-        if ((Run "tar.exe -xjf `"$tar`" -C `"$models`"") -ne 0) { throw "Parakeet unpack failed" }
-    } finally { Remove-Item $tar -ErrorAction SilentlyContinue }
-    if (-not (Test-Parakeet)) { throw "Parakeet files do not match the expected checksums" }
+        if ((Run "curl.exe -L --fail -o `"$tar`" https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/$pkName.tar.bz2") -ne 0) { Remove-Item $tar -ErrorAction SilentlyContinue; throw "Parakeet download failed" }
+    }
+    # Unpack with Python (Windows' own tar.exe often has no bzip2 support).
+    if ((Run "`"$venvPy`" -c `"import tarfile,sys; tarfile.open(sys.argv[1]).extractall(sys.argv[2], filter='data')`" `"$tar`" `"$models`"") -ne 0) { Remove-Item $tar -ErrorAction SilentlyContinue; throw "Parakeet unpack failed (archive removed, run setup again)" }
+    if (-not (Test-Parakeet)) { Remove-Item $tar -ErrorAction SilentlyContinue; throw "Parakeet files do not match the expected checksums" }
+    Remove-Item $tar -ErrorAction SilentlyContinue
 }
 
 # 4. Local LLM ----------------------------------------------------------------
