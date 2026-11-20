@@ -67,13 +67,15 @@ Write-Host "Chrome: $chrome"
 # 1b. GitHub login (once): status and finished videos go to the PRIVATE repo -----
 Step "GitHub login (once)"
 $Private = "aleshrani/collapse-explained"
-if ((Run "gh auth status >nul 2>nul") -ne 0) {
-    Write-Host "A browser window opens: log in to GitHub as aleshrani and confirm the code shown here." -ForegroundColor Yellow
+# If no login, or the logged-in account cannot see the private repo (another GitHub account on this PC),
+# add a login for the owner (gh keeps both accounts and switches to the new one).
+for ($try = 1; (Run "gh repo view $Private --json name >nul 2>nul") -ne 0; $try++) {
+    if ($try -gt 2) { throw "The GitHub login cannot see $Private (status and videos go there). Log in as aleshrani and run again." }
+    Write-Host "A browser window opens: log in to GitHub as ALESHRANI (not another account) and confirm the code shown here." -ForegroundColor Yellow
     & gh auth login --hostname github.com --git-protocol https --web
     if ($LASTEXITCODE) { throw "GitHub login failed" }
 }
 Run "gh auth setup-git" | Out-Null
-if ((Run "gh repo view $Private --json name >nul 2>nul") -ne 0) { throw "This GitHub login cannot see $Private (status and videos go there). Log in as the owner and run again." }
 
 # 2. Engine (Remotion + three.js) -------------------------------------------
 Step "Engine packages (npm ci)"
