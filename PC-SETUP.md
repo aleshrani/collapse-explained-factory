@@ -19,7 +19,8 @@ Instalace trvá desítky minut (programy, ~1 GB hlasových modelů, ~14 GB model
 - Po každém přihlášení spustí na pozadí `factory.ps1 -Watch` (naplánovaná úloha, sama se restartuje); když se změní factory.ps1, sama se aktualizuje; každých 30 min stáhne z GitHubu nové scénáře a kity.
 - Vyrobí každý díl, který má `narration.md` a ještě nemá `episode.mp4`: hlas (Kokoro), časy slov (Parakeet), plán záběrů (Ollama qwen2.5-coder:7b), render, zvuk, kontrolu kvality a 5 shortů.
 - Jednou otestuje, jestli model qwen2.5-coder:14b zvládne napsat nové 3D prostředí.
-- Stav (logy, QA reporty, kontaktní archy) posílá do větve `factory-status` na GitHubu, jen když je PC přihlášené k GitHubu s právem zápisu. Bez přihlášení PC vyrábí dál, jen stav zůstane v `C:\CollapseExplained\factory.log`.
+- Stav (logy, QA reporty, kontaktní archy) posílá do větve `factory-status` soukromého repa `aleshrani/collapse-explained`.
+- Hotová videa (díl + 5 shortů) nahrává do soukromého repa jako GitHub Release pojmenovaný podle dílu (soubor do 2 GB). Kopie zůstávají i na PC v `C:\CollapseExplained\episodes\`.
 - Veřejné repo obsahuje jen engine, skripty a scénáře. Rešerše, rozbory konkurence a návrhy zůstávají v soukromém repu; do veřejného se kopírují skriptem `tools/publish-factory.sh`.
 - Spánek při napájení ze sítě je vypnutý.
 
