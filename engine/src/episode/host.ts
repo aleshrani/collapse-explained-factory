@@ -17,8 +17,14 @@ export function animateArchitect(card:THREE.Mesh<THREE.PlaneGeometry,THREE.MeshL
     if(shot.action==="walk-in"&&walk<1){
       const step=Math.sin(walk*Math.PI*4);pose.footL=[248+step*23,974-Math.max(0,step)*30];pose.footR=[349-step*23,974+Math.min(0,step)*30];
     }
+    if(shot.action==="thumbs-up"){pose.armR={target:[470,410],hand:"fist"};pose.mouth="grin";}
+    if(shot.action==="count-fingers"){pose.armR={target:[430,462+16*Math.sin(t*6)],hand:"open"};pose.armL={target:[205,560],hand:"open"};}
+    if(shot.action==="cover-eyes"){
+      const eye=ARCH_PRESETS.shocked.armL!.target[1]-58;
+      pose.armL={target:[258,eye],hand:"palm"};pose.armR={target:[342,eye],hand:"palm"};pose.eyes={...face.eyes,shape:"closed"};
+    }
     if(rms>.045)pose.mouth=rms>.48?"A":rms>.23?(frame%7<4?"E":"O"):"FV";
-    card.position.y=shot.action==="shocked-jump"?.41*Math.sin(Math.PI*Math.min(1,t/.52)):shot.action==="laugh"?.047*Math.abs(Math.sin(t*12)):0;
+    card.position.y=shot.action==="sit"?-.5:shot.action==="shocked-jump"?.41*Math.sin(Math.PI*Math.min(1,t/.52)):shot.action==="laugh"?.047*Math.abs(Math.sin(t*12)):0;
     g.clearRect(0,0,600,1000);drawScientist(pen,pose,{look:"architect",glasses:true,hat:"white"});map.needsUpdate=true;
   }};
 }

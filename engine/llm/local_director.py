@@ -6,7 +6,7 @@ from beat_sheet import partition
 from figures import number_card
 
 MOVES=["push-in","truck","orbit","pull-back","tilt","crane"]
-ACTIONS=["explain","point","stand","shrug","walk-in","facepalm","shocked-jump","laugh"]
+ACTIONS=["explain","point","stand","shrug","walk-in","facepalm","shocked-jump","laugh","count-fingers","cover-eyes","thumbs-up","sit"]
 MOODS=["curious","analytical","expectant","uneasy","measured","surprised"]
 GAGS=[(r"supercar|sports car|car","supercar","shrug"),(r"whiteboard|scoreboard","whiteboard","point"),(r"price chart|chart","price-chart","explain"),
   (r"ruler|tape measure","ruler","shrug"),(r"deckchair|popcorn","deckchair","stand"),(r"departure board","departure-board","point"),(r"filing cabinet","filing-cabinet","facepalm"),
@@ -38,7 +38,7 @@ def choices(catalog,ids):
     for entry in catalog["kits"]:
         id=entry["id"]
         if id not in ids:continue
-        axes=("state",) if id in ("courtroom","property-office","hotel-interior") else ("station","variant","subject")
+        axes=("state",) if id in ("courtroom","property-office","hotel-interior","finance-wall") else ("station","variant","subject")
         enumerated=next((key for key in axes if entry["params"].get(key,{}).get("enum")),None)
         for selection in entry["params"][enumerated]["enum"] if enumerated else [None]:
             scenes.append((id,{enumerated:selection} if enumerated else {},selection or id,entry["description"]))

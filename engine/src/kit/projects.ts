@@ -7,6 +7,9 @@ import * as caspian from "./caspian";
 import * as railgun from "./railgun";
 import * as museumKit from "./museum";
 import * as boreholeKit from "./borehole";
+import * as senegalKit from "./senegal";
+import * as linearKit from "./linear";
+import * as canalKit from "./canal";
 
 export const ids=["caspian","railway-exhibit","pyramid-hotel","recovery","viewing-test","midtown-tower","castle-estate","capital-road","senegal-site","borehole","mars-habitat","fleet","ice-base","linear-city","settlement","tank-proposal","airport","atomic-concept","canal"] as const;
 export type Project=typeof ids[number];
@@ -322,6 +325,9 @@ export function build(id:Project,p:ProjectParams,ctx:{light?:"day"|"golden"}){
   if(id==="caspian")return caspian.build(p,ctx);
   if(id==="railway-exhibit")return railgun.build(p,ctx);
   if(id==="borehole")return boreholeKit.build(p,ctx);
+  if(id==="senegal-site")return senegalKit.build(p,ctx);
+  if(id==="linear-city")return linearKit.build(p,ctx);
+  if(id==="canal")return canalKit.build(p);
   if(id==="viewing-test"||id==="atomic-concept"||id==="tank-proposal")return museumKit.build(id,p);
   const [label,d,h]=settings[id],m=new Model(),water=["recovery","fleet","caspian"].includes(id),museum=["viewing-test","atomic-concept","tank-proposal"].includes(id);
   if(water)m.group.add(sea(ctx.light??"day"));

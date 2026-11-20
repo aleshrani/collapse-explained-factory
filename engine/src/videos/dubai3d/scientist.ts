@@ -214,8 +214,8 @@ const pencil = (p: Pen, a: P2, b: P2) => {
 // ---------------- the rig ----------------
 export type Rigged = { joints: Record<string, P2> };
 /** draw the scientist in a pose. Coordinates are the 600 x 1000 design space; set the canvas transform to place him. */
-export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { light?: number; showJoints?: boolean; look?: Look; glasses?: boolean; hat?: string; pencil?: "ear" | "brim"; rim?: string } = {}): Rigged => {
-  LOOK = opts.look ?? "scientist"; C = LOOK === "architect" ? ARCH : SCI;
+export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { light?: number; showJoints?: boolean; look?: Look; glasses?: boolean; hat?: string; palette?: Partial<typeof SCI>; pencil?: "ear" | "brim"; rim?: string } = {}): Rigged => {
+  LOOK = opts.look ?? "scientist"; C = { ...(LOOK === "architect" ? ARCH : SCI), ...(opts.palette ?? {}) };
   const arch = LOOK === "architect";
   TA = arch ? TA_ARCH : TA_SCI;
   const light = opts.light ?? rad(-120), thick = thickAngle(light);
@@ -330,7 +330,7 @@ export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { ligh
     p.inkRing(hp, OW, thick);
     // simple goggles resting on the hairline (scientist) / yellow hard hat (architect)
     const gy = HC - 0.7 * B;
-    if (arch) {
+    if (arch && opts.hat !== "none") {
       const hatC = opts.hat === "white" ? "#f7f6f2" : opts.hat === "yellow" ? "#ffc21a" : opts.hat ?? C.goggle, white = Math.min(parseInt(hatC.slice(1, 3), 16), parseInt(hatC.slice(3, 5), 16), parseInt(hatC.slice(5, 7), 16)) > 0xd0;
       const yb = HC - 0.52 * B, dw = 1.04 * A, dh = 0.7 * B, dome: P2[] = [];
       for (let i = 0; i <= 40; i++) { const t = Math.PI + (Math.PI * i) / 40, c = Math.cos(t), sn = Math.sin(t); dome.push([300 + dw * Math.sign(c) * Math.abs(c) ** 0.75, yb + dh * Math.sign(sn) * Math.abs(sn) ** 0.8]); }

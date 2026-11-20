@@ -1,5 +1,6 @@
 import {Model,painted,wood} from "./shared";
 import {finish,paper,RoomParams,shell,sign,table} from "./interior";
+import {addPerson} from "./extras";
 export function build(p:RoomParams){
   const m=new Model();shell(m,Math.max(13,Math.min(24,p.size??17)));
   const oak=wood(),trim=painted("#786453"),leather=painted("#5c6f66");
@@ -21,6 +22,8 @@ export function build(p:RoomParams){
   m.box(0,2.02,-2.76,9.05,.17,1.58,trim);
   for(let i=-3;i<=3;i++){m.box(i*1.13,1.23,-2.04,.88,1.16,.1,trim);m.box(i*1.13,1.23,-1.973,.7,.93,.057,oak);}
   for(const x of [-2.7,0,2.7]){m.box(x,2.57,-3.68,1.32,1.72,.28,leather);m.box(x,1.82,-3.5,1.43,.18,.72,trim);paper(m,x,2.13,-2.77);}
+  [-2.7,0,2.7].forEach((x,i)=>addPerson(m.group,{x,y:1.45,z:-3.25,variant:i+4,scale:.9}));
+  sign(m,0,4.75,-5.6,3.6,.5,"المحكمة | Tribunal","#5c4a3a");
   for(let j=0;j<2;j++)for(const x of [-3.35,3.35]){
     const z=2.15+j*1.86;m.box(x,.56,z,3.82,.15,.73,oak);m.box(x,.96,z+.36,3.85,.86,.13,oak);
     for(const side of [-1,1])m.box(x+side*1.48,.28,z,.23,.56,.62,trim);

@@ -61,7 +61,7 @@ boardroom | {"subject":"Nakheel","detail":"70% sold"} | close | day | point | sh
 timeline | {"subject":"2008","events":[{"date":"2008","label":"money stops"}]} | medium | golden | shocked-jump | shocked | 2008
 skyline | {"subject":"everywhere"} | aerial | golden | shrug | shocked |
 money | {"subject":"next payment"} | wide | golden | cover-eyes | shocked |
-studio | {"subject":"global crisis"} | close | golden | explain | shocked |
+finance-wall | {"state":"crash","subject":"global crisis","detail":"markets crash"} | wide | golden | shocked-jump | shocked | 2008 crash
 property-office | {"state":"signed","subject":"no buyers"} | close | golden | shrug | facepalm |
 dubai | {"subject":"beach"} | dolly | golden | shrug | facepalm | expensive sand
 documents | {"subject":"Ireland deal"} | low | golden | point | explaining | end of 2008
@@ -72,13 +72,13 @@ timeline | {"subject":"25 Nov 2009","events":[{"date":"25 Nov 2009","label":"sta
 skyline | {"subject":"Dubai World"} | wide | golden | explain | explaining | Dubai World
 studio | {"subject":"please wait"} | medium | golden | shrug | explaining |
 money | {"subject":"debt freeze","value":"$25 billion"} | close | golden | shocked-jump | shocked | $25 billion
-map | {"subject":"Europe markets","detail":"-3%"} | medium | golden | point | shocked | Europe -3%
+finance-wall | {"state":"crash","subject":"Europe markets","detail":"Europe -3%"} | medium | golden | point | shocked | Europe -3%
 documents | {"subject":"Islamic bond"} | dolly | golden | explain | explaining | $3.5 billion bond
 boardroom | {"subject":"$3.5 billion due"} | wide | golden | facepalm | facepalm |
 dubai | {"subject":"ireland"} | close | golden | cover-eyes | shocked |
 studio | {"subject":"breaking news"} | dolly | golden | facepalm | shocked |
 timeline | {"subject":"14 Dec 2009","events":[{"date":"14 Dec 2009","label":"Abu Dhabi"}]} | dolly | day | point | explaining | 14 December
-money | {"subject":"Abu Dhabi rescue","value":"$10 billion"} | wide | day | shocked-jump | shocked | $10 billion
+finance-wall | {"state":"rescue","subject":"Abu Dhabi rescue","detail":"$10 billion"} | low | day | shocked-jump | shocked | $10 billion
 documents | {"subject":"bond repaid"} | wide | day | thumbs-up | smug | $4 billion
 dubai | {"subject":"archipelago"} | close | golden | shrug | neutral | islands not saved
 property-office | {"state":"model","subject":"still buying"} | medium | day | explain | explaining | 2009

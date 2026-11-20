@@ -2,6 +2,7 @@ import * as THREE from "three";
 import {ctex} from "../videos/bridge/paint";
 import {lam} from "../videos/bridge/build";
 import {camera, Model, painted, wood, Point} from "./shared";
+import {addPerson} from "./extras";
 import {CONTINENTS} from "../videos/dubai3d/islands";
 
 export const bases=["map","documents","money","timeline","blueprint","boardroom","studio","skyline"] as const;
@@ -55,15 +56,6 @@ function artwork(base:Base,p:Params){
   })}));
 }
 
-function sitter(m:Model,x:number,z:number,i:number,face:number){
-  const suit=painted(["#48546a","#6a4f58","#4b6258","#6b6a52","#3f4a5e"][i%5]),skin=painted(["#cb9e77","#a87550","#e0b48e"][i%3]),hair=painted(["#3a2f2a","#6a4a30","#b9a37a","#2f2f35"][i%4]);
-  m.box(x,.95,z-.5*face,.72,1.3,.12,suit);                            // chair back
-  m.box(x,1.1,z,.62,.95,.36,suit);m.box(x,.62,z+.05*face,.7,.12,.7,painted("#2f3945"));
-  m.pipe([x,1.62,z],[x,1.74,z],.1,skin);m.mound(x,1.7,z,.26,.34,.24,skin,i);m.mound(x,1.9,z-.04*face,.27,.2,.25,hair,i+3);
-  for(const s of [-1,1]){m.box(x+s*.1,1.78,z+.2*face,.06,.06,.04,painted("#2b2630"));m.box(x+s*.1,1.86,z+.21*face,.11,.025,.03,hair);}
-  m.box(x,1.69,z+.22*face,.14,.03,.03,painted("#8d4a3d"));
-  for(const s of [-1,1])m.beam([x+s*.3,1.45,z],[x+s*.26,1.15,z+.55*face],.1,suit);
-}
 function panelDesk(m:Model,base:Base,crowd:number){
   const steel=painted("#56696d"),brass=painted("#c5a45d"),floor=wood(),dark=painted("#2f3945"),paper=painted("#e6ddc8"),glass=painted("#789a9e","glass");
   m.box(0,1.1,1.3,7.8,.23,2.1,floor);m.box(0,.52,1.3,7.4,1.04,1.7,base==="studio"?painted("#486a7a","rib"):steel);
@@ -71,7 +63,7 @@ function panelDesk(m:Model,base:Base,crowd:number){
   const n=Math.min(6,Math.max(1,crowd));
   for(let i=0;i<n;i++){
     const x=(i-(n-1)/2)*1.25;
-    sitter(m,x,.35,i,1);
+    addPerson(m.group,{x,y:-.35,z:.35,variant:i,scale:.95});
     m.box(x,1.25,1.5,.55,.05,.4,paper);                    // sheet at each seat
     m.pipe([x+.45,1.23,1.65],[x+.45,1.4,1.65],.045,dark);  // glass / mic stem
     m.box(x+.45,1.43,1.65,.08,.05,.08,base==="studio"?brass:dark);

@@ -7,6 +7,7 @@ import * as service from "../kit/dubai-service";
 import * as office from "../kit/property-office";
 import * as court from "../kit/courtroom";
 import * as hotel from "../kit/hotel-interior";
+import * as finance from "../kit/finance";
 import * as explainers from "../kit/explainers";
 import * as projects from "../kit/projects";
 import { Shot } from "./types";
@@ -16,6 +17,7 @@ export function scenery(shot:Shot){
   if(shot.kit==="dubai-service")return service.build(shot.params);
   if(shot.kit==="property-office")return office.build(shot.params);
   if(shot.kit==="courtroom")return court.build(shot.params);
+  if(shot.kit==="finance-wall")return finance.build(shot.params);
   if(shot.kit==="hotel-interior")return hotel.build(shot.params);
   if(projects.ids.includes(shot.kit as projects.Project))return projects.build(shot.kit as projects.Project,shot.params,ctx);
   if(explainers.bases.includes(shot.kit as explainers.Base))return explainers.build(shot.kit as explainers.Base,shot.params as Parameters<typeof explainers.build>[1]);

@@ -55,6 +55,7 @@ def validate(plan,start,end,previous=None,full=False):
         if spec.get("sharedBase") and not key_words(shot["line"]).intersection(key_words(str(params["subject"])+" "+str(params["detail"]))):
             raise ValueError("Shared base needs episode-specific content from this line")
         for key,value in params.items():
+            if key in ("gag","gagSide"):continue   # reusable host props, valid on every kit (src/kit/props.ts)
             if key not in spec["params"]:raise ValueError("Unknown kit parameter: "+key)
             p=spec["params"][key]
             rules={k:v for k,v in p.items() if k not in ("min","max","maximumFrom","unit","default","description")}

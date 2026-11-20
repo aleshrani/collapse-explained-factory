@@ -2004,6 +2004,70 @@
         "aerial",
         "dolly"
       ]
+    },
+    {
+      "id": "finance-wall",
+      "module": "./finance.ts",
+      "description": "Wall of market screens above a trading desk: falling red charts in the crash state, a steadied rising line in the rescue state.",
+      "sharedBase": true,
+      "requiredParams": [
+        "subject",
+        "detail"
+      ],
+      "params": {
+        "subject": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 82
+        },
+        "detail": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 110
+        },
+        "crowd": {
+          "type": "integer",
+          "min": 0,
+          "max": 6,
+          "default": 2
+        },
+        "weather": {
+          "type": "string",
+          "enum": [
+            "clear",
+            "overcast",
+            "haze"
+          ],
+          "default": "clear"
+        },
+        "damage": {
+          "type": "number",
+          "min": 0,
+          "max": 1,
+          "default": 0
+        },
+        "size": {
+          "type": "number",
+          "min": 13,
+          "max": 24,
+          "default": 17
+        },
+        "state": {
+          "enum": [
+            "crash",
+            "rescue"
+          ],
+          "type": "string"
+        }
+      },
+      "cameras": [
+        "wide",
+        "medium",
+        "close",
+        "low",
+        "aerial",
+        "dolly"
+      ]
     }
   ]
 }
