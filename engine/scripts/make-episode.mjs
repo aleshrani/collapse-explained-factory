@@ -64,7 +64,12 @@ try{
   await stage("tts",[source,voice,path.join(models,"kokoro-v1.0.onnx"),path.join(models,"voices-v1.0.bin")],[file("vo.wav"),file("narration-timing.json")],python,[voice,source,out,"tts",...(mode?[mode]:[])]);
   await stage("align",[file("vo.wav"),file("narration-timing.json"),voice,path.join(models,alignModel)],[file("words.json")],python,[voice,source,out,"align"]);
   const catalog=code("src/kit/catalog.json"),validator=code("scripts/validate-shots.py");
-  await stage("plan",[file("words.json"),file("narration-timing.json"),path.join(ep,"kits.md"),path.join(ep,"research.md"),catalog,code("llm"),validator,code("src/episode/shots.schema.json")],[file("shots.json"),file("script.md")],python,[plan,out,"--from-narration"]);
+  const directed=!mode&&fs.existsSync(path.join(ep,"direction.txt"));   // hand-directed episode: never replace its plan with the local model
+  if(directed){
+    const direct=code("scripts/direct-episode.py");
+    await stage("chunks",[file("words.json"),file("narration-timing.json"),direct],[file("chunks.txt")],python,[direct,out,"--chunks"]);
+    await stage("plan",[file("chunks.txt"),path.join(ep,"direction.txt"),direct,catalog,validator],[file("shots.json")],python,[direct,out]);
+  }else await stage("plan",[file("words.json"),file("narration-timing.json"),path.join(ep,"kits.md"),path.join(ep,"research.md"),catalog,code("llm"),validator,code("src/episode/shots.schema.json")],[file("shots.json"),file("script.md")],python,[plan,out,"--from-narration"]);
   await stage("render",[file("shots.json"),file("words.json"),file("vo.wav"),code("src/kit"),code("src/episode"),code("src/videos/bridge"),code("src/videos/brand"),code("src/videos/dubai3d"),code("src/sandboxes/kit_gallery/stage.ts"),render,code("scripts/episode-mix.py"),code("scripts/episode-qa.py")],[file("episode.mp4"),file("qa/gate.json"),file("contact.jpg")],process.execPath,[render,slug,...(mode?["--proof-v2"]:[])]);
   if(!mode){
     const shorts=code("scripts/cut-shorts.mjs");
