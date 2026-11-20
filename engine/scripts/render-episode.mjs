@@ -80,7 +80,7 @@ try{
   fs.copyFileSync(path.join(scratch,"cues.json"),path.join(qa,"cues.json"));
   const boundaries=path.join(qa,"shots.json");
   fs.writeFileSync(boundaries,JSON.stringify({shots:shots.map((s,i)=>({id:i+1,a:Math.ceil(s.start*24),b:Math.ceil(s.end*24)}))}));
-  run("py",["-3",path.join(engine,"scripts","episode-qa.py"),pending,qa,boundaries]);
+  run(python,[path.join(engine,"scripts","episode-qa.py"),pending,qa,boundaries]);
   fs.renameSync(pending,path.join(ep,"episode.mp4"));
   fs.writeFileSync(path.join(qa,"runtime.json"),JSON.stringify({seconds:(Date.now()-start)/1000,pictureSeconds,reused,rendered,duration,frames:composition.durationInFrames,host:os.hostname()},null,2));
   run("ffmpeg",["-v","error","-y","-i",path.join(ep,"episode.mp4"),"-vf",`fps=12/${duration},scale=384:216,tile=4x3`,"-frames:v","1",path.join(ep,"contact.jpg")]);

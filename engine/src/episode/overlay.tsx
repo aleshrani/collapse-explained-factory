@@ -6,7 +6,7 @@ export function Graphic({item,age}:{item:Overlay;age:number}){
   const style:React.CSSProperties={position:"absolute",top:66,left:84,maxWidth:710,padding:"14px 25px",background:cream,color:ink,
     border:"5px solid "+ink,borderRadius:14,boxShadow:"7px 8px 0 #29263bb0",transformOrigin:"top left",
     transform:"scale("+scale+")",opacity:visible,fontFamily:"Arial, sans-serif",fontWeight:800};
-  return <div style={style}><div style={{fontSize:item.kind==="number"?62:42,letterSpacing:-1.4,whiteSpace:item.kind==="number"?"nowrap":undefined}}>{item.text}</div>
+  return <div style={style}><div style={{fontSize:item.kind==="number"&&item.text.length<=14?62:item.text.length>22?36:44,letterSpacing:-1.4,whiteSpace:item.kind==="number"&&item.text.length<=14?"nowrap":undefined}}>{item.text}</div>
     {item.nodes&&<svg width="560" height="220" viewBox="0 0 560 220">
       <defs><pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse"><path d="M34 0H0V34" fill="none" stroke="#97bbb1" strokeWidth="1.5"/></pattern></defs>
       <rect width="560" height="220" rx="9" fill={item.kind==="map"?"#afd2cc":"#ece4c8"}/>
@@ -45,6 +45,7 @@ export function caption(words:{w:string;t:number}[],time:number){
   for(let j=lo-1;j>=0&&time-words[j].t<.7;j--){
     const w=clean(words[j].w);
     if(!w||filler.has(w.toLowerCase()))continue;
+    if(!/\d/.test(w))continue;   // long form: flash only spoken figures; the card carries the words
     const phrase=[w];
     for(let k=j-1;k>=0&&phrase.length<3&&words[j].t-words[k].t<.72;k--){
       const prior=clean(words[k].w);

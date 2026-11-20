@@ -12,12 +12,12 @@ from fractions import Fraction
 from pathlib import Path
 import numpy as np
 
-AUDIT = Path(r"C:\Ales\Projekty\cizi\mromidev\claude-animated-shorts\templates\scripts\short_qa.py")
+AUDIT = Path(__file__).with_name("short_qa.py")  # vendored copy (MIT, claude-animated-shorts)
 video, output, boundary = map(Path, sys.argv[1:4])
 output.mkdir(parents=True, exist_ok=True)
 meta = json.loads(boundary.read_text(encoding="utf-8-sig"))
 def official(movie,folder,bounds):
-    subprocess.run(["py","-3",str(AUDIT),str(movie),str(folder),str(bounds)],check=True,stdout=subprocess.DEVNULL)
+    subprocess.run([sys.executable,str(AUDIT),str(movie),str(folder),str(bounds)],check=True,stdout=subprocess.DEVNULL)
     return (folder/"report.md").read_text(encoding="utf8")
 
 def bounded_audit():

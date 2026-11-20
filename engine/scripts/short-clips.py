@@ -168,7 +168,7 @@ def produce(ep):
             ff("-f","concat","-safe","0","-i",listing,"-c:v","copy","-af","loudnorm=I=-14:TP=-1.3:LRA=8","-ar","48000","-c:a","aac","-b:a","192k","-movflags","+faststart",pending)
             qa=out/f"qa-{n}";qa.mkdir(exist_ok=True);bounds=qa/"shots.json"
             cuts=sorted(set(cuts+[pos]));bounds.write_text(json.dumps({"shots":[{"id":j+1,"a":a,"b":b} for j,(a,b) in enumerate(zip(cuts,cuts[1:]))]}))
-            run("py","-3",Path(__file__).with_name("episode-qa.py"),pending,qa,bounds)
+            run(sys.executable,Path(__file__).with_name("episode-qa.py"),pending,qa,bounds)
             chapter_time=rows[chapter]["start"];promised_time=rows[cue]["start"]
             manifest.append({"file":pending.name,"variant":marker["variant"],"start":ranges[0][0]/FPS,"stop":ranges[-1][1]/FPS,"sourceRanges":[[a/FPS,b/FPS] for a,b in ranges],"duration":pos/FPS,"firstLine":rows[first]["text"],"payoffLine":rows[last]["text"] if marker["variant"]=="A" else None,"stoppedBefore":rows[cue]["text"] if marker["variant"]=="B" else None,"loopLine":loop,"ctaLine":cta,"spokenEndingSeconds":round(seconds,3),"matchingChapter":rows[cue]["chapter"],"chapterStart":chapter_time,"matchingMoment":promised_time,"relatedVideoCue":max(chapter_time,promised_time-6)})
         for item in manifest:(temp/item["file"]).replace(out/item["file"])
