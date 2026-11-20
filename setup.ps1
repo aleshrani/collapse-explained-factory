@@ -8,6 +8,12 @@ $ErrorActionPreference = "Stop"
 $Root = $PSScriptRoot
 $env:GIT_TERMINAL_PROMPT = "0"
 Start-Transcript -Path (Join-Path $Root "setup.log") -Append | Out-Null
+# Keep big data on the drive of this folder (e.g. D:), not on C: - caches, temp files, Ollama models.
+$Cache = Join-Path $Root ".cache"
+New-Item -ItemType Directory -Force $Cache | Out-Null
+$env:npm_config_cache = Join-Path $Cache "npm"
+$env:PIP_CACHE_DIR = Join-Path $Cache "pip"
+$OllamaModels = Join-Path (Split-Path $Root -Parent) "CollapseExplained-ollama"
 
 function Step($msg) { Write-Host ""; Write-Host "=== $msg" -ForegroundColor Cyan }
 function Refresh-Path {
@@ -107,7 +113,7 @@ function Test-Parakeet {
 }
 if (Test-Parakeet) { Write-Host "OK  $pkName" }
 else {
-    $tar = Join-Path $env:TEMP "$pkName.tar.bz2"
+    $tar = Join-Path $Cache "$pkName.tar.bz2"
     try {
         Write-Host "Downloading $pkName (~650 MB) ..."
         if ((Run "curl.exe -L --fail -o `"$tar`" https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/$pkName.tar.bz2") -ne 0) { throw "Parakeet download failed" }
@@ -117,7 +123,17 @@ else {
 }
 
 # 4. Local LLM ----------------------------------------------------------------
-Step "Ollama models"
+Step "Ollama models (stored in $OllamaModels)"
+if ([Environment]::GetEnvironmentVariable("OLLAMA_MODELS", "User") -ne $OllamaModels) {
+    New-Item -ItemType Directory -Force $OllamaModels | Out-Null
+    [Environment]::SetEnvironmentVariable("OLLAMA_MODELS", $OllamaModels, "User")
+    # Ollama must restart to see the new folder; models already downloaded to C: are moved, not downloaded again.
+    Get-Process "ollama app", "ollama" -ErrorAction SilentlyContinue | Stop-Process -Force
+    Start-Sleep 2
+    $old = Join-Path $env:USERPROFILE ".ollama\models"
+    if (Test-Path (Join-Path $old "blobs")) { Run "robocopy `"$old`" `"$OllamaModels`" /E /MOVE /NFL /NDL /NJH /NJS /R:2 /W:2" | Out-Null }
+}
+$env:OLLAMA_MODELS = $OllamaModels
 $up = $false
 for ($i = 0; $i -lt 60; $i++) {
     try { Invoke-RestMethod "http://127.0.0.1:11434/api/tags" -TimeoutSec 2 | Out-Null; $up = $true; break } catch { }
@@ -145,6 +161,7 @@ Run "git -C `"$Root`" config user.email factory-pc@localhost" | Out-Null
 Run "powercfg /change standby-timeout-ac 0" | Out-Null                    # never sleep on mains power
 Run "powercfg /change hibernate-timeout-ac 0" | Out-Null
 $psArgs = "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$Root\factory.ps1`" -Watch"
+Remove-Item (Join-Path ([Environment]::GetFolderPath("Startup")) "CollapseExplainedFactory.lnk") -ErrorAction SilentlyContinue
 try {
     $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $psArgs -WorkingDirectory $Root
     $trigger = New-ScheduledTaskTrigger -AtLogOn -User "$env:USERDOMAIN\$env:USERNAME"

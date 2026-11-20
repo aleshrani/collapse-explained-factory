@@ -7,20 +7,20 @@ Herní PC (i7-8700, RTX 2080 8 GB, 16 GB RAM, Windows 10 Home) po jednom spušt�
 2. Otevřít PowerShell (Start → napsat `powershell` → Enter) a vložit:
 
 ```powershell
-winget install --id Git.Git -e --silent --accept-package-agreements --accept-source-agreements; $env:Path += ";C:\Program Files\Git\cmd"; git clone https://github.com/aleshrani/collapse-explained-factory C:\CollapseExplained; powershell -ExecutionPolicy Bypass -File C:\CollapseExplained\setup.ps1
+winget install --id Git.Git -e --silent --accept-package-agreements --accept-source-agreements; $env:Path += ";C:\Program Files\Git\cmd"; git clone https://github.com/aleshrani/collapse-explained-factory D:\CollapseExplained; powershell -ExecutionPolicy Bypass -File D:\CollapseExplained\setup.ps1
 ```
 
 3. Windows se několikrát zeptá na oprávnění instalace → Ano. Jednou se otevře prohlížeč s přihlášením na GitHub (účet aleshrani) a kódem z okna PowerShellu → potvrdit. Přes to PC posílá stav a hotová videa.
 4. Hotovo, až se objeví zeleně „Factory started“. Když se objeví červeně „SETUP STOPPED“, opravit uvedenou věc a spustit `setup.ps1` znovu (hotové kroky přeskočí).
 
-Instalace trvá desítky minut (programy, ~1 GB hlasových modelů, ~14 GB modelů Ollama, test 60 s dílu 1). Potřeba ~50 GB místa.
+Instalace trvá desítky minut (programy, ~1 GB hlasových modelů, ~14 GB modelů Ollama, test 60 s dílu 1). Data, modely Ollama (`D:\CollapseExplained-ollama`) a mezipaměti se ukládají na D:, kde je potřeba ~50 GB volného místa. Na C: se instalují jen programy (Node, Python, Chrome, Ollama, FFmpeg), asi 2 GB.
 
 ## Co pak PC dělá samo
 - Po každém přihlášení spustí na pozadí `factory.ps1 -Watch` (naplánovaná úloha, sama se restartuje); když se změní factory.ps1, sama se aktualizuje; každých 30 min stáhne z GitHubu nové scénáře a kity.
 - Vyrobí každý díl, který má `narration.md` a ještě nemá `episode.mp4`: hlas (Kokoro), časy slov (Parakeet), plán záběrů (Ollama qwen2.5-coder:7b), render, zvuk, kontrolu kvality a 5 shortů.
 - Jednou otestuje, jestli model qwen2.5-coder:14b zvládne napsat nové 3D prostředí.
 - Stav (logy, QA reporty, kontaktní archy) posílá do větve `factory-status` soukromého repa `aleshrani/collapse-explained`.
-- Hotová videa (díl + 5 shortů) nahrává do soukromého repa jako GitHub Release pojmenovaný podle dílu (soubor do 2 GB). Kopie zůstávají i na PC v `C:\CollapseExplained\episodes\`.
+- Hotová videa (díl + 5 shortů) nahrává do soukromého repa jako GitHub Release pojmenovaný podle dílu (soubor do 2 GB). Kopie zůstávají i na PC v `D:\CollapseExplained\episodes\`.
 - Veřejné repo obsahuje jen engine, skripty a scénáře. Rešerše, rozbory konkurence a návrhy zůstávají v soukromém repu; do veřejného se kopírují skriptem `tools/publish-factory.sh`.
 - Spánek při napájení ze sítě je vypnutý.
 
