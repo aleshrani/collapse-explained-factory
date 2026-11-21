@@ -11,13 +11,13 @@ import {GradeEffect,GRADES,GRADE_STRENGTH} from "../videos/dubai3d/grade";
 import {setStage} from "../sandboxes/kit_gallery/stage";
 import {scenery} from "./registry";
 import type {Point} from "../kit/shared";
-import {dress,gagSpot,landUnder} from "./dress";
+import {dress,gagSpot,landUnder,surfaceY} from "./dress";
 import {runAnims} from "../kit/motion";
 import {BODY,freeRun,issue,Ob,relocate,report,verifyTracks,firstHit,bandFor} from "../kit/collide";
 import {animateArchitect} from "./host";
 import {floatIssue,standIssues,supportIssues} from "./placement";
 import {boxPoints,MAX_PITCH,occludes,textSurfaces,pitchOf,cameraAt,checkFraming,fitView,hideCutCards,rightOf,screenLimits} from "./framing";
-import {caption,Graphic,HOLD,Inset} from "./overlay";
+import {Graphic,Inset,subtitle} from "./overlay";
 import {Episode,Shot} from "./types";
 
 function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:number}){
@@ -29,6 +29,14 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
     const crowdOb=((group.userData.people??[]) as {x:number;y?:number;z:number}[]).map(q=>({x0:q.x-BODY,x1:q.x+BODY,z0:q.z-BODY,z1:q.z+BODY,y0:q.y??0,y1:(q.y??0)+2.1}));
     const solidsAll=()=>[...((group.userData.obstacles??[]) as Ob[]),...crowdOb];
     const spot=relocate(solidsAll(),feet0[0],feet0[2],feet0[1]);let feet:Point=spot?[spot[0],feet0[1],spot[1]]:feet0;
+    // the host stands ON something: cast a ray down from his feet and snap him to the surface; no surface, or one far away, is a FLOAT failure
+    const ray=new THREE.Raycaster(new THREE.Vector3(feet[0],feet[1]+.3,feet[2]),new THREE.Vector3(0,-1,0),0,40);
+    group.updateMatrixWorld(true);
+    const under=ray.intersectObject(group,true)[0],drop=under?feet[1]-under.point.y:Infinity;
+    if(under?.object.userData.sea)issue(group,"FLOAT the host would stand on the open water");
+    else if(under&&Math.abs(drop)<.6)feet[1]=under.point.y;   // exactly on the surface, whether he was above or sunk below it
+    else issue(group,under?`FLOAT the host's feet are ${drop.toFixed(2)} m ${drop>0?"above":"below"} the surface under him`:"FLOAT there is no surface under the host's feet");
+
     // overview shots (aerial, whole-archipelago views) deliberately keep the host tiny or out of the plan; everything else is framed around him
     const subject=String(shot.params.subject??""),overview=shot.camera==="aerial"||(shot.kit==="dubai"&&["archipelago","coast","palm"].includes(subject));
     const allObs=(group.userData.obstacles??[]) as Ob[],obs=shot.kit==="dubai"?[]:allObs,keep=Number(group.userData.keep_subject??0);   // foreground cap is for rooms; outdoors the whole island is 'in front'
@@ -54,13 +62,6 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
         if(!checkFraming(v2,shot,()=>f2,obs,must,texts0).length&&!occludes(v2,shot,texts,[{pos:f2}])){feet=f2;view=v2;break;}
       }
     }
-    // the host stands ON something: cast a ray down from his feet and snap him to the surface; no surface, or one far away, is a FLOAT failure
-    const ray=new THREE.Raycaster(new THREE.Vector3(feet[0],feet[1]+.3,feet[2]),new THREE.Vector3(0,-1,0),0,40);
-    group.updateMatrixWorld(true);
-    const under=ray.intersectObject(group,true)[0],drop=under?feet[1]-under.point.y:Infinity;
-    if(under?.object.userData.sea)issue(group,"FLOAT the host would stand on the open water");
-    else if(under&&drop>.05&&drop<.6)feet[1]=under.point.y;
-    else if(!(under&&drop<=.05&&drop>=-.4))issue(group,under?`FLOAT the host's feet are ${drop.toFixed(2)} m ${drop>0?"above":"below"} the surface under him`:"FLOAT there is no surface under the host's feet");
     dress(group,feet,view.pos,shot.params,["construction","bunker","ghostcity","ship"].includes(shot.kit),view.look as Point);
     const label="t="+shot.start.toFixed(1)+" "+shot.kit+"/"+String(shot.params.subject||shot.params.station||shot.params.state||"")+" "+shot.camera;
     const stage=setStage(scene,cam,view,feet,shot.light,shot.camera==="wide",place);
@@ -98,24 +99,26 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
       if(cardX.userData.seated)continue;
       const r=Number(cardX.userData.reach??0),y=Number(cardX.userData.baseY??0);
       for(const o of [-r,0,r]){
-        for(const t of standIssues((group.userData.obstacles??[]) as Ob[],"a side character",[[cardX.position.x+o,cardX.position.z]]))issue(group,t);
-        for(const t of floatIssue(group,cardX.position.x+o,y,cardX.position.z,"a side character"))issue(group,t);
+        const an=Number(cardX.userData.angle??0)*Math.PI/180,px=cardX.position.x+Math.cos(an)*o,pz=cardX.position.z+Math.sin(an)*o;
+        for(const t of standIssues((group.userData.obstacles??[]) as Ob[],"a side character",[[px,pz]]))issue(group,t);
+        if(surfaceY(group,px,y,pz)===undefined)for(const t of floatIssue(group,px,y,pz,"a side character"))issue(group,t);   // his height follows the surface along the route; the gate checks there is solid ground (not water, not nothing)
       }
     }
     // side characters never hide text either: one that would (anywhere on its walk) is taken out
     for(const cardX of (group.userData.cards??[]) as THREE.Mesh[]){
       const r=Number(cardX.userData.reach??0),sc=Number(cardX.userData.scale??1);
-      if(occludes(view,shot,texts,[-r,0,r].map(o=>({pos:[cardX.position.x+o,cardX.position.y,cardX.position.z] as [number,number,number],scale:sc}))))cardX.visible=false;
+      if(occludes(view,shot,texts,[-r,0,r].map(o=>{const an=Number(cardX.userData.angle??0)*Math.PI/180;return {pos:[cardX.position.x+Math.cos(an)*o,cardX.position.y,cardX.position.z+Math.sin(an)*o] as [number,number,number],scale:sc};})))cardX.visible=false;
     }
     const hostOb:Ob={x0:Math.min(feet[0]-dx*lim.neg,feet[0]+dx*lim.pos)-BODY,x1:Math.max(feet[0]-dx*lim.neg,feet[0]+dx*lim.pos)+BODY,z0:Math.min(feet[2]-dz*lim.neg,feet[2]+dz*lim.pos)-BODY,z1:Math.max(feet[2]-dz*lim.neg,feet[2]+dz*lim.pos)+BODY,y0:feet[1],y1:feet[1]+2.1,tag:"the host"};
     verifyTracks(group,[...solids,hostOb],shot.end-shot.start);
     // side characters are wholly inside the frame or hidden; the host's own framing is gated below, once his walk is known
     hideCutCards(view,shot,(group.userData.cards??[]) as THREE.Mesh[]);
-    return {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir:[dx,dz] as [number,number],overview,label,must,texts0};
+    const N=8,hostGround:number[]=[];for(let k=0;k<=N;k++){const s=-lim.neg+(lim.neg+lim.pos)*k/N,sy=surfaceY(group,feet[0]+dx*s,feet[1],feet[2]+dz*s);hostGround.push(sy??feet[1]);}
+    return {group,stage,actor,card,host,view,look,eye,right,feet,lim,hostGround,dir:[dx,dz] as [number,number],overview,label,must,texts0};
   },[shot,cam,scene]);
   const fx=useMemo(()=>({ink:new InkPass(scene,cam),lens:new LensBlur({maxCoC:13,nearScale:1}),
     tone:new ToneMappingEffect({mode:ToneMappingMode.NEUTRAL}),grade:new GradeEffect(GRADES[shot.light],GRADE_STRENGTH[shot.light])}),[cam,scene,shot.light]);
-  const {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir,overview,label,must,texts0}=state;
+  const {group,stage,actor,card,host,view,look,eye,right,feet,lim,hostGround,dir,overview,label,must,texts0}=state;
   const u=age/(shot.end-shot.start),whip=shot.transition==="whip"?Math.pow(Math.max(0,1-age/.24),3):0;
   const impact=shot.beat==="rehook"?Math.exp(-age*7)*Math.sin(age*15)*Math.min(1,age*6):0;
   const distance=eye.distanceTo(look),c=cameraAt(view,shot,u,impact,whip);
@@ -132,7 +135,8 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
     report(group,label);
   },[state]);
   const vel=(offAt(age+.04)-offAt(Math.max(0,age-.04)))/.08,stride=Math.abs(vel)>.22;
-  actor.position.set(feet[0]+dir[0]*offAt(age),feet[1],feet[2]+dir[1]*offAt(age));card.rotation.y=Math.atan2(cam.position.x-actor.position.x,cam.position.z-actor.position.z);
+  const off=offAt(age),span=lim.neg+lim.pos,gf=span>.01?Math.max(0,Math.min(8,(off+lim.neg)/span*8)):0,gi=Math.min(7,Math.floor(gf)),gy=hostGround[gi]+(hostGround[gi+1]-hostGround[gi])*(gf-gi);   // the ground under him along the walk
+  actor.position.set(feet[0]+dir[0]*off,gy,feet[2]+dir[1]*off);card.rotation.y=Math.atan2(cam.position.x-actor.position.x,cam.position.z-actor.position.z);
   const toObject=new THREE.Vector3(look.x-feet[0],0,look.z-feet[2]).dot(right),side=Math.abs(toObject)<.4?(key%2?1:-1):Math.sign(toObject);
   runAnims(group,age);
   let walked=0;for(let a=0;a<age;a+=.04)walked+=Math.abs(offAt(Math.min(age,a+.04))-offAt(a));   // distance travelled so far: one step per .5 m keeps the feet from sliding
@@ -149,16 +153,18 @@ function Film(data:Episode){
   const shot=data.shots.find(s=>time>=s.start&&time<s.end)??data.shots[data.shots.length-1];
   if(!shot)return <AbsoluteFill style={{background:"#26343b"}}/>;
   const age=Math.max(0,time-shot.start);
-  const cap=caption(data.words,time,shot.overlay?.text??""),word=cap.text;
-  // fade/scale in over 0.12 s, out over the last 0.2 s of the hold; position never moves
-  const capIn=Math.min(1,cap.age/.12),capOut=Math.min(1,Math.max(0,(HOLD-cap.age)/.2)),capV=Math.min(capIn,capOut);
+  // full subtitles (QUALITY-RULES 20, 27): one phrase at a time inside the centre 580 px, so the 9:16 shorts crop
+  // (607 px wide) keeps every word; at most two lines; a short fade only when the
+  // narrator pauses, never between back-to-back phrases
+  const cap=subtitle(data.words,time),word=cap.text;
+  const capV=Math.min(1,cap.age/.08,cap.left/.12);
   return <AbsoluteFill style={{background:"#aabac8"}}>
     <ThreeCanvas width={1920} height={1080} shadows camera={{near:.18,far:1400}} gl={{antialias:false,stencil:false,powerPreference:"high-performance"}}>
       <World shot={shot} age={age} frame={f} amp={data.rms[f]??0}/>
     </ThreeCanvas>
     {shot.overlay&&<Graphic item={shot.overlay} age={age}/>}
     {typeof shot.params.inset==="string"&&age>=Number(shot.params.insetAt??0)&&<Inset kind={shot.params.inset} age={age-Number(shot.params.insetAt??0)}/>}
-    {word&&<div style={{position:"absolute",bottom:55,left:0,right:0,textAlign:"center",opacity:capV,transform:`scale(${.88+.12*capV})`,font:"bold 55px Arial",color:"#fff2d6",WebkitTextStroke:"6px #262235",paintOrder:"stroke fill",textShadow:"2px 4px 1px #292238"}}>{word}</div>}
+    {word&&<div style={{position:"absolute",bottom:60,left:670,right:670,textAlign:"center",opacity:capV,font:"bold 52px Arial",lineHeight:1.12,color:"#fff2d6",WebkitTextStroke:"6px #262235",paintOrder:"stroke fill",textShadow:"2px 4px 1px #292238"}}>{word}</div>}
     <Audio src={staticFile("master.wav")}/>
   </AbsoluteFill>;
 }

@@ -28,7 +28,7 @@ export function build(p:RoomParams){
   table(m,-.35,.25,6.2,3.3);paper(m,-1.28,1.16,1.02);paper(m,-1.12,1.205,.86);
   m.beam([-1.6,1.25,1.04],[-.92,1.25,.83],.056,brass);
   const sold=p.state==="signed";
-  addPerson(m.group,{x:0,y:0,z:1.6,variant:3,scale:.95,walk:{dx:4.5,period:11}});addPerson(m.group,{x:-4.7,y:0,z:-.6,variant:0,scale:1});addPerson(m.group,{x:4.2,y:0,z:-.4,variant:5,scale:1});
+  addPerson(m.group,{x:0,y:0,z:1.6,variant:3,scale:.95,walk:{dx:4.5,period:11,angle:28,pause:true}});addPerson(m.group,{x:-4.7,y:0,z:-.6,variant:0,scale:1});addPerson(m.group,{x:4.2,y:0,z:-.4,variant:5,scale:1});
   m.box(1.3,1.22,.67,.44,.13,.3,painted("#7b5547"));m.pipe([1.3,1.25,.67],[1.3,1.53,.67],.076,woodwork);
   m.box(.2,1.19,-.32,2.75,.12,1.35,painted("#6c9999","glass"));
   for(let i=0;i<9;i++){

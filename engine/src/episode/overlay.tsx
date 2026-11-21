@@ -40,6 +40,38 @@ export function Inset({kind,age}:{kind:string;age:number}){
 }
 const filler=new Set("a an and are as at be been but by did do for from had has have he her him his i in is it its of on or she so than that the their them then there they this to was we were will with you your how rise now try might can could would should some somebody something also where when what why which who whom quite just still before after get got doing does then off up out above far below indeed frankly much good those these need needs way every other enough one".split(" "));
 const clean=(s:string)=>s.replace(/(\d)\.(?=\d)/g,"$1 point ").replace(/[’]/g,"'").replace(/[^\p{L}\p{N} ']/gu,"").replace(/(^|\s)'+|'+(?=\s|$)/g,"$1").trim();
+/** Subtitles for the whole narration (QUALITY-RULES 20): phrases of at most 5 words / 32 characters, cut at
+ *  punctuation, each shown from its first word until the next phrase starts (or 0.7 s after its last word when
+ *  the narrator pauses). The text never changes inside a phrase and never moves. */
+type Phrase={text:string;start:number;end:number};
+let cache:{src:unknown;phrases:Phrase[]}|null=null;
+function phrases(words:{w:string;t:number}[]):Phrase[]{
+  if(cache&&cache.src===words)return cache.phrases;
+  const out:Phrase[]=[];let cur:{w:string;t:number}[]=[];let cap=true;
+  const flush=()=>{if(!cur.length)return;out.push({text:cur.map(x=>x.w).join(" "),start:cur[0].t,end:cur[cur.length-1].t});cur=[];};
+  for(const raw of words){
+    let w=raw.w.replace(/[’]/g,"'");
+    if(cap&&w)w=w[0].toUpperCase()+w.slice(1);
+    cap=/[.!?]["”]?$/.test(w);
+    const len=cur.reduce((n,x)=>n+x.w.length+1,0)+w.length,prev=cur[cur.length-1]?.w??"";
+    // never split a figure from its unit, a two-word name, or a word from the article/preposition before it
+    const glued=/\d$/.test(prev)&&UNIT.test(w.replace(/[^\w]/g,""))||/^[A-Z]/.test(prev)&&/^[A-Z]/.test(w)&&!/[.!?,]$/.test(prev)&&cur.length>1
+      ||/^(a|an|the|of|for|to|in|on|at|from|by|and)$/i.test(prev);
+    const full=cur.length>=5||len>32;
+    if(cur.length&&(raw.t-cur[cur.length-1].t>.9||full&&!(glued&&cur.length<7&&len<=42)))flush();
+    cur.push({w,t:raw.t});
+    if(/[.!?,;:]["”]?$/.test(w)&&cur.length>=2)flush();
+  }
+  flush();
+  for(let i=0;i<out.length;i++){const next=out[i+1]?.start??Infinity;out[i].end=Math.min(next,out[i].end+.7);}
+  cache={src:words,phrases:out};return out;
+}
+export function subtitle(words:{w:string;t:number}[],time:number){
+  const list=phrases(words);let lo=0,hi=list.length;
+  while(lo<hi){const j=(lo+hi)>>1;if(list[j].start<=time+.04)lo=j+1;else hi=j;}
+  const p=list[lo-1];
+  return p&&time<p.end?{text:p.text,age:time-p.start,left:p.end-time}:{text:"",age:0,left:0};
+}
 const UNIT=/^(million|billion|thousand|hundred|percent|per|cent|years?|km|kilometers?|metres?|meters?|dirhams?|dollars?|islands?|pools?|pitches)$/i;
 const digits=(s:string)=>s.replace(/\D/g,"");
 /** Long form flashes only spoken figures (the card carries the words). One figure = one fixed phrase held for HOLD seconds,

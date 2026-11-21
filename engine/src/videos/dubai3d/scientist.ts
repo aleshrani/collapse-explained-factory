@@ -214,7 +214,10 @@ const pencil = (p: Pen, a: P2, b: P2) => {
 // ---------------- the rig ----------------
 export type Rigged = { joints: Record<string, P2> };
 /** draw the scientist in a pose. Coordinates are the 600 x 1000 design space; set the canvas transform to place him. */
-export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { light?: number; showJoints?: boolean; look?: Look; glasses?: boolean; hat?: string; palette?: Partial<typeof SCI>; pencil?: "ear" | "brim"; rim?: string } = {}): Rigged => {
+/** how a side character differs from the architect: tie colour (or "none"), glasses off, long hair, what he or she wears, build */
+export type PersonLook = { tie?: string; noGlasses?: boolean; hair?: "long" | "short"; garment?: "suit" | "shirt" | "sweater" | "dress" | "kandura"; width?: number };
+export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { light?: number; showJoints?: boolean; look?: Look; glasses?: boolean; hat?: string; palette?: Partial<typeof SCI>; pencil?: "ear" | "brim"; rim?: string; person?: PersonLook } = {}): Rigged => {
+  const garment = opts.person?.garment ?? "suit", TIE = opts.person?.tie && opts.person.tie !== "none" ? opts.person.tie : (opts.person?.tie === "none" ? (opts.palette?.shirt ?? "#e3eef8") : "#ff7a2f");
   LOOK = opts.look ?? "scientist"; C = { ...(LOOK === "architect" ? ARCH : SCI), ...(opts.palette ?? {}) };
   const arch = LOOK === "architect";
   TA = arch ? TA_ARCH : TA_SCI;
@@ -223,6 +226,7 @@ export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { ligh
   const root = pose.root ?? {};
   g.save();
   if (root.x || root.y || (root.scale && root.scale !== 1)) { const s = root.scale ?? 1; g.translate((root.x ?? 0) + 300 * (1 - s), (root.y ?? 0) + SOLE * (1 - s)); g.scale(s, s); }
+  if (opts.person?.width && opts.person.width !== 1) { g.translate(300, 0); g.scale(opts.person.width, 1); g.translate(-300, 0); }
   const lean = rad(pose.lean ?? 0), hips = JOINTS.hips;
   const L = (q: P2) => rot(q, lean, hips);
   const head = pose.head ?? {}, tilt = rad(head.tilt ?? 0), nod = (head.nod ?? 0) * U, turn = head.turn ?? 0;
@@ -247,17 +251,24 @@ export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { ligh
 
   // hair cloud behind the head
   if (!arch) headRot(() => drawCloud(p, light, HAIR));
+  if (arch && opts.person?.hair === "long") headRot(() => p.shadedFill([[300 - 1.12 * A, HC - 0.5 * B], [300 - 1.22 * A, HC + 1.5 * B], [300 - 0.6 * A, HC + 1.62 * B], [300 + 0.6 * A, HC + 1.62 * B], [300 + 1.22 * A, HC + 1.5 * B], [300 + 1.12 * A, HC - 0.5 * B], [300, CROWN - 0.1 * B]], C.hair, mul(C.hair, [0.88, 0.88, 0.92]), light, A, 0.3));
 
   // torso: lab coat (lean about the hips)
   const T: Blob = { a: TA, b: 0.5 * (TORSO_BOT - (CHIN - 0.22 * R)) + 0.1 * R, nTop: 2.2, nBot: 3.4, egg: 0.08, asym: 0, rot: 0, noise: 0.004, seed: 12 };
   const prevRot = p.rot; p.rot = lean ? [lean, hips[0], hips[1]] : null;
   const tp = blobPts(300, TORSO_BOT - T.b + 0.1 * R, arch ? { ...T, nTop: 2.6, nBot: 2.7, egg: -0.08 } : T); // suit: squarer shoulders, tapered waist
   p.gradFill(tp, C.coat, mul(C.coat, SH_CLOTH), light);
-  if (arch) p.clip(tp, () => {
+  if (arch && garment !== "suit") p.clip(tp, () => {
+    // shirt / sweater / dress / kandura: no jacket, tie or lapels, just a neckline and a few seams
+    if (garment === "shirt") { for (const s of [-1, 1]) p.poly([[300 + s * 2 * U, CHIN - 0.05 * R], [300 + s * 0.3 * TA, CHIN - 0.08 * R], [300 + s * 0.2 * TA, CHIN + 0.14 * R]], mul(C.coat, [1.08, 1.08, 1.08]), IW); p.stroke([[300, CHIN + 0.1 * R], [300, TORSO_BOT + 0.2 * R]], IW); for (const k of [0.3, 0.55, 0.8]) p.ell(300, CHIN + k * R, 1.8 * U, 1.8 * U, "#f4f1e8", 0.8 * U); }
+    else if (garment === "sweater") { p.ell(300, CHIN + 0.02 * R, 0.3 * TA, 0.07 * R, mul(C.coat, [0.8, 0.8, 0.8]), IW); for (const k of [0.45, 0.7, 0.95]) p.stroke([[300 - 0.74 * TA, CHIN + k * R], [300 + 0.74 * TA, CHIN + k * R]], 0.8 * U, mul(C.coat, [0.86, 0.86, 0.86])); p.stroke([[300 - 0.74 * TA, TORSO_BOT + 0.15 * R], [300 + 0.74 * TA, TORSO_BOT + 0.15 * R]], 3 * U, mul(C.coat, [0.8, 0.8, 0.8])); }
+    else { p.poly([[300 - 0.34 * TA, CHIN - 0.04 * R], [300 + 0.34 * TA, CHIN - 0.04 * R], [300, CHIN + 0.3 * R]], C.skin, IW); if (garment === "kandura") p.stroke([[300, CHIN + 0.3 * R], [300, TORSO_BOT + 0.2 * R]], IW); }
+  });
+  else if (arch) p.clip(tp, () => {
     // suit: light blue shirt V, orange tie, notched lapels, two buttons, breast pocket line, hem seam
     p.poly([[300 - 0.3 * TA, CHIN - 0.05 * R], [300 + 0.3 * TA, CHIN - 0.05 * R], [300, CHIN + 0.5 * R]], C.shirt, IW);
-    p.poly([[300 - 5 * U, CHIN + 0.02 * R], [300 + 5 * U, CHIN + 0.02 * R], [300 + 6.5 * U, CHIN + 0.4 * R], [300, CHIN + 0.48 * R], [300 - 6.5 * U, CHIN + 0.4 * R]], "#ff7a2f", IW);
-    p.poly([[300 - 4 * U, CHIN - 0.02 * R], [300 + 4 * U, CHIN - 0.02 * R], [300 + 3 * U, CHIN + 0.05 * R], [300 - 3 * U, CHIN + 0.05 * R]], mul("#ff7a2f", [0.85, 0.8, 0.8]), IW * 0.8);
+    p.poly([[300 - 5 * U, CHIN + 0.02 * R], [300 + 5 * U, CHIN + 0.02 * R], [300 + 6.5 * U, CHIN + 0.4 * R], [300, CHIN + 0.48 * R], [300 - 6.5 * U, CHIN + 0.4 * R]], TIE, IW);
+    p.poly([[300 - 4 * U, CHIN - 0.02 * R], [300 + 4 * U, CHIN - 0.02 * R], [300 + 3 * U, CHIN + 0.05 * R], [300 - 3 * U, CHIN + 0.05 * R]], mul(TIE, [0.85, 0.8, 0.8]), IW * 0.8);
     for (const s of [-1, 1]) p.poly([[300 + s * 0.3 * TA, CHIN - 0.05 * R], [300 + s * 0.62 * TA, CHIN + 0.18 * R], [300 + s * 0.44 * TA, CHIN + 0.24 * R], [300 + s * 0.26 * TA, CHIN + 0.28 * R], [300 + s * 0.04 * TA, CHIN + 0.58 * R]], C.coatDk, IW);
     p.stroke([[300 + 0.04 * TA, CHIN + 0.58 * R], [300 + 0.02 * TA, TORSO_BOT + 0.2 * R]], IW);
     for (const k of [0.68, 0.84]) p.ell(300 + 0.12 * TA, CHIN + k * R, 2.4 * U, 2.4 * U, "#2a3a50", 1 * U);
@@ -282,10 +293,16 @@ export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { ligh
   });
   p.inkRing(tp, OW, thick);
   if (!arch) p.ell(300, CHIN + 0.02 * R, 0.24 * 2 * A, 0.045 * R, C.shirt, IW);
-  else {
+  else if (garment === "suit") {
     for (const s of [-1, 1]) p.poly([[300 + s * 2 * U, CHIN - 0.03 * R], [300 + s * 0.34 * TA, CHIN - 0.08 * R], [300 + s * 0.24 * TA, CHIN + 0.12 * R]], C.shirt, IW);
-    p.poly([[300 - 4.5 * U, CHIN - 0.02 * R], [300 + 4.5 * U, CHIN - 0.02 * R], [300 + 3 * U, CHIN + 0.07 * R], [300 - 3 * U, CHIN + 0.07 * R]], mul("#ff7a2f", [0.9, 0.84, 0.84]), IW);
-    p.stroke([[300 - 1.5 * U, CHIN], [300 + 1 * U, CHIN + 0.05 * R]], 0.8 * U, mul("#ff7a2f", [0.7, 0.6, 0.6]));
+    p.poly([[300 - 4.5 * U, CHIN - 0.02 * R], [300 + 4.5 * U, CHIN - 0.02 * R], [300 + 3 * U, CHIN + 0.07 * R], [300 - 3 * U, CHIN + 0.07 * R]], mul(TIE, [0.9, 0.84, 0.84]), IW);
+    p.stroke([[300 - 1.5 * U, CHIN], [300 + 1 * U, CHIN + 0.05 * R]], 0.8 * U, mul(TIE, [0.7, 0.6, 0.6]));
+  }
+  if (arch && (garment === "dress" || garment === "kandura")) {
+    const top = TORSO_BOT - 0.15 * R, hem = garment === "kandura" ? SOLE - 0.1 * R : TORSO_BOT + 0.95 * R, w0 = 0.62 * TA, w1 = garment === "kandura" ? 1.0 * TA : 1.2 * TA;
+    const sk: P2[] = [[300 - w0, top], [300 + w0, top], [300 + w1, hem], [300 - w1, hem]];
+    p.gradFill(sk, C.coat, mul(C.coat, SH_CLOTH), light); p.stroke([...sk, sk[0]], OW * 0.8, INK);
+    if (garment === "kandura") p.stroke([[300, top], [300, hem]], IW);
   }
   p.rot = prevRot;
 
@@ -330,6 +347,10 @@ export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { ligh
     p.inkRing(hp, OW, thick);
     // simple goggles resting on the hairline (scientist) / yellow hard hat (architect)
     const gy = HC - 0.7 * B;
+    if (arch && garment === "kandura") {   // ghutra (white head cloth) with a black agal ring
+      p.poly([[300 - 1.02 * A, HC + 0.75 * B], [300 - 1.14 * A, HC - 0.2 * B], [300 - 0.95 * A, HC - 0.95 * B], [300, CROWN - 0.16 * B], [300 + 0.95 * A, HC - 0.95 * B], [300 + 1.14 * A, HC - 0.2 * B], [300 + 1.02 * A, HC + 0.75 * B], [300 + 0.8 * A, HC + 0.2 * B], [300 + 0.78 * A, HC - 0.5 * B], [300, HC - 0.62 * B], [300 - 0.78 * A, HC - 0.5 * B], [300 - 0.8 * A, HC + 0.2 * B]], "#f6f4ee", OW);
+      p.stroke([[300 - 0.92 * A, HC - 0.82 * B], [300, HC - 0.98 * B], [300 + 0.92 * A, HC - 0.82 * B]], 3.2 * U, "#1d1d20");
+    }
     if (arch && opts.hat !== "none") {
       const hatC = opts.hat === "white" ? "#f7f6f2" : opts.hat === "yellow" ? "#ffc21a" : opts.hat ?? C.goggle, white = Math.min(parseInt(hatC.slice(1, 3), 16), parseInt(hatC.slice(3, 5), 16), parseInt(hatC.slice(5, 7), 16)) > 0xd0;
       const yb = HC - 0.52 * B, dw = 1.04 * A, dh = 0.7 * B, dome: P2[] = [];
@@ -366,7 +387,7 @@ export const drawScientist = (p: Pen, pose: Pose = PRESETS.neutral, opts: { ligh
         if (shape === "lid") p.stroke([[x - 6 * U, ey - 1.5 * U], [x + 6 * U, ey - 1.5 * U]], 2.6 * U);
       }
     }
-    if (arch || opts.glasses) { // the architect always wears the channel's rectangular frames
+    if ((arch && !opts.person?.noGlasses) || opts.glasses) { // the architect always wears the channel's rectangular frames
       for (const s of [-1, 1]) {
         const x = fx + s * 15 * U * (1 - 0.08 * Math.abs(turn)), fr = rrect(x - 11 * U, ey - 9.5 * U, x + 11 * U, ey + 7 * U, 4 * U);
         p.poly(fr, "rgba(225,240,255,0.12)", 0);

@@ -94,14 +94,17 @@ function landmarks(m:Model){
   m.pipe([kx,y,kz],[kx,y+60,kz],1.6,painted("#d7dee4"));
 }
 
-function irelandSign(m:Model){
-  const [x,z]=IRELAND,pole=painted("#d9d4c8");
-  m.pipe([x+2,SAND_Y,z+2],[x+2,SAND_Y+6,z+2],.12,pole);
+function irelandSign(m:Model,list:Island[]){
+  // On the island, inland from the spot the host stands on (QUALITY-RULES 23): posts on sand, never in the sea.
+  const home=list.reduce((a,b)=>Math.hypot(b.c[0]-IRELAND[0],b.c[1]-IRELAND[1])<Math.hypot(a.c[0]-IRELAND[0],a.c[1]-IRELAND[1])?b:a,list[0]);
+  const dx=home.c[0]-IRELAND[0],dz=home.c[1]-IRELAND[1],d=Math.hypot(dx,dz)||1,k=Math.min(3.5,d*.7)/d;
+  const x=IRELAND[0]+dx*k,z=IRELAND[1]+dz*k,pole=painted("#d9d4c8");
+  m.pipe([x+2.4,SAND_Y,z-.6],[x+2.4,SAND_Y+6,z-.6],.12,pole);
   const flag=new THREE.Mesh(new THREE.PlaneGeometry(1.8,1.2),lam("flag-ie",()=>({color:0xffffff,map:ieFlag(),side:THREE.DoubleSide})));
-  flag.position.set(x+2.95,SAND_Y+5.3,z+2);m.group.add(flag);
-  sign(m,x-1.5,SAND_Y+1.4,z+2.6,3.6,1.1,"IRELAND","#2f6b4f");
-  m.pipe([x-2.6,SAND_Y,z+2.6],[x-2.6,SAND_Y+.9,z+2.6],.08,wood());
-  m.pipe([x-.4,SAND_Y,z+2.6],[x-.4,SAND_Y+.9,z+2.6],.08,wood());
+  flag.position.set(x+3.35,SAND_Y+5.3,z-.6);m.group.add(flag);
+  sign(m,x-1.5,SAND_Y+1.4,z-.6,3.6,1.1,"IRELAND","#2f6b4f");
+  m.pipe([x-2.6,SAND_Y,z-.6],[x-2.6,SAND_Y+.9,z-.6],.08,wood());
+  m.pipe([x-.4,SAND_Y,z-.6],[x-.4,SAND_Y+.9,z-.6],.08,wood());
 }
 function ieFlag(){
   const c=document.createElement("canvas");c.width=96;c.height=64;const g=c.getContext("2d")!;
@@ -126,7 +129,7 @@ function villa(m:Model,live:boolean){
   const pole=painted("#d9d4c8");m.pipe([x-3.5,SAND_Y+3.6,z-2.2],[x-3.5,SAND_Y+6.1,z-2.2],.07,pole);
   const flag=new THREE.Mesh(new THREE.PlaneGeometry(1.6,.95).translate(.8,0,0),new THREE.MeshBasicMaterial({color:0xc9553a,side:THREE.DoubleSide}));flag.position.set(x-3.5,SAND_Y+5.6,z-2.2);m.group.add(flag);
   animate(m.group,t=>{flag.rotation.y=.45*Math.sin(t*3.1);flag.rotation.z=.08*Math.sin(t*5.3);});
-  addPerson(m.group,{x:x+4.8,y:SAND_Y,z:z+3.4,variant:2,scale:1,walk:{dx:3.2,period:8}});
+  addPerson(m.group,{x:x+4.8,y:SAND_Y,z:z+3.4,variant:2,scale:1,walk:{dx:3.2,period:8,angle:38,pause:true}});
 }
 
 export function build(params:{subject?:string},ctx:{light?:"day"|"golden"}={}){
@@ -146,7 +149,7 @@ export function build(params:{subject?:string},ctx:{light?:"day"|"golden"}={}){
     const city=new THREE.Group();buildMainland(city);
     city.rotation.y=-Math.PI/2;city.position.set(SHORE_X-640,0,0);    // shore line z=-640 → x=SHORE_X
     m.group.add(city);
-    irelandSign(m);
+    irelandSign(m,list);
     villa(m,subject==="villa");
     if(subject==="dredger"){buildDredger(m.group);const jet=new Jet(m.group);jet.set(0,1,0);animate(m.group,t=>jet.set(0,1,t));}     // the rainbow of sand landing on an island
   }

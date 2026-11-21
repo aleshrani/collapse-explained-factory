@@ -32,7 +32,7 @@ export function build(p:RoomParams){
   for(let i=0;i<4;i++){const x=-3.5+i*2.3;m.box(x,1.45,-1.9,.9,.55,.06,dark);m.box(x,1.3,-1.85,.07,.3,.07,steel);paper(m,x,1.15,-1.1);}
   m.box(3.6,1.2,-1.1,.5,.12,.4,painted("#2f3945"));m.pipe([3.6,1.25,-1.1],[3.6,1.45,-1.1],.06,dark);
   [-3.5,-1.2,1.1,3.4].forEach((x,i)=>addPerson(m.group,{x,y:.5,z:-2.6,variant:i,scale:1,seated:true}));
-  addPerson(m.group,{x:0,y:0,z:-3.3,variant:5,scale:.95,carry:true,walk:{dx:4.2,period:9}});   // a runner crossing behind the desk
+  addPerson(m.group,{x:0,y:0,z:-3.3,variant:5,scale:.95,carry:true,walk:{dx:4.2,period:9,angle:8}});   // a runner crossing behind the desk
   for(const x of [-1.9,.3])m.box(x,.75,.9,.09,1.5,.09,steel);   // the sign stands on two legs
   sign(m,-.8,1.6,.9,2.6,.43,p.detail||(crash?"Markets falling":"Support announced"),"#8c6a54");
   return finish(m,[0,1.6,-1.4],"finance-wall");

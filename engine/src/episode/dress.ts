@@ -7,6 +7,12 @@ import {stencil} from "../kit/markings";
 import {buildProp,gagIds,GagId} from "../kit/props";
 import {animatePerson,extraCard,Person,walkPerson} from "../kit/extras";
 
+/** height of the solid surface under (x,z), searched from above y; undefined over open water or when nothing is there */
+export function surfaceY(root:THREE.Object3D,x:number,y:number,z:number){
+  const hit=new THREE.Raycaster(new THREE.Vector3(x,y+1.2,z),new THREE.Vector3(0,-1,0),0,30).intersectObject(root,true)[0];
+  return hit&&!hit.object.userData.sea&&Math.abs(hit.point.y-y)<.8?hit.point.y:undefined;
+}
+
 /** where a gag prop stands (beside the host, turned to the lens) and how far it reaches, so framing can keep it in the picture */
 /** is there solid ground (not open water) just under this point? */
 export function landUnder(root:THREE.Object3D,x:number,y:number,z:number){
@@ -36,12 +42,13 @@ export function dress(scene:THREE.Group,feet:Point,eye:Point,p:Record<string,unk
   const solids=(scene.userData.obstacles??[]) as Ob[],people:Ob[]=[{x0:feet[0]-BODY,x1:feet[0]+BODY,z0:feet[2]-BODY,z1:feet[2]+BODY,y0:feet[1],y1:feet[1]+HEIGHT,tag:"the host"}];
   const crowdPeople:Person[]=Array.from({length:crowd},(_,i)=>({x:feet[0]-2.5+(i%3)*1.05,y:feet[1],z:feet[2]-2-Math.floor(i/3)*1.3,variant:i+2,scale:.95}));
   for(const person of [...((scene.userData.people??[]) as Person[]),...crowdPeople]){
-    const g=person.y??0,all0=[...solids,...people];
+    let g=person.y??0;const all0=[...solids,...people];
     if(!person.seated){   // a standing person who would start inside furniture or another person steps to the nearest free spot
       const spot=relocate(all0,person.x,person.z,g);
       if(!spot)issue(scene,`person (variant ${person.variant}) at x=${person.x} z=${person.z} has no free spot within 3.5 m`);
       else{person.x=spot[0];person.z=spot[1];}
     }
+    if(!person.seated){const sy=surfaceY(scene,person.x,g,person.z);if(sy!==undefined)g=sy;}   // feet exactly on the surface, above or below where the kit put him
     const card=extraCard(person.variant,person.scale??1);card.position.set(person.x,g,person.z);
     card.rotation.y=Math.atan2(eye[0]-person.x,eye[2]-person.z);scene.add(card);card.userData.scale=person.scale??1;((scene.userData.cards??=[]) as THREE.Mesh[]).push(card);if(!person.walk)animatePerson(scene,card,card.position.y,person.variant*3+person.x);
     const [y0,y1]=bandFor(g),all=[...solids,...people];
@@ -51,16 +58,22 @@ export function dress(scene:THREE.Group,feet:Point,eye:Point,p:Record<string,unk
     }
     let reach=0;
     if(person.walk){
-      const w=person.walk,card0=card.position.x;
-      reach=Math.min(w.dx,freeRun(all,person.x,person.z,1,0,g,w.dx),freeRun(all,person.x,person.z,-1,0,g,w.dx));
-      if(reach>.3)walkPerson(scene,card,card0,reach,g,person.variant*3+person.x);else animatePerson(scene,card,card.position.y,person.variant*3+person.x);
+      const w=person.walk,ang=(w.angle??0)*Math.PI/180,ux=Math.cos(ang),uz=Math.sin(ang),x0=card.position.x,z0=card.position.z;
+      reach=Math.min(w.dx,freeRun(all,person.x,person.z,ux,uz,g,w.dx),freeRun(all,person.x,person.z,-ux,-uz,g,w.dx));
+      if(reach>.3){
+        const hs:number[]=[];for(let k=0;k<=8;k++){const s=-reach+reach*2*k/8,sy=surfaceY(scene,x0+ux*s,g,z0+uz*s);hs.push(sy??g);}
+        const ground=(s:number)=>{const f=Math.max(0,Math.min(8,(s+reach)/(2*reach)*8)),i=Math.min(7,Math.floor(f));return hs[i]+(hs[i+1]-hs[i])*(f-i);};
+        walkPerson(scene,card,x0,z0,w.angle??0,reach,ground,person.variant*3+person.x,!!w.pause);
+      }else animatePerson(scene,card,card.position.y,person.variant*3+person.x);
     }
     if(person.carry){   // a stack of papers carried in front of the body
-      const sc=person.scale??1,stack=new THREE.Mesh(new THREE.BoxGeometry(.36*sc,.07*sc,.27*sc),painted("#efe7d2"));scene.add(stack);
-      animate(scene,()=>{const r=card.rotation.y;stack.position.set(card.position.x+Math.cos(r)*.3*sc+Math.sin(r)*.12,card.position.y+.92*sc,card.position.z-Math.sin(r)*.3*sc+Math.cos(r)*.12);stack.rotation.y=r;});
+      const sc=person.scale??1,stack=new THREE.Mesh(new THREE.BoxGeometry(.32*sc,.03*sc,.23*sc),painted("#f6f1e2"));   // a few sheets, not a block (QUALITY-RULES 25)
+scene.add(stack);
+      animate(scene,()=>{stack.visible=card.visible&&card.parent!==null;const r=card.rotation.y;stack.position.set(card.position.x+Math.cos(r)*.3*sc+Math.sin(r)*.12,card.position.y+.92*sc,card.position.z-Math.sin(r)*.3*sc+Math.cos(r)*.12);stack.rotation.y=r;});
     }
-    card.userData.reach=reach;card.userData.baseY=g;card.userData.seated=!!person.seated;
-    people.push({x0:person.x-reach-BODY,x1:person.x+reach+BODY,z0:person.z-BODY,z1:person.z+BODY,y0:g,y1:g+HEIGHT,tag:"a person (variant "+person.variant+")"});
+    card.userData.reach=reach;card.userData.angle=person.walk?.angle??0;card.userData.baseY=g;card.userData.seated=!!person.seated;
+    {const ang=(person.walk?.angle??0)*Math.PI/180,ux=Math.cos(ang),uz=Math.sin(ang),n=reach>.3?Math.max(2,Math.ceil(reach*2/.6)):1;   // the route as small boxes, not one big bounding box
+      for(let k=0;k<n;k++){const sgm=n===1?0:-reach+reach*2*k/(n-1),cx=person.x+ux*sgm,cz=person.z+uz*sgm;people.push({x0:cx-BODY-.15,x1:cx+BODY+.15,z0:cz-BODY-.15,z1:cz+BODY+.15,y0:g,y1:g+HEIGHT,tag:"a person (variant "+person.variant+")"});}}
   }
   scene.userData.people_ob=people;
   // A gag prop stands beside the host and turns to the lens; it is the must-show object of the beat.

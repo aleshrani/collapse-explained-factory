@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import {ctex} from "../videos/bridge/paint";
 import {lam} from "../videos/bridge/build";
+import {NOINK} from "../videos/bridge/ink";
 import {camera, Model, painted, wood, Point} from "./shared";
 import {addPerson} from "./extras";
 import {clouds,gulls,papers,pulseRing,slider,traffic} from "./motion";
@@ -112,7 +113,18 @@ function deskScene(m:Model,base:Base){
   // pin board with clippings and string, filing cabinets and binder shelf behind the desk
   m.box(0,3.2,-4.1,9.4,4.4,.18,steel);m.box(0,3.2,-3.98,9.0,4.0,.1,cork,3);
   const tints=["#e6ddc8","#d9d2b8","#cfd8cc","#e0c9a8"];
-  for(let i=0;i<9;i++){const x=-3.8+(i%5)*1.9+(i>4?.9:0),y=3.9-Math.floor(i/5)*1.8+((i*7)%3)*.1;m.box(x,y,-3.9,1.2+(i%3)*.15,1.0+(i%2)*.2,.03,painted(tints[i%4]));m.box(x,y+.45,-3.86,.1,.1,.03,red);for(let j=0;j<3;j++)m.box(x,y+.2-j*.22,-3.87,.8,.04,.01,painted("#807c71"));}
+  // pinned papers: flat planes on the NOINK layer with the outline, text lines and pin painted into the texture. As boxes 1.5 cm off the cork their
+  // edges were a depth step of well under 1 % at that distance, so the ink pass drew them only here and there (dashed outlines).
+  for(let i=0;i<9;i++){
+    const x=-3.8+(i%5)*1.9+(i>4?.9:0),y=3.9-Math.floor(i/5)*1.8+((i*7)%3)*.1,w=1.2+(i%3)*.15,h=1.0+(i%2)*.2,tint=tints[i%4];
+    const tex=ctex("pinned-paper-"+tint+i%3+i%2,256,256,g=>{
+      g.fillStyle=tint;g.fillRect(0,0,256,256);g.strokeStyle="#2a2a30";g.lineWidth=14;g.strokeRect(7,7,242,242);
+      g.fillStyle="#807c71";for(let j=0;j<4;j++)g.fillRect(34,70+j*38,j%3===2?120:188,9);
+      g.fillStyle="#bc644c";g.beginPath();g.arc(128,34,14,0,Math.PI*2);g.fill();g.strokeStyle="#2a2a30";g.lineWidth=3;g.stroke();
+    });
+    const paper=new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshLambertMaterial({map:tex}));
+    paper.position.set(x,y,-3.918);paper.layers.set(NOINK);paper.receiveShadow=true;m.group.add(paper);
+  }
   m.beam([-3.8,4.35,-3.84],[0,2.6,-3.84],.025,red);m.beam([0,2.6,-3.84],[3.8,4.1,-3.84],.025,red);
   for(const x of [-6.2,6.2]){m.box(x,1.3,-3.3,1.7,2.6,1.1,painted("#7c8a83","rib"));for(let i=0;i<4;i++){m.box(x,.4+i*.62,-2.74,1.55,.5,.05,cream);m.box(x,.42+i*.62,-2.7,.4,.06,.05,brass);}}
   m.box(6.2,2.9,-3.3,1.7,.1,1.1,steel);
@@ -191,10 +203,10 @@ export function build(base:Base,p:Params){
   if(base==="map")for(const [i,pin] of (p.pins??[]).entries()){const cx=48+(pin.lon+180)/360*922,cy=146+(82-pin.lat)/152*340;pulseRing(group,[px(cx),py(cy),-2.55],.5,1.6,i*.3);pulseRing(group,[px(cx),py(cy),-2.55],.5,1.6,i*.3+.5);}
   if(base==="timeline"){slider(group,[px(110),py(324),-2.55],[px(904),py(324),-2.55],.11,7);for(const ev of (p.events??[]).keys()){const cx=110+ev*794/Math.max(1,(p.events??[]).length-1);pulseRing(group,[px(cx),py(324),-2.55],.35,2.2,ev*.37);}}
   // one person always crosses the picture: an assistant with papers, pedestrians in the street
-  if(desk)addPerson(group,{x:-1.5,y:0,z:4.6,variant:3,carry:true,walk:{dx:4,period:10}});
-  if(base==="map"||base==="timeline")addPerson(group,{x:-1.8,y:0,z:.9,variant:4,carry:true,walk:{dx:3,period:9}});
-  if(base==="boardroom"||base==="studio")addPerson(group,{x:-2,y:0,z:5.4,variant:3,carry:true,walk:{dx:3.5,period:10}});
-  if(base==="skyline"){addPerson(group,{x:-6,y:.18,z:8.6,variant:2,walk:{dx:3.5,period:11}});addPerson(group,{x:8,y:.18,z:9.4,variant:5,carry:true,walk:{dx:3,period:9}});}
+  if(desk)addPerson(group,{x:-1.5,y:0,z:4.6,variant:3,carry:true,walk:{dx:4,period:10,angle:14,pause:true}});
+  if(base==="map"||base==="timeline")addPerson(group,{x:-1.8,y:0,z:.9,variant:4,carry:true,walk:{dx:3,period:9,angle:-24}});
+  if(base==="boardroom"||base==="studio")addPerson(group,{x:-2,y:0,z:5.4,variant:3,carry:true,walk:{dx:3.5,period:10,angle:22,pause:true}});
+  if(base==="skyline"){addPerson(group,{x:-6,y:.18,z:8.6,variant:2,walk:{dx:3.5,period:11,angle:12}});addPerson(group,{x:8,y:.18,z:9.4,variant:5,carry:true,walk:{dx:3,period:9,angle:-14,pause:true}});}
   if(base==="skyline"){
     traffic(group,[-17,.1,2.4],[17,.1,2.4],3,3.2,.95);traffic(group,[17,.1,.0],[-17,.1,.0],3,2.6,.95);
     gulls(group,[0,14,-4],6,9,0,12,.9);clouds(group,[0,25,-14],26,5,5,.6);

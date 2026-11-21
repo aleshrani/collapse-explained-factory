@@ -18,7 +18,7 @@ export function build(p:RoomParams){
     sign(m,1.72,2.34,-1.29,2.68,.57,p.subject||"Custody record");
     sign(m,-1.72,3.41,-1.28,2.26,.38,p.detail||"Holding room");
     // something always moves in the foreground: a guard paces the corridor and the hanging lamp swings
-    addPerson(m.group,{x:.5,y:0,z:.6,variant:2,scale:1,walk:{dx:3.6,period:9}});
+    addPerson(m.group,{x:.5,y:0,z:.6,variant:2,scale:1,walk:{dx:3.6,period:9,angle:20,pause:true}});
     const lamp=new THREE.Group();lamp.position.set(2.4,4.7,.3);
     const cord=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,1.5,6),painted("#26323b"));cord.position.y=-.75;
     const shade=new THREE.Mesh(new THREE.ConeGeometry(.5,.42,18,1,true),painted("#c5a45d"));shade.material.side=THREE.DoubleSide;shade.position.y=-1.6;
@@ -31,7 +31,7 @@ export function build(p:RoomParams){
   for(let i=-3;i<=3;i++){m.box(i*1.13,1.23,-2.04,.88,1.16,.1,trim);m.box(i*1.13,1.23,-1.973,.7,.93,.057,oak);}
   for(const x of [-2.7,0,2.7]){m.box(x,2.57,-3.68,1.32,1.72,.28,leather);m.box(x,1.82,-3.5,1.43,.18,.72,trim);paper(m,x,2.13,-2.77);}
   [-2.7,0,2.7].forEach((x,i)=>addPerson(m.group,{x,y:1.45,z:-3.25,variant:i+4,scale:.9,seated:true}));
-  addPerson(m.group,{x:0,y:0,z:-1.3,variant:6,scale:.95,carry:true,walk:{dx:3.2,period:8}});   // the clerk crossing the well
+  addPerson(m.group,{x:0,y:0,z:-1.3,variant:6,scale:.95,carry:true,walk:{dx:3.2,period:8,angle:-22,pause:true}});   // the clerk crossing the well
   for(let j=0;j<2;j++)for(const x of [-3.35,3.35]){
     const z=2.15+j*1.86;m.box(x,.56,z,3.82,.15,.73,oak);m.box(x,.96,z+.36,3.85,.86,.13,oak);
     for(const side of [-1,1])m.box(x+side*1.48,.28,z,.23,.56,.62,trim);

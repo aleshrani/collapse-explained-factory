@@ -130,9 +130,11 @@ float dist(sampler2D t, vec2 uv) { return -perspectiveDepthToViewZ(textureLod(t,
 vec3 viewPos(vec2 uv, float d) { vec2 n = uv * 2.0 - 1.0; return vec3(n.x * d / p00, n.y * d / p11, -d); }
 
 // crease strength between this pixel (n0, P0) and a neighbour
-float crease(vec3 n0, vec3 P0, float zc, vec2 uq, float zq) {
+float crease(vec3 n0, vec3 P0, float zc, vec2 uq, float zq, float slope, float r) {
   vec4 nq = textureLod(tNormal, uq, 0.0);
-  if (nq.a < 0.5 || abs(zq - zc) > zc * depthLo) return 0.0;       // sky / depth jump: not a crease
+  // sky / real depth jump: not a crease. The allowance grows with the plane's own depth slope per pixel (a floor at a grazing angle changes
+  // depth by far more than 1 % per pixel, which used to break the floor-wall seam into dashes)
+  if (nq.a < 0.5 || abs(zq - zc) > zc * depthLo + slope * r * 1.7) return 0.0;
   float k = 1.0 - smoothstep(cosHi, cosLo, dot(n0, nq.xyz));
   if (dot(viewPos(uq, zq) - P0, n0) > 0.0) k *= concaveGain;        // neighbour in front of our tangent plane: concave
   return k;
@@ -160,7 +162,14 @@ void main() {
   vec3 n0 = nc.xyz;
   vec3 P0 = viewPos(vUv, zc);
   float eD = 0.0, eN = 0.0;
+  // the plane's own depth change per pixel (capped so a real depth jump does not count as slope)
+  float slope = min(max(abs(dist(tDepth, vUv + vec2(texel.x, 0.0)) - zc), abs(dist(tDepth, vUv + vec2(0.0, texel.y)) - zc)), zc * 0.04);
   for (int a = 0; a < 4; a++) {
+    {   // a ridge one or two pixels wide (drawer handle, paper edge, pin): its outline only crawls, so this axis draws nothing for it
+      vec2 o1 = STEP[a] * texel;
+      float za = dist(tDepth, vUv - o1), zb = dist(tDepth, vUv + o1), za2 = dist(tDepth, vUv - 2.0 * o1), zb2 = dist(tDepth, vUv + 2.0 * o1);
+      if ((za > zc * 1.02 && zb > zc * 1.02) || (za2 > zc * 1.02 && zb > zc * 1.02 && za < zc * 1.02) || (za > zc * 1.02 && zb2 > zc * 1.02 && zb < zc * 1.02)) continue;
+    }
     for (int r = 1; r <= RMAX; r++) {
       vec2 o = STEP[a] * texel * float(r);
       float d = (float(r) - 0.5) * SLEN[a];          // distance of this pixel's centre to an edge first seen at r
@@ -172,7 +181,7 @@ void main() {
       float s = (1.0 / z1 + 1.0 / z2 - 2.0 * Wc) / Wc;
       eD = max(eD, smoothstep(depthLo, depthHi, -s) * cw);
       // crease: normal turns towards a neighbour at the same depth
-      if (ch > 0.0) eN = max(eN, max(crease(n0, P0, zc, vUv - o, z1), crease(n0, P0, zc, vUv + o, z2)) * ch);
+      if (ch > 0.0) eN = max(eN, max(crease(n0, P0, zc, vUv - o, z1, slope, float(r)), crease(n0, P0, zc, vUv + o, z2, slope, float(r))) * ch);
     }
   }
 

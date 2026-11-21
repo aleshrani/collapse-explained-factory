@@ -215,7 +215,7 @@ export function hideCutCards(view:View,shot:Shot,cards:THREE.Mesh[]){
     let inside=false,outside=false,cut=false;
     const reach=Number(card.userData.reach??0);
     for(const u of [0,.5,1])for(const o of [-reach,0,reach]){   // a walker is checked at both ends of his walk too
-      const b=project(cameraAt(view,shot,u),boxPoints(card.position.x+o,card.position.y,card.position.z,w,h));
+      const an=Number(card.userData.angle??0)*Math.PI/180,b=project(cameraAt(view,shot,u),boxPoints(card.position.x+Math.cos(an)*o,card.position.y,card.position.z+Math.sin(an)*o,w,h));
       if(!b){outside=true;continue;}
       if(b.x1<0||b.x0>1||b.y1<0||b.y0>1)outside=true;
       else if(b.x0>=.01&&b.x1<=.99&&b.y0>=.01&&b.y1<=.99)inside=true;
