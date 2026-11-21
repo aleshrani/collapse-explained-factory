@@ -1,0 +1,5169 @@
+{
+ "shots": [
+  {
+   "line": "Four businessmen from Ireland bought Ireland. Not the country.",
+   "start": 0.0,
+   "end": 4.583,
+   "kit": "dubai",
+   "params": {
+    "subject": "ireland"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai ireland seen wide: Four businessmen from Ireland bought Ireland. Not the country.",
+   "direction": {
+    "subject": "ireland",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "hook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "A pile of sand shaped like it, four kilometers off the coast of Dubai,",
+   "start": 4.583,
+   "end": 8.503,
+   "kit": "money",
+   "params": {
+    "subject": "Ireland island",
+    "value": "AED 142 million",
+    "detail": "Four kilometers"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "money Ireland island seen close: A pile of sand shaped like it, four kilometers off the coast of Dubai,",
+   "direction": {
+    "subject": "Ireland island",
+    "environment": "money",
+    "mood": "curious",
+    "move": "truck",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "hook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "for one hundred and forty-two million dirhams. A year later, a British developer bought",
+   "start": 8.503,
+   "end": 12.635,
+   "kit": "courtroom",
+   "params": {
+    "state": "custody",
+    "subject": "Dubai courts",
+    "detail": "Hundred and forty-two million"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "courtroom custody seen wide: for one hundred and forty-two million dirhams. A year later, a British developer bought",
+   "direction": {
+    "subject": "custody",
+    "environment": "courtroom",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "label",
+    "text": "Great Britain"
+   },
+   "transition": "cut",
+   "beat": "hook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Great Britain, and a few months after that he was sitting in a Dubai jail.",
+   "start": 12.635,
+   "end": 16.917,
+   "kit": "dubai",
+   "params": {
+    "subject": "coast"
+   },
+   "camera": "medium",
+   "light": "golden",
+   "visual_idea": "dubai coast seen wide: Great Britain, and a few months after that he was sitting in a Dubai jail.",
+   "direction": {
+    "subject": "coast",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "stand"
+   },
+   "action": "stand",
+   "expression": "neutral",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "hook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "And in a courtroom in two thousand and eleven, a lawyer told three judges that the",
+   "start": 16.917,
+   "end": 20.997,
+   "kit": "courtroom",
+   "params": {
+    "state": "hearing",
+    "subject": "Dubai courts",
+    "detail": "Courtroom in two thousand"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "courtroom hearing seen medium: And in a courtroom in two thousand and eleven, a lawyer told three judges that the",
+   "direction": {
+    "subject": "hearing",
+    "environment": "courtroom",
+    "mood": "curious",
+    "move": "crane",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "2011"
+   },
+   "transition": "cut",
+   "beat": "hook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "whole world was falling back into the sea. Here's the craziest part.",
+   "start": 20.997,
+   "end": 24.958,
+   "kit": "dubai",
+   "params": {
+    "subject": "breakwater"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai breakwater seen wide: whole world was falling back into the sea. Here's the craziest part.",
+   "direction": {
+    "subject": "breakwater",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "label",
+    "text": "falling into the sea?"
+   },
+   "transition": "cut",
+   "beat": "hook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "More than twenty years after the first island rose out of the water, there's still",
+   "start": 24.958,
+   "end": 29.038,
+   "kit": "dubai",
+   "params": {
+    "subject": "villa"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai villa seen wide: More than twenty years after the first island rose out of the water, there's still",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "20+ years"
+   },
+   "transition": "cut",
+   "beat": "hook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "no power cable running out to them. This is the story",
+   "start": 29.038,
+   "end": 32.693,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai beach seen medium: no power cable running out to them. This is the story",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "smug",
+   "overlay": {
+    "kind": "label",
+    "text": "no power cable"
+   },
+   "transition": "cut",
+   "beat": "hook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "of how Dubai sold the world before anybody lived on it.",
+   "start": 32.693,
+   "end": 36.083,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "dubai archipelago seen wide: of how Dubai sold the world before anybody lived on it.",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "The World"
+   },
+   "transition": "cut",
+   "beat": "lock-in",
+   "reframeX": 0.5
+  },
+  {
+   "line": "You see, the strange part isn't that the plan failed. Lots of plans fail.",
+   "start": 36.083,
+   "end": 40.917,
+   "kit": "map",
+   "params": {
+    "subject": "Dubai",
+    "pins": [
+     {
+      "label": "The World",
+      "lat": 25.2,
+      "lon": 55.3
+     }
+    ],
+    "detail": "Strange part"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "map Dubai seen wide: You see, the strange part isn't that the plan failed. Lots of plans fail.",
+   "direction": {
+    "subject": "Dubai",
+    "environment": "map",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "lock-in",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The strange part is that the islands are still out there, every one of",
+   "start": 40.917,
+   "end": 44.837,
+   "kit": "property-office",
+   "params": {
+    "state": "model",
+    "subject": "Nakheel sales gallery",
+    "detail": "Strange part"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "property-office 300 islands seen wide: The strange part is that the islands are still out there, every one of",
+   "direction": {
+    "subject": "300 islands",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "crane",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "300 islands"
+   },
+   "transition": "cut",
+   "beat": "lock-in",
+   "reframeX": 0.5
+  },
+  {
+   "line": "them, and almost nobody has moved in. So how do you build three hundred islands, sell",
+   "start": 44.837,
+   "end": 48.952,
+   "kit": "money",
+   "params": {
+    "subject": "richest buyers",
+    "detail": "Build three hundred islands",
+    "value": "richest buyers"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "money richest buyers seen wide: them, and almost nobody has moved in. So how do you build three hundred islands, sell",
+   "direction": {
+    "subject": "richest buyers",
+    "environment": "money",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "count-fingers"
+   },
+   "action": "count-fingers",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "lock-in",
+   "reframeX": 0.5
+  },
+  {
+   "line": "them to some of the richest people on the planet, and end up with a map that's mostly empty?",
+   "start": 48.952,
+   "end": 53.417,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "dubai archipelago seen close: them to some of the richest people on the planet, and end up with a map that's mostly empty?",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "mostly empty"
+   },
+   "transition": "cut",
+   "beat": "lock-in",
+   "reframeX": 0.5
+  },
+  {
+   "line": "In May two thousand and three, Dubai's state developer, Nakheel,",
+   "start": 53.417,
+   "end": 57.337,
+   "kit": "property-office",
+   "params": {
+    "state": "model",
+    "subject": "Nakheel",
+    "detail": "Dubai's state developer Nakheel"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "property-office Nakheel seen medium: In May two thousand and three, Dubai's state developer, Nakheel,",
+   "direction": {
+    "subject": "Nakheel",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "truck",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "May 2003"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "announced its next idea. It already had a palm tree made of",
+   "start": 57.337,
+   "end": 61.327,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai archipelago seen medium: announced its next idea. It already had a palm tree made of",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "smug",
+   "overlay": {
+    "kind": "number",
+    "text": "about 300 islands"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "sand sticking out into the Gulf. Now it wanted the entire world.",
+   "start": 61.327,
+   "end": 65.083,
+   "kit": "dubai",
+   "params": {
+    "subject": "palm"
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "dubai palm seen aerial: sand sticking out into the Gulf. Now it wanted the entire world.",
+   "direction": {
+    "subject": "palm",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "Palm Jumeirah"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "About three hundred islands, arranged so that from a plane you'd see the continents.",
+   "start": 65.083,
+   "end": 69.625,
+   "kit": "map",
+   "params": {
+    "subject": "continents",
+    "detail": "Hundred islands arranged",
+    "pins": [
+     {
+      "label": "continents",
+      "lat": 25.2,
+      "lon": 55.3
+     }
+    ]
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "map continents seen aerial: About three hundred islands, arranged so that from a plane you'd see the continents.",
+   "direction": {
+    "subject": "continents",
+    "environment": "map",
+    "mood": "curious",
+    "move": "crane",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "Europe, Africa, Antarctica"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Europe here, Africa there, a little Antarctica at the bottom.",
+   "start": 69.625,
+   "end": 73.333,
+   "kit": "dubai",
+   "params": {
+    "subject": "dredger"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai dredger seen wide: Europe here, Africa there, a little Antarctica at the bottom.",
+   "direction": {
+    "subject": "dredger",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "dredgers"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "To make it, dredgers sucked sand off the seabed and sprayed it into place.",
+   "start": 73.333,
+   "end": 77.25,
+   "kit": "dubai",
+   "params": {
+    "subject": "survey"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "dubai survey seen close: To make it, dredgers sucked sand off the seabed and sprayed it into place.",
+   "direction": {
+    "subject": "survey",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "That's where the first number comes from. Three hundred and twenty-one million",
+   "start": 77.25,
+   "end": 81.135,
+   "kit": "blueprint",
+   "params": {
+    "subject": "sand volume",
+    "detail": "Hundred and twenty-one million",
+    "outline": [
+     [
+      0.95,
+      0.5
+     ],
+     [
+      0.928,
+      0.624
+     ],
+     [
+      0.864,
+      0.735
+     ],
+     [
+      0.765,
+      0.824
+     ],
+     [
+      0.639,
+      0.88
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.361,
+      0.88
+     ],
+     [
+      0.235,
+      0.824
+     ],
+     [
+      0.136,
+      0.735
+     ],
+     [
+      0.072,
+      0.624
+     ],
+     [
+      0.05,
+      0.5
+     ],
+     [
+      0.072,
+      0.376
+     ],
+     [
+      0.136,
+      0.265
+     ],
+     [
+      0.235,
+      0.176
+     ],
+     [
+      0.361,
+      0.12
+     ],
+     [
+      0.5,
+      0.1
+     ],
+     [
+      0.639,
+      0.12
+     ],
+     [
+      0.765,
+      0.176
+     ],
+     [
+      0.864,
+      0.265
+     ],
+     [
+      0.928,
+      0.376
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ]
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "blueprint sand volume seen wide: That's where the first number comes from. Three hundred and twenty-one million",
+   "direction": {
+    "subject": "sand volume",
+    "environment": "blueprint",
+    "mood": "curious",
+    "move": "truck",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "number",
+    "text": "321 million m³"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "cubic meters of sand. That's about one hundred and twenty-eight",
+   "start": 81.135,
+   "end": 85.035,
+   "kit": "documents",
+   "params": {
+    "detail": "Hundred and twenty-eight",
+    "subject": "sand volume"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "blueprint sand volume seen wide: cubic meters of sand. That's about one hundred and twenty-eight",
+   "direction": {
+    "subject": "sand volume",
+    "environment": "blueprint",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "number",
+    "text": "321 million m³"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "thousand Olympic swimming pools. Around it all, they piled three hundred and eighty-six",
+   "start": 85.035,
+   "end": 89.668,
+   "kit": "dubai",
+   "params": {
+    "subject": "breakwater"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "dubai breakwater seen close: thousand Olympic swimming pools. Around it all, they piled three hundred and eighty-six",
+   "direction": {
+    "subject": "breakwater",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "386 million tonnes of rock"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "million tonnes of rock into a wall, to keep the waves from eating the map.",
+   "start": 89.668,
+   "end": 94.583,
+   "kit": "dubai-service",
+   "params": {
+    "station": "breakwater",
+    "label": "waves vs map"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai-service breakwater seen wide: million tonnes of rock into a wall, to keep the waves from eating the map.",
+   "direction": {
+    "subject": "breakwater",
+    "environment": "dubai-service",
+    "mood": "curious",
+    "move": "crane",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "An island made like that has a catch. From above, it looks finished.",
+   "start": 94.583,
+   "end": 99.083,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "dubai beach seen wide: An island made like that has a catch. From above, it looks finished.",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "smug",
+   "overlay": {
+    "kind": "label",
+    "text": "nothing on it"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Golden beach, blue water, a perfect shape.",
+   "start": 99.083,
+   "end": 103.042,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "dubai archipelago seen low: Golden beach, blue water, a perfect shape.",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "looks finished"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "But nothing is on it. No pipes, no power, no road,",
+   "start": 103.042,
+   "end": 107.262,
+   "kit": "dubai",
+   "params": {
+    "subject": "landing"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai landing seen medium: But nothing is on it. No pipes, no power, no road,",
+   "direction": {
+    "subject": "landing",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "count-fingers"
+   },
+   "action": "count-fingers",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "no pipes, no power"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "no bridge. The only way to get there is a boat. So every island was",
+   "start": 107.262,
+   "end": 111.203,
+   "kit": "dubai",
+   "params": {
+    "subject": "delivery"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai delivery seen wide: no bridge. The only way to get there is a boat. So every island was",
+   "direction": {
+    "subject": "delivery",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "boat only"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "sold as a blank plot, and the buyer would build the rest.",
+   "start": 111.203,
+   "end": 114.875,
+   "kit": "property-office",
+   "params": {
+    "state": "signed",
+    "subject": "Nakheel sales gallery",
+    "detail": "Buyer would build"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "property-office blank plot seen close: sold as a blank plot, and the buyer would build the rest.",
+   "direction": {
+    "subject": "blank plot",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "blank plot"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "And the plots weren't small. The whole map sits inside an area about",
+   "start": 114.875,
+   "end": 118.9,
+   "kit": "dubai",
+   "params": {
+    "subject": "delivery"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai delivery seen wide: And the plots weren't small. The whole map sits inside an area about",
+   "direction": {
+    "subject": "delivery",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "crane",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "boat only"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "seven by nine kilometers. A single island was anywhere from two point three",
+   "start": 118.9,
+   "end": 122.775,
+   "kit": "blueprint",
+   "params": {
+    "subject": "Building a planet out of sand",
+    "detail": "Nine kilometers",
+    "outline": [
+     [
+      0.95,
+      0.5
+     ],
+     [
+      0.928,
+      0.624
+     ],
+     [
+      0.864,
+      0.735
+     ],
+     [
+      0.765,
+      0.824
+     ],
+     [
+      0.639,
+      0.88
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.361,
+      0.88
+     ],
+     [
+      0.235,
+      0.824
+     ],
+     [
+      0.136,
+      0.735
+     ],
+     [
+      0.072,
+      0.624
+     ],
+     [
+      0.05,
+      0.5
+     ],
+     [
+      0.072,
+      0.376
+     ],
+     [
+      0.136,
+      0.265
+     ],
+     [
+      0.235,
+      0.176
+     ],
+     [
+      0.361,
+      0.12
+     ],
+     [
+      0.5,
+      0.1
+     ],
+     [
+      0.639,
+      0.12
+     ],
+     [
+      0.765,
+      0.176
+     ],
+     [
+      0.864,
+      0.265
+     ],
+     [
+      0.928,
+      0.376
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ]
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "blueprint 7 x 9 km seen medium: seven by nine kilometers. A single island was anywhere from two point three",
+   "direction": {
+    "subject": "7 x 9 km",
+    "environment": "blueprint",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "7 x 9 km"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "to eight point four hectares. That's roughly three to twelve football pitches",
+   "start": 122.775,
+   "end": 126.9,
+   "kit": "map",
+   "params": {
+    "subject": "football pitches",
+    "detail": "Point four hectares",
+    "pins": [
+     {
+      "label": "football pitches",
+      "lat": 25.2,
+      "lon": 55.3
+     }
+    ]
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "map football pitches seen close: to eight point four hectares. That's roughly three to twelve football pitches",
+   "direction": {
+    "subject": "football pitches",
+    "environment": "map",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "count-fingers"
+   },
+   "action": "count-fingers",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "3–12 football pitches"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "of brand new beach, each one surrounded by water on every side.",
+   "start": 126.9,
+   "end": 131.292,
+   "kit": "dubai",
+   "params": {
+    "subject": "ireland"
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "dubai ireland seen aerial: of brand new beach, each one surrounded by water on every side.",
+   "direction": {
+    "subject": "ireland",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "stand"
+   },
+   "action": "stand",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "If you owned one, you didn't have neighbours. You had a horizon.",
+   "start": 131.292,
+   "end": 135.25,
+   "kit": "dubai",
+   "params": {
+    "subject": "villa",
+    "gag": "supercar"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai villa seen wide: If you owned one, you didn't have neighbours. You had a horizon.",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "walk-in"
+   },
+   "action": "walk-in",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Right. Supercar, sunglasses, private island.",
+   "start": 135.25,
+   "end": 139.25,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach",
+    "gag": "supercar"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai beach seen medium: Right. Supercar, sunglasses, private island.",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "laughing",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "So where's the party? Where are all the beautiful people?",
+   "start": 139.25,
+   "end": 142.333,
+   "kit": "dubai",
+   "params": {
+    "subject": "coast",
+    "gag": "supercar"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "dubai coast seen low: So where's the party? Where are all the beautiful people?",
+   "direction": {
+    "subject": "coast",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "crane",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "facepalm",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "It's me and one seagull, and the seagull is leaving.",
+   "start": 142.333,
+   "end": 145.542,
+   "kit": "dubai",
+   "params": {
+    "subject": "breakwater"
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "dubai breakwater seen aerial: It's me and one seagull, and the seagull is leaving.",
+   "direction": {
+    "subject": "breakwater",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "January 2008"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "In January two thousand and eight, the last stone went into the breakwater.",
+   "start": 145.542,
+   "end": 149.625,
+   "kit": "boardroom",
+   "params": {
+    "subject": "Nakheel: done on schedule",
+    "detail": "Went into the breakwater"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "boardroom Nakheel: done on schedule seen wide: In January two thousand and eight, the last stone went into the breakwater.",
+   "direction": {
+    "subject": "Nakheel: done on schedule",
+    "environment": "boardroom",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "thumbs-up"
+   },
+   "action": "thumbs-up",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Nakheel said the reclamation was done, on schedule. The world was built.",
+   "start": 149.625,
+   "end": 153.708,
+   "kit": "dubai",
+   "params": {
+    "subject": "breakwater"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai breakwater seen aerial: Nakheel said the reclamation was done, on schedule. The world was built.",
+   "direction": {
+    "subject": "breakwater",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "January 2008"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Now somebody had to live on it. You see, the islands weren't",
+   "start": 153.708,
+   "end": 157.805,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "dolly",
+   "light": "golden",
+   "visual_idea": "dubai archipelago seen dolly: Now somebody had to live on it. You see, the islands weren't",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "sold as a story"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "really sold as land. They were sold as a story.",
+   "start": 157.805,
+   "end": 161.25,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "dubai archipelago seen dolly: really sold as land. They were sold as a story.",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "sold as a story"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "You didn't buy plot number forty-two. You bought a country.",
+   "start": 161.25,
+   "end": 164.875,
+   "kit": "property-office",
+   "params": {
+    "state": "signed",
+    "subject": "buy a country",
+    "detail": "Plot number forty-two"
+   },
+   "camera": "dolly",
+   "light": "day",
+   "visual_idea": "property-office buy a country seen dolly: You didn't buy plot number forty-two. You bought a country.",
+   "direction": {
+    "subject": "buy a country",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "crane",
+    "action": "laugh"
+   },
+   "action": "laugh",
+   "expression": "laughing",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "And buyers loved it. Think about the dinner parties.",
+   "start": 164.875,
+   "end": 168.208,
+   "kit": "studio",
+   "params": {
+    "subject": "I own Ireland",
+    "detail": "Dinner parties"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "studio I own Ireland seen wide: And buyers loved it. Think about the dinner parties.",
+   "direction": {
+    "subject": "I own Ireland",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "laugh"
+   },
+   "action": "laugh",
+   "expression": "laughing",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "\"So, what do you do?\" \"Oh, I own Ireland.\" And",
+   "start": 168.208,
+   "end": 172.048,
+   "kit": "documents",
+   "params": {
+    "detail": "I own Ireland",
+    "subject": "buy a country"
+   },
+   "camera": "dolly",
+   "light": "day",
+   "visual_idea": "property-office buy a country seen dolly: \"So, what do you do?\" \"Oh, I own Ireland.\" And",
+   "direction": {
+    "subject": "buy a country",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "laugh"
+   },
+   "action": "laugh",
+   "expression": "laughing",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "technically, that wasn't even a lie. In March two thousand and",
+   "start": 172.048,
+   "end": 176.257,
+   "kit": "studio",
+   "params": {
+    "subject": "I own Ireland",
+    "detail": "Technically that wasn't even"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "studio I own Ireland seen wide: technically, that wasn't even a lie. In March two thousand and",
+   "direction": {
+    "subject": "I own Ireland",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "truck",
+    "action": "laugh"
+   },
+   "action": "laugh",
+   "expression": "laughing",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "seven, four Irish businessmen bought the island called Ireland for one hundred and",
+   "start": 176.257,
+   "end": 180.737,
+   "kit": "dubai",
+   "params": {
+    "subject": "ireland"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai ireland seen medium: seven, four Irish businessmen bought the island called Ireland for one hundred and",
+   "direction": {
+    "subject": "ireland",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "AED 142 million"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "forty-two million dirhams. They called the project Ireland in the Sun.",
+   "start": 180.737,
+   "end": 184.833,
+   "kit": "skyline",
+   "params": {
+    "subject": "Selling countries",
+    "detail": "Forty-two million"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "skyline Ireland in the Sun seen wide: forty-two million dirhams. They called the project Ireland in the Sun.",
+   "direction": {
+    "subject": "Ireland in the Sun",
+    "environment": "skyline",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "smug",
+   "overlay": {
+    "kind": "label",
+    "text": "Ireland in the Sun"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Pubs, hotels, homes, a little piece of home in the Gulf.",
+   "start": 184.833,
+   "end": 189.458,
+   "kit": "hotel-interior",
+   "params": {
+    "state": "open",
+    "subject": "pubs, hotels, homes",
+    "detail": "Homes a little piece"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "hotel-interior pubs, hotels, homes seen wide: Pubs, hotels, homes, a little piece of home in the Gulf.",
+   "direction": {
+    "subject": "pubs, hotels, homes",
+    "environment": "hotel-interior",
+    "mood": "curious",
+    "move": "crane",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "And like most deals in Dubai back then, they didn't pay it all at once.",
+   "start": 189.458,
+   "end": 193.958,
+   "kit": "documents",
+   "params": {
+    "subject": "instalments",
+    "detail": "Like most deals"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "documents instalments seen wide: And like most deals in Dubai back then, they didn't pay it all at once.",
+   "direction": {
+    "subject": "instalments",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "paid in instalments"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "They paid in instalments, because everyone expected prices to keep going up.",
+   "start": 193.958,
+   "end": 198.167,
+   "kit": "property-office",
+   "params": {
+    "state": "model",
+    "subject": "Nakheel sales gallery",
+    "detail": "Paid in instalments because"
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "property-office deposit seen aerial: They paid in instalments, because everyone expected prices to keep going up.",
+   "direction": {
+    "subject": "deposit",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "deposit"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "That was the whole engine of the city. You put down a deposit on",
+   "start": 198.167,
+   "end": 202.055,
+   "kit": "money",
+   "params": {
+    "subject": "prices only up",
+    "detail": "Down a deposit",
+    "value": "prices only up"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "money prices only up seen aerial: That was the whole engine of the city. You put down a deposit on",
+   "direction": {
+    "subject": "prices only up",
+    "environment": "money",
+    "mood": "curious",
+    "move": "truck",
+    "action": "thumbs-up"
+   },
+   "action": "thumbs-up",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "something that doesn't exist yet. A few months later, it's worth more.",
+   "start": 202.055,
+   "end": 205.75,
+   "kit": "timeline",
+   "params": {
+    "detail": "Something that doesn't",
+    "subject": "worth more",
+    "events": [
+     {
+      "date": "2003",
+      "label": "The World announced"
+     },
+     {
+      "date": "2008",
+      "label": "worth more"
+     }
+    ]
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "documents worth more seen close: something that doesn't exist yet. A few months later, it's worth more.",
+   "direction": {
+    "subject": "worth more",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "thumbs-up"
+   },
+   "action": "thumbs-up",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "You sell it, or you borrow against it, and you buy the next thing.",
+   "start": 205.75,
+   "end": 210.0,
+   "kit": "money",
+   "params": {
+    "subject": "borrow, buy next",
+    "detail": "Borrow against",
+    "value": "borrow, buy next"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "money borrow, buy next seen low: You sell it, or you borrow against it, and you buy the next thing.",
+   "direction": {
+    "subject": "borrow, buy next",
+    "environment": "money",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "count-fingers"
+   },
+   "action": "count-fingers",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "As long as prices go up, everybody wins. Nakheel wins, the",
+   "start": 210.0,
+   "end": 213.95,
+   "kit": "boardroom",
+   "params": {
+    "subject": "everybody wins",
+    "detail": "Everybody wins Nakheel wins"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "boardroom everybody wins seen medium: As long as prices go up, everybody wins. Nakheel wins, the",
+   "direction": {
+    "subject": "everybody wins",
+    "environment": "boardroom",
+    "mood": "curious",
+    "move": "crane",
+    "action": "laugh"
+   },
+   "action": "laugh",
+   "expression": "laughing",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "buyers win, the banks win. Prices only go up.",
+   "start": 213.95,
+   "end": 217.958,
+   "kit": "timeline",
+   "params": {
+    "gag": "price-chart",
+    "detail": "Buyers win",
+    "subject": "price chart",
+    "events": [
+     {
+      "date": "2003",
+      "label": "The World announced"
+     },
+     {
+      "date": "2008",
+      "label": "price chart"
+     }
+    ]
+   },
+   "camera": "dolly",
+   "light": "day",
+   "visual_idea": "money price chart seen dolly: buyers win, the banks win. Prices only go up.",
+   "direction": {
+    "subject": "price chart",
+    "environment": "money",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "That's not a law of physics, by the way. Ask anyone who was there",
+   "start": 217.958,
+   "end": 221.92,
+   "kit": "blueprint",
+   "params": {
+    "gag": "price-chart",
+    "detail": "Law of physics",
+    "subject": "2008",
+    "outline": [
+     [
+      0.95,
+      0.5
+     ],
+     [
+      0.928,
+      0.624
+     ],
+     [
+      0.864,
+      0.735
+     ],
+     [
+      0.765,
+      0.824
+     ],
+     [
+      0.639,
+      0.88
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.361,
+      0.88
+     ],
+     [
+      0.235,
+      0.824
+     ],
+     [
+      0.136,
+      0.735
+     ],
+     [
+      0.072,
+      0.624
+     ],
+     [
+      0.05,
+      0.5
+     ],
+     [
+      0.072,
+      0.376
+     ],
+     [
+      0.136,
+      0.265
+     ],
+     [
+      0.235,
+      0.176
+     ],
+     [
+      0.361,
+      0.12
+     ],
+     [
+      0.5,
+      0.1
+     ],
+     [
+      0.639,
+      0.12
+     ],
+     [
+      0.765,
+      0.176
+     ],
+     [
+      0.864,
+      0.265
+     ],
+     [
+      0.928,
+      0.376
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ]
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "studio 2008 seen medium: That's not a law of physics, by the way. Ask anyone who was there",
+   "direction": {
+    "subject": "2008",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "facepalm",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "in two thousand and eight. So picture the scene.",
+   "start": 221.92,
+   "end": 225.333,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "aerial",
+   "light": "golden",
+   "visual_idea": "dubai archipelago seen aerial: in two thousand and eight. So picture the scene.",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "300 islands"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Three hundred islands, each one a plot of sand worth millions, and each",
+   "start": 225.333,
+   "end": 229.333,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "medium",
+   "light": "golden",
+   "visual_idea": "dubai archipelago seen aerial: Three hundred islands, each one a plot of sand worth millions, and each",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "300 islands"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "one bought with a promise of the next payment. Nobody had built",
+   "start": 229.333,
+   "end": 233.572,
+   "kit": "documents",
+   "params": {
+    "subject": "next payment",
+    "detail": "Promise of the next"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "documents next payment seen medium: one bought with a promise of the next payment. Nobody had built",
+   "direction": {
+    "subject": "next payment",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "anything yet. But on paper, the world was almost sold out.",
+   "start": 233.572,
+   "end": 238.083,
+   "kit": "property-office",
+   "params": {
+    "state": "signed",
+    "subject": "almost sold out",
+    "detail": "Anything yet"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "property-office almost sold out seen wide: anything yet. But on paper, the world was almost sold out.",
+   "direction": {
+    "subject": "almost sold out",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "crane",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "At the end of December two thousand and eight, Nakheel announced that seventy percent of",
+   "start": 238.083,
+   "end": 242.083,
+   "kit": "blueprint",
+   "params": {
+    "detail": "Eight Nakheel announced",
+    "subject": "Selling countries",
+    "outline": [
+     [
+      0.95,
+      0.5
+     ],
+     [
+      0.928,
+      0.624
+     ],
+     [
+      0.864,
+      0.735
+     ],
+     [
+      0.765,
+      0.824
+     ],
+     [
+      0.639,
+      0.88
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.361,
+      0.88
+     ],
+     [
+      0.235,
+      0.824
+     ],
+     [
+      0.136,
+      0.735
+     ],
+     [
+      0.072,
+      0.624
+     ],
+     [
+      0.05,
+      0.5
+     ],
+     [
+      0.072,
+      0.376
+     ],
+     [
+      0.136,
+      0.265
+     ],
+     [
+      0.235,
+      0.176
+     ],
+     [
+      0.361,
+      0.12
+     ],
+     [
+      0.5,
+      0.1
+     ],
+     [
+      0.639,
+      0.12
+     ],
+     [
+      0.765,
+      0.176
+     ],
+     [
+      0.864,
+      0.265
+     ],
+     [
+      0.928,
+      0.376
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ]
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "timeline 2008 seen medium: At the end of December two thousand and eight, Nakheel announced that seventy percent of",
+   "direction": {
+    "subject": "2008",
+    "environment": "timeline",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "number",
+    "text": "2008"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "the islands had been sold. And then, in two thousand and eight, the money stopped.",
+   "start": 242.083,
+   "end": 247.0,
+   "kit": "skyline",
+   "params": {
+    "subject": "everywhere",
+    "detail": "Thousand and eight"
+   },
+   "camera": "aerial",
+   "light": "golden",
+   "visual_idea": "skyline everywhere seen aerial: the islands had been sold. And then, in two thousand and eight, the money stopped.",
+   "direction": {
+    "subject": "everywhere",
+    "environment": "skyline",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Not just in Dubai. Everywhere. And a city that ran",
+   "start": 247.0,
+   "end": 250.898,
+   "kit": "map",
+   "params": {
+    "detail": "Dubai Everywhere",
+    "subject": "next payment",
+    "pins": [
+     {
+      "label": "next payment",
+      "lat": 25.2,
+      "lon": 55.3
+     }
+    ]
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "money next payment seen wide: Not just in Dubai. Everywhere. And a city that ran",
+   "direction": {
+    "subject": "next payment",
+    "environment": "money",
+    "mood": "curious",
+    "move": "truck",
+    "action": "cover-eyes"
+   },
+   "action": "cover-eyes",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "rehook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "on the next payment found out what happens when the next payment doesn't come.",
+   "start": 250.898,
+   "end": 254.792,
+   "kit": "finance-wall",
+   "params": {
+    "state": "crash",
+    "subject": "global crisis",
+    "detail": "Next payment found"
+   },
+   "camera": "medium",
+   "light": "golden",
+   "visual_idea": "finance-wall global crisis seen wide: on the next payment found out what happens when the next payment doesn't come.",
+   "direction": {
+    "subject": "global crisis",
+    "environment": "finance-wall",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "number",
+    "text": "2008 crash"
+   },
+   "transition": "cut",
+   "beat": "rehook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "When the global financial crisis hit, the first thing to vanish was the buyer.",
+   "start": 254.792,
+   "end": 259.292,
+   "kit": "property-office",
+   "params": {
+    "state": "signed",
+    "subject": "no buyers",
+    "detail": "Global financial crisis"
+   },
+   "camera": "close",
+   "light": "golden",
+   "visual_idea": "property-office no buyers seen close: When the global financial crisis hit, the first thing to vanish was the buyer.",
+   "direction": {
+    "subject": "no buyers",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "facepalm",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "If you'd paid a deposit on an island, and you suddenly couldn't sell it,",
+   "start": 259.292,
+   "end": 263.132,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "dolly",
+   "light": "golden",
+   "visual_idea": "dubai beach seen dolly: If you'd paid a deposit on an island, and you suddenly couldn't sell it,",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "crane",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "facepalm",
+   "overlay": {
+    "kind": "label",
+    "text": "expensive sand"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "and the bank wouldn't lend, you were stuck holding a very expensive pile of sand.",
+   "start": 263.132,
+   "end": 267.5,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "dubai beach seen dolly: and the bank wouldn't lend, you were stuck holding a very expensive pile of sand.",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "facepalm",
+   "overlay": {
+    "kind": "label",
+    "text": "expensive sand"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "By the end of two thousand and eight, the company of the investor leading the",
+   "start": 267.5,
+   "end": 271.58,
+   "kit": "boardroom",
+   "params": {
+    "subject": "The day the music stopped",
+    "detail": "Thousand and eight"
+   },
+   "camera": "low",
+   "light": "golden",
+   "visual_idea": "boardroom liquidation seen low: By the end of two thousand and eight, the company of the investor leading the",
+   "direction": {
+    "subject": "liquidation",
+    "environment": "boardroom",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "facepalm",
+   "overlay": {
+    "kind": "label",
+    "text": "liquidation"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Ireland deal was in liquidation. In two thousand and nine, work on the",
+   "start": 271.58,
+   "end": 275.528,
+   "kit": "dubai",
+   "params": {
+    "subject": "dredger"
+   },
+   "camera": "medium",
+   "light": "golden",
+   "visual_idea": "dubai dredger seen medium: Ireland deal was in liquidation. In two thousand and nine, work on the",
+   "direction": {
+    "subject": "dredger",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "2009: work suspended"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "World was suspended. The dredgers had finished, but the builders never really started.",
+   "start": 275.528,
+   "end": 279.917,
+   "kit": "timeline",
+   "params": {
+    "subject": "25 Nov 2009",
+    "events": [
+     {
+      "date": "2003",
+      "label": "The World announced"
+     },
+     {
+      "date": "25 Nov 2009",
+      "label": "standstill"
+     }
+    ],
+    "detail": "World was suspended"
+   },
+   "camera": "low",
+   "light": "golden",
+   "visual_idea": "timeline 25 Nov 2009 seen low: World was suspended. The dredgers had finished, but the builders never really started.",
+   "direction": {
+    "subject": "25 Nov 2009",
+    "environment": "timeline",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Then came the twenty-fifth of November, two thousand and nine.",
+   "start": 279.917,
+   "end": 283.417,
+   "kit": "skyline",
+   "params": {
+    "subject": "The day the music stopped",
+    "detail": "Twenty-fifth of November"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "skyline Dubai World seen wide: Then came the twenty-fifth of November, two thousand and nine.",
+   "direction": {
+    "subject": "Dubai World",
+    "environment": "skyline",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "Dubai World"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The government of Dubai said that Dubai World, the giant state company that",
+   "start": 283.417,
+   "end": 287.497,
+   "kit": "timeline",
+   "params": {
+    "subject": "25 Nov 2009",
+    "events": [
+     {
+      "date": "2003",
+      "label": "The World announced"
+     },
+     {
+      "date": "25 Nov 2009",
+      "label": "standstill"
+     }
+    ],
+    "detail": "Government of Dubai"
+   },
+   "camera": "medium",
+   "light": "golden",
+   "visual_idea": "timeline 25 Nov 2009 seen low: The government of Dubai said that Dubai World, the giant state company that",
+   "direction": {
+    "subject": "25 Nov 2009",
+    "environment": "timeline",
+    "mood": "curious",
+    "move": "crane",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "owned Nakheel, would ask its lenders to wait. To freeze about twenty-five billion",
+   "start": 287.497,
+   "end": 291.607,
+   "kit": "studio",
+   "params": {
+    "subject": "please wait",
+    "detail": "Freeze about twenty-five billion"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "studio please wait seen medium: owned Nakheel, would ask its lenders to wait. To freeze about twenty-five billion",
+   "direction": {
+    "subject": "please wait",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "dollars of debt until at least May of the next year.",
+   "start": 291.607,
+   "end": 295.125,
+   "kit": "money",
+   "params": {
+    "subject": "debt freeze",
+    "value": "$25 billion",
+    "detail": "$25 billion"
+   },
+   "camera": "close",
+   "light": "golden",
+   "visual_idea": "money debt freeze seen close: dollars of debt until at least May of the next year.",
+   "direction": {
+    "subject": "debt freeze",
+    "environment": "money",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The next day, the main stock markets in Europe fell by more than three percent.",
+   "start": 295.125,
+   "end": 298.958,
+   "kit": "documents",
+   "params": {
+    "subject": "Islamic bond",
+    "detail": "Stock markets"
+   },
+   "camera": "dolly",
+   "light": "golden",
+   "visual_idea": "documents Islamic bond seen dolly: The next day, the main stock markets in Europe fell by more than three percent.",
+   "direction": {
+    "subject": "Islamic bond",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "truck",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "$3.5 billion bond"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Because a few weeks later, Nakheel had a three and a half",
+   "start": 298.958,
+   "end": 303.038,
+   "kit": "boardroom",
+   "params": {
+    "subject": "$3.5 billion due",
+    "detail": "Because a few"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "boardroom $3.5 billion due seen wide: Because a few weeks later, Nakheel had a three and a half",
+   "direction": {
+    "subject": "$3.5 billion due",
+    "environment": "boardroom",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "facepalm",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "billion dollar Islamic bond to repay. Imagine you're one of the people who bought an island.",
+   "start": 303.038,
+   "end": 307.958,
+   "kit": "documents",
+   "params": {
+    "detail": "Billion dollar Islamic bond",
+    "subject": "$3.5 billion due"
+   },
+   "camera": "medium",
+   "light": "golden",
+   "visual_idea": "boardroom $3.5 billion due seen wide: billion dollar Islamic bond to repay. Imagine you're one of the people who bought an island.",
+   "direction": {
+    "subject": "$3.5 billion due",
+    "environment": "boardroom",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "facepalm",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "You turn on the news, and the company that sold you the world might not be able to",
+   "start": 307.958,
+   "end": 312.038,
+   "kit": "studio",
+   "params": {
+    "subject": "breaking news",
+    "detail": "Company that sold"
+   },
+   "camera": "dolly",
+   "light": "golden",
+   "visual_idea": "studio breaking news seen dolly: You turn on the news, and the company that sold you the world might not be able to",
+   "direction": {
+    "subject": "breaking news",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "crane",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "pay its own bills. It came down to the last day.",
+   "start": 312.038,
+   "end": 315.25,
+   "kit": "money",
+   "params": {
+    "detail": "Own bills",
+    "subject": "14 Dec 2009",
+    "value": "14 December"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "timeline 14 Dec 2009 seen dolly: pay its own bills. It came down to the last day.",
+   "direction": {
+    "subject": "14 Dec 2009",
+    "environment": "timeline",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "On the fourteenth of December, Abu Dhabi, Dubai's richer neighbour,",
+   "start": 315.25,
+   "end": 319.09,
+   "kit": "finance-wall",
+   "params": {
+    "state": "rescue",
+    "subject": "Abu Dhabi rescue",
+    "detail": "Fourteenth of December"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "finance-wall Abu Dhabi rescue seen low: On the fourteenth of December, Abu Dhabi, Dubai's richer neighbour,",
+   "direction": {
+    "subject": "Abu Dhabi rescue",
+    "environment": "finance-wall",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "number",
+    "text": "$10 billion"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "handed over ten billion dollars. About four billion of it went",
+   "start": 319.09,
+   "end": 322.978,
+   "kit": "blueprint",
+   "params": {
+    "detail": "Ten billion dollars",
+    "subject": "bond repaid",
+    "outline": [
+     [
+      0.95,
+      0.5
+     ],
+     [
+      0.928,
+      0.624
+     ],
+     [
+      0.864,
+      0.735
+     ],
+     [
+      0.765,
+      0.824
+     ],
+     [
+      0.639,
+      0.88
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.361,
+      0.88
+     ],
+     [
+      0.235,
+      0.824
+     ],
+     [
+      0.136,
+      0.735
+     ],
+     [
+      0.072,
+      0.624
+     ],
+     [
+      0.05,
+      0.5
+     ],
+     [
+      0.072,
+      0.376
+     ],
+     [
+      0.136,
+      0.265
+     ],
+     [
+      0.235,
+      0.176
+     ],
+     [
+      0.361,
+      0.12
+     ],
+     [
+      0.5,
+      0.1
+     ],
+     [
+      0.639,
+      0.12
+     ],
+     [
+      0.765,
+      0.176
+     ],
+     [
+      0.864,
+      0.265
+     ],
+     [
+      0.928,
+      0.376
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ]
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "documents bond repaid seen wide: handed over ten billion dollars. About four billion of it went",
+   "direction": {
+    "subject": "bond repaid",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "truck",
+    "action": "thumbs-up"
+   },
+   "action": "thumbs-up",
+   "expression": "smug",
+   "overlay": {
+    "kind": "number",
+    "text": "$4 billion"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "straight to that bond. Dubai's stock market jumped about ten percent in a day.",
+   "start": 322.978,
+   "end": 327.5,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "close",
+   "light": "golden",
+   "visual_idea": "dubai archipelago seen close: straight to that bond. Dubai's stock market jumped about ten percent in a day.",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "label",
+    "text": "islands not saved"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The city was saved. The islands were not.",
+   "start": 327.5,
+   "end": 330.75,
+   "kit": "blueprint",
+   "params": {
+    "detail": "Saved The islands",
+    "subject": "bond repaid",
+    "outline": [
+     [
+      0.95,
+      0.5
+     ],
+     [
+      0.928,
+      0.624
+     ],
+     [
+      0.864,
+      0.735
+     ],
+     [
+      0.765,
+      0.824
+     ],
+     [
+      0.639,
+      0.88
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.361,
+      0.88
+     ],
+     [
+      0.235,
+      0.824
+     ],
+     [
+      0.136,
+      0.735
+     ],
+     [
+      0.072,
+      0.624
+     ],
+     [
+      0.05,
+      0.5
+     ],
+     [
+      0.072,
+      0.376
+     ],
+     [
+      0.136,
+      0.265
+     ],
+     [
+      0.235,
+      0.176
+     ],
+     [
+      0.361,
+      0.12
+     ],
+     [
+      0.5,
+      0.1
+     ],
+     [
+      0.639,
+      0.12
+     ],
+     [
+      0.765,
+      0.176
+     ],
+     [
+      0.864,
+      0.265
+     ],
+     [
+      0.928,
+      0.376
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ]
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "documents bond repaid seen wide: The city was saved. The islands were not.",
+   "direction": {
+    "subject": "bond repaid",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "thumbs-up"
+   },
+   "action": "thumbs-up",
+   "expression": "smug",
+   "overlay": {
+    "kind": "number",
+    "text": "$4 billion"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "In two thousand and nine, right in the middle of all this, a British",
+   "start": 330.75,
+   "end": 334.83,
+   "kit": "property-office",
+   "params": {
+    "state": "model",
+    "subject": "still buying",
+    "detail": "Thousand and nine"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "property-office still buying seen medium: In two thousand and nine, right in the middle of all this, a British",
+   "direction": {
+    "subject": "still buying",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "crane",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "2009"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "property developer named Safi Qurashi bought the island called Great Britain.",
+   "start": 334.83,
+   "end": 338.25,
+   "kit": "boardroom",
+   "params": {
+    "subject": "still buying",
+    "detail": "Property developer named"
+   },
+   "camera": "dolly",
+   "light": "day",
+   "visual_idea": "boardroom still buying seen dolly: property developer named Safi Qurashi bought the island called Great Britain.",
+   "direction": {
+    "subject": "still buying",
+    "environment": "boardroom",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "You see, he was one of the people still buying. And to secure the deal,",
+   "start": 338.25,
+   "end": 342.19,
+   "kit": "timeline",
+   "params": {
+    "detail": "People still buying",
+    "subject": "security cheques",
+    "events": [
+     {
+      "date": "2003",
+      "label": "The World announced"
+     },
+     {
+      "date": "2008",
+      "label": "security cheques"
+     }
+    ]
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "documents security cheques seen close: You see, he was one of the people still buying. And to secure the deal,",
+   "direction": {
+    "subject": "security cheques",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "he handed over cheques. According to him, they were meant as security while the",
+   "start": 342.19,
+   "end": 346.262,
+   "kit": "map",
+   "params": {
+    "detail": "Meant as security",
+    "subject": "still buying",
+    "pins": [
+     {
+      "label": "still buying",
+      "lat": 25.2,
+      "lon": 55.3
+     }
+    ]
+   },
+   "camera": "dolly",
+   "light": "day",
+   "visual_idea": "boardroom still buying seen dolly: he handed over cheques. According to him, they were meant as security while the",
+   "direction": {
+    "subject": "still buying",
+    "environment": "boardroom",
+    "mood": "curious",
+    "move": "truck",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "money moved, not to be cashed. But they were cashed.",
+   "start": 346.262,
+   "end": 349.375,
+   "kit": "timeline",
+   "params": {
+    "detail": "Money moved",
+    "subject": "cheques cashed",
+    "events": [
+     {
+      "date": "2003",
+      "label": "The World announced"
+     },
+     {
+      "date": "2008",
+      "label": "cheques cashed"
+     }
+    ]
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "money cheques cashed seen medium: money moved, not to be cashed. But they were cashed.",
+   "direction": {
+    "subject": "cheques cashed",
+    "environment": "money",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Three cheques, worth around one hundred and eighty-nine million dirhams, bounced.",
+   "start": 349.375,
+   "end": 354.042,
+   "kit": "map",
+   "params": {
+    "detail": "Hundred and eighty-nine million",
+    "subject": "3 cheques",
+    "pins": [
+     {
+      "label": "3 cheques",
+      "lat": 25.2,
+      "lon": 55.3
+     }
+    ]
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "documents 3 cheques seen aerial: Three cheques, worth around one hundred and eighty-nine million dirhams, bounced.",
+   "direction": {
+    "subject": "3 cheques",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "number",
+    "text": "AED 189 million"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "In Dubai, a bounced cheque is a crime. In January two thousand and ten, he",
+   "start": 354.042,
+   "end": 358.253,
+   "kit": "courtroom",
+   "params": {
+    "state": "custody",
+    "subject": "Dubai courts",
+    "detail": "January two thousand"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "courtroom custody seen aerial: In Dubai, a bounced cheque is a crime. In January two thousand and ten, he",
+   "direction": {
+    "subject": "custody",
+    "environment": "courtroom",
+    "mood": "curious",
+    "move": "crane",
+    "action": "stand"
+   },
+   "action": "stand",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "number",
+    "text": "7 years"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "was sentenced to seven years in jail. He always said he'd done nothing wrong.",
+   "start": 358.253,
+   "end": 362.958,
+   "kit": "courtroom",
+   "params": {
+    "state": "exhibit",
+    "subject": "Dubai courts",
+    "detail": "Sentenced to seven"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "courtroom exhibit seen close: was sentenced to seven years in jail. He always said he'd done nothing wrong.",
+   "direction": {
+    "subject": "exhibit",
+    "environment": "courtroom",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "number",
+    "text": "January 2010"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "In prison, he went on hunger strike for weeks. He was released",
+   "start": 362.958,
+   "end": 366.502,
+   "kit": "documents",
+   "params": {
+    "detail": "Weeks He was released",
+    "subject": "The man who bought Great Britain"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "timeline 2012 release seen close: In prison, he went on hunger strike for weeks. He was released",
+   "direction": {
+    "subject": "2012 release",
+    "environment": "timeline",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "number",
+    "text": "2012"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "in two thousand and twelve, and later, Dubai's highest court quashed the",
+   "start": 366.502,
+   "end": 370.582,
+   "kit": "courtroom",
+   "params": {
+    "state": "hearing",
+    "subject": "Dubai courts",
+    "detail": "Thousand and twelve"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "courtroom hearing seen low: in two thousand and twelve, and later, Dubai's highest court quashed the",
+   "direction": {
+    "subject": "hearing",
+    "environment": "courtroom",
+    "mood": "curious",
+    "move": "truck",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "label",
+    "text": "sentence quashed"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "rest of his sentence. But by then, the man who bought Great Britain had",
+   "start": 370.582,
+   "end": 374.64,
+   "kit": "dubai",
+   "params": {
+    "subject": "ireland"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "dubai ireland seen low: rest of his sentence. But by then, the man who bought Great Britain had",
+   "direction": {
+    "subject": "ireland",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "stand"
+   },
+   "action": "stand",
+   "expression": "neutral",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "spent his time on the map behind bars. So the buyers were in trouble, the",
+   "start": 374.64,
+   "end": 378.673,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "close",
+   "light": "golden",
+   "visual_idea": "dubai beach seen close: spent his time on the map behind bars. So the buyers were in trouble, the",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "label",
+    "text": "behind bars"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "company had needed a rescue, and the builders had gone home. You'd think that was the bottom.",
+   "start": 378.673,
+   "end": 383.5,
+   "kit": "studio",
+   "params": {
+    "subject": "the bottom?",
+    "detail": "Builders had gone"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "studio the bottom? seen low: company had needed a rescue, and the builders had gone home. You'd think that was the bottom.",
+   "direction": {
+    "subject": "the bottom?",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "crane",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "rehook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "But the strangest fight about the world was still to come, and it wasn't about money.",
+   "start": 383.5,
+   "end": 388.208,
+   "kit": "dubai",
+   "params": {
+    "subject": "breakwater"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai breakwater seen medium: But the strangest fight about the world was still to come, and it wasn't about money.",
+   "direction": {
+    "subject": "breakwater",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "strangest fight"
+   },
+   "transition": "cut",
+   "beat": "rehook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "It was about whether the islands were even still there. Now remember the boats.",
+   "start": 388.208,
+   "end": 392.958,
+   "kit": "dubai",
+   "params": {
+    "subject": "delivery"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "dubai delivery seen close: It was about whether the islands were even still there. Now remember the boats.",
+   "direction": {
+    "subject": "delivery",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "remember the boats"
+   },
+   "transition": "cut",
+   "beat": "rehook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Every island needed a way to get people there, so Nakheel gave a",
+   "start": 392.958,
+   "end": 396.718,
+   "kit": "skyline",
+   "params": {
+    "subject": "Is the world sinking?",
+    "detail": "People there so Nakheel"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "skyline Penguin Marine seen medium: Every island needed a way to get people there, so Nakheel gave a",
+   "direction": {
+    "subject": "Penguin Marine",
+    "environment": "skyline",
+    "mood": "curious",
+    "move": "truck",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "Penguin Marine"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "company called Penguin Marine the licence to run boat transport across the world.",
+   "start": 396.718,
+   "end": 400.708,
+   "kit": "money",
+   "params": {
+    "subject": "yearly fee",
+    "value": "$1.36 million",
+    "detail": "Run boat transport"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "money yearly fee seen low: company called Penguin Marine the licence to run boat transport across the world.",
+   "direction": {
+    "subject": "yearly fee",
+    "environment": "money",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "count-fingers"
+   },
+   "action": "count-fingers",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "number",
+    "text": "$1.36 million a year"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Penguin paid a yearly fee for it, about one point three six million dollars.",
+   "start": 400.708,
+   "end": 405.292,
+   "kit": "skyline",
+   "params": {
+    "subject": "Is the world sinking?",
+    "detail": "Three six million dollars"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "skyline Penguin Marine seen medium: Penguin paid a yearly fee for it, about one point three six million dollars.",
+   "direction": {
+    "subject": "Penguin Marine",
+    "environment": "skyline",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "Penguin Marine"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "And by two thousand and eleven, there wasn't much world to ferry anyone to.",
+   "start": 405.292,
+   "end": 409.542,
+   "kit": "dubai",
+   "params": {
+    "subject": "landing"
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "dubai landing seen aerial: And by two thousand and eleven, there wasn't much world to ferry anyone to.",
+   "direction": {
+    "subject": "landing",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "crane",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Picture paying more than a million dollars a year to drive boats to",
+   "start": 409.542,
+   "end": 413.462,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "dolly",
+   "light": "day",
+   "visual_idea": "dubai archipelago seen dolly: Picture paying more than a million dollars a year to drive boats to",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "nobody lives here"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "islands where nobody lives. Honestly, as a job description, that sounds amazing.",
+   "start": 413.462,
+   "end": 417.917,
+   "kit": "dubai-service",
+   "params": {
+    "station": "dispatch",
+    "label": "dream job"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai-service dispatch seen wide: islands where nobody lives. Honestly, as a job description, that sounds amazing.",
+   "direction": {
+    "subject": "dispatch",
+    "environment": "dubai-service",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "laugh"
+   },
+   "action": "laugh",
+   "expression": "laughing",
+   "overlay": {
+    "kind": "label",
+    "text": "dream job"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "As a business plan, less so. So Penguin went to the tribunal",
+   "start": 417.917,
+   "end": 421.885,
+   "kit": "courtroom",
+   "params": {
+    "state": "hearing",
+    "subject": "Dubai courts",
+    "detail": "Business plan"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "courtroom hearing seen wide: As a business plan, less so. So Penguin went to the tribunal",
+   "direction": {
+    "subject": "hearing",
+    "environment": "courtroom",
+    "mood": "curious",
+    "move": "truck",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "tribunal"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "set up to handle Dubai World's disputes, and tried to get out of the contract.",
+   "start": 421.885,
+   "end": 426.292,
+   "kit": "documents",
+   "params": {
+    "subject": "get out of contract",
+    "detail": "Dubai World's disputes"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "documents get out of contract seen low: set up to handle Dubai World's disputes, and tried to get out of the contract.",
+   "direction": {
+    "subject": "get out of contract",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "And its lawyer said the sentence that went around the planet.",
+   "start": 426.292,
+   "end": 429.458,
+   "kit": "dubai",
+   "params": {
+    "subject": "breakwater"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai breakwater seen low: And its lawyer said the sentence that went around the planet.",
+   "direction": {
+    "subject": "breakwater",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "shocked-jump"
+   },
+   "action": "shocked-jump",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "label",
+    "text": "\"falling back into the sea\""
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The islands, he said, were gradually falling back into the sea.",
+   "start": 429.458,
+   "end": 433.042,
+   "kit": "studio",
+   "params": {
+    "subject": "Is the world sinking?",
+    "detail": "Said were gradually falling"
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "studio effectively dead seen aerial: The islands, he said, were gradually falling back into the sea.",
+   "direction": {
+    "subject": "effectively dead",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "crane",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "label",
+    "text": "\"effectively dead\""
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The project was effectively dead. Newspapers loved it.",
+   "start": 433.042,
+   "end": 436.833,
+   "kit": "documents",
+   "params": {
+    "detail": "Project was effectively dead",
+    "subject": "Is the world sinking?"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "skyline THE WORLD IS SINKING seen low: The project was effectively dead. Newspapers loved it.",
+   "direction": {
+    "subject": "THE WORLD IS SINKING",
+    "environment": "skyline",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "laugh"
+   },
+   "action": "laugh",
+   "expression": "laughing",
+   "overlay": {
+    "kind": "label",
+    "text": "The world is sinking"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The world is sinking. It was the perfect headline for a city that had just",
+   "start": 436.833,
+   "end": 440.897,
+   "kit": "money",
+   "params": {
+    "detail": "Headline for a city",
+    "subject": "effectively dead",
+    "value": "\"effectively dead\""
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "studio effectively dead seen aerial: The world is sinking. It was the perfect headline for a city that had just",
+   "direction": {
+    "subject": "effectively dead",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "been rescued by its neighbour. But here's the twist. Nakheel denied it straight away.",
+   "start": 440.897,
+   "end": 445.833,
+   "kit": "timeline",
+   "params": {
+    "detail": "Neighbour But here's",
+    "subject": "perfect headline",
+    "events": [
+     {
+      "date": "2003",
+      "label": "The World announced"
+     },
+     {
+      "date": "2008",
+      "label": "perfect headline"
+     }
+    ]
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "documents perfect headline seen wide: been rescued by its neighbour. But here's the twist. Nakheel denied it straight away.",
+   "direction": {
+    "subject": "perfect headline",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "truck",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "It said the islands weren't sinking or eroding at all. The three judges",
+   "start": 445.833,
+   "end": 449.912,
+   "kit": "boardroom",
+   "params": {
+    "subject": "Is the world sinking?",
+    "detail": "Said the islands weren't"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "boardroom Nakheel: not sinking seen wide: It said the islands weren't sinking or eroding at all. The three judges",
+   "direction": {
+    "subject": "Nakheel: not sinking",
+    "environment": "boardroom",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "not sinking"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "ruled against Penguin. And in December two thousand and twelve, the",
+   "start": 449.912,
+   "end": 453.842,
+   "kit": "courtroom",
+   "params": {
+    "state": "hearing",
+    "subject": "Dubai courts",
+    "detail": "December two thousand"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "courtroom hearing seen close: ruled against Penguin. And in December two thousand and twelve, the",
+   "direction": {
+    "subject": "hearing",
+    "environment": "courtroom",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "thumbs-up"
+   },
+   "action": "thumbs-up",
+   "expression": "smug",
+   "overlay": {
+    "kind": "label",
+    "text": "judges: no"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "tribunal ordered Penguin to pay Nakheel ten million dirhams.",
+   "start": 453.842,
+   "end": 457.125,
+   "kit": "timeline",
+   "params": {
+    "detail": "AED 10 million",
+    "subject": "Dec 2012 order",
+    "events": [
+     {
+      "date": "2003",
+      "label": "The World announced"
+     },
+     {
+      "date": "AED 10 million",
+      "label": "Dec 2012 order"
+     }
+    ]
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "documents Dec 2012 order seen medium: tribunal ordered Penguin to pay Nakheel ten million dirhams.",
+   "direction": {
+    "subject": "Dec 2012 order",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "crane",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "shocked",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "An expert told the tribunal there was no erosion.",
+   "start": 457.125,
+   "end": 460.208,
+   "kit": "courtroom",
+   "params": {
+    "state": "exhibit",
+    "subject": "Dubai courts",
+    "detail": "Told the tribunal"
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "courtroom exhibit seen aerial: An expert told the tribunal there was no erosion.",
+   "direction": {
+    "subject": "exhibit",
+    "environment": "courtroom",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "no erosion"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "So the world wasn't sinking. But that was never the real problem.",
+   "start": 460.208,
+   "end": 464.083,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai archipelago seen aerial: So the world wasn't sinking. But that was never the real problem.",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "label",
+    "text": "empty"
+   },
+   "transition": "cut",
+   "beat": "rehook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The real problem was that it was empty. A few years later, someone counted.",
+   "start": 464.083,
+   "end": 469.0,
+   "kit": "map",
+   "params": {
+    "subject": "300 islands",
+    "detail": "Problem",
+    "pins": [
+     {
+      "label": "300 islands",
+      "lat": 25.2,
+      "lon": 55.3
+     }
+    ]
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "map 300 islands seen low: The real problem was that it was empty. A few years later, someone counted.",
+   "direction": {
+    "subject": "300 islands",
+    "environment": "map",
+    "mood": "curious",
+    "move": "truck",
+    "action": "count-fingers"
+   },
+   "action": "count-fingers",
+   "expression": "shocked",
+   "overlay": {
+    "kind": "number",
+    "text": "2 of 300"
+   },
+   "transition": "cut",
+   "beat": "rehook",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Out of three hundred islands, only two had seen any development at all.",
+   "start": 469.0,
+   "end": 473.333,
+   "kit": "dubai",
+   "params": {
+    "subject": "villa"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai villa seen medium: Out of three hundred islands, only two had seen any development at all.",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The only place you could actually visit was a beach club on",
+   "start": 473.333,
+   "end": 477.093,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "dubai villa seen medium: The only place you could actually visit was a beach club on",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "the island called Lebanon, which opened in July two thousand and twelve.",
+   "start": 477.093,
+   "end": 480.833,
+   "kit": "money",
+   "params": {
+    "detail": "about 9 islands",
+    "subject": "2016",
+    "value": "about 9 islands"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "timeline 2016 seen aerial: the island called Lebanon, which opened in July two thousand and twelve.",
+   "direction": {
+    "subject": "2016",
+    "environment": "timeline",
+    "mood": "curious",
+    "move": "crane",
+    "action": "count-fingers"
+   },
+   "action": "count-fingers",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "By two thousand and sixteen, around nine islands had something on them.",
+   "start": 480.833,
+   "end": 485.125,
+   "kit": "dubai",
+   "params": {
+    "subject": "villa",
+    "gag": "hair-dryer"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "dubai villa seen close: By two thousand and sixteen, around nine islands had something on them.",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "facepalm",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "First rule of island life here: bring your own electricity.",
+   "start": 485.125,
+   "end": 489.208,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach",
+    "gag": "hair-dryer"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai beach seen wide: First rule of island life here: bring your own electricity.",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "facepalm",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Think about why. The plan was to bring electricity from Dubai through",
+   "start": 489.208,
+   "end": 493.098,
+   "kit": "dubai",
+   "params": {
+    "gag": "hair-dryer",
+    "subject": "coast"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "dubai beach seen wide: Think about why. The plan was to bring electricity from Dubai through",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "facepalm",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "cables under the sea. As of twenty twenty-five, those cables still",
+   "start": 493.098,
+   "end": 496.942,
+   "kit": "blueprint",
+   "params": {
+    "subject": "undersea cable",
+    "detail": "Twenty twenty-five",
+    "outline": [
+     [
+      0.95,
+      0.5
+     ],
+     [
+      0.928,
+      0.624
+     ],
+     [
+      0.864,
+      0.735
+     ],
+     [
+      0.765,
+      0.824
+     ],
+     [
+      0.639,
+      0.88
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.361,
+      0.88
+     ],
+     [
+      0.235,
+      0.824
+     ],
+     [
+      0.136,
+      0.735
+     ],
+     [
+      0.072,
+      0.624
+     ],
+     [
+      0.05,
+      0.5
+     ],
+     [
+      0.072,
+      0.376
+     ],
+     [
+      0.136,
+      0.265
+     ],
+     [
+      0.235,
+      0.176
+     ],
+     [
+      0.361,
+      0.12
+     ],
+     [
+      0.5,
+      0.1
+     ],
+     [
+      0.639,
+      0.12
+     ],
+     [
+      0.765,
+      0.176
+     ],
+     [
+      0.864,
+      0.265
+     ],
+     [
+      0.928,
+      0.376
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ]
+   },
+   "camera": "aerial",
+   "light": "day",
+   "visual_idea": "blueprint undersea cable seen aerial: cables under the sea. As of twenty twenty-five, those cables still",
+   "direction": {
+    "subject": "undersea cable",
+    "environment": "blueprint",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "2025: no cables"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "hadn't been laid. Anyone building on an island had to make their",
+   "start": 496.942,
+   "end": 501.085,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "dubai villa seen low: hadn't been laid. Anyone building on an island had to make their",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "diesel generators"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "own power with diesel generators. An island with no bridge means every brick arrives by boat.",
+   "start": 501.085,
+   "end": 506.083,
+   "kit": "money",
+   "params": {
+    "subject": "every bag, every worker",
+    "detail": "Diesel generators",
+    "value": "every bag, every worker"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "money every bag, every worker seen close: own power with diesel generators. An island with no bridge means every brick arrives by boat.",
+   "direction": {
+    "subject": "every bag, every worker",
+    "environment": "money",
+    "mood": "curious",
+    "move": "crane",
+    "action": "count-fingers"
+   },
+   "action": "count-fingers",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Every bag of cement, every worker, every fridge, every bottle of water.",
+   "start": 506.083,
+   "end": 510.667,
+   "kit": "dubai",
+   "params": {
+    "subject": "delivery"
+   },
+   "camera": "dolly",
+   "light": "day",
+   "visual_idea": "dubai delivery seen dolly: Every bag of cement, every worker, every fridge, every bottle of water.",
+   "direction": {
+    "subject": "delivery",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "every brick by boat"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "There's no sewer to plug into and no power line to connect.",
+   "start": 510.667,
+   "end": 514.25,
+   "kit": "blueprint",
+   "params": {
+    "subject": "no sewer, no grid",
+    "detail": "There's no",
+    "outline": [
+     [
+      0.95,
+      0.5
+     ],
+     [
+      0.928,
+      0.624
+     ],
+     [
+      0.864,
+      0.735
+     ],
+     [
+      0.765,
+      0.824
+     ],
+     [
+      0.639,
+      0.88
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.361,
+      0.88
+     ],
+     [
+      0.235,
+      0.824
+     ],
+     [
+      0.136,
+      0.735
+     ],
+     [
+      0.072,
+      0.624
+     ],
+     [
+      0.05,
+      0.5
+     ],
+     [
+      0.072,
+      0.376
+     ],
+     [
+      0.136,
+      0.265
+     ],
+     [
+      0.235,
+      0.176
+     ],
+     [
+      0.361,
+      0.12
+     ],
+     [
+      0.5,
+      0.1
+     ],
+     [
+      0.639,
+      0.12
+     ],
+     [
+      0.765,
+      0.176
+     ],
+     [
+      0.864,
+      0.265
+     ],
+     [
+      0.928,
+      0.376
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ]
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "blueprint no sewer, no grid seen close: There's no sewer to plug into and no power line to connect.",
+   "direction": {
+    "subject": "no sewer, no grid",
+    "environment": "blueprint",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Before you build a single villa, you have to build a tiny town's",
+   "start": 514.25,
+   "end": 518.25,
+   "kit": "dubai",
+   "params": {
+    "subject": "coast"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "dubai villa seen wide: Before you build a single villa, you have to build a tiny town's",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "worth of pipes and cables, on your own, in the sea.",
+   "start": 518.25,
+   "end": 521.875,
+   "kit": "dubai-service",
+   "params": {
+    "station": "channel",
+    "label": "pipes on your own"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "dubai-service channel seen low: worth of pipes and cables, on your own, in the sea.",
+   "direction": {
+    "subject": "channel",
+    "environment": "dubai-service",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "On the mainland, a developer buys land next to a road that's already there.",
+   "start": 521.875,
+   "end": 526.375,
+   "kit": "skyline",
+   "params": {
+    "subject": "mainland road",
+    "detail": "Mainland a developer buys"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "skyline mainland road seen close: On the mainland, a developer buys land next to a road that's already there.",
+   "direction": {
+    "subject": "mainland road",
+    "environment": "skyline",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Out here, the road is the sea, and the sea doesn't care about your schedule.",
+   "start": 526.375,
+   "end": 530.375,
+   "kit": "dubai",
+   "params": {
+    "subject": "delivery"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "dubai delivery seen low: Out here, the road is the sea, and the sea doesn't care about your schedule.",
+   "direction": {
+    "subject": "delivery",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "crane",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "smug",
+   "overlay": {
+    "kind": "label",
+    "text": "the road is the sea"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Every delay costs money, every boat trip costs money, and the island makes nothing until it's finished.",
+   "start": 530.375,
+   "end": 535.0,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "medium",
+   "light": "golden",
+   "visual_idea": "dubai beach seen medium: Every delay costs money, every boat trip costs money, and the island makes nothing until it's finished.",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "neutral",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "That's why, for so many owners, the cheapest thing to do with their country was nothing at all.",
+   "start": 535.0,
+   "end": 539.542,
+   "kit": "property-office",
+   "params": {
+    "state": "signed",
+    "subject": "do nothing",
+    "detail": "Owners the cheapest thing"
+   },
+   "camera": "low",
+   "light": "golden",
+   "visual_idea": "property-office do nothing seen low: That's why, for so many owners, the cheapest thing to do with their country was nothing at all.",
+   "direction": {
+    "subject": "do nothing",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "And still, people try. An Austrian developer, the Kleindienst Group, took the",
+   "start": 539.542,
+   "end": 543.855,
+   "kit": "documents",
+   "params": {
+    "detail": "Developer the Kleindienst Group",
+    "subject": "do nothing"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "property-office do nothing seen low: And still, people try. An Austrian developer, the Kleindienst Group, took the",
+   "direction": {
+    "subject": "do nothing",
+    "environment": "property-office",
+    "mood": "curious",
+    "move": "truck",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "islands around Europe and started building something called the Heart of Europe.",
+   "start": 543.855,
+   "end": 547.958,
+   "kit": "hotel-interior",
+   "params": {
+    "state": "open",
+    "subject": "floating villas",
+    "detail": "Started building something called"
+   },
+   "camera": "medium",
+   "light": "day",
+   "visual_idea": "hotel-interior floating villas seen wide: islands around Europe and started building something called the Heart of Europe.",
+   "direction": {
+    "subject": "floating villas",
+    "environment": "hotel-interior",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Hotels, beaches, floating villas. It was supposed",
+   "start": 547.958,
+   "end": 551.79,
+   "kit": "timeline",
+   "params": {
+    "subject": "target 2026",
+    "events": [
+     {
+      "date": "2003",
+      "label": "The World announced"
+     },
+     {
+      "date": "2026",
+      "label": "planned finish"
+     }
+    ],
+    "detail": "Hotels beaches floating villas"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "timeline target 2026 seen wide: Hotels, beaches, floating villas. It was supposed",
+   "direction": {
+    "subject": "target 2026",
+    "environment": "timeline",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "to be finished by two thousand and twenty-six. Then the target moved to the",
+   "start": 551.79,
+   "end": 555.77,
+   "kit": "documents",
+   "params": {
+    "subject": "The comeback that keeps slipping",
+    "detail": "Thousand and twenty-six"
+   },
+   "camera": "low",
+   "light": "day",
+   "visual_idea": "documents end of 2027 seen low: to be finished by two thousand and twenty-six. Then the target moved to the",
+   "direction": {
+    "subject": "end of 2027",
+    "environment": "documents",
+    "mood": "curious",
+    "move": "crane",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "smug",
+   "overlay": {
+    "kind": "number",
+    "text": "end of 2027"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "end of two thousand and twenty-seven, with about half the construction done.",
+   "start": 555.77,
+   "end": 559.333,
+   "kit": "studio",
+   "params": {
+    "subject": "The comeback that keeps slipping",
+    "detail": "Thousand and twenty-seven"
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "studio October 2024 seen close: end of two thousand and twenty-seven, with about half the construction done.",
+   "direction": {
+    "subject": "October 2024",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "October 2024"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "In October two thousand and twenty-four, the honest estimate was that the islands",
+   "start": 559.333,
+   "end": 563.413,
+   "kit": "dubai",
+   "params": {
+    "subject": "archipelago"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "dubai delivery seen wide: In October two thousand and twenty-four, the honest estimate was that the islands",
+   "direction": {
+    "subject": "delivery",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "facepalm",
+   "overlay": {
+    "kind": "label",
+    "text": "another decade"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "won't be complete for another decade at least, because getting anything out",
+   "start": 563.413,
+   "end": 567.173,
+   "kit": "hotel-interior",
+   "params": {
+    "state": "open",
+    "subject": "Island hotel",
+    "detail": "Won't be complete"
+   },
+   "camera": "close",
+   "light": "golden",
+   "visual_idea": "hotel-interior luxury resort seen close: won't be complete for another decade at least, because getting anything out",
+   "direction": {
+    "subject": "luxury resort",
+    "environment": "hotel-interior",
+    "mood": "curious",
+    "move": "truck",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "luxury resort"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "there costs so much. Even the success stories don't last.",
+   "start": 567.173,
+   "end": 571.083,
+   "kit": "money",
+   "params": {
+    "subject": "costs so much",
+    "detail": "Even the success stories",
+    "value": "costs so much"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "money costs so much seen wide: there costs so much. Even the success stories don't last.",
+   "direction": {
+    "subject": "costs so much",
+    "environment": "money",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "count-fingers"
+   },
+   "action": "count-fingers",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "A luxury resort opened on one of the islands in December two thousand and twenty-one.",
+   "start": 571.083,
+   "end": 575.792,
+   "kit": "dubai",
+   "params": {
+    "subject": "villa"
+   },
+   "camera": "close",
+   "light": "golden",
+   "visual_idea": "dubai villa seen close: A luxury resort opened on one of the islands in December two thousand and twenty-one.",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "number",
+    "text": "December 2021"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "In April two thousand and twenty-six, it closed.",
+   "start": 575.792,
+   "end": 578.958,
+   "kit": "hotel-interior",
+   "params": {
+    "state": "closed",
+    "subject": "closed",
+    "detail": "Thousand and twenty-six"
+   },
+   "camera": "low",
+   "light": "golden",
+   "visual_idea": "hotel-interior closed seen low: In April two thousand and twenty-six, it closed.",
+   "direction": {
+    "subject": "closed",
+    "environment": "hotel-interior",
+    "mood": "curious",
+    "move": "crane",
+    "action": "shrug"
+   },
+   "action": "shrug",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "number",
+    "text": "April 2026: closed"
+   },
+   "transition": "cut",
+   "beat": "point",
+   "reframeX": 0.5
+  },
+  {
+   "line": "So here's what Dubai actually built. It took about five years to make",
+   "start": 578.958,
+   "end": 582.895,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "dubai archipelago seen wide: So here's what Dubai actually built. It took about five years to make",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": {
+    "kind": "label",
+    "text": "five years of sand"
+   },
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "a planet out of sand, and it worked. The rock wall held.",
+   "start": 582.895,
+   "end": 586.5,
+   "kit": "dubai-service",
+   "params": {
+    "station": "breakwater",
+    "label": "the wall held"
+   },
+   "camera": "medium",
+   "light": "golden",
+   "visual_idea": "dubai-service breakwater seen wide: a planet out of sand, and it worked. The rock wall held.",
+   "direction": {
+    "subject": "breakwater",
+    "environment": "dubai-service",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "thumbs-up"
+   },
+   "action": "thumbs-up",
+   "expression": "smug",
+   "overlay": {
+    "kind": "label",
+    "text": "the wall held"
+   },
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The islands didn't wash away, whatever the lawyer said.",
+   "start": 586.5,
+   "end": 589.708,
+   "kit": "dubai",
+   "params": {
+    "subject": "beach"
+   },
+   "camera": "close",
+   "light": "golden",
+   "visual_idea": "dubai beach seen low: The islands didn't wash away, whatever the lawyer said.",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "smug",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The hard part was never the sand. It was everything you can't see from a plane.",
+   "start": 589.708,
+   "end": 594.292,
+   "kit": "blueprint",
+   "params": {
+    "subject": "what you cannot see",
+    "detail": "Sand It was everything",
+    "outline": [
+     [
+      0.95,
+      0.5
+     ],
+     [
+      0.928,
+      0.624
+     ],
+     [
+      0.864,
+      0.735
+     ],
+     [
+      0.765,
+      0.824
+     ],
+     [
+      0.639,
+      0.88
+     ],
+     [
+      0.5,
+      0.9
+     ],
+     [
+      0.361,
+      0.88
+     ],
+     [
+      0.235,
+      0.824
+     ],
+     [
+      0.136,
+      0.735
+     ],
+     [
+      0.072,
+      0.624
+     ],
+     [
+      0.05,
+      0.5
+     ],
+     [
+      0.072,
+      0.376
+     ],
+     [
+      0.136,
+      0.265
+     ],
+     [
+      0.235,
+      0.176
+     ],
+     [
+      0.361,
+      0.12
+     ],
+     [
+      0.5,
+      0.1
+     ],
+     [
+      0.639,
+      0.12
+     ],
+     [
+      0.765,
+      0.176
+     ],
+     [
+      0.864,
+      0.265
+     ],
+     [
+      0.928,
+      0.376
+     ],
+     [
+      0.95,
+      0.5
+     ]
+    ]
+   },
+   "camera": "wide",
+   "light": "golden",
+   "visual_idea": "blueprint what you cannot see seen wide: The hard part was never the sand. It was everything you can't see from a plane.",
+   "direction": {
+    "subject": "what you cannot see",
+    "environment": "blueprint",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "explaining",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "The pipes, the power, the boat that has to come every single day,",
+   "start": 594.292,
+   "end": 598.372,
+   "kit": "dubai",
+   "params": {
+    "subject": "villa",
+    "gag": "supercar"
+   },
+   "camera": "aerial",
+   "light": "golden",
+   "visual_idea": "dubai villa seen aerial: The pipes, the power, the boat that has to come every single day,",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "laughing",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "and the buyer who has to keep paying when the money stops.",
+   "start": 598.372,
+   "end": 602.458,
+   "kit": "dubai",
+   "params": {
+    "gag": "supercar",
+    "subject": "archipelago"
+   },
+   "camera": "dolly",
+   "light": "golden",
+   "visual_idea": "dubai beach seen dolly: and the buyer who has to keep paying when the money stops.",
+   "direction": {
+    "subject": "beach",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "crane",
+    "action": "laugh"
+   },
+   "action": "laugh",
+   "expression": "laughing",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "And the supercar? Turns out supercars don't love sand either.",
+   "start": 602.458,
+   "end": 606.25,
+   "kit": "dubai",
+   "params": {
+    "gag": "supercar",
+    "subject": "coast"
+   },
+   "camera": "aerial",
+   "light": "golden",
+   "visual_idea": "dubai villa seen aerial: And the supercar? Turns out supercars don't love sand either.",
+   "direction": {
+    "subject": "villa",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "tilt",
+    "action": "facepalm"
+   },
+   "action": "facepalm",
+   "expression": "laughing",
+   "overlay": null,
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Twenty years later, you can still fly over it and see every continent.",
+   "start": 606.25,
+   "end": 609.75,
+   "kit": "dubai",
+   "params": {
+    "subject": "breakwater"
+   },
+   "camera": "close",
+   "light": "golden",
+   "visual_idea": "dubai archipelago seen close: Twenty years later, you can still fly over it and see every continent.",
+   "direction": {
+    "subject": "archipelago",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "push-in",
+    "action": "explain"
+   },
+   "action": "explain",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "label",
+    "text": "every continent"
+   },
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "Ireland is still out there, four kilometers off the coast.",
+   "start": 609.75,
+   "end": 613.375,
+   "kit": "dubai",
+   "params": {
+    "subject": "ireland"
+   },
+   "camera": "medium",
+   "light": "golden",
+   "visual_idea": "dubai ireland seen medium: Ireland is still out there, four kilometers off the coast.",
+   "direction": {
+    "subject": "ireland",
+    "environment": "dubai",
+    "mood": "curious",
+    "move": "truck",
+    "action": "stand"
+   },
+   "action": "stand",
+   "expression": "neutral",
+   "overlay": {
+    "kind": "label",
+    "text": "Ireland, still empty"
+   },
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "It's just waiting for somebody to move in. Next time: a Soviet plane",
+   "start": 613.375,
+   "end": 617.312,
+   "kit": "studio",
+   "params": {
+    "subject": "next: the Soviet flying ship",
+    "detail": "Waiting"
+   },
+   "camera": "wide",
+   "light": "day",
+   "visual_idea": "studio next: the Soviet flying ship seen medium: It's just waiting for somebody to move in. Next time: a Soviet plane",
+   "direction": {
+    "subject": "next: the Soviet flying ship",
+    "environment": "studio",
+    "mood": "curious",
+    "move": "pull-back",
+    "action": "point"
+   },
+   "action": "point",
+   "expression": "smug",
+   "overlay": {
+    "kind": "label",
+    "text": "next episode"
+   },
+   "transition": "cut",
+   "beat": "closing",
+   "reframeX": 0.5
+  },
+  {
+   "line": "the size of a ship that was never allowed to climb. You'll find it on the channel.",
+   "start": 617.312,
+   "end": 622.0,
+   "kit": "map",
+   "params": {
+    "subject": "Caspian Sea",
+    "detail": "Never allowed",
+    "pins": [
+     {
+      "label": "Caspian Sea",
+      "lat": 42.0,
+      "lon": 51.0
+     }
+    ]
+   },
+   "camera": "close",
+   "light": "day",
+   "visual_idea": "map Caspian Sea seen close: the size of a ship that was never allowed to climb. You'll find it on the channel.",
+   "direction": {
+    "subject": "Caspian Sea",
+    "environment": "map",
+    "mood": "curious",
+    "move": "orbit",
+    "action": "thumbs-up"
+   },
+   "action": "thumbs-up",
+   "expression": "smug",
+   "overlay": {
+    "kind": "label",
+    "text": "on the channel"
+   },
+   "transition": "cut",
+   "beat": "cta",
+   "reframeX": 0.5
+  }
+ ]
+}
