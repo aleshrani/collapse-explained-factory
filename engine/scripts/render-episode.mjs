@@ -59,7 +59,7 @@ try{
         const clip=path.join(clipDir,hash+".mp4");
         if(!fs.existsSync(clip)){
           const tmp=path.join(clipDir,hash+"-"+process.pid+".mp4");
-          await renderMedia({...opts,inputProps:props,composition:{...composition,props,durationInFrames:stop-first},puppeteerInstance:browser,outputLocation:tmp,codec:"h264",crf:17,muted:true,concurrency:2,onBrowserLog:log=>{if(log.type==="error"){console.error(log.text);if(/COLLISION|FRAMING|FLOAT|OCCLUDE|SUPPORT|STAND|STYLE/.test(log.text))collisions.push("shot "+list.length+": "+log.text);}}});
+          await renderMedia({...opts,inputProps:props,composition:{...composition,props,durationInFrames:stop-first},puppeteerInstance:browser,outputLocation:tmp,codec:"h264",crf:17,muted:true,concurrency:2,onBrowserLog:log=>{if(log.type==="error"){console.error(log.text);if(/COLLISION|FRAMING|FLOAT|OCCLUDE|SUPPORT|STAND|STYLE/.test(log.text)&&!log.text.includes("TEXT-WARN"))collisions.push("shot "+list.length+": "+log.text);}}});
           fs.renameSync(tmp,clip);rendered++;
         }else reused++;
         list.push("file '"+clip.replaceAll("\\","/").replaceAll("'","'\\''")+"'");

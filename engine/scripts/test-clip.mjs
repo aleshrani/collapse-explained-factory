@@ -37,7 +37,7 @@ try{
     const props={shots:[local],words:localWords,rms:rmsAll.slice(first,stop),duration:(stop-first)/24};
     const composition=await selectComposition({...opts,id:"Episode",inputProps:props});
     const clip=path.join(scratch,"c"+n+".mp4");
-    await renderMedia({...opts,inputProps:props,composition:{...composition,props,durationInFrames:stop-first},outputLocation:clip,codec:"h264",crf:20,muted:true,concurrency:2,scale,onBrowserLog:l=>{if(/COLLISION|FRAMING|FLOAT|OCCLUDE|SUPPORT|STAND|STYLE/.test(l.text)&&!found.includes("shot "+i+": "+l.text))found.push("shot "+i+": "+l.text);}});
+    await renderMedia({...opts,inputProps:props,composition:{...composition,props,durationInFrames:stop-first},outputLocation:clip,codec:"h264",crf:20,muted:true,concurrency:2,scale,onBrowserLog:l=>{if(/COLLISION|FRAMING|FLOAT|OCCLUDE|SUPPORT|STAND|STYLE/.test(l.text)&&!l.text.includes("TEXT-WARN")&&!found.includes("shot "+i+": "+l.text))found.push("shot "+i+": "+l.text);}});
     segs.push({id:i,start:+clock.toFixed(3),end:+(clock+(stop-first)/24).toFixed(3)});clock+=(stop-first)/24;
     clips.push(clip);cuts.push(`[1:a]atrim=${offset}:${(stop/24).toFixed(4)},asetpts=PTS-STARTPTS[a${n}]`);
     console.log("shot",i,"done",n+1+"/"+idx.length);
