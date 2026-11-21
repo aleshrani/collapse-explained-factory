@@ -4,7 +4,7 @@ import * as THREE from "three";
 // Kits record their footprints (XZ rectangle + height range) automatically in Model; this file plans walking lines that stop
 // short of obstacles and checks every moving object's whole path. Problems go to the browser console as "COLLISION ..."
 // lines; test-clip.mjs, render-episode.mjs and check-collisions.mjs fail the build when they see one.
-export type Ob={x0:number;x1:number;z0:number;z1:number;y0:number;y1:number;tag?:string};
+export type Ob={x0:number;x1:number;z0:number;z1:number;y0:number;y1:number;tag?:string;nostand?:boolean};   // nostand: a surface people must not stand on (road, water)
 export type Track={id:string;kind:"boat"|"car"|"paper"|"bird";r:number;h:number;pos:(t:number)=>[number,number,number];drop?:()=>void};
 
 export const BODY=.3,GAP=.3,HEIGHT=2.1;
@@ -56,7 +56,7 @@ export function verifyTracks(root:THREE.Object3D,obstacles:Ob[],duration:number)
   for(const tr of tracks){
     let bad="";
     for(let t=0;t<=duration&&!bad;t+=1/12){
-      const [x,y,z]=tr.pos(t),o=firstHit(obstacles,x,z,tr.r,y-.1,y+tr.h);
+      const [x,y,z]=tr.pos(t),o=firstHit(obstacles,x,z,tr.r,y+.05,y+tr.h);
       if(o)bad=`${tr.id} hits ${o.tag??"an object"} at t=${t.toFixed(1)}s (x=${x.toFixed(1)} z=${z.toFixed(1)})`;
       else if(tr.kind==="boat"||tr.kind==="car")for(const poly of polys){
         for(let k=0;k<8&&!bad;k++)if(inPoly(poly,x+Math.cos(k*.785)*tr.r,z+Math.sin(k*.785)*tr.r))bad=`${tr.id} runs onto an island at t=${t.toFixed(1)}s (x=${x.toFixed(1)} z=${z.toFixed(1)})`;
@@ -71,5 +71,5 @@ export function verifyTracks(root:THREE.Object3D,obstacles:Ob[],duration:number)
   }
 }
 export function report(root:THREE.Object3D,label:string){
-  for(const text of (root.userData.issues??[]) as string[])console.error(text.startsWith("FRAMING ")?"FRAMING ["+label+"] "+text.slice(8):text.startsWith("FLOAT ")?"FLOAT ["+label+"] "+text.slice(6):"COLLISION ["+label+"] "+text);
+  for(const text of (root.userData.issues??[]) as string[])console.error(text.startsWith("FRAMING ")?"FRAMING ["+label+"] "+text.slice(8):text.startsWith("FLOAT ")?"FLOAT ["+label+"] "+text.slice(6):text.startsWith("OCCLUDE ")?"OCCLUDE ["+label+"] "+text.slice(8):text.startsWith("SUPPORT ")?"SUPPORT ["+label+"] "+text.slice(8):text.startsWith("STAND ")?"STAND ["+label+"] "+text.slice(6):"COLLISION ["+label+"] "+text);
 }

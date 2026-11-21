@@ -5,9 +5,30 @@ import {ctex} from "../videos/bridge/paint";
 import {Model, painted, Point} from "../kit/shared";
 import {stencil} from "../kit/markings";
 import {buildProp,gagIds,GagId} from "../kit/props";
-import {animatePerson,extraCard,Person} from "../kit/extras";
+import {animatePerson,extraCard,Person,walkPerson} from "../kit/extras";
 
-export function dress(scene:THREE.Group,feet:Point,eye:Point,p:Record<string,unknown>,legacy:boolean){
+/** where a gag prop stands (beside the host, turned to the lens) and how far it reaches, so framing can keep it in the picture */
+/** is there solid ground (not open water) just under this point? */
+export function landUnder(root:THREE.Object3D,x:number,y:number,z:number){
+  const hit=new THREE.Raycaster(new THREE.Vector3(x,y+1.2,z),new THREE.Vector3(0,-1,0),0,30).intersectObject(root,true)[0];
+  return !!hit&&!hit.object.userData.sea&&Math.abs(hit.point.y-y)<.7;
+}
+export function gagSpot(p:Record<string,unknown>,feet:Point,eye:Point,look:Point,obs:Ob[]=[],land:(x:number,y:number,z:number)=>boolean=()=>true):{pos:Point;r:number;rx:number;rz:number}|undefined{
+  if(typeof p.gag!=="string"||!(gagIds as readonly string[]).includes(p.gag))return undefined;
+  const big=p.gag==="supercar"||p.gag==="mirror-wall",pref=Number(p.gagSide)||-1;
+  const gap=Math.max(2.2,Math.min(3,Math.hypot(eye[0]-feet[0],eye[2]-feet[2])*.1))*(big?1.4:1);   // close enough that host and prop fit one picture
+  // beside him ALONG THE CAMERA'S RIGHT AXIS (not world x); the first spot that is on solid ground and clear of buildings wins:
+  // preferred side, other side, then diagonally toward the camera, then straight toward / away from it
+  // the sideways axis is perpendicular to the camera's optical axis (eye to look), so host and prop sit at the same depth and the same scale
+  let fx=look[0]-eye[0],fz=look[2]-eye[2];const fl=Math.hypot(fx,fz)||1;fx/=fl;fz/=fl;const rx=-fz,rz=fx,r=big?2.4:1.8;
+  const at=(lat:number,dep:number):Point=>[feet[0]+rx*lat*gap+fx*(.6+dep*gap),feet[1],feet[2]+rz*lat*gap+fz*(.6+dep*gap)];
+  // badness of a spot: samples along the prop that touch a building (1) or have no solid ground (2); the least bad wins, ring order breaks ties
+  const bad=(q:Point)=>[-1,-.5,0,.5,1].reduce((n,k)=>{const x=q[0]+rx*k*r*.8,z=q[2]+rz*k*r*.8;return n+(firstHit(obs,x,z,.6,q[1]+.2,q[1]+1.4)?1:0)+(land(x,q[1],z)?0:2);},0);
+  const ring=Array.from({length:12},(_,k)=>k*Math.PI/6).sort((a,b)=>Math.abs(Math.atan2(Math.sin(a-(pref>0?0:Math.PI)),Math.cos(a-(pref>0?0:Math.PI))))-Math.abs(Math.atan2(Math.sin(b-(pref>0?0:Math.PI)),Math.cos(b-(pref>0?0:Math.PI)))));
+  let pick=ring[0],best=1e9;for(const th of ring){const sc=bad(at(Math.cos(th),-Math.sin(th)))*.6+Math.abs(Math.sin(th))*3.5;if(sc<best){best=sc;pick=th;}}   // lateral spots keep host and prop side by side in the picture
+  return {pos:at(Math.cos(pick),-Math.sin(pick)),r,rx,rz};
+}
+export function dress(scene:THREE.Group,feet:Point,eye:Point,p:Record<string,unknown>,legacy:boolean,look:Point=feet){
   const crowd=Math.min(6,Math.max(0,Number(p.crowd)||0)),wear=Math.min(1,Math.max(0,Number(p.damage)||0));
   // other people: same card rig as the host, turned to the lens. Nobody passes through anything: standing people must not overlap built
   // objects (seated ones sit behind their furniture), walkers pace only as far as the free space allows, and every person is an obstacle
@@ -22,7 +43,7 @@ export function dress(scene:THREE.Group,feet:Point,eye:Point,p:Record<string,unk
       else{person.x=spot[0];person.z=spot[1];}
     }
     const card=extraCard(person.variant,person.scale??1);card.position.set(person.x,g,person.z);
-    card.rotation.y=Math.atan2(eye[0]-person.x,eye[2]-person.z);scene.add(card);card.userData.scale=person.scale??1;((scene.userData.cards??=[]) as THREE.Mesh[]).push(card);animatePerson(scene,card,card.position.y,person.variant*3+person.x);
+    card.rotation.y=Math.atan2(eye[0]-person.x,eye[2]-person.z);scene.add(card);card.userData.scale=person.scale??1;((scene.userData.cards??=[]) as THREE.Mesh[]).push(card);if(!person.walk)animatePerson(scene,card,card.position.y,person.variant*3+person.x);
     const [y0,y1]=bandFor(g),all=[...solids,...people];
     if(!person.seated){
       const o=firstHit(all,person.x,person.z,BODY,y0,y1);
@@ -32,23 +53,28 @@ export function dress(scene:THREE.Group,feet:Point,eye:Point,p:Record<string,unk
     if(person.walk){
       const w=person.walk,card0=card.position.x;
       reach=Math.min(w.dx,freeRun(all,person.x,person.z,1,0,g,w.dx),freeRun(all,person.x,person.z,-1,0,g,w.dx));
-      if(reach>.3)animate(scene,t=>{card.position.x=card0+reach*Math.sin(t/w.period*Math.PI*2+person.variant);});
+      if(reach>.3)walkPerson(scene,card,card0,reach,g,person.variant*3+person.x);else animatePerson(scene,card,card.position.y,person.variant*3+person.x);
     }
     if(person.carry){   // a stack of papers carried in front of the body
       const sc=person.scale??1,stack=new THREE.Mesh(new THREE.BoxGeometry(.36*sc,.07*sc,.27*sc),painted("#efe7d2"));scene.add(stack);
       animate(scene,()=>{const r=card.rotation.y;stack.position.set(card.position.x+Math.cos(r)*.3*sc+Math.sin(r)*.12,card.position.y+.92*sc,card.position.z-Math.sin(r)*.3*sc+Math.cos(r)*.12);stack.rotation.y=r;});
     }
+    card.userData.reach=reach;card.userData.baseY=g;card.userData.seated=!!person.seated;
     people.push({x0:person.x-reach-BODY,x1:person.x+reach+BODY,z0:person.z-BODY,z1:person.z+BODY,y0:g,y1:g+HEIGHT,tag:"a person (variant "+person.variant+")"});
   }
   scene.userData.people_ob=people;
   // A gag prop stands beside the host and turns to the lens; it is the must-show object of the beat.
   if(typeof p.gag==="string"&&(gagIds as readonly string[]).includes(p.gag)){
-    const prop=buildProp(p.gag as GagId),big=p.gag==="supercar"||p.gag==="mirror-wall";
-    const side=Number(p.gagSide)||-1;
-    const gap=Math.max(2.3,Math.min(6,Math.hypot(eye[0]-feet[0],eye[2]-feet[2])*.2))*(big?1.5:1);
-    prop.position.set(feet[0]+side*gap,feet[1],feet[2]-.6);
+    const prop=buildProp(p.gag as GagId),spot=gagSpot(p,feet,eye,look,solids,(x,y,z)=>landUnder(scene,x,y,z))!;
+    prop.position.set(...spot.pos);
     prop.rotation.y=Math.atan2(eye[0]-prop.position.x,eye[2]-prop.position.z);
     scene.add(prop);
+    // a prop never hangs over open water: where its footprint is not on solid ground, a little sand platform carries it
+    const rxx=Math.sin(prop.rotation.y),rzz=Math.cos(prop.rotation.y);
+    if([-1,-.5,0,.5,1].some(k=>!landUnder(scene,spot.pos[0]+rzz*k*spot.r*.8,spot.pos[1],spot.pos[2]-rxx*k*spot.r*.8))){
+      const pad=new THREE.Mesh(new THREE.BoxGeometry(spot.r*2+.8,.5,2.2),painted("#e9dcbc","sand"));
+      pad.position.set(spot.pos[0],spot.pos[1]-.27,spot.pos[2]);pad.rotation.y=prop.rotation.y;pad.receiveShadow=true;scene.add(pad);
+    }
     const box=new THREE.Box3().setFromObject(prop);((scene.userData.obstacles??=[]) as Ob[]).push({x0:box.min.x,x1:box.max.x,z0:box.min.z,z1:box.max.z,y0:box.min.y,y1:box.max.y,tag:"the "+p.gag+" prop"});
   }
   if(!legacy&&!crowd&&!wear)return;

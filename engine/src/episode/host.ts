@@ -6,7 +6,7 @@ export function animateArchitect(card:THREE.Mesh<THREE.PlaneGeometry,THREE.MeshL
   const canvas=document.createElement("canvas");canvas.width=600;canvas.height=1000;
   const g=canvas.getContext("2d")!,map=new THREE.CanvasTexture(canvas);map.colorSpace=THREE.SRGBColorSpace;
   const pen=new Pen(g);card.material.map=map;(card.customDepthMaterial as THREE.MeshDepthMaterial).map=map;
-  return {dispose:()=>map.dispose(),draw(shot:Shot,t:number,frame:number,rms:number,mv:{stride:boolean;side:number}={stride:false,side:1}){
+  return {dispose:()=>map.dispose(),draw(shot:Shot,t:number,frame:number,rms:number,mv:{stride:boolean;side:number;phase?:number}={stride:false,side:1,phase:0}){
     const face=ARCH_PRESETS[shot.expression],idle=ARCH_PRESETS.neutral;
     const arms=shot.action==="facepalm"?ARCH_PRESETS.facepalm:shot.action==="shocked-jump"?ARCH_PRESETS.shocked:shot.action==="laugh"?ARCH_PRESETS.laughing:
       shot.action==="explain"||shot.action==="point"?ARCH_PRESETS.explaining:idle;
@@ -16,7 +16,7 @@ export function animateArchitect(card:THREE.Mesh<THREE.PlaneGeometry,THREE.MeshL
     if(shot.action==="explain")pose.armR={target:[465,486+25*Math.sin(t*3)],hand:"open"};
     // walking (entrance or pacing): foot steps, torso lean into the stride
     if(mv.stride){
-      const step=Math.sin(t*9);pose.footL=[248+step*23,974-Math.max(0,step)*30];pose.footR=[349-step*23,974+Math.min(0,step)*30];
+      const step=Math.sin(mv.phase??0);pose.footL=[248+step*23,974-Math.max(0,step)*30];pose.footR=[349-step*23,974+Math.min(0,step)*30];
       pose.armL={target:[205-step*18,585],hand:"relaxed"};if(shot.action==="stand"||shot.action==="walk-in")pose.armR={target:[430+step*18,585],hand:"relaxed"};
     }
     // reach toward the discussed object: the arm on its side points at it, the body leans in and the head turns
@@ -42,9 +42,10 @@ export function animateArchitect(card:THREE.Mesh<THREE.PlaneGeometry,THREE.MeshL
       const eye=ARCH_PRESETS.shocked.armL!.target[1]-58;
       pose.armL={target:[258,eye],hand:"palm"};pose.armR={target:[342,eye],hand:"palm"};pose.eyes={...face.eyes,shape:"closed"};
     }
-    if(rms>.045)pose.mouth=rms>.48?"A":rms>.23?(frame%7<4?"E":"O"):"FV";
-    const hop=shot.beat==="rehook"&&t<.45?.16*Math.sin(Math.PI*t/.45):0,stepY=mv.stride?.045*Math.abs(Math.sin(t*9)):0;
-    card.position.y=hop+stepY+(shot.action==="sit"?-.5:shot.action==="shocked-jump"?.41*Math.sin(Math.PI*Math.min(1,t/.52)):shot.action==="laugh"?.047*Math.abs(Math.sin(t*12)):0);
+    // real speech levels (median .37, loud passages cap at 1): open wide on the loud syllables, alternate E/O in the middle, a small O/FV when soft, closed in pauses
+    if(rms>.06)pose.mouth=rms>.5?(frame%4<2?"A":"E"):rms>.22?(frame%6<3?"E":"O"):(frame%5<3?"O":"FV");
+    const hop=shot.beat==="rehook"&&t<.45?.06*Math.sin(Math.PI*t/.45):0,stepY=mv.stride?.045*Math.abs(Math.sin(mv.phase??0)):0;
+    card.position.y=hop+stepY+(shot.action==="sit"?-.5:shot.action==="shocked-jump"?.09*Math.sin(Math.PI*Math.min(1,t/.4)):shot.action==="laugh"?.047*Math.abs(Math.sin(t*12)):0);
     g.clearRect(0,0,600,1000);drawScientist(pen,pose,{look:"architect",glasses:true,hat:"white"});map.needsUpdate=true;
   }};
 }

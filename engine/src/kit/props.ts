@@ -14,11 +14,20 @@ const line=(m:Model,x:number,y:number,len:number,col=painted("#53636b"))=>m.box(
 export function buildProp(id:GagId,text="Price"){
   const m=new Model();
   if(id==="supercar"){
-    const body=painted("#c8382e","plate"),glass=painted("#4d7886","glass");
-    m.box(0,.55,0,4.1,.5,1.7,body);m.box(.35,.95,0,2.0,.42,1.5,body);m.box(.5,1.05,0,1.5,.34,1.54,glass);m.box(-1.7,.85,0,.8,.12,1.6,body);
-    m.beam([1.9,.62,0],[2.2,.5,0],.5,body);
-    for(const x of [-1.25,1.25])for(const z of [-.85,.85]){m.add(new THREE.CylinderGeometry(.38,.38,.28,18).rotateX(Math.PI/2).translate(x,.38,z),dark());m.add(new THREE.CylinderGeometry(.2,.2,.3,12).rotateX(Math.PI/2).translate(x,.38,z),brass());}
-    for(const z of [-.55,.55])m.box(2.02,.66,z,.1,.12,.35,painted("#fff3c8"));
+    // a low sports car: wedge silhouette extruded with rounded edges, low cabin, big wheels with bright discs, a spoiler, slit lights
+    const body=painted("#c8382e","plate"),glass=painted("#2f4b5a","glass"),yellow=painted("#fff3c8"),tail=painted("#d0302a");
+    const sh=new THREE.Shape();
+    sh.moveTo(-2.15,.2);sh.lineTo(-2.15,.58);sh.quadraticCurveTo(-2.1,.7,-1.7,.72);sh.lineTo(-1.0,.76);sh.quadraticCurveTo(-.5,1.0,0,1.02);sh.lineTo(.5,1.0);
+    sh.quadraticCurveTo(.9,.8,1.15,.62);sh.lineTo(2.0,.46);sh.quadraticCurveTo(2.2,.4,2.2,.3);sh.lineTo(2.1,.2);sh.closePath();
+    m.add(new THREE.ExtrudeGeometry(sh,{depth:1.5,bevelEnabled:true,bevelSize:.1,bevelThickness:.12,bevelSegments:3}).translate(0,0,-.75),body);
+    const win=new THREE.Shape();win.moveTo(-.95,.8);win.lineTo(-.45,.97);win.lineTo(.45,.97);win.lineTo(.85,.72);win.closePath();
+    m.add(new THREE.ShapeGeometry(win).translate(0,0,.89),glass);
+    for(const x of [-1.3,1.3])for(const z of [-.86,.86]){
+      m.add(new THREE.CylinderGeometry(.46,.46,.34,20).rotateX(Math.PI/2).translate(x,.46,z),dark());
+      m.add(new THREE.CylinderGeometry(.3,.3,.36,16).rotateX(Math.PI/2).translate(x,.46,z),painted("#c7ccd0"));
+    }
+    m.box(-2.05,1.0,0,.45,.07,1.7,body);for(const z of [-.5,.5])m.box(-1.95,.82,z,.08,.28,.08,dark());
+    for(const z of [-.5,.5]){m.box(2.14,.4,z,.1,.09,.36,yellow);m.box(-2.2,.56,z,.06,.1,.36,tail);}
   }else if(id==="whiteboard"){
     board(m,3.2,2.0,2.1,painted("#f4f1e6"));
     for(let i=0;i<4;i++){line(m,-.3,2.9-i*.38,2.0-i*.4);line(m,1.15,2.9-i*.38,.4-i*.05,red());}

@@ -37,7 +37,10 @@ function artwork(base:Base,p:Params){
       g.fillStyle="#326579";g.fillRect(80,176,864,280);g.strokeStyle="#e6ead5";g.lineWidth=6;g.beginPath();
       p.outline.forEach(([x,y],i)=>i?g.lineTo(100+x*810,193+y*238):g.moveTo(100+x*810,193+y*238));g.stroke();
       g.lineWidth=2;g.setLineDash([10,8]);g.beginPath();g.moveTo(90,315);g.lineTo(933,315);g.stroke();g.setLineDash([]);
-    }else if(base==="money"){lettering(g,p.value,80,378,858,137);}
+    }else if(base==="money"){   // sized to fit well inside the page: close cameras never cut the figure
+      let size=137;g.font="bold "+size+"px Arial";while(g.measureText(p.value).width>600&&size>40){size-=6;g.font="bold "+size+"px Arial";}
+      g.textAlign="center";lettering(g,p.value,512,378,640,size);g.textAlign="left";
+    }
     else if(base==="documents"){
       g.lineWidth=2;g.strokeStyle=ink;g.strokeRect(50,154,924,327);
       for(let col=0;col<3;col++)for(let j=0;j<10;j++){g.fillStyle=j%3?"#53636b80":"#53636ba8";g.fillRect(72+col*305,194+j*26,215+r()*61,4);}
@@ -52,7 +55,8 @@ function artwork(base:Base,p:Params){
       g.fillStyle="#d3c49f";g.fillRect(700,176,242,282);g.strokeStyle=ink;g.lineWidth=3;g.strokeRect(700,176,242,282);
       for(let k=0;k<5;k++){g.fillStyle=k%2?"#72979b":"#bc644c";g.fillRect(720+k*42,438-(60+k*37%140),30,60+k*37%140);}
     }
-    if(p.subject.trim()){g.fillStyle=cream;g.fillRect(26,23,972,110);lettering(g,p.subject,49,98,921,64);}
+    if(p.subject.trim()){g.fillStyle=cream;g.fillRect(26,23,972,110);let ts=64;g.font="bold "+ts+"px Arial";while(g.measureText(p.subject).width>540&&ts>30){ts-=3;g.font="bold "+ts+"px Arial";}   // at most 55 % of the plate, so the label card never reaches it
+      g.textAlign="right";lettering(g,p.subject,975,98,540,ts);g.textAlign="left";}   // right-aligned: the label card covers the top-left corner
     if(p.detail.trim()){g.fillStyle=ink;g.fillRect(26,506,972,51);g.fillStyle=cream;g.font="bold 31px Arial";g.fillText(p.detail,47,543,924);}
   })}));
 }
@@ -84,7 +88,7 @@ function panelDesk(m:Model,base:Base,crowd:number){
 }
 function city(m:Model,mat:THREE.Material){
   const steel=painted("#56696d"),road=painted("#778181","road"),curb=painted("#a39c8c","plate");
-  m.box(0,.01,2,34,.1,13,road,4);
+  m.box(0,.01,2,34,.1,13,road,4);m.obstacles.push({x0:-17,x1:17,z0:-4.5,z1:6.5,y0:0,y1:.1,tag:"the road",nostand:true});
   for(let x=-16;x<=16;x+=3)m.box(x,.07,2,1.3,.02,.15,painted("#e3d9b8"));
   for(let n=0;n<44;n++){
     const x=(n%11-5)*2.4+(n%3)*.2,row=Math.floor(n/11),z=-9-row*3.8,h=3+(n*13%17)+row*1.5,w=1.5+(n%3)*.3;
@@ -94,12 +98,13 @@ function city(m:Model,mat:THREE.Material){
   // central tower carries the billboard that names the subject
   m.box(0,8,-7.5,4.2,16,3.2,painted("#a9b4aa","wall"),2.2);m.box(0,16.1,-7.5,4.45,.3,3.45,steel);
   m.box(0,12.3,-5.78,9.2,5.2,.3,steel);
-  const sign=new THREE.Mesh(new THREE.PlaneGeometry(8.9,4.9),mat);sign.position.set(0,12.3,-5.6);m.group.add(sign);
+  const sign=new THREE.Mesh(new THREE.PlaneGeometry(8.9,4.9),mat);sign.position.set(0,12.3,-5.6);sign.userData.text=true;sign.userData.rects=[[.02,.03,.98,.24],[.04,.3,.96,.8],[.02,.87,.98,.98]];m.group.add(sign);
   for(const x of [-3.6,3.6])m.beam([x,10,-5.9],[x*.9,9,-7.2],.1,steel);
   for(const x of [-3.9,3.9])m.box(x,6.1,-5.75,.45,12.2,.45,steel);m.box(0,9.4,-5.75,8.4,.25,.25,steel);   // the billboard stands on two posts and a brace, in front of the tower
   for(let x=-14;x<=14;x+=4)for(const z of [-3,6]){m.pipe([x,0,z],[x,3.6,z],.07,steel);m.box(x+.3,3.6,z,.7,.12,.2,painted("#e6dbb8"));}
   for(const [x,z] of [[-7,5],[8,-3],[-9,-3]]){m.pipe([x,0,z],[x,1.3,z],.14,painted("#6a4f3a"));m.mound(x,1.3,z,1.1,1.5,1.1,painted("#7da16d","earth"),x);}
   m.box(0,.12,6.8,34,.2,.9,curb);
+  m.box(0,.09,8.2,34,.18,3.2,curb,4);   // the pavement: people stand here, cars stay on the road
 }
 
 function deskScene(m:Model,base:Base){
@@ -120,8 +125,9 @@ function deskScene(m:Model,base:Base){
   for(let i=0;i<3;i++)m.box(-2.2+i*.2,1.3+i*.04,-1.55+i*.05,1.6,.04,1.1,painted(["#b8795b","#6b8aa0","#8f9a6a"][i]));
   m.pipe([1.7,1.3,-1.45],[1.7,1.62,-1.45],.17,green);
   // chair pulled up to the desk
-  m.box(-.6,.8,2.9,1.5,.14,1.4,painted("#48546a"));m.box(-.6,1.55,3.55,1.5,1.4,.14,painted("#48546a"));
-  for(const dx of [-.55,.55])for(const dz of [-.5,.5])m.pipe([-.6+dx,0,2.9+dz],[-.6+dx,.75,2.9+dz],.05,dark);
+  // the chair stands on the far side of the desk: in front it filled a quarter of every close and medium picture
+  m.box(-.6,.8,-2.9,1.5,.14,1.4,painted("#48546a"));m.box(-.6,1.55,-3.55,1.5,1.4,.14,painted("#48546a"));
+  for(const dx of [-.55,.55])for(const dz of [-.5,.5])m.pipe([-.6+dx,0,-2.9+dz],[-.6+dx,.75,-2.9+dz],.05,dark);
   if(base==="money"){
     for(let i=0;i<3;i++)for(let j=0;j<4;j++)m.box(2.2+i*.7,1.28+j*.1,.95,.62,.09,.34,painted("#84a087"));
     m.box(-1.6,1.32,1.4,.8,.1,1.0,dark);m.box(-1.6,1.38,1.4,.7,.02,.9,painted("#9eb5a2"));
@@ -144,20 +150,23 @@ export function build(base:Base,p:Params){
   if(base!=="skyline")for(let x=-20;x<=20;x+=5){m.box(x,5.5,-7.65,3.4,5.4,.16,window);m.box(x,2.69,-7.54,3.65,.15,.3,steel);}
   const board=(x:number,y:number,z:number,w:number,h:number)=>{
     m.box(x,y,z-.12,w+.18,h+.18,.2,steel);
-    const plate=new THREE.Mesh(new THREE.PlaneGeometry(w,h),mat);plate.position.set(x,y,z+.01);m.group.add(plate);
+    const plate=new THREE.Mesh(new THREE.PlaneGeometry(w,h),mat);plate.position.set(x,y,z+.01);plate.userData.text=true;plate.userData.rects=[[.02,.03,.98,.24],[.04,.3,.96,.8],[.02,.87,.98,.98]];m.group.add(plate);
   };
   const desk=base==="documents"||base==="money"||base==="blueprint";
   if(desk){
     m.box(0,1.12,0,8.5,.22,4.4,floor);
     for(const x of [-3.65,3.65])for(const z of [-1.65,1.65])m.box(x,.52,z,.35,1.05,.35,steel);
-    const page=new THREE.Mesh(new THREE.PlaneGeometry(4.5,2.52),mat);page.rotation.x=-Math.PI/2;page.position.set(-.45,1.252,.15);m.group.add(page);
+    // the page stands upright on the desk, facing the camera: a flat page seen from a shallow angle is a squashed sliver
+    const page=new THREE.Mesh(new THREE.PlaneGeometry(4.2,2.36),mat);page.position.set(-.45,2.5,-.92);page.userData.text=true;page.userData.rects=[[.02,.03,.98,.24],[.04,.3,.96,.8],[.02,.87,.98,.98]];m.group.add(page);
+    m.obstacles.push({x0:-2.6,x1:1.7,z0:-1.05,z1:.2,y0:1.3,y1:3.8,tag:"the page on the desk (keep-out so nothing flies or stands in front of its text)"});
+    m.box(-.45,2.5,-.99,4.3,2.46,.07,steel);for(const x of [-2.3,1.4])m.box(x,1.55,-.99,.1,.65,.1,steel);
     if(base==="money")for(let i=0;i<10;i++){const x=2.46+(i%2)*.57,y=1.28+Math.floor(i/4)*.19,z=-.8+Math.floor(i%4/2)*.68;m.box(x,y,z,.51,.18,.63,painted("#84a087"));m.box(x,y+.10,z,.16,.026,.63,paper);}
     if(base==="documents")for(let i=0;i<8;i++)m.box(2.73,1.24+i*.028,-.18+i*.02,1.12,.025,1.43,i%3?paper:brass);
     if(base==="blueprint"){m.pipe([2.32,1.39,-1.5],[2.32,1.39,1.5],.16,paper);m.beam([-2.94,1.27,-.87],[-2.65,1.27,1.3],.09,brass);}
     deskScene(m,base);
   }else{
     if(base!=="skyline")board(0,3.15,-2.6,8.48,4.77);
-    if(base==="map"||base==="timeline")for(const x of [-3.9,3.9])m.box(x,1,-2.98,.17,2,.22,brass);   // behind the frame: a pole at the plate's z-fought and flickered
+    if(base!=="skyline")for(const x of [-3.9,3.9])m.box(x,1,-2.98,.17,2,.22,brass);   // every board stands on two posts   // behind the frame: a pole at the plate's z-fought and flickered
     if(base==="boardroom"||base==="studio")panelDesk(m,base,p.crowd??2);
     if(base==="boardroom"){
       // rug, clock, plant and mic stands give the decision room scale
@@ -168,9 +177,10 @@ export function build(base:Base,p:Params){
     }
     if(base==="skyline")city(m,mat);
   }
-  const target:Point=desk?[-.3,1.23,0]:[0,3,-2.5];
-  const group=m.finish({wide:camera([5.5,5.8,10.2],target,48),medium:camera(desk?[1.4,5.6,4.1]:[.7,3.4,7.1],target,45),close:camera(desk?[.1,4.75,2.3]:[-.8,3,5.1],target,41)});
+  const target:Point=desk?[-.45,1.7,-.5]:[0,3,-2.5];
+  const group=m.finish({wide:camera([5.5,5.8,10.2],target,48),medium:camera(desk?[1.4,3.5,8.4]:[.7,3.4,7.1],target,45),close:camera(desk?[.1,3.0,5.6]:[-.8,3,5.1],target,41)});
   if(desk)group.cameras.aerial=camera([-.3,8,.1],target,45);
+  if(base==="boardroom"||base==="studio")group.cameras.low=camera([-1.2,3.3,7.4],target,46);   // not lowered: a camera at desk height shows little but the desk
   if(base==="skyline"){
     group.cameras.wide=camera([2.5,2.6,16],[0,8,-6],56);group.cameras.medium=camera([3.2,4.4,11],[0,10,-6],48);group.cameras.close=camera([2.8,3.4,9.2],[0,11,-6],42);
     group.cameras.aerial=camera([6,22,12],[0,6,-5],60);group.cameras.low=camera([4,1.2,10.5],[0,10,-6],54);group.cameras.dolly=camera([-3,5,12.5],[0,10,-6],46);
@@ -184,13 +194,13 @@ export function build(base:Base,p:Params){
   if(desk)addPerson(group,{x:-1.5,y:0,z:4.6,variant:3,carry:true,walk:{dx:4,period:10}});
   if(base==="map"||base==="timeline")addPerson(group,{x:-1.8,y:0,z:.9,variant:4,carry:true,walk:{dx:3,period:9}});
   if(base==="boardroom"||base==="studio")addPerson(group,{x:-2,y:0,z:5.4,variant:3,carry:true,walk:{dx:3.5,period:10}});
-  if(base==="skyline"){addPerson(group,{x:-6,y:.12,z:5.2,variant:2,walk:{dx:3.5,period:11}});addPerson(group,{x:7,y:.12,z:5.6,variant:5,carry:true,walk:{dx:3,period:9}});}
+  if(base==="skyline"){addPerson(group,{x:-6,y:.18,z:8.6,variant:2,walk:{dx:3.5,period:11}});addPerson(group,{x:8,y:.18,z:9.4,variant:5,carry:true,walk:{dx:3,period:9}});}
   if(base==="skyline"){
-    traffic(group,[-17,.4,1.9],[17,.4,1.9],7,3.2,.9);traffic(group,[17,.4,.3],[-17,.4,.3],6,2.6,.9);
+    traffic(group,[-17,.1,2.4],[17,.1,2.4],3,3.2,.95);traffic(group,[17,.1,.0],[-17,.1,.0],3,2.6,.95);
     gulls(group,[0,14,-4],6,9,0,12,.9);clouds(group,[0,25,-14],26,5,5,.6);
   }
-  if(desk)group.userData.hostSpots={close:[3.4,0,-3.1]};   // the close camera looks steeply down at the desk: the host stands behind it, where that camera can see
-  const feet:Point=desk?[3.3,0,2.6]:base==='skyline'?[4.4,.12,4.6]:base==='boardroom'||base==='studio'?[4.9,0,3.2]:[4.6,0,-.2];
+  group.userData.keep_subject=desk?3.0:base==="map"||base==="timeline"?4.3:0;
+  const feet:Point=desk?[3.3,0,2.6]:base==='skyline'?[4.4,.18,8.0]:base==='boardroom'||base==='studio'?[4.9,0,3.2]:[4.6,0,-.2];
   return {group,feet,place:base};
 }
 

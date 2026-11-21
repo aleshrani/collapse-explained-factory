@@ -27,7 +27,7 @@ export function table(m:Model,x:number,z:number,w:number,d:number,y=1.05){
 }
 export function sign(m:Model,x:number,y:number,z:number,w:number,h:number,text:string,base="#426e72"){
   const frame=painted("#695e50");m.box(x,y,z-.045,w+.13,h+.13,.13,frame);
-  const p=new THREE.Mesh(new THREE.PlaneGeometry(w,h),stencil(text,base));p.position.set(x,y,z+.045);m.group.add(p);
+  const p=new THREE.Mesh(new THREE.PlaneGeometry(w,h),stencil(text,base));p.position.set(x,y,z+.045);p.userData.text=true;m.group.add(p);
 }
 export function paper(m:Model,x:number,y:number,z:number,col="#e6dbc0"){
   const p=painted(col);m.box(x,y,z,1.13,.035,.78,p);

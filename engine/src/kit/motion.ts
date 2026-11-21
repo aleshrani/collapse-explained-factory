@@ -94,17 +94,42 @@ export function clouds(root:THREE.Object3D,c:Point,spread:number,n:number,size:n
     g.position.set(c[0]-spread+u*2*spread,g.userData.y,c[2]+(g.userData.z-.5)*spread);
   }});
 }
-/** cars driving along a straight road (looping) */
+/** one car, nose toward +z, origin on the road under its centre. Length 4.2 * k, so k = 1 is a normal car next to a 1.6 m stickman. */
+export function carMesh(color:string,k=1){
+  const g=new THREE.Group(),col=painted(color),dark=new THREE.MeshLambertMaterial({color:0x1d2329}),glass=new THREE.MeshLambertMaterial({color:0x3f5f73,side:THREE.DoubleSide}),hub=painted("#c7ccd0");
+  // side silhouette (x = along the car, y = up): chamfered nose and tail, a hood, then the cabin with raked screens
+  const sh=new THREE.Shape();
+  sh.moveTo(-2.05,.3);sh.quadraticCurveTo(-2.1,.18,-1.9,.16);sh.lineTo(1.9,.16);sh.quadraticCurveTo(2.1,.18,2.1,.38);sh.lineTo(2.05,.66);
+  sh.quadraticCurveTo(1.95,.8,1.5,.84);sh.lineTo(.85,.9);sh.quadraticCurveTo(.55,1.35,.2,1.4);sh.lineTo(-.75,1.4);sh.quadraticCurveTo(-1.1,1.34,-1.35,.9);
+  sh.lineTo(-1.95,.84);sh.quadraticCurveTo(-2.1,.8,-2.1,.6);sh.closePath();
+  const body=new THREE.ExtrudeGeometry(sh,{depth:1.45,bevelEnabled:true,bevelSize:.1,bevelThickness:.12,bevelSegments:3,curveSegments:8}).translate(0,0,-.725).rotateY(-Math.PI/2);
+  g.add(mesh(body,col));
+  // windows: the cabin outline, inset, on both sides, plus a windscreen and rear screen
+  const win=new THREE.Shape();win.moveTo(-.7,.95);win.lineTo(-1.15,.95);win.lineTo(-1.0,.95);win.closePath();
+  const w2=new THREE.Shape();w2.moveTo(-1.05,.95);w2.lineTo(.78,.95);w2.lineTo(.5,1.3);w2.lineTo(-.75,1.3);w2.closePath();
+  void win;
+  for(const side of [-1,1]){const gl=new THREE.Mesh(new THREE.ShapeGeometry(w2).rotateY(-Math.PI/2),glass);gl.position.x=side*(.725+.125);g.add(gl);}
+  // wheels: dark tyre, light hub disc, arch cut-outs are implied by the dark band
+  for(const [wz,wx] of [[1.35,.74],[-1.3,.74],[1.35,-.74],[-1.3,-.74]]){
+    const tyre=mesh(new THREE.CylinderGeometry(.42,.42,.3,16).rotateZ(Math.PI/2),dark);tyre.position.set(wx,.42,wz);
+    const disc=mesh(new THREE.CylinderGeometry(.24,.24,.32,12).rotateZ(Math.PI/2),hub);disc.position.set(wx,.42,wz);g.add(tyre,disc);
+  }
+  // lights
+  for(const x of [-.5,.5]){
+    const head=new THREE.Mesh(new THREE.BoxGeometry(.3,.14,.06),new THREE.MeshBasicMaterial({color:0xfff2b0}));head.position.set(x,.55,2.18);
+    const tail=new THREE.Mesh(new THREE.BoxGeometry(.3,.12,.06),new THREE.MeshBasicMaterial({color:0xd0302a}));tail.position.set(x,.58,-2.2);g.add(head,tail);
+  }
+  g.scale.setScalar(k);
+  return g;
+}
+/** cars driving along a straight road (looping); size k = 1 is a normal 4.2 m car */
 export function traffic(root:THREE.Object3D,a:Point,b:Point,n:number,speed:number,size=1){
   const cols=["#c9553a","#e8e1cf","#35546b","#d9a43a","#6f8a6a"];
   const len=Math.hypot(b[0]-a[0],b[2]-a[2]),ang=Math.atan2(b[0]-a[0],b[2]-a[2]),cars:THREE.Group[]=[];
-  const at=(i:number,t:number):[number,number,number]=>{const u=((i/n+t*speed/len)%1+1)%1;return [a[0]+(b[0]-a[0])*u,a[1]+.3*size,a[2]+(b[2]-a[2])*u];};
+  const at=(i:number,t:number):[number,number,number]=>{const u=((i/n+t*speed/len)%1+1)%1;return [a[0]+(b[0]-a[0])*u,a[1],a[2]+(b[2]-a[2])*u];};
   for(let i=0;i<n;i++){
-    const g=new THREE.Group(),col=painted(cols[i%cols.length]);
-    const top=mesh(new THREE.BoxGeometry(.9*size,.45*size,1.2*size),painted("#76a2a5","glass"));top.position.set(0,.5*size,-.15*size);
-    g.add(mesh(new THREE.BoxGeometry(1.1*size,.55*size,2.4*size),col),top);
-    g.rotation.y=ang;root.add(g);cars.push(g);
-    track(root,{id:"car#"+i+"@"+a[0].toFixed(0),kind:"car",r:1.2*size,h:.9*size,pos:t=>at(i,t)});
+    const g=carMesh(cols[i%cols.length],size);g.rotation.y=ang;root.add(g);cars.push(g);
+    track(root,{id:"car#"+i+"@"+a[0].toFixed(0),kind:"car",r:1.1*size*1.1,h:1.4*size,pos:t=>at(i,t)});
   }
   animate(root,t=>{cars.forEach((g,i)=>g.position.set(...at(i,t)));});
 }

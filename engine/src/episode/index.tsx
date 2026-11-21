@@ -11,11 +11,12 @@ import {GradeEffect,GRADES,GRADE_STRENGTH} from "../videos/dubai3d/grade";
 import {setStage} from "../sandboxes/kit_gallery/stage";
 import {scenery} from "./registry";
 import type {Point} from "../kit/shared";
-import {dress} from "./dress";
+import {dress,gagSpot,landUnder} from "./dress";
 import {runAnims} from "../kit/motion";
 import {BODY,freeRun,issue,Ob,relocate,report,verifyTracks,firstHit,bandFor} from "../kit/collide";
 import {animateArchitect} from "./host";
-import {cameraAt,checkFraming,fitView,hideCutCards,rightOf,screenLimits} from "./framing";
+import {floatIssue,standIssues,supportIssues} from "./placement";
+import {boxPoints,MAX_PITCH,occludes,textSurfaces,pitchOf,cameraAt,checkFraming,fitView,hideCutCards,rightOf,screenLimits} from "./framing";
 import {caption,Graphic,HOLD,Inset} from "./overlay";
 import {Episode,Shot} from "./types";
 
@@ -30,13 +31,27 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
     const spot=relocate(solidsAll(),feet0[0],feet0[2],feet0[1]);let feet:Point=spot?[spot[0],feet0[1],spot[1]]:feet0;
     // overview shots (aerial, whole-archipelago views) deliberately keep the host tiny or out of the plan; everything else is framed around him
     const subject=String(shot.params.subject??""),overview=shot.camera==="aerial"||(shot.kit==="dubai"&&["archipelago","coast","palm"].includes(subject));
-    const obs=(group.userData.obstacles??[]) as Ob[],keep=Number(group.userData.keep_subject??0);
-    let view=overview?view0:fitView(view0,shot,feet,obs,keep);
+    const allObs=(group.userData.obstacles??[]) as Ob[],obs=shot.kit==="dubai"?[]:allObs,keep=Number(group.userData.keep_subject??0);   // foreground cap is for rooms; outdoors the whole island is 'in front'
+    // the gag prop stands beside him along the final camera's right axis, so framing is two passes: host first, then host + prop
+    const mustFor=(v:{pos:number[];look:number[]}):THREE.Vector3[]=>{const gs=gagSpot(shot.params,feet,v.pos as Point,(v as {look?:number[]}).look as Point,allObs,(x,y,z)=>landUnder(group,x,y,z));return gs?[-1,1].flatMap(sg=>[.35,1.2].map(y=>new THREE.Vector3(gs.pos[0]+gs.rx*sg*gs.r*.9,gs.pos[1]+y,gs.pos[2]+gs.rz*sg*gs.r*.9))):[];};
+    let view=overview?view0:fitView(view0,shot,feet,obs,keep,[]);
+    let must=overview?[]:mustFor(view);
+    if(must.length){view=fitView(view0,shot,feet,obs,keep,must);must=mustFor(view);}
     // when moving the camera is not enough (host far from where the camera looks), he walks toward the camera's target a quarter at a time
-    for(let k=0;!overview&&k<5&&checkFraming(view,shot,()=>feet,obs).length;k++){
+    for(let k=0;!overview&&k<5&&checkFraming(view,shot,()=>feet,obs,must).length;k++){
       const to=relocate(solidsAll(),feet[0]+(view0.look[0]-feet[0])*.25,feet[2]+(view0.look[2]-feet[2])*.25,feet[1]);
       if(!to)break;
-      feet=[to[0],feet[1],to[1]];view=fitView(view0,shot,feet,obs,keep);
+      feet=[to[0],feet[1],to[1]];view=fitView(view0,shot,feet,obs,keep,[]);must=mustFor(view);if(must.length){view=fitView(view0,shot,feet,obs,keep,must);must=mustFor(view);}
+    }
+    // nobody stands in front of text (board titles, signs, screens): the host steps sideways until nothing is hidden behind him
+    const texts=textSurfaces(group);
+    if(!overview&&texts.length&&occludes(view,shot,texts,[{pos:feet}])){
+      const rt0=rightOf(new THREE.Vector3(...view.pos),new THREE.Vector3(...view.look));
+      for(const off of [2,-2,3.5,-3.5,5,-5,7,-7]){
+        const cand=relocate(solidsAll(),feet[0]+rt0.x*off,feet[2]+rt0.z*off,feet[1]);if(!cand)continue;
+        const f2:Point=[cand[0],feet[1],cand[1]],v2=fitView(view0,shot,f2,obs,keep,must);
+        if(!checkFraming(v2,shot,()=>f2,obs,must).length&&!occludes(v2,shot,texts,[{pos:f2}])){feet=f2;view=v2;break;}
+      }
     }
     // the host stands ON something: cast a ray down from his feet and snap him to the surface; no surface, or one far away, is a FLOAT failure
     const ray=new THREE.Raycaster(new THREE.Vector3(feet[0],feet[1]+.3,feet[2]),new THREE.Vector3(0,-1,0),0,40);
@@ -45,7 +60,7 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
     if(under?.object.userData.sea)issue(group,"FLOAT the host would stand on the open water");
     else if(under&&drop>.05&&drop<.6)feet[1]=under.point.y;
     else if(!(under&&drop<=.05&&drop>=-.4))issue(group,under?`FLOAT the host's feet are ${drop.toFixed(2)} m ${drop>0?"above":"below"} the surface under him`:"FLOAT there is no surface under the host's feet");
-    dress(group,feet,view0.pos,shot.params,["construction","bunker","ghostcity","ship"].includes(shot.kit));
+    dress(group,feet,view.pos,shot.params,["construction","bunker","ghostcity","ship"].includes(shot.kit),view.look as Point);
     const label="t="+shot.start.toFixed(1)+" "+shot.kit+"/"+String(shot.params.subject||shot.params.station||shot.params.state||"")+" "+shot.camera;
     const stage=setStage(scene,cam,view,feet,shot.light,shot.camera==="wide",place);
     if(place==="dubai"&&scene.fog instanceof THREE.Fog){
@@ -58,6 +73,8 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
       stage.traverse(o=>{if(o instanceof THREE.DirectionalLight)o.intensity*=.56;});
     }
     const actor=stage.children[stage.children.length-1],card=actor.children[0] as THREE.Mesh<THREE.PlaneGeometry,THREE.MeshLambertMaterial>;
+    // a steep overview (more than 25 degrees down) would show the flat people cards lying on the ground: nobody is in the plan there
+    if(overview&&[0,.5,1].some(u=>pitchOf(cameraAt(view,shot,u))>MAX_PITCH)){actor.visible=false;for(const c of (group.userData.cards??[]) as THREE.Mesh[])c.visible=false;}
     const host=animateArchitect(card),look=new THREE.Vector3(...view.look),eye=new THREE.Vector3(...view.pos);
     const right=rightOf(eye,look);
     // walking lines: the host paces along the camera's right axis, only as far as the free space and the frame allow
@@ -67,15 +84,37 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
     const need=Math.min(5,Math.max(1.5,eye.distanceTo(look)*.09)),maxLen=need+Math.min(.55,need*.16)+.1;
     const lim={pos:freeRun(solids,feet[0],feet[2],dx,dz,feet[1],maxLen),neg:freeRun(solids,feet[0],feet[2],-dx,-dz,feet[1],maxLen)};
     if(!overview){const sl=screenLimits(view,shot,feet,dx,dz,maxLen);lim.pos=Math.min(lim.pos,sl.pos);lim.neg=Math.min(lim.neg,sl.neg);}
+    if(!overview&&texts.length){
+      for(const sg of [1,-1]){const key=sg>0?"pos":"neg";
+        for(let s=.25;s<=lim[key];s+=.25)if(occludes(view,shot,texts,[{pos:[feet[0]+dx*s*sg,feet[1],feet[2]+dz*s*sg]}])){lim[key]=Math.max(0,s-.25);break;}
+      }
+      if(occludes(view,shot,texts,[{pos:feet}]))issue(group,"OCCLUDE the host stands in front of text on a board, sign or screen");
+    }
+    // placement gates: signs stand on something, nobody stands on the road or the water, side characters have floor under their feet
+    for(const t of supportIssues(group,(group.userData.obstacles??[]) as Ob[]))issue(group,t);
+    for(const t of standIssues((group.userData.obstacles??[]) as Ob[],"the host",[[feet[0],feet[2]],[feet[0]-dx*lim.neg,feet[2]-dz*lim.neg],[feet[0]+dx*lim.pos,feet[2]+dz*lim.pos]]))issue(group,t);
+    for(const cardX of (group.userData.cards??[]) as THREE.Mesh[]){
+      if(cardX.userData.seated)continue;
+      const r=Number(cardX.userData.reach??0),y=Number(cardX.userData.baseY??0);
+      for(const o of [-r,0,r]){
+        for(const t of standIssues((group.userData.obstacles??[]) as Ob[],"a side character",[[cardX.position.x+o,cardX.position.z]]))issue(group,t);
+        for(const t of floatIssue(group,cardX.position.x+o,y,cardX.position.z,"a side character"))issue(group,t);
+      }
+    }
+    // side characters never hide text either: one that would (anywhere on its walk) is taken out
+    for(const cardX of (group.userData.cards??[]) as THREE.Mesh[]){
+      const r=Number(cardX.userData.reach??0),sc=Number(cardX.userData.scale??1);
+      if(occludes(view,shot,texts,[-r,0,r].map(o=>({pos:[cardX.position.x+o,cardX.position.y,cardX.position.z] as [number,number,number],scale:sc}))))cardX.visible=false;
+    }
     const hostOb:Ob={x0:Math.min(feet[0]-dx*lim.neg,feet[0]+dx*lim.pos)-BODY,x1:Math.max(feet[0]-dx*lim.neg,feet[0]+dx*lim.pos)+BODY,z0:Math.min(feet[2]-dz*lim.neg,feet[2]+dz*lim.pos)-BODY,z1:Math.max(feet[2]-dz*lim.neg,feet[2]+dz*lim.pos)+BODY,y0:feet[1],y1:feet[1]+2.1,tag:"the host"};
     verifyTracks(group,[...solids,hostOb],shot.end-shot.start);
     // side characters are wholly inside the frame or hidden; the host's own framing is gated below, once his walk is known
     hideCutCards(view,shot,(group.userData.cards??[]) as THREE.Mesh[]);
-    return {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir:[dx,dz] as [number,number],overview,label};
+    return {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir:[dx,dz] as [number,number],overview,label,must};
   },[shot,cam,scene]);
   const fx=useMemo(()=>({ink:new InkPass(scene,cam),lens:new LensBlur({maxCoC:13,nearScale:1}),
     tone:new ToneMappingEffect({mode:ToneMappingMode.NEUTRAL}),grade:new GradeEffect(GRADES[shot.light],GRADE_STRENGTH[shot.light])}),[cam,scene,shot.light]);
-  const {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir,overview,label}=state;
+  const {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir,overview,label,must}=state;
   const u=age/(shot.end-shot.start),whip=shot.transition==="whip"?Math.pow(Math.max(0,1-age/.24),3):0;
   const impact=shot.beat==="rehook"?Math.exp(-age*7)*Math.sin(age*15)*Math.min(1,age*6):0;
   const distance=eye.distanceTo(look),c=cameraAt(view,shot,u,impact,whip);
@@ -88,14 +127,15 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
   const offRaw=(a:number)=>(enter?Math.pow(1-Math.min(1,a/dur),2)*reach*entrySide:0)+(special?0:Math.min(.55,reach*.16)*Math.sin(a*.8+shot.start)*Math.min(1,a/dur)),offAt=(a:number)=>Math.max(-lim.neg,Math.min(lim.pos,offRaw(a)));
   useMemo(()=>{
     const at=(a:number):[number,number,number]=>[feet[0]+dir[0]*offAt(a),feet[1],feet[2]+dir[1]*offAt(a)];
-    if(!overview)for(const text of checkFraming(view,shot,at,((group.userData.obstacles??[]) as Ob[])))issue(group,text);
+    if(!overview)for(const text of checkFraming(view,shot,at,shot.kit==="dubai"?[]:((group.userData.obstacles??[]) as Ob[]),must))issue(group,text);
     report(group,label);
   },[state]);
   const vel=(offAt(age+.04)-offAt(Math.max(0,age-.04)))/.08,stride=Math.abs(vel)>.22;
   actor.position.set(feet[0]+dir[0]*offAt(age),feet[1],feet[2]+dir[1]*offAt(age));card.rotation.y=Math.atan2(cam.position.x-actor.position.x,cam.position.z-actor.position.z);
   const toObject=new THREE.Vector3(look.x-feet[0],0,look.z-feet[2]).dot(right),side=Math.abs(toObject)<.4?(key%2?1:-1):Math.sign(toObject);
   runAnims(group,age);
-  host.draw(shot,age,frame,amp,{stride,side});fx.lens.focus=Math.max(.5,new THREE.Vector3(...feet).add(new THREE.Vector3(0,1.45,0)).sub(cam.position).dot(cam.getWorldDirection(new THREE.Vector3())));
+  let walked=0;for(let a=0;a<age;a+=.04)walked+=Math.abs(offAt(Math.min(age,a+.04))-offAt(a));   // distance travelled so far: one step per .5 m keeps the feet from sliding
+  host.draw(shot,age,frame,amp,{stride,side,phase:walked/.5*Math.PI});fx.lens.focus=Math.max(.5,new THREE.Vector3(...feet).add(new THREE.Vector3(0,1.45,0)).sub(cam.position).dot(cam.getWorldDirection(new THREE.Vector3())));
   if(shot.kit==="dubai")fx.lens.focus=cam.position.distanceTo(look);
   fx.lens.cInf=shot.camera==="wide"||shot.camera==="aerial"?1.6:4.1;
   useEffect(()=>()=>{state.host.dispose();for(const root of [state.group,state.stage])root.traverse(o=>{if(o instanceof THREE.Mesh)o.geometry.dispose();});},[state]);

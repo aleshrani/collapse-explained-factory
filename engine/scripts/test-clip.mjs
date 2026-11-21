@@ -13,6 +13,10 @@ process.chdir(engine);process.env.REMOTION_TMP="./remotion-tmp";
 const base=path.resolve(process.env.REMOTION_TMP);fs.mkdirSync(base,{recursive:true});
 const scratch=fs.mkdtempSync(path.join(base,"testclip-"));process.env.TMP=process.env.TEMP=scratch;
 const pub=path.join(scratch,"public");fs.mkdirSync(pub);
+// the real lip-sync levels of the voice, computed exactly as episode-mix.py does
+const python=path.join(root,"voice",".venv","Scripts","python.exe"),levelsFile=path.join(scratch,"levels.json");
+execFileSync(python,[path.join(engine,"scripts","voice-rms.py"),ep,levelsFile],{stdio:"inherit"});
+const rmsAll=read(levelsFile).rms;
 const idx=list.split(",").map(Number),{shots}=read(path.join(ep,"shots.json")),{words}=read(path.join(ep,"words.json"));
 // silent placeholder so <Audio> resolves; the real voice is muxed afterwards
 const wav=Buffer.alloc(44+8000*2);wav.write("RIFF",0);wav.writeUInt32LE(36+16000,4);wav.write("WAVEfmt ",8);wav.writeUInt32LE(16,16);wav.writeUInt16LE(1,20);wav.writeUInt16LE(1,22);
@@ -25,15 +29,16 @@ try{
   const serveUrl=await bundle({entryPoint:path.join(engine,"src","episode","index.tsx"),publicDir:pub,outDir:path.join(scratch,"bundle"),enableCaching:false});
   browser=await openBrowser("chrome",{browserExecutable,chromiumOptions});
   const opts={serveUrl,browserExecutable,chromiumOptions,puppeteerInstance:browser,timeoutInMilliseconds:180000,logLevel:"error"};
-  const clips=[],cuts=[],found=[];
+  const clips=[],cuts=[],found=[],segs=[];let clock=0;
   for(const [n,i] of idx.entries()){
     const shot=shots[i],first=Math.ceil(shot.start*24),stop=Math.ceil(shot.end*24),offset=first/24;
     const local={...shot,start:+(shot.start-offset).toFixed(5),end:+(shot.end-offset).toFixed(5)};
     const localWords=words.filter(w=>w.t>=shot.start&&w.t<shot.end).map(w=>({...w,t:+(w.t-offset).toFixed(3)}));
-    const props={shots:[local],words:localWords,rms:new Array(stop-first).fill(0.2).map((v,k)=>k%6<3?v:0.05),duration:(stop-first)/24};
+    const props={shots:[local],words:localWords,rms:rmsAll.slice(first,stop),duration:(stop-first)/24};
     const composition=await selectComposition({...opts,id:"Episode",inputProps:props});
     const clip=path.join(scratch,"c"+n+".mp4");
-    await renderMedia({...opts,inputProps:props,composition:{...composition,props,durationInFrames:stop-first},outputLocation:clip,codec:"h264",crf:20,muted:true,concurrency:2,scale,onBrowserLog:l=>{if(/COLLISION|FRAMING|FLOAT/.test(l.text)&&!found.includes("shot "+i+": "+l.text))found.push("shot "+i+": "+l.text);}});
+    await renderMedia({...opts,inputProps:props,composition:{...composition,props,durationInFrames:stop-first},outputLocation:clip,codec:"h264",crf:20,muted:true,concurrency:2,scale,onBrowserLog:l=>{if(/COLLISION|FRAMING|FLOAT|OCCLUDE|SUPPORT|STAND|STYLE/.test(l.text)&&!found.includes("shot "+i+": "+l.text))found.push("shot "+i+": "+l.text);}});
+    segs.push({id:i,start:+clock.toFixed(3),end:+(clock+(stop-first)/24).toFixed(3)});clock+=(stop-first)/24;
     clips.push(clip);cuts.push(`[1:a]atrim=${offset}:${(stop/24).toFixed(4)},asetpts=PTS-STARTPTS[a${n}]`);
     console.log("shot",i,"done",n+1+"/"+idx.length);
   }
@@ -43,6 +48,10 @@ try{
   const labels=idx.map((_,n)=>`[a${n}]`).join("");
   execFileSync("ffmpeg",["-v","error","-y","-i",picture,"-i",path.join(ep,"vo.wav"),"-filter_complex",cuts.join(";")+";"+labels+`concat=n=${idx.length}:v=0:a=1[a]`,"-map","0:v","-map","[a]","-c:v","copy","-c:a","aac","-b:a","192k","-shortest","-movflags","+faststart",path.resolve(out)],{stdio:"inherit"});
   console.log("wrote",path.resolve(out));
+  // STATIC gate: no shot may sit still at the contact-sheet rate
+  fs.writeFileSync(path.join(scratch,"segs.json"),JSON.stringify(segs));
+  try{execFileSync(python,[path.join(engine,"scripts","static-gate.py"),picture,path.join(scratch,"segs.json")],{stdio:"inherit"});}
+  catch(e){found.push("STATIC gate failed (see lines above)");}
   if(found.length){console.error("COLLISIONS in the test clip:\n"+found.join("\n"));process.exitCode=1;}
 }finally{
   if(browser)await browser.close({silent:true});

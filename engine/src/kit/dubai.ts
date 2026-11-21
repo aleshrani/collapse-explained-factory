@@ -173,7 +173,7 @@ export function build(params:{subject?:string},ctx:{light?:"day"|"golden"}={}){
   base.cameras.aerial=camera(eye(.01,huge?1.55:1.55,.24),look,huge?52:45);
   if(subject==="coast")base.cameras.aerial=camera([x-60,160,z+120],[SHORE_X,20,z],46);
   const feet:Point=unbuilt?[x+.55,SAND_Y,z+.25]:subject==="dredger"?[DREDGE[0]+1,4.96,DREDGE[2]+1]:survey?[43.5,.88,2.85]
-    :subject==="ireland"?[x+.4,SAND_Y,z+.6]:subject==="villa"?[x-3,SAND_Y,z+5]:false?[x,SAND_Y,z]
+    :subject==="ireland"?[x+.4,SAND_Y,z+.6]:subject==="villa"?[x-3,SAND_Y,z+8.5]:false?[x,SAND_Y,z]
     :subject==="hotel"?[HOTEL[0]-3,SAND_Y,HOTEL[2]+5]
     :subject==="breakwater"?[x,2.0,z]                     // on the viewing platform built into the wall below
     :subject==="palm"?[x,.6,z]                            // on the palm's trunk road
@@ -205,7 +205,7 @@ export function build(params:{subject?:string},ctx:{light?:"day"|"golden"}={}){
     }
   }
   if(subject==="dredger"||subject==="coast"||subject==="palm"||subject==="breakwater"){for(const k of [1,.6,.35,.2])if(clearWater(polys,m.obstacles,DREDGE[0]-4,DREDGE[2]+6,26*k,16*k)){circlingBoat(base,[DREDGE[0]-4,DREDGE[2]+6],26*k,16*k,.12,4,22,0,"#f0dfba","#a9553c");break;}}
-  traffic(base,[SHORE_X+36,1.7,-260],[SHORE_X+36,1.7,320],14,16,3.2);traffic(base,[SHORE_X+42,1.7,330],[SHORE_X+42,1.7,-250],12,13,3.2);
+  traffic(base,[SHORE_X+36,1.4,-260],[SHORE_X+36,1.4,320],14,16,1.6);traffic(base,[SHORE_X+42,1.4,330],[SHORE_X+42,1.4,-250],12,13,1.6);
   if(!huge)clouds(base,[x,170,z],300,5,34,5);
   return {group:base,feet,place:"dubai"};
 }

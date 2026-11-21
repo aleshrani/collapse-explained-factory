@@ -32,7 +32,7 @@ try{
     // STILLS=<dir> saves a half-size first/middle/last frame per shot (to look at the framing), otherwise one tiny still is enough
     const keep=process.env.STILLS,frames=keep?[1,Math.round(composition.durationInFrames/2),composition.durationInFrames-2]:[1];
     for(const [k,fr] of frames.entries())await renderStill({...opts,composition:{...composition,props},frame:fr,scale:keep?.4:.1,output:keep?path.join(path.resolve(keep),"s"+(list?list[i]:i)+"_"+k+".jpg"):path.join(scratch,"s.jpg"),imageFormat:"jpeg",
-      onBrowserLog:l=>{if(/COLLISION|FRAMING|FLOAT/.test(l.text)&&!found.includes("#"+(list?list[i]:i)+" "+l.text))found.push("#"+(list?list[i]:i)+" "+l.text);}});
+      onBrowserLog:l=>{if(/COLLISION|FRAMING|FLOAT|OCCLUDE|SUPPORT|STAND|STYLE/.test(l.text)&&!found.includes("#"+(list?list[i]:i)+" "+l.text))found.push("#"+(list?list[i]:i)+" "+l.text);}});
     if(i%20===0)console.log("checked up to shot",i);
   }
 }finally{

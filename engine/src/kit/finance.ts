@@ -33,6 +33,7 @@ export function build(p:RoomParams){
   m.box(3.6,1.2,-1.1,.5,.12,.4,painted("#2f3945"));m.pipe([3.6,1.25,-1.1],[3.6,1.45,-1.1],.06,dark);
   [-3.5,-1.2,1.1,3.4].forEach((x,i)=>addPerson(m.group,{x,y:.5,z:-2.6,variant:i,scale:1,seated:true}));
   addPerson(m.group,{x:0,y:0,z:-3.3,variant:5,scale:.95,carry:true,walk:{dx:4.2,period:9}});   // a runner crossing behind the desk
+  for(const x of [-1.9,.3])m.box(x,.75,.9,.09,1.5,.09,steel);   // the sign stands on two legs
   sign(m,-.8,1.6,.9,2.6,.43,p.detail||(crash?"Markets falling":"Support announced"),"#8c6a54");
   return finish(m,[0,1.6,-1.4],"finance-wall");
 }
