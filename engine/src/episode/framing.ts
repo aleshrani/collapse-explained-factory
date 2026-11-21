@@ -110,13 +110,16 @@ export function foregroundArea(c:CamState,obs:Ob[],look:THREE.Vector3,floorY:num
 /** Search camera moves for one that frames the host: dolly along the camera's own axis (in or back up) combined with a sideways truck,
  *  smallest move first. Accepted when he is inside the margins at the start, middle and end of the shot and 20-60 % of the picture high.
  *  Pitch and height never change, so a high camera stays high. Returns the original view when nothing works (the host then walks toward the target). */
-export function fitView(view:View,shot:Shot,feet:[number,number,number],obs:Ob[]=[],keep=0,must:THREE.Vector3[]=[]):View{
+export function fitView(view:View,shot:Shot,feet:[number,number,number],obs:Ob[]=[],keep=0,must:THREE.Vector3[]=[],texts:THREE.Vector3[][]=[]):View{
   const eye=new THREE.Vector3(...view.pos),look=new THREE.Vector3(...view.look),fwd=look.clone().sub(eye).normalize(),rt=rightOf(eye,look),D=eye.distanceTo(look);
   const lookV=new THREE.Vector3(...view.look);
-  const ok=(v:View,withKeep:boolean)=>{
+  // level 2: subject kept whole and no text cut by the frame; 1: no text cut by the frame; 0: only the host rules
+  const ok=(v:View,level:number)=>{
+    const withKeep=level>=2;
     for(const u of [0,.5,1]){
       const c=cameraAt(v,shot,u),b=project(c,hostBox(feet));
       if(!b||b.x0<.05||b.x1>.95||b.y0<.05||b.y1>.95)return 0;
+      if(level>=1&&texts.length)for(const t of texts){const tb=project(c,t);if(tb&&tb.y1-tb.y0>=READABLE&&tb.x1>0&&tb.x0<1&&tb.y1>0&&tb.y0<1&&(tb.x0<.0||tb.x1>1||tb.y0<.0||tb.y1>1))return 0;}   // text is cut by the frame
       if(pitchOf(c)>MAX_PITCH)return 0;
       const h=figureFrac(c,feet);if(h<.2||h>.6)return 0;
       if(withKeep&&keep){   // the subject (a board, a page of text) stays whole in the picture
@@ -129,18 +132,18 @@ export function fitView(view:View,shot:Shot,feet:[number,number,number],obs:Ob[]
     return 1;
   };
   void lookV;
-  if(ok(view,true))return view;
+  if(ok(view,keep?2:1))return view;
   let best:View|undefined,cost=1e9;
   const dirH=eye.clone().sub(look).setY(0),R0=Math.max(.5,dirH.length());dirH.normalize();
   const P0=THREE.MathUtils.radToDeg(Math.atan2(eye.y-look.y,R0));
-  for(const withKeep of keep?[true,false]:[false])if(!best){
+  for(const withKeep of (keep?[2,1,0]:[1,0]))if(!best){
     // family 1: dolly along the camera's own axis, sideways truck, pedestal, pitch
     for(let t=-D*.92;t<=14;t+=.5)for(const sj of must.length?[0,.25,-.25,.5,-.5,.75,-.75,1,-1,1.5,-1.5,2,-2,3,-3,4,-4]:[0,.5,-.5,1,-1,1.5,-1.5,2.5,-2.5,4,-4])for(const h of must.length?[0]:[0,-1,-2])for(const q of [0,-1,1,-2,2,-3,3,-4,-5,-6]){
       const s=sj*Math.max(1,D*.12),pos=eye.clone().addScaledVector(fwd,-t).addScaledVector(rt,s);pos.y+=h;
       if(pos.y<feet[1]+.9||(h<0&&pos.y<eye.y*.5))continue;
       const v:View={pos:[pos.x,pos.y,pos.z],look:[look.x+rt.x*s,look.y+h+q*D*.12,look.z+rt.z*s],fov:view.fov};
       const c=Math.abs(t)+Math.abs(s)*.8+Math.abs(q)*1.2+Math.abs(h)*.8;
-      if(c<cost&&ok(v,withKeep)){best=v;cost=c;}
+      if(c<cost&&ok(v,withKeep as number)){best=v;cost=c;}
     }
     // family 2: re-aim from the same side at a shallower angle (a steep top-down view is not allowed with people in the picture)
     if(!best||P0>MAX_PITCH)for(const az of [0,35,-35,70,-70])for(const rm of [.12,.2,.3,.45,.6,.8,1,1.25,1.5,2,2.8])for(const P of [8,12,16,20,24])for(const sj of [0,.5,-.5,1,-1,2,-2])for(const q of [0,-1,1,-2,2]){
@@ -149,7 +152,7 @@ export function fitView(view:View,shot:Shot,feet:[number,number,number],obs:Ob[]
       if(pos.y<feet[1]+.9)continue;
       const v:View={pos:[pos.x,pos.y,pos.z],look:[look.x+rtA.x*s,look.y+q*D*.12,look.z+rtA.z*s],fov:view.fov};
       const c=Math.abs(R-R0)*.6+Math.abs(P-P0)*.15+Math.abs(s)*.8+Math.abs(q)*1.2+Math.abs(az)*.06+(P0>MAX_PITCH?0:5);
-      if(c<cost&&ok(v,withKeep)){best=v;cost=c;}
+      if(c<cost&&ok(v,withKeep as number)){best=v;cost=c;}
     }
   }
   // family 3 (last resort): a host-centred view from the original side. The subject may fall partly out of the picture, the host never does.
@@ -161,7 +164,7 @@ export function fitView(view:View,shot:Shot,feet:[number,number,number],obs:Ob[]
       const lk=chest.clone().addScaledVector(rtA,sj*.5);lk.y=chest.y-.2;
       const v:View={pos:[pos.x,pos.y,pos.z],look:[lk.x,lk.y,lk.z],fov:view.fov};
       const c=20+R*.2+Math.abs(az)*.05+P*.05+Math.abs(sj)*.2;
-      if(c<cost&&ok(v,false)){best=v;cost=c;}
+      if(c<cost&&ok(v,0)){best=v;cost=c;}
     }
   }
   return best??view;
@@ -183,7 +186,10 @@ export function screenLimits(view:View,shot:Shot,feet:[number,number,number],dx:
   return {pos:lim(1),neg:lim(-1)};
 }
 /** the gate: host fully in frame (3 % margin) and 12-70 % of the picture height at the start, middle and end. At(u) gives his position. */
-export function checkFraming(view:View,shot:Shot,at:(age:number)=>[number,number,number],obs:Ob[]=[],must:THREE.Vector3[]=[]){
+// Only readable text counts as cut (QUALITY-RULES 16): at least 4 % of the picture height, about 43 px at 1080p.
+// Small pages, wall notes and decor lettering may run off the edge like in any real shot.
+const READABLE=.04;
+export function checkFraming(view:View,shot:Shot,at:(age:number)=>[number,number,number],obs:Ob[]=[],must:THREE.Vector3[]=[],texts:THREE.Vector3[][]=[]){
   const dur=shot.end-shot.start,out:string[]=[];
   for(const u of [0,.5,1]){
     const c=cameraAt(view,shot,u),p=at(Math.min(dur-.04,u*dur)),b=project(c,hostBox(p));
@@ -192,6 +198,7 @@ export function checkFraming(view:View,shot:Shot,at:(age:number)=>[number,number
     const h=figureFrac(c,p);
     if(b.x0<.03||b.x1>.97||b.y0<.03||b.y1>.97)out.push(`FRAMING the host is cut by the frame or out of it in the ${label} frame (x ${b.x0.toFixed(2)}..${b.x1.toFixed(2)}, y ${b.y0.toFixed(2)}..${b.y1.toFixed(2)})`);
     if(h<.18)out.push(`FRAMING the host is too small in the ${label} frame (${(h*100).toFixed(0)} % of the picture height)`);
+    for(const t of texts){const tb=project(c,t);if(tb&&tb.y1-tb.y0>=READABLE&&tb.x1>0&&tb.x0<1&&tb.y1>0&&tb.y0<1&&(tb.x0<-.005||tb.x1>1.005||tb.y0<-.005||tb.y1>1.005)){out.push(`TEXT-WARN text on a board, sign or page is cut by the frame in the ${label} frame`);break;}}
     if(must.length){const mb=project(c,must);if(!mb||mb.x0<.02||mb.x1>.98||mb.y0<.02||mb.y1>.98)out.push(`FRAMING the gag prop is cut by the frame or out of it in the ${label} frame`);}
     if(pitchOf(c)>MAX_PITCH+.5)out.push(`FRAMING the camera looks down ${pitchOf(c).toFixed(0)} degrees in the ${label} frame (max ${MAX_PITCH} with people in the picture)`);
     const fg=foregroundArea(c,obs,new THREE.Vector3(...view.look),p[1]);

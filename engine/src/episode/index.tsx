@@ -32,16 +32,17 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
     // overview shots (aerial, whole-archipelago views) deliberately keep the host tiny or out of the plan; everything else is framed around him
     const subject=String(shot.params.subject??""),overview=shot.camera==="aerial"||(shot.kit==="dubai"&&["archipelago","coast","palm"].includes(subject));
     const allObs=(group.userData.obstacles??[]) as Ob[],obs=shot.kit==="dubai"?[]:allObs,keep=Number(group.userData.keep_subject??0);   // foreground cap is for rooms; outdoors the whole island is 'in front'
+    const texts0=textSurfaces(group);   // board titles, signs, pages: the framing keeps them whole
     // the gag prop stands beside him along the final camera's right axis, so framing is two passes: host first, then host + prop
-    const mustFor=(v:{pos:number[];look:number[]}):THREE.Vector3[]=>{const gs=gagSpot(shot.params,feet,v.pos as Point,(v as {look?:number[]}).look as Point,allObs,(x,y,z)=>landUnder(group,x,y,z));return gs?[-1,1].flatMap(sg=>[.35,1.2].map(y=>new THREE.Vector3(gs.pos[0]+gs.rx*sg*gs.r*.9,gs.pos[1]+y,gs.pos[2]+gs.rz*sg*gs.r*.9))):[];};
-    let view=overview?view0:fitView(view0,shot,feet,obs,keep,[]);
+    const mustFor=(v:{pos:number[];look:number[]}):THREE.Vector3[]=>{const gs=gagSpot(shot.params,feet,v.pos as Point,(v as {look?:number[]}).look as Point,allObs,(x,y,z)=>landUnder(group,x,y,z));return gs?[-1,1].flatMap(sg=>[.35,1.2].map(y=>new THREE.Vector3(gs.pos[0]+gs.rx*sg*gs.r*1.08,gs.pos[1]+y,gs.pos[2]+gs.rz*sg*gs.r*1.08))):[];};
+    let view=overview?view0:fitView(view0,shot,feet,obs,keep,[],texts0);
     let must=overview?[]:mustFor(view);
-    if(must.length){view=fitView(view0,shot,feet,obs,keep,must);must=mustFor(view);}
+    if(must.length){view=fitView(view0,shot,feet,obs,keep,must,texts0);must=mustFor(view);}
     // when moving the camera is not enough (host far from where the camera looks), he walks toward the camera's target a quarter at a time
-    for(let k=0;!overview&&k<5&&checkFraming(view,shot,()=>feet,obs,must).length;k++){
+    for(let k=0;!overview&&k<5&&checkFraming(view,shot,()=>feet,obs,must,texts0).length;k++){
       const to=relocate(solidsAll(),feet[0]+(view0.look[0]-feet[0])*.25,feet[2]+(view0.look[2]-feet[2])*.25,feet[1]);
       if(!to)break;
-      feet=[to[0],feet[1],to[1]];view=fitView(view0,shot,feet,obs,keep,[]);must=mustFor(view);if(must.length){view=fitView(view0,shot,feet,obs,keep,must);must=mustFor(view);}
+      feet=[to[0],feet[1],to[1]];view=fitView(view0,shot,feet,obs,keep,[],texts0);must=mustFor(view);if(must.length){view=fitView(view0,shot,feet,obs,keep,must,texts0);must=mustFor(view);}
     }
     // nobody stands in front of text (board titles, signs, screens): the host steps sideways until nothing is hidden behind him
     const texts=textSurfaces(group);
@@ -49,8 +50,8 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
       const rt0=rightOf(new THREE.Vector3(...view.pos),new THREE.Vector3(...view.look));
       for(const off of [2,-2,3.5,-3.5,5,-5,7,-7]){
         const cand=relocate(solidsAll(),feet[0]+rt0.x*off,feet[2]+rt0.z*off,feet[1]);if(!cand)continue;
-        const f2:Point=[cand[0],feet[1],cand[1]],v2=fitView(view0,shot,f2,obs,keep,must);
-        if(!checkFraming(v2,shot,()=>f2,obs,must).length&&!occludes(v2,shot,texts,[{pos:f2}])){feet=f2;view=v2;break;}
+        const f2:Point=[cand[0],feet[1],cand[1]],v2=fitView(view0,shot,f2,obs,keep,must,texts0);
+        if(!checkFraming(v2,shot,()=>f2,obs,must,texts0).length&&!occludes(v2,shot,texts,[{pos:f2}])){feet=f2;view=v2;break;}
       }
     }
     // the host stands ON something: cast a ray down from his feet and snap him to the surface; no surface, or one far away, is a FLOAT failure
@@ -88,7 +89,7 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
       for(const sg of [1,-1]){const key=sg>0?"pos":"neg";
         for(let s=.25;s<=lim[key];s+=.25)if(occludes(view,shot,texts,[{pos:[feet[0]+dx*s*sg,feet[1],feet[2]+dz*s*sg]}])){lim[key]=Math.max(0,s-.25);break;}
       }
-      if(occludes(view,shot,texts,[{pos:feet}]))issue(group,"OCCLUDE the host stands in front of text on a board, sign or screen");
+      if(occludes(view,shot,texts,[{pos:feet}]))issue(group,"TEXT-WARN the host stands in front of text on a board, sign or screen");
     }
     // placement gates: signs stand on something, nobody stands on the road or the water, side characters have floor under their feet
     for(const t of supportIssues(group,(group.userData.obstacles??[]) as Ob[]))issue(group,t);
@@ -110,11 +111,11 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
     verifyTracks(group,[...solids,hostOb],shot.end-shot.start);
     // side characters are wholly inside the frame or hidden; the host's own framing is gated below, once his walk is known
     hideCutCards(view,shot,(group.userData.cards??[]) as THREE.Mesh[]);
-    return {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir:[dx,dz] as [number,number],overview,label,must};
+    return {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir:[dx,dz] as [number,number],overview,label,must,texts0};
   },[shot,cam,scene]);
   const fx=useMemo(()=>({ink:new InkPass(scene,cam),lens:new LensBlur({maxCoC:13,nearScale:1}),
     tone:new ToneMappingEffect({mode:ToneMappingMode.NEUTRAL}),grade:new GradeEffect(GRADES[shot.light],GRADE_STRENGTH[shot.light])}),[cam,scene,shot.light]);
-  const {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir,overview,label,must}=state;
+  const {group,stage,actor,card,host,view,look,eye,right,feet,lim,dir,overview,label,must,texts0}=state;
   const u=age/(shot.end-shot.start),whip=shot.transition==="whip"?Math.pow(Math.max(0,1-age/.24),3):0;
   const impact=shot.beat==="rehook"?Math.exp(-age*7)*Math.sin(age*15)*Math.min(1,age*6):0;
   const distance=eye.distanceTo(look),c=cameraAt(view,shot,u,impact,whip);
@@ -127,7 +128,7 @@ function World({shot:raw,age,frame,amp}:{shot:Shot;age:number;frame:number;amp:n
   const offRaw=(a:number)=>(enter?Math.pow(1-Math.min(1,a/dur),2)*reach*entrySide:0)+(special?0:Math.min(.55,reach*.16)*Math.sin(a*.8+shot.start)*Math.min(1,a/dur)),offAt=(a:number)=>Math.max(-lim.neg,Math.min(lim.pos,offRaw(a)));
   useMemo(()=>{
     const at=(a:number):[number,number,number]=>[feet[0]+dir[0]*offAt(a),feet[1],feet[2]+dir[1]*offAt(a)];
-    if(!overview)for(const text of checkFraming(view,shot,at,shot.kit==="dubai"?[]:((group.userData.obstacles??[]) as Ob[]),must))issue(group,text);
+    if(!overview)for(const text of checkFraming(view,shot,at,shot.kit==="dubai"?[]:((group.userData.obstacles??[]) as Ob[]),must,texts0))issue(group,text);
     report(group,label);
   },[state]);
   const vel=(offAt(age+.04)-offAt(Math.max(0,age-.04)))/.08,stride=Math.abs(vel)>.22;

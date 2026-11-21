@@ -32,11 +32,13 @@ try{
     // STILLS=<dir> saves a half-size first/middle/last frame per shot (to look at the framing), otherwise one tiny still is enough
     const keep=process.env.STILLS,frames=keep?[1,Math.round(composition.durationInFrames/2),composition.durationInFrames-2]:[1];
     for(const [k,fr] of frames.entries())await renderStill({...opts,composition:{...composition,props},frame:fr,scale:keep?.4:.1,output:keep?path.join(path.resolve(keep),"s"+(list?list[i]:i)+"_"+k+".jpg"):path.join(scratch,"s.jpg"),imageFormat:"jpeg",
-      onBrowserLog:l=>{if(/COLLISION|FRAMING|FLOAT|OCCLUDE|SUPPORT|STAND|STYLE/.test(l.text)&&!found.includes("#"+(list?list[i]:i)+" "+l.text))found.push("#"+(list?list[i]:i)+" "+l.text);}});
+      onBrowserLog:l=>{if(/COLLISION|FRAMING|FLOAT|OCCLUDE|SUPPORT|STAND|STYLE|TEXT-WARN/.test(l.text)&&!found.includes("#"+(list?list[i]:i)+" "+l.text))found.push("#"+(list?list[i]:i)+" "+l.text);}});
     if(i%20===0)console.log("checked up to shot",i);
   }
 }finally{
   if(browser)await browser.close({silent:true});
   fs.rmSync(scratch,{recursive:true,force:true,maxRetries:4,retryDelay:300});
 }
-if(found.length){console.error(found.length+" collision(s):\n"+found.join("\n"));process.exitCode=1;}else console.log("No collisions in shots "+first+"-"+last+".");
+const warn=found.filter(l=>l.includes("TEXT-WARN")),bad=found.filter(l=>!l.includes("TEXT-WARN"));
+if(warn.length)console.log(warn.length+" text warning(s) (cut or covered text; not blocking, fix in the kit):\n"+warn.join("\n"));
+if(bad.length){console.error(bad.length+" collision(s):\n"+bad.join("\n"));process.exitCode=1;}else console.log("No collisions in shots "+first+"-"+last+".");

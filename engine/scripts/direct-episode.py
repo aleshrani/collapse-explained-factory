@@ -150,6 +150,8 @@ shared_all()
 # Repair pass: keep the directed content, but pick a free camera and, if a physical setup is
 # overused, a related setup from the same family, so the plan passes validate-shots.py.
 CAMS = ["wide", "medium", "close", "low", "aerial", "dolly"]
+BOARD_KITS = {"timeline", "blueprint", "boardroom", "money", "studio", "map", "documents", "courtroom"}
+BOARD_CAMS = ["medium", "wide"]
 FAMILY = {
     "dubai": [("dubai", {"subject": s}) for s in ["archipelago", "beach", "coast", "breakwater", "villa", "ireland", "delivery", "landing", "palm", "dredger"]],
     "desk": [(k, {}) for k in ["documents", "money", "timeline", "blueprint", "map", "studio", "boardroom", "skyline"]],
@@ -175,8 +177,19 @@ for s in shots:
             if ok_loc(cand): s.update(kit=cand["kit"], params=cand["params"]); break
     prev = placed[-1]["camera"] if placed else None
     used = {x["camera"] for x in placed if location(x) == location(s) and a - x["start"] < 90}
+    # Boards, desks and the courtroom carry text: only cameras that show it whole (QUALITY-RULES 16).
+    cams = BOARD_CAMS if s["kit"] in BOARD_KITS else CAMS
+    if s["kit"] in BOARD_KITS and not [c for c in BOARD_CAMS if c != prev and c not in used] and family(s["kit"]):
+        # both text-safe cameras are spent at this place: move to a sibling desk kit where one is free
+        for kit, extra in FAMILY[family(s["kit"])]:
+            cand = dict(s, kit=kit, params={**{k: v for k, v in s["params"].items() if k not in ("subject", "station")}, **(extra or {"subject": s["params"].get("subject", "")})})
+            cu = {x["camera"] for x in placed if location(x) == location(cand) and a - x["start"] < 90}
+            if kit in BOARD_KITS and ok_loc(cand) and [c for c in BOARD_CAMS if c != prev and c not in cu]:
+                s.update(kit=cand["kit"], params=cand["params"]); used = cu; break
+    if s["kit"] in BOARD_KITS and s["camera"] not in BOARD_CAMS:
+        s["camera"] = next((c for c in BOARD_CAMS if c != prev and c not in used), BOARD_CAMS[0])
     if s["camera"] == prev or s["camera"] in used:
-        free = [c for c in CAMS if c != prev and c not in used]
+        free = [c for c in cams if c != prev and c not in used] or [c for c in CAMS if c != prev and c not in used]
         if free: s["camera"] = free[0]
     placed.append(s)
 
