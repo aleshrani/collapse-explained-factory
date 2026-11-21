@@ -3,6 +3,7 @@ import {ctex} from "../videos/bridge/paint";
 import {Model,painted,wood} from "./shared";
 import {finish,RoomParams,shell,sign,table} from "./interior";
 import {addPerson} from "./extras";
+import {animate} from "./motion";
 
 // Finance room: a wall of market screens above a trading desk. state "crash" = falling red charts,
 // "rescue" = a steadied, rising line. Charts are schematic (no numbers) so no figure is invented.
@@ -23,13 +24,15 @@ export function build(p:RoomParams){
     const x=-w/2+2.4+c*(w-4.8)/(cols-1),y=2.6+r*2.15;
     m.box(x,y,-5.8,3.0,1.8,.12,steel);
     const plane=new THREE.Mesh(new THREE.PlaneGeometry(2.8,1.6),new THREE.MeshBasicMaterial({map:screens(c*rows+r)}));plane.position.set(x,y,-5.73);m.group.add(plane);
+    const tex=screens(c*rows+r);tex.wrapS=THREE.RepeatWrapping;animate(m.group,t=>{tex.offset.x=((t*.09+(c*rows+r)*.23)%1+1)%1;});   // live ticker: every chart keeps scrolling
   }
   m.box(0,5.55,-6.1,w-3,.35,.1,painted("#bc644c"));
   sign(m,-1.5,6.3,-6.2,5.8,.7,"غرفة التداول | "+(p.subject||"Finance room"),"#3d4a55");
   table(m,0,-1.4,9,2.2,1.05);
   for(let i=0;i<4;i++){const x=-3.5+i*2.3;m.box(x,1.45,-1.9,.9,.55,.06,dark);m.box(x,1.3,-1.85,.07,.3,.07,steel);paper(m,x,1.15,-1.1);}
   m.box(3.6,1.2,-1.1,.5,.12,.4,painted("#2f3945"));m.pipe([3.6,1.25,-1.1],[3.6,1.45,-1.1],.06,dark);
-  [-3.5,-1.2,1.1,3.4].forEach((x,i)=>addPerson(m.group,{x,y:.5,z:-2.6,variant:i,scale:1}));
+  [-3.5,-1.2,1.1,3.4].forEach((x,i)=>addPerson(m.group,{x,y:.5,z:-2.6,variant:i,scale:1,seated:true}));
+  addPerson(m.group,{x:0,y:0,z:-3.3,variant:5,scale:.95,carry:true,walk:{dx:4.2,period:9}});   // a runner crossing behind the desk
   sign(m,-.8,1.6,.9,2.6,.43,p.detail||(crash?"Markets falling":"Support announced"),"#8c6a54");
   return finish(m,[0,1.6,-1.4],"finance-wall");
 }

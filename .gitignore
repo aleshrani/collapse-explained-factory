@@ -36,3 +36,4 @@ episodes/[0-9][0-9]-*/factory-node.log
 data/refs/**/*.jpg
 data/refs/**/*.png
 data/refs/**/*.webp
+__pycache__/

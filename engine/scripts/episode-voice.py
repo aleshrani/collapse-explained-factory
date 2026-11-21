@@ -31,28 +31,111 @@ def extract(source):
     return segments,markers,gags
 def model_version(files):
     return digest(*(f"{p.name}:{p.stat().st_size}:{p.stat().st_mtime_ns}" for p in files))
+
+MODEL_DIRS={"supertonic":"sherpa-onnx-supertonic-3-tts-int8-2026-05-11","kitten":"kitten-mini-en-v0_8"}
+PRESETS={"kokoro":"am_puck","supertonic":"M2","kitten":"Jasper"}
+PRESETS.update({"qwen-c":"C", "qwen-d":"D", "qwen-e":"E", "qwen-f":"F-reference", "qwen-f-design":"F"})
+
+def voice_version(name):
+    models=VOICE/"models"
+    if name=="qwen-f":
+        from fixed_narrator import version
+        return version()
+    if name=="qwen-f-design":name="qwen-f"
+    if name in ("qwen-c","qwen-d","qwen-e","qwen-f"):
+        from qwen_narrator import MODEL, PROFILES
+        import onnxruntime
+        files=sorted(p for p in MODEL.rglob("*") if p.is_file() and p.suffix in (".npy",".onnx",".data",".json"))
+        helpers=[Path(__file__).with_name(n) for n in ("qwen_narrator.py","qwen_takes.py")]
+        return digest(name,PROFILES[name],onnxruntime.__version__,model_version(files+helpers))
+    if name=="kokoro":
+        return model_version([models/"kokoro-v1.0.onnx",models/"voices-v1.0.bin"])
+    folder=models/MODEL_DIRS[name]
+    if not folder.is_dir():raise FileNotFoundError(f"Missing local {name} weights: {folder}")
+    import sherpa_onnx
+    files=sorted(p for p in folder.iterdir() if p.suffix in (".onnx",".bin",".json") or p.name=="tokens.txt")
+    return digest(name,PRESETS[name],sherpa_onnx.__version__,"cpu4-native-to-24k-v1",model_version(files))
+
+def load_speaker(name):
+    models=VOICE/"models"
+    if name=="qwen-f":raise ValueError("The fixed narrator requires the per-segment clone_takes gate")
+    if name=="qwen-f-design":name="qwen-f"
+    if name in ("qwen-c","qwen-d","qwen-e","qwen-f"):
+        from qwen_narrator import QwenNarrator
+        narrator=QwenNarrator()
+        return lambda text:narrator.synthesize(text,name)
+    if name=="kokoro":
+        from kokoro_onnx import Kokoro
+        model=Kokoro(str(models/"kokoro-v1.0.onnx"),str(models/"voices-v1.0.bin"))
+        return lambda text:model.create(text,voice="am_puck",speed=1.0,lang="en-us")
+
+    import sherpa_onnx as so
+    from scipy.signal import resample_poly
+    folder=models/MODEL_DIRS[name]
+    generation=so.GenerationConfig()
+    generation.speed=1.0
+    if name=="supertonic":
+        names={"duration_predictor":"duration_predictor.int8.onnx","text_encoder":"text_encoder.int8.onnx","vector_estimator":"vector_estimator.int8.onnx","vocoder":"vocoder.int8.onnx","tts_json":"tts.json","unicode_indexer":"unicode_indexer.bin","voice_style":"voice.bin"}
+        backend=so.OfflineTtsSupertonicModelConfig(**{key:str(folder/file) for key,file in names.items()})
+        generation.sid=6  # Sorted published styles: F1–F5, M1–M5.
+        generation.num_steps=8
+        generation.extra={"lang":"en"}
+    else:
+        from kokoro_onnx.tokenizer import Tokenizer
+        phonemizer=Tokenizer()
+        backend=so.OfflineTtsKittenModelConfig(model=str(folder/"model.onnx"),voices=str(folder/"voices.bin"),tokens=str(folder/"tokens.txt"))
+        generation.sid=0  # expr-voice-2-m, named Jasper by KittenML.
+    config=so.OfflineTtsConfig(model=so.OfflineTtsModelConfig(**{name:backend},provider="cpu",num_threads=4))
+    if not config.validate():raise ValueError(f"Invalid local model configuration for {name} at {folder}")
+    model=so.OfflineTts(config)
+    def synthesize(text):
+        if name=="kitten":
+            generation.phoneme_codepoints=[[ord(c) for c in phonemizer.phonemize(text,lang="en-us")]]
+            audio=model.generate("",generation)
+        else:
+            audio=model.generate(text,generation)
+        x=np.asarray(audio.samples,dtype=np.float32);sr=audio.sample_rate
+        if not x.size or not np.isfinite(x).all() or np.max(np.abs(x))<.001:
+            raise ValueError(f"{name} generated empty or invalid speech for {text!r}")
+        if sr!=24000:
+            g=math.gcd(24000,sr);x=resample_poly(x,24000//g,sr//g).astype(np.float32)
+        return x,24000
+    return synthesize
+
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument("source",type=Path);ap.add_argument("out",type=Path);ap.add_argument("stage",choices=["tts","align"]);ap.add_argument("--proof",action="store_true");args=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument("source",type=Path);ap.add_argument("out",type=Path);ap.add_argument("stage",choices=["tts","align"]);ap.add_argument("--proof",action="store_true")
+    ap.add_argument("--engine",choices=tuple(PRESETS),default="kokoro",help="Local narration engine (default: kokoro)")
+    args=ap.parse_args()
     out=args.out;out.mkdir(parents=True,exist_ok=True)
     cache=args.source.parent/".build-cache"/"speech";cache.mkdir(parents=True,exist_ok=True)
     if args.stage=="tts":
-        from kokoro_onnx import Kokoro
-        model=VOICE/"models/kokoro-v1.0.onnx";voices=VOICE/"models/voices-v1.0.bin"
-        ver=model_version([model,voices]);engine=None
-        rows,markers,gags=extract(args.source.read_text(encoding="utf-8-sig"))
+        ver=voice_version(args.engine);speaker=None
+        source=args.source.read_text(encoding="utf-8-sig")
+        rows,markers,gags=extract(source)
         if not rows:raise ValueError("No spoken text in narration.md")
         count=sum(len(r["text"].split()) for r in rows)
         if not args.proof and not 1768<=count<=1954:raise ValueError(f"Claude narration contains {count} spoken words; expected 1768–1954")
         start=0;parts=[];used=[]
-        for row in rows:
-            key=digest(ver,"am_puck","1.0",row["text"]);wav=cache/(key+".wav")
+        grouped=args.engine in ("qwen-c","qwen-d","qwen-e","qwen-f","qwen-f-design")
+        if args.engine=="qwen-f":
+            from fixed_narrator import clone_takes
+            takes=clone_takes(rows,cache,ver,out)
+        elif grouped:
+            from qwen_takes import cached_takes
+            takes=cached_takes(source,rows,extract,cache,ver,"qwen-f" if args.engine=="qwen-f-design" else args.engine)
+        else:
+            takes=((row,digest(ver,PRESETS[args.engine],"1.0",row["text"]),True) for row in rows)
+        for row,key,end_of_take in takes:
+            wav=cache/(key+".wav")
             if not wav.exists():
-                if engine is None:engine=Kokoro(str(model),str(voices))
-                x,sr=engine.create(row["text"],voice="am_puck",speed=1.0,lang="en-us")
+                if speaker is None:speaker=load_speaker(args.engine)
+                x,sr=speaker(row["text"])
                 sf.write(str(wav)+".tmp",x,sr,format="WAV");Path(str(wav)+".tmp").replace(wav)
             x,sr=sf.read(wav,dtype="float32");length=len(x)
             target=max(length+round(.14*sr),round(len(row["text"].split())/3.649*sr))
-            if not args.proof:
+            if grouped:
+                target=length+(round(.18*sr) if end_of_take else 0)
+            if not args.proof and (not grouped or end_of_take):
                 # Keep subsequent sentences on a stable picture grid after a line edit.
                 target=math.ceil(target/(sr/24))*round(sr/24)
             if args.proof and start+length>60*sr and parts:break

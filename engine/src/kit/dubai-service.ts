@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import {camera, Model, painted, wood, Point} from "./shared";
 import {stencil} from "./markings";
+import {addPerson} from "./extras";
 
 export const stations=["bath","seabed","breakwater","channel","kitchen","reception","dispatch"] as const;
 type Station=typeof stations[number];
@@ -46,6 +47,7 @@ export function build(p:{station?:string;state?:string;label?:string}){
   }
   if(p.label){const pl=new THREE.Mesh(new THREE.PlaneGeometry(2.3,.48),stencil(p.label,"#516e72"));pl.position.set(.3,.85,1.85);m.group.add(pl);}
   const look:Point=s==="kitchen"?[.1,1.3,-.6]:[0,1.39,0];
+  addPerson(m.group,{x:-3,y:0,z:3.6,variant:4,carry:true,walk:{dx:4,period:10}});   // a worker crosses the room with papers
   const group=m.finish({wide:camera([3.7,3.7,6.65],look,45),medium:camera([-2.5,3.38,4.05],look,43),close:camera([.8,2.78,3.56],look,41)});
   const feet:Point=[2.68,0,2.35];return {group,feet,place:"dubai-service"};
 }

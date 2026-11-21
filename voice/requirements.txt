@@ -37,3 +37,4 @@ typing_extensions==4.16.0
 tzdata==2026.6
 uritemplate==4.2.0
 pillow==13.0.0
+tokenizers==0.22.2

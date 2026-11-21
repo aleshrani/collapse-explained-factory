@@ -1,3 +1,4 @@
+import type {Ob} from "./collide";
 import * as THREE from "three";
 import { Batch, boxGeo, lam, V } from "../videos/bridge/build";
 import { ctex, jit, rng, stoneHD, planksHD } from "../videos/bridge/paint";
@@ -81,24 +82,42 @@ export const camera = (pos: Point,look: Point,fov: number): Shot => ({pos,look,f
 export class Model {
   readonly group = new THREE.Group();
   private readonly batch = new Batch();
-  add(geo: THREE.BufferGeometry, mat: THREE.Material) { this.batch.add(geo,mat); }
+  /** footprints (XZ rectangles with a height range) of everything built here: people and moving objects must keep clear of them */
+  readonly obstacles: Ob[] = [];
+  /** raw geometry (callers translate it first); recorded by its bounding box */
+  add(geo: THREE.BufferGeometry, mat: THREE.Material) {
+    geo.computeBoundingBox();const b=geo.boundingBox!;
+    this.obstacles.push({x0:b.min.x,x1:b.max.x,z0:b.min.z,z1:b.max.z,y0:b.min.y,y1:b.max.y});
+    this.batch.add(geo,mat);
+  }
   box(x:number,y:number,z:number,w:number,h:number,d:number,mat:THREE.Material,tile=3){
-    this.add(boxGeo(V(x-w/2,y-h/2,z-d/2),V(x+w/2,y+h/2,z+d/2),tile,true),mat);
+    this.obstacles.push({x0:x-w/2,x1:x+w/2,z0:z-d/2,z1:z+d/2,y0:y-h/2,y1:y+h/2});
+    this.batch.add(boxGeo(V(x-w/2,y-h/2,z-d/2),V(x+w/2,y+h/2,z+d/2),tile,true),mat);
+  }
+  private along(a:Point,b:Point,half:number){   // a slanted member becomes a chain of small rectangles
+    const n=Math.max(1,Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1],b[2]-a[2])/.5));
+    for(let i=0;i<n;i++){
+      const p=[a[0]+(b[0]-a[0])*i/n,a[1]+(b[1]-a[1])*i/n,a[2]+(b[2]-a[2])*i/n],q=[a[0]+(b[0]-a[0])*(i+1)/n,a[1]+(b[1]-a[1])*(i+1)/n,a[2]+(b[2]-a[2])*(i+1)/n];
+      this.obstacles.push({x0:Math.min(p[0],q[0])-half,x1:Math.max(p[0],q[0])+half,z0:Math.min(p[2],q[2])-half,z1:Math.max(p[2],q[2])+half,y0:Math.min(p[1],q[1])-half,y1:Math.max(p[1],q[1])+half});
+    }
   }
   beam(a:Point,b:Point,width:number,mat:THREE.Material,depth=width){
     const start=V(...a),end=V(...b),dir=end.clone().sub(start),len=dir.length();
     if(len<.0001)return;
+    this.along(a,b,Math.max(width,depth)/2);
     const g=boxGeo(V(-width/2,-len/2,-depth/2),V(width/2,len/2,depth/2),2,true);
     g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(V(0,1,0),dir.normalize()));
-    const mid=start.lerp(end,.5);this.add(g.translate(mid.x,mid.y,mid.z),mat);
+    const mid=start.lerp(end,.5);this.batch.add(g.translate(mid.x,mid.y,mid.z),mat);
   }
   pipe(a:Point,b:Point,r:number,mat:THREE.Material){
     const start=V(...a),end=V(...b),dir=end.clone().sub(start),len=dir.length();
+    this.along(a,b,r);
     const g=new THREE.CylinderGeometry(r,r,len,12);
     g.applyQuaternion(new THREE.Quaternion().setFromUnitVectors(V(0,1,0),dir.normalize()));
-    const mid=start.lerp(end,.5);this.add(g.translate(mid.x,mid.y,mid.z),mat);
+    const mid=start.lerp(end,.5);this.batch.add(g.translate(mid.x,mid.y,mid.z),mat);
   }
   mound(x:number,y:number,z:number,rx:number,h:number,rz:number,mat:THREE.Material,seed=1){
+    this.obstacles.push({x0:x-rx*1.16,x1:x+rx*1.16,z0:z-rz*1.16,z1:z+rz*1.16,y0:y,y1:y+h*1.16});
     const g=new THREE.SphereGeometry(1,18,8,0,Math.PI*2,0,Math.PI/2);
     const p=g.attributes.position,uv=g.attributes.uv;
     for(let i=0;i<p.count;i++){
@@ -106,9 +125,9 @@ export class Model {
       const k=1+.105*Math.sin(a*5+c*4+seed)+.055*Math.cos(c*9-b*3+seed);
       p.setXYZ(i,x+a*rx*k,y+b*h*k,z+c*rz*k);uv.setXY(i,(x+a*rx)/5,(z+c*rz)/5);
     }
-    g.computeVertexNormals();this.add(g,mat);
+    g.computeVertexNormals();this.batch.add(g,mat);
   }
-  assemble(){this.batch.build(this.group);return this.group;}
+  assemble(){this.batch.build(this.group);this.group.userData.obstacles=this.obstacles;return this.group;}
   finish(base:Cameras){
     const {wide,medium}=base;
     const low=camera([medium.pos[0],medium.pos[1]-.58,medium.pos[2]],medium.look,medium.fov+6);

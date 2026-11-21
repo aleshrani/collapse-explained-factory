@@ -1,0 +1,205 @@
+{
+  "episode": "01-dubai-world-islands",
+  "voice": "qwen-f",
+  "sourceDuration": 750.3083333333333,
+  "fps": 24,
+  "shorts": [
+    {
+      "number": 1,
+      "variant": "A",
+      "sourceRanges": [
+        {
+          "start": 0.0,
+          "end": 42.102,
+          "firstWord": 0,
+          "lastWord": 99,
+          "firstLine": "Four businessmen from Ireland bought Ireland.",
+          "lastLine": "More than twenty years after the first island rose out of the water, there's still no power cable running out to them.",
+          "frames": 1011
+        }
+      ],
+      "ending": {
+        "file": ".build-cache/teaser-speech/c60555d438ab39949ba037ebde2331816bacb8b9c056f3517d9f7d2b1c5f6356.wav",
+        "voice": "qwen-f",
+        "text": "So who was telling the truth about the world? Full story's on the channel.",
+        "seconds": 5.2,
+        "frames": 125
+      },
+      "loopLine": "So who was telling the truth about the world?",
+      "ctaLine": "Full story's on the channel.",
+      "stopBefore": null,
+      "duration": 47.333333333333336,
+      "flags": [],
+      "omittedMarkerCTA": null
+    },
+    {
+      "number": 2,
+      "variant": "A",
+      "sourceRanges": [
+        {
+          "start": 190.542,
+          "end": 213.485,
+          "firstWord": 455,
+          "lastWord": 505,
+          "firstLine": "You see, the islands weren't really sold as land.",
+          "lastLine": "\"So, what do you do?\" \"Oh, I own Ireland.\" And technically, that wasn't even a lie.",
+          "frames": 551
+        },
+        {
+          "start": 268.953,
+          "end": 287.005,
+          "firstWord": 643,
+          "lastWord": 681,
+          "firstLine": "So picture the scene.",
+          "lastLine": "But on paper, the world was almost sold out.",
+          "frames": 434
+        }
+      ],
+      "ending": {
+        "file": ".build-cache/teaser-speech/ca494be1e01d44890c77ae52b07ddedc5da6706a206ee816ec9783d8a4d6bd22.wav",
+        "voice": "qwen-f",
+        "text": "Then the paper caught fire. Full story's on the channel.",
+        "seconds": 4.0,
+        "frames": 96
+      },
+      "loopLine": "Then the paper caught fire.",
+      "ctaLine": "Full story's on the channel.",
+      "stopBefore": null,
+      "duration": 45.041666666666664,
+      "flags": [],
+      "omittedMarkerCTA": null
+    },
+    {
+      "number": 3,
+      "variant": "A",
+      "sourceRanges": [
+        {
+          "start": 398.63,
+          "end": 407.957,
+          "firstWord": 962,
+          "lastWord": 983,
+          "firstLine": "In two thousand and nine, right in the middle of all this, a British property developer named Safi Qurashi bought the island called Great Britain.",
+          "lastLine": "In two thousand and nine, right in the middle of all this, a British property developer named Safi Qurashi bought the island called Great Britain.",
+          "frames": 224
+        },
+        {
+          "start": 410.997,
+          "end": 430.203,
+          "firstWord": 995,
+          "lastWord": 1032,
+          "firstLine": "And to secure the deal, he handed over cheques.",
+          "lastLine": "Three cheques, worth around one hundred and eighty-nine million dirhams, bounced.",
+          "frames": 461
+        },
+        {
+          "start": 433.243,
+          "end": 438.785,
+          "firstWord": 1041,
+          "lastWord": 1051,
+          "firstLine": "In January two thousand and ten, he was sentenced to seven years in jail.",
+          "lastLine": "In January two thousand and ten, he was sentenced to seven years in jail.",
+          "frames": 134
+        },
+        {
+          "start": 444.385,
+          "end": 458.628,
+          "firstWord": 1068,
+          "lastWord": 1101,
+          "firstLine": "He was released in two thousand and twelve, and later, Dubai's highest court quashed the rest of his sentence.",
+          "lastLine": "But by then, the man who bought Great Britain had spent his time on the map behind bars.",
+          "frames": 342
+        }
+      ],
+      "ending": {
+        "file": ".build-cache/teaser-speech/081a48da4a2b2c750c79c1f69d20abc4d8138833c5bb811c88bfbe8ca88b95ec.wav",
+        "voice": "qwen-f",
+        "text": "And he wasn't the only one taking Nakheel to court. Full story's on the channel.",
+        "seconds": 5.12,
+        "frames": 123
+      },
+      "loopLine": "And he wasn't the only one taking Nakheel to court.",
+      "ctaLine": "Full story's on the channel.",
+      "stopBefore": null,
+      "duration": 53.5,
+      "flags": [],
+      "omittedMarkerCTA": null
+    },
+    {
+      "number": 4,
+      "variant": "B",
+      "sourceRanges": [
+        {
+          "start": 476.057,
+          "end": 498.82,
+          "firstWord": 1152,
+          "lastWord": 1203,
+          "firstLine": "Now remember the boats.",
+          "lastLine": "And by two thousand and eleven, there wasn't much world to ferry anyone to.",
+          "frames": 547
+        },
+        {
+          "start": 510.878,
+          "end": 538.367,
+          "firstWord": 1235,
+          "lastWord": 1305,
+          "firstLine": "So Penguin went to the tribunal set up to handle Dubai World's disputes, and tried to get out of the contract.",
+          "lastLine": "It was the perfect headline for a city that had just been rescued by its neighbour.",
+          "frames": 660
+        }
+      ],
+      "ending": null,
+      "loopLine": "",
+      "ctaLine": "",
+      "stopBefore": "But here's the twist.",
+      "duration": 50.291666666666664,
+      "flags": [],
+      "omittedMarkerCTA": "So is Dubai's world really sinking? Full story's on the channel."
+    },
+    {
+      "number": 5,
+      "variant": "A",
+      "sourceRanges": [
+        {
+          "start": 566.393,
+          "end": 571.353,
+          "firstWord": 1379,
+          "lastWord": 1390,
+          "firstLine": "Out of three hundred islands, only two had seen any development at all.",
+          "lastLine": "Out of three hundred islands, only two had seen any development at all.",
+          "frames": 120
+        },
+        {
+          "start": 584.645,
+          "end": 607.22,
+          "firstWord": 1421,
+          "lastWord": 1469,
+          "firstLine": "First rule of island life here: bring your own electricity.",
+          "lastLine": "Anyone building on an island had to make their own power with diesel generators.",
+          "frames": 542
+        },
+        {
+          "start": 616.02,
+          "end": 628.812,
+          "firstWord": 1493,
+          "lastWord": 1528,
+          "firstLine": "There's no sewer to plug into and no power line to connect.",
+          "lastLine": "Before you build a single villa, you have to build a tiny town's worth of pipes and cables, on your own, in the sea.",
+          "frames": 308
+        }
+      ],
+      "ending": {
+        "file": ".build-cache/teaser-speech/a488f159233c7fbd33031d87ce3f83736054509acec6434f33cf9f59b76a503a.wav",
+        "voice": "qwen-f",
+        "text": "And one man decided to try anyway. Full story's on the channel.",
+        "seconds": 3.68,
+        "frames": 89
+      },
+      "loopLine": "And one man decided to try anyway.",
+      "ctaLine": "Full story's on the channel.",
+      "stopBefore": null,
+      "duration": 44.125,
+      "flags": [],
+      "omittedMarkerCTA": null
+    }
+  ]
+}

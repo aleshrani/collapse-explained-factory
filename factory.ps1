@@ -68,6 +68,8 @@ function Build-Pending {
     if ($Only) { $eps = $eps | Where-Object { $_.Name -eq $Only } }
     foreach ($ep in $eps) {
         if (-not (Test-Path (Join-Path $ep.FullName "narration.md"))) { continue }
+        # Only directed episodes (direction.txt, written and checked by Claude) are built; the local planner alone is not good enough yet.
+        if (-not (Test-Path (Join-Path $ep.FullName "direction.txt")) -and -not $Only) { continue }
         if ((Test-Path (Join-Path $ep.FullName "episode.mp4")) -and -not $Only) { continue }
         $failFile = Join-Path $ep.FullName ".fails"
         $fails = 0

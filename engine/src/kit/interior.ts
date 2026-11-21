@@ -1,3 +1,4 @@
+import {papers} from "./motion";
 import * as THREE from "three";
 import {camera, Model, painted, wood, Point} from "./shared";
 import {stencil} from "./markings";
@@ -34,6 +35,8 @@ export function paper(m:Model,x:number,y:number,z:number,col="#e6dbc0"){
 }
 export function finish(m:Model,target:Point,place:string){
   const [x,y,z]=target;
-  return {group:m.finish({wide:camera([x+4.1,y+2.2,z+8.1],target,48),medium:camera([x-2.4,y+1.45,z+5.5],target,46),close:camera([x+.95,y+.9,z+3.9],target,41)}),feet:[x+2.15,0,z+1.25] as Point,place};
+  const group=m.finish({wide:camera([x+4.1,y+2.2,z+8.1],target,48),medium:camera([x-2.4,y+1.45,z+5.5],target,46),close:camera([x+.95,y+.9,z+3.9],target,41)});
+  papers(group,[x,y-.4,z],5,2.4,1.5);    // a few sheets always drifting through the room
+  return {group,feet:[x+2.15,0,z+1.25] as Point,place};
 }
 

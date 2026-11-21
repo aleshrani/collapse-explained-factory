@@ -1,0 +1,10 @@
+{
+  "sha256": "8572289ab9a8da1f0cc9b5966a2ad31d960307e4fbf3a87c89dae2e49eeebf09",
+  "source": "episodes/01-dubai-world-islands/voice-f-design/vo.wav",
+  "sourceStart": 213.485,
+  "duration": 16.88,
+  "origin": "Project-generated Qwen VoiceDesign F; single take, complete sentences",
+  "transcriptFile": "F-reference.txt",
+  "sampleRate": 24000,
+  "channels": 1
+}

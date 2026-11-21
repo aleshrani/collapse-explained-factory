@@ -1,0 +1,2239 @@
+{
+  "model": "Chatterbox English Q4",
+  "embedding": "CAM++",
+  "referenceSHA256": "8572289ab9a8da1f0cc9b5966a2ad31d960307e4fbf3a87c89dae2e49eeebf09",
+  "threshold": 0.65,
+  "maxTries": 6,
+  "segments": [
+    {
+      "number": 1,
+      "text": "Four businessmen from Ireland bought Ireland.",
+      "attempts": [
+        {
+          "seed": 263014738857877,
+          "cosine": 0.8288903412603972
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8288903412603972,
+      "accepted": true
+    },
+    {
+      "number": 2,
+      "text": "Not the country.",
+      "attempts": [
+        {
+          "seed": 179618144582666,
+          "cosine": 0.7567773680137366
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7567773680137366,
+      "accepted": true
+    },
+    {
+      "number": 3,
+      "text": "A pile of sand shaped like it, four kilometers off the coast of Dubai, for one hundred and forty-two million dirhams.",
+      "attempts": [
+        {
+          "seed": 27523112004155,
+          "cosine": 0.8958957898405825
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8958957898405825,
+      "accepted": true
+    },
+    {
+      "number": 4,
+      "text": "A year later, a British developer bought Great Britain, and a few months after that he was sitting in a Dubai jail.",
+      "attempts": [
+        {
+          "seed": 125736723714341,
+          "cosine": 0.8702296883049763
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8702296883049763,
+      "accepted": true
+    },
+    {
+      "number": 5,
+      "text": "And in a courtroom in two thousand and eleven, a lawyer told three judges that the whole world was falling back into the sea.",
+      "attempts": [
+        {
+          "seed": 56979384038377,
+          "cosine": 0.871415218895657
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.871415218895657,
+      "accepted": true
+    },
+    {
+      "number": 6,
+      "text": "Here's the craziest part.",
+      "attempts": [
+        {
+          "seed": 168989119772295,
+          "cosine": 0.792201318092812
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.792201318092812,
+      "accepted": true
+    },
+    {
+      "number": 7,
+      "text": "More than twenty years after the first island rose out of the water, there's still no power cable running out to them.",
+      "attempts": [
+        {
+          "seed": 170655742436921,
+          "cosine": 0.9037077724739625
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.9037077724739625,
+      "accepted": true
+    },
+    {
+      "number": 8,
+      "text": "This is the story of how Dubai sold the world before anybody lived on it.",
+      "attempts": [
+        {
+          "seed": 9944945683289,
+          "cosine": 0.8422389614263885
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8422389614263885,
+      "accepted": true
+    },
+    {
+      "number": 9,
+      "text": "You see, the strange part isn't that the plan failed.",
+      "attempts": [
+        {
+          "seed": 177606041630835,
+          "cosine": 0.874596189274528
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.874596189274528,
+      "accepted": true
+    },
+    {
+      "number": 10,
+      "text": "Lots of plans fail.",
+      "attempts": [
+        {
+          "seed": 184427985446399,
+          "cosine": 0.7823133473476316
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7823133473476316,
+      "accepted": true
+    },
+    {
+      "number": 11,
+      "text": "The strange part is that the islands are still out there, every one of them, and almost nobody has moved in.",
+      "attempts": [
+        {
+          "seed": 186116532456952,
+          "cosine": 0.8896350883599592
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8896350883599592,
+      "accepted": true
+    },
+    {
+      "number": 12,
+      "text": "So how do you build three hundred islands, sell them to some of the richest people on the planet, and end up with a map that's mostly empty?",
+      "attempts": [
+        {
+          "seed": 126767498559233,
+          "cosine": 0.8615498451715711
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8615498451715711,
+      "accepted": true
+    },
+    {
+      "number": 13,
+      "text": "In May two thousand and three, Dubai's state developer, Nakheel, announced its next idea.",
+      "attempts": [
+        {
+          "seed": 276125256689846,
+          "cosine": 0.9133341228630165
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.9133341228630165,
+      "accepted": true
+    },
+    {
+      "number": 14,
+      "text": "It already had a palm tree made of sand sticking out into the Gulf.",
+      "attempts": [
+        {
+          "seed": 225930618187024,
+          "cosine": 0.8687754487774149
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8687754487774149,
+      "accepted": true
+    },
+    {
+      "number": 15,
+      "text": "Now it wanted the entire world.",
+      "attempts": [
+        {
+          "seed": 88019784118143,
+          "cosine": 0.8673210127031292
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8673210127031292,
+      "accepted": true
+    },
+    {
+      "number": 16,
+      "text": "About three hundred islands, arranged so that from a plane you'd see the continents.",
+      "attempts": [
+        {
+          "seed": 53655757834959,
+          "cosine": 0.8767714006614333
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8767714006614333,
+      "accepted": true
+    },
+    {
+      "number": 17,
+      "text": "Europe here, Africa there, a little Antarctica at the bottom.",
+      "attempts": [
+        {
+          "seed": 31901953277897,
+          "cosine": 0.8473157624232279
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8473157624232279,
+      "accepted": true
+    },
+    {
+      "number": 18,
+      "text": "To make it, dredgers sucked sand off the seabed and sprayed it into place.",
+      "attempts": [
+        {
+          "seed": 181583857085438,
+          "cosine": 0.8378624351040296
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8378624351040296,
+      "accepted": true
+    },
+    {
+      "number": 19,
+      "text": "That's where the first number comes from.",
+      "attempts": [
+        {
+          "seed": 197247574078146,
+          "cosine": 0.7886150262920555
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7886150262920555,
+      "accepted": true
+    },
+    {
+      "number": 20,
+      "text": "Three hundred and twenty-one million cubic meters of sand.",
+      "attempts": [
+        {
+          "seed": 89844251784990,
+          "cosine": 0.8361497971878262
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8361497971878262,
+      "accepted": true
+    },
+    {
+      "number": 21,
+      "text": "That's about one hundred and twenty-eight thousand Olympic swimming pools.",
+      "attempts": [
+        {
+          "seed": 257910502706958,
+          "cosine": 0.8828424037713871
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8828424037713871,
+      "accepted": true
+    },
+    {
+      "number": 22,
+      "text": "Around it all, they piled three hundred and eighty-six million tonnes of rock into a wall, to keep the waves from eating the map.",
+      "attempts": [
+        {
+          "seed": 50426624412898,
+          "cosine": 0.8950650588806889
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8950650588806889,
+      "accepted": true
+    },
+    {
+      "number": 23,
+      "text": "An island made like that has a catch.",
+      "attempts": [
+        {
+          "seed": 156694107597805,
+          "cosine": 0.8263434769005427
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8263434769005427,
+      "accepted": true
+    },
+    {
+      "number": 24,
+      "text": "From above, it looks finished.",
+      "attempts": [
+        {
+          "seed": 279080942238944,
+          "cosine": 0.7939289183164355
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7939289183164355,
+      "accepted": true
+    },
+    {
+      "number": 25,
+      "text": "Golden beach, blue water, a perfect shape.",
+      "attempts": [
+        {
+          "seed": 42587444318109,
+          "cosine": 0.8527791039007693
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8527791039007693,
+      "accepted": true
+    },
+    {
+      "number": 26,
+      "text": "But nothing is on it.",
+      "attempts": [
+        {
+          "seed": 102131249464370,
+          "cosine": 0.8464754766264075
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8464754766264075,
+      "accepted": true
+    },
+    {
+      "number": 27,
+      "text": "No pipes, no power, no road, no bridge.",
+      "attempts": [
+        {
+          "seed": 34358166685182,
+          "cosine": 0.8039522327319952
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8039522327319952,
+      "accepted": true
+    },
+    {
+      "number": 28,
+      "text": "The only way to get there is a boat.",
+      "attempts": [
+        {
+          "seed": 136186860673575,
+          "cosine": 0.7624377230818786
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7624377230818786,
+      "accepted": true
+    },
+    {
+      "number": 29,
+      "text": "So every island was sold as a blank plot, and the buyer would build the rest.",
+      "attempts": [
+        {
+          "seed": 110526485539405,
+          "cosine": 0.8611239533662218
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8611239533662218,
+      "accepted": true
+    },
+    {
+      "number": 30,
+      "text": "And the plots weren't small.",
+      "attempts": [
+        {
+          "seed": 227266030064719,
+          "cosine": 0.8235800578336728
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8235800578336728,
+      "accepted": true
+    },
+    {
+      "number": 31,
+      "text": "The whole map sits inside an area about seven by nine kilometers.",
+      "attempts": [
+        {
+          "seed": 159360949002332,
+          "cosine": 0.8341391606655322
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8341391606655322,
+      "accepted": true
+    },
+    {
+      "number": 32,
+      "text": "A single island was anywhere from two point three to eight point four hectares.",
+      "attempts": [
+        {
+          "seed": 200875153620151,
+          "cosine": 0.8694382077771753
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8694382077771753,
+      "accepted": true
+    },
+    {
+      "number": 33,
+      "text": "That's roughly three to twelve football pitches of brand new beach, each one surrounded by water on every side.",
+      "attempts": [
+        {
+          "seed": 149111474317967,
+          "cosine": 0.8750207944821031
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8750207944821031,
+      "accepted": true
+    },
+    {
+      "number": 34,
+      "text": "If you owned one, you didn't have neighbours.",
+      "attempts": [
+        {
+          "seed": 279032667059410,
+          "cosine": 0.8349779735116276
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8349779735116276,
+      "accepted": true
+    },
+    {
+      "number": 35,
+      "text": "You had a horizon.",
+      "attempts": [
+        {
+          "seed": 144167670422779,
+          "cosine": 0.8139541141546691
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8139541141546691,
+      "accepted": true
+    },
+    {
+      "number": 36,
+      "text": "Right.",
+      "attempts": [
+        {
+          "seed": 21862697150550,
+          "cosine": 0.6904020267831424
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.6904020267831424,
+      "accepted": true
+    },
+    {
+      "number": 37,
+      "text": "Supercar, sunglasses, private island.",
+      "attempts": [
+        {
+          "seed": 128422687498745,
+          "cosine": 0.8588044692207146
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8588044692207146,
+      "accepted": true
+    },
+    {
+      "number": 38,
+      "text": "So where's the party?",
+      "attempts": [
+        {
+          "seed": 23134162488042,
+          "cosine": 0.739154994116487
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.739154994116487,
+      "accepted": true
+    },
+    {
+      "number": 39,
+      "text": "Where are all the beautiful people?",
+      "attempts": [
+        {
+          "seed": 113308284327843,
+          "cosine": 0.7585307363832436
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7585307363832436,
+      "accepted": true
+    },
+    {
+      "number": 40,
+      "text": "It's me and one seagull, and the seagull is leaving.",
+      "attempts": [
+        {
+          "seed": 145183131811431,
+          "cosine": 0.8372464673099208
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8372464673099208,
+      "accepted": true
+    },
+    {
+      "number": 41,
+      "text": "In January two thousand and eight, the last stone went into the breakwater.",
+      "attempts": [
+        {
+          "seed": 246449075560512,
+          "cosine": 0.859103377997911
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.859103377997911,
+      "accepted": true
+    },
+    {
+      "number": 42,
+      "text": "Nakheel said the reclamation was done, on schedule.",
+      "attempts": [
+        {
+          "seed": 206565531450089,
+          "cosine": 0.8222229786134518
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8222229786134518,
+      "accepted": true
+    },
+    {
+      "number": 43,
+      "text": "The world was built.",
+      "attempts": [
+        {
+          "seed": 7840274684840,
+          "cosine": 0.7077553354499513
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7077553354499513,
+      "accepted": true
+    },
+    {
+      "number": 44,
+      "text": "Now somebody had to live on it.",
+      "attempts": [
+        {
+          "seed": 27347217157139,
+          "cosine": 0.8216672632023381
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8216672632023381,
+      "accepted": true
+    },
+    {
+      "number": 45,
+      "text": "You see, the islands weren't really sold as land.",
+      "attempts": [
+        {
+          "seed": 250999562060631,
+          "cosine": 0.8430016848675733
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8430016848675733,
+      "accepted": true
+    },
+    {
+      "number": 46,
+      "text": "They were sold as a story.",
+      "attempts": [
+        {
+          "seed": 244602010597086,
+          "cosine": 0.7146607632454485
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7146607632454485,
+      "accepted": true
+    },
+    {
+      "number": 47,
+      "text": "You didn't buy plot number forty-two.",
+      "attempts": [
+        {
+          "seed": 236642382036509,
+          "cosine": 0.8450331111579379
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8450331111579379,
+      "accepted": true
+    },
+    {
+      "number": 48,
+      "text": "You bought a country.",
+      "attempts": [
+        {
+          "seed": 267042153253418,
+          "cosine": 0.795721254104291
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.795721254104291,
+      "accepted": true
+    },
+    {
+      "number": 49,
+      "text": "And buyers loved it.",
+      "attempts": [
+        {
+          "seed": 82944783666878,
+          "cosine": 0.7475572065078646
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7475572065078646,
+      "accepted": true
+    },
+    {
+      "number": 50,
+      "text": "Think about the dinner parties.",
+      "attempts": [
+        {
+          "seed": 103603774427462,
+          "cosine": 0.8478715846484493
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8478715846484493,
+      "accepted": true
+    },
+    {
+      "number": 51,
+      "text": "\"So, what do you do?\" \"Oh, I own Ireland.\" And technically, that wasn't even a lie.",
+      "attempts": [
+        {
+          "seed": 209486856867900,
+          "cosine": 0.8693752727762554
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8693752727762554,
+      "accepted": true
+    },
+    {
+      "number": 52,
+      "text": "In March two thousand and seven, four Irish businessmen bought the island called Ireland for one hundred and forty-two million dirhams.",
+      "attempts": [
+        {
+          "seed": 158671911828898,
+          "cosine": 0.9202587832913913
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.9202587832913913,
+      "accepted": true
+    },
+    {
+      "number": 53,
+      "text": "They called the project Ireland in the Sun.",
+      "attempts": [
+        {
+          "seed": 124305898135248,
+          "cosine": 0.8832188965697649
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8832188965697649,
+      "accepted": true
+    },
+    {
+      "number": 54,
+      "text": "Pubs, hotels, homes, a little piece of home in the Gulf.",
+      "attempts": [
+        {
+          "seed": 231735752780219,
+          "cosine": 0.8308391568620976
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8308391568620976,
+      "accepted": true
+    },
+    {
+      "number": 55,
+      "text": "And like most deals in Dubai back then, they didn't pay it all at once.",
+      "attempts": [
+        {
+          "seed": 110140344417984,
+          "cosine": 0.8659836796930025
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8659836796930025,
+      "accepted": true
+    },
+    {
+      "number": 56,
+      "text": "They paid in instalments, because everyone expected prices to keep going up.",
+      "attempts": [
+        {
+          "seed": 72352134586071,
+          "cosine": 0.8826470931246477
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8826470931246477,
+      "accepted": true
+    },
+    {
+      "number": 57,
+      "text": "That was the whole engine of the city.",
+      "attempts": [
+        {
+          "seed": 117460893843537,
+          "cosine": 0.836833641966926
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.836833641966926,
+      "accepted": true
+    },
+    {
+      "number": 58,
+      "text": "You put down a deposit on something that doesn't exist yet.",
+      "attempts": [
+        {
+          "seed": 104629952521967,
+          "cosine": 0.8670710477241907
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8670710477241907,
+      "accepted": true
+    },
+    {
+      "number": 59,
+      "text": "A few months later, it's worth more.",
+      "attempts": [
+        {
+          "seed": 133618816696527,
+          "cosine": 0.8186584575033979
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8186584575033979,
+      "accepted": true
+    },
+    {
+      "number": 60,
+      "text": "You sell it, or you borrow against it, and you buy the next thing.",
+      "attempts": [
+        {
+          "seed": 144804059808804,
+          "cosine": 0.8270111312340815
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8270111312340815,
+      "accepted": true
+    },
+    {
+      "number": 61,
+      "text": "As long as prices go up, everybody wins.",
+      "attempts": [
+        {
+          "seed": 143994858953798,
+          "cosine": 0.7743392829588682
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7743392829588682,
+      "accepted": true
+    },
+    {
+      "number": 62,
+      "text": "Nakheel wins, the buyers win, the banks win.",
+      "attempts": [
+        {
+          "seed": 99175746220558,
+          "cosine": 0.8196924187523689
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8196924187523689,
+      "accepted": true
+    },
+    {
+      "number": 63,
+      "text": "Prices only go up.",
+      "attempts": [
+        {
+          "seed": 22684524719716,
+          "cosine": 0.7840243056863131
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7840243056863131,
+      "accepted": true
+    },
+    {
+      "number": 64,
+      "text": "That's not a law of physics, by the way.",
+      "attempts": [
+        {
+          "seed": 59543659687889,
+          "cosine": 0.8050783250656133
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8050783250656133,
+      "accepted": true
+    },
+    {
+      "number": 65,
+      "text": "Ask anyone who was there in two thousand and eight.",
+      "attempts": [
+        {
+          "seed": 116599468811370,
+          "cosine": 0.8753435771069753
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8753435771069753,
+      "accepted": true
+    },
+    {
+      "number": 66,
+      "text": "So picture the scene.",
+      "attempts": [
+        {
+          "seed": 246923447096467,
+          "cosine": 0.7261407837378446
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7261407837378446,
+      "accepted": true
+    },
+    {
+      "number": 67,
+      "text": "Three hundred islands, each one a plot of sand worth millions, and each one bought with a promise of the next payment.",
+      "attempts": [
+        {
+          "seed": 115121887834897,
+          "cosine": 0.8697621290562332
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8697621290562332,
+      "accepted": true
+    },
+    {
+      "number": 68,
+      "text": "Nobody had built anything yet.",
+      "attempts": [
+        {
+          "seed": 247545746753683,
+          "cosine": 0.7832456961521697
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7832456961521697,
+      "accepted": true
+    },
+    {
+      "number": 69,
+      "text": "But on paper, the world was almost sold out.",
+      "attempts": [
+        {
+          "seed": 272809686752919,
+          "cosine": 0.8380247591392176
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8380247591392176,
+      "accepted": true
+    },
+    {
+      "number": 70,
+      "text": "At the end of December two thousand and eight, Nakheel announced that seventy percent of the islands had been sold.",
+      "attempts": [
+        {
+          "seed": 165265800095583,
+          "cosine": 0.8933816787367417
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8933816787367417,
+      "accepted": true
+    },
+    {
+      "number": 71,
+      "text": "And then, in two thousand and eight, the money stopped.",
+      "attempts": [
+        {
+          "seed": 117395433347545,
+          "cosine": 0.8617767253422208
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8617767253422208,
+      "accepted": true
+    },
+    {
+      "number": 72,
+      "text": "Not just in Dubai.",
+      "attempts": [
+        {
+          "seed": 187850704721410,
+          "cosine": 0.752852567579744
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.752852567579744,
+      "accepted": true
+    },
+    {
+      "number": 73,
+      "text": "Everywhere.",
+      "attempts": [
+        {
+          "seed": 227514466884064,
+          "cosine": 0.6695162931760329
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.6695162931760329,
+      "accepted": true
+    },
+    {
+      "number": 74,
+      "text": "And a city that ran on the next payment found out what happens when the next payment doesn't come.",
+      "attempts": [
+        {
+          "seed": 234254899438362,
+          "cosine": 0.8665968544050987
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8665968544050987,
+      "accepted": true
+    },
+    {
+      "number": 75,
+      "text": "When the global financial crisis hit, the first thing to vanish was the buyer.",
+      "attempts": [
+        {
+          "seed": 26142189200798,
+          "cosine": 0.8661827580656736
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8661827580656736,
+      "accepted": true
+    },
+    {
+      "number": 76,
+      "text": "If you'd paid a deposit on an island, and you suddenly couldn't sell it, and the bank wouldn't lend, you were stuck holding a very expensive pile of sand.",
+      "attempts": [
+        {
+          "seed": 29706213915917,
+          "cosine": 0.8712246913209104
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8712246913209104,
+      "accepted": true
+    },
+    {
+      "number": 77,
+      "text": "By the end of two thousand and eight, the company of the investor leading the Ireland deal was in liquidation.",
+      "attempts": [
+        {
+          "seed": 37677254852332,
+          "cosine": 0.8835099996301196
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8835099996301196,
+      "accepted": true
+    },
+    {
+      "number": 78,
+      "text": "In two thousand and nine, work on the World was suspended.",
+      "attempts": [
+        {
+          "seed": 225636066746545,
+          "cosine": 0.8607256883388656
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8607256883388656,
+      "accepted": true
+    },
+    {
+      "number": 79,
+      "text": "The dredgers had finished, but the builders never really started.",
+      "attempts": [
+        {
+          "seed": 271047567660801,
+          "cosine": 0.8457642398370717
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8457642398370717,
+      "accepted": true
+    },
+    {
+      "number": 80,
+      "text": "Then came the twenty-fifth of November, two thousand and nine.",
+      "attempts": [
+        {
+          "seed": 131333936578945,
+          "cosine": 0.8543079425383988
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8543079425383988,
+      "accepted": true
+    },
+    {
+      "number": 81,
+      "text": "The government of Dubai said that Dubai World, the giant state company that owned Nakheel, would ask its lenders to wait.",
+      "attempts": [
+        {
+          "seed": 108316997745569,
+          "cosine": 0.8841381319884584
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8841381319884584,
+      "accepted": true
+    },
+    {
+      "number": 82,
+      "text": "To freeze about twenty-five billion dollars of debt until at least May of the next year.",
+      "attempts": [
+        {
+          "seed": 217969080141278,
+          "cosine": 0.8981306102047779
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8981306102047779,
+      "accepted": true
+    },
+    {
+      "number": 83,
+      "text": "The next day, the main stock markets in Europe fell by more than three percent.",
+      "attempts": [
+        {
+          "seed": 194861139369982,
+          "cosine": 0.8599605211207257
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8599605211207257,
+      "accepted": true
+    },
+    {
+      "number": 84,
+      "text": "Because a few weeks later, Nakheel had a three and a half billion dollar Islamic bond to repay.",
+      "attempts": [
+        {
+          "seed": 13189802590904,
+          "cosine": 0.8894269049796579
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8894269049796579,
+      "accepted": true
+    },
+    {
+      "number": 85,
+      "text": "Imagine you're one of the people who bought an island.",
+      "attempts": [
+        {
+          "seed": 263716486141324,
+          "cosine": 0.8081206320973775
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8081206320973775,
+      "accepted": true
+    },
+    {
+      "number": 86,
+      "text": "You turn on the news, and the company that sold you the world might not be able to pay its own bills.",
+      "attempts": [
+        {
+          "seed": 107630648331073,
+          "cosine": 0.8701454812439545
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8701454812439545,
+      "accepted": true
+    },
+    {
+      "number": 87,
+      "text": "It came down to the last day.",
+      "attempts": [
+        {
+          "seed": 277720095522919,
+          "cosine": 0.8296191896808719
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8296191896808719,
+      "accepted": true
+    },
+    {
+      "number": 88,
+      "text": "On the fourteenth of December, Abu Dhabi, Dubai's richer neighbour, handed over ten billion dollars.",
+      "attempts": [
+        {
+          "seed": 241168921291811,
+          "cosine": 0.8762831560406374
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8762831560406374,
+      "accepted": true
+    },
+    {
+      "number": 89,
+      "text": "About four billion of it went straight to that bond.",
+      "attempts": [
+        {
+          "seed": 106811274702324,
+          "cosine": 0.8242666861692067
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8242666861692067,
+      "accepted": true
+    },
+    {
+      "number": 90,
+      "text": "Dubai's stock market jumped about ten percent in a day.",
+      "attempts": [
+        {
+          "seed": 56125470372699,
+          "cosine": 0.8482208673514458
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8482208673514458,
+      "accepted": true
+    },
+    {
+      "number": 91,
+      "text": "The city was saved.",
+      "attempts": [
+        {
+          "seed": 151447066225624,
+          "cosine": 0.7882640436793484
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7882640436793484,
+      "accepted": true
+    },
+    {
+      "number": 92,
+      "text": "The islands were not.",
+      "attempts": [
+        {
+          "seed": 122769285786189,
+          "cosine": 0.8424248460427739
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8424248460427739,
+      "accepted": true
+    },
+    {
+      "number": 93,
+      "text": "In two thousand and nine, right in the middle of all this, a British property developer named Safi Qurashi bought the island called Great Britain.",
+      "attempts": [
+        {
+          "seed": 67729459561430,
+          "cosine": 0.8897869918098844
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8897869918098844,
+      "accepted": true
+    },
+    {
+      "number": 94,
+      "text": "You see, he was one of the people still buying.",
+      "attempts": [
+        {
+          "seed": 220802935269838,
+          "cosine": 0.7733040380596004
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7733040380596004,
+      "accepted": true
+    },
+    {
+      "number": 95,
+      "text": "And to secure the deal, he handed over cheques.",
+      "attempts": [
+        {
+          "seed": 96300862721997,
+          "cosine": 0.810969778390331
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.810969778390331,
+      "accepted": true
+    },
+    {
+      "number": 96,
+      "text": "According to him, they were meant as security while the money moved, not to be cashed.",
+      "attempts": [
+        {
+          "seed": 139100316450763,
+          "cosine": 0.8557074750072793
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8557074750072793,
+      "accepted": true
+    },
+    {
+      "number": 97,
+      "text": "But they were cashed.",
+      "attempts": [
+        {
+          "seed": 96041048566720,
+          "cosine": 0.6553107147676125
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.6553107147676125,
+      "accepted": true
+    },
+    {
+      "number": 98,
+      "text": "Three cheques, worth around one hundred and eighty-nine million dirhams, bounced.",
+      "attempts": [
+        {
+          "seed": 138168644560127,
+          "cosine": 0.8674197319014495
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8674197319014495,
+      "accepted": true
+    },
+    {
+      "number": 99,
+      "text": "In Dubai, a bounced cheque is a crime.",
+      "attempts": [
+        {
+          "seed": 82643898149023,
+          "cosine": 0.8348917423154731
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8348917423154731,
+      "accepted": true
+    },
+    {
+      "number": 100,
+      "text": "In January two thousand and ten, he was sentenced to seven years in jail.",
+      "attempts": [
+        {
+          "seed": 57927620939062,
+          "cosine": 0.8785662334387154
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8785662334387154,
+      "accepted": true
+    },
+    {
+      "number": 101,
+      "text": "He always said he'd done nothing wrong.",
+      "attempts": [
+        {
+          "seed": 237582037059573,
+          "cosine": 0.860602709698242
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.860602709698242,
+      "accepted": true
+    },
+    {
+      "number": 102,
+      "text": "In prison, he went on hunger strike for weeks.",
+      "attempts": [
+        {
+          "seed": 192246659202585,
+          "cosine": 0.8458138030927418
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8458138030927418,
+      "accepted": true
+    },
+    {
+      "number": 103,
+      "text": "He was released in two thousand and twelve, and later, Dubai's highest court quashed the rest of his sentence.",
+      "attempts": [
+        {
+          "seed": 24250942007260,
+          "cosine": 0.8707076079522793
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8707076079522793,
+      "accepted": true
+    },
+    {
+      "number": 104,
+      "text": "But by then, the man who bought Great Britain had spent his time on the map behind bars.",
+      "attempts": [
+        {
+          "seed": 36902485988626,
+          "cosine": 0.8782150013066927
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8782150013066927,
+      "accepted": true
+    },
+    {
+      "number": 105,
+      "text": "So the buyers were in trouble, the company had needed a rescue, and the builders had gone home.",
+      "attempts": [
+        {
+          "seed": 195655612042061,
+          "cosine": 0.8565222294266898
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8565222294266898,
+      "accepted": true
+    },
+    {
+      "number": 106,
+      "text": "You'd think that was the bottom.",
+      "attempts": [
+        {
+          "seed": 108969146314247,
+          "cosine": 0.8123358637240078
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8123358637240078,
+      "accepted": true
+    },
+    {
+      "number": 107,
+      "text": "But the strangest fight about the world was still to come, and it wasn't about money.",
+      "attempts": [
+        {
+          "seed": 143047474296962,
+          "cosine": 0.8705054221233458
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8705054221233458,
+      "accepted": true
+    },
+    {
+      "number": 108,
+      "text": "It was about whether the islands were even still there.",
+      "attempts": [
+        {
+          "seed": 211260541366082,
+          "cosine": 0.8734389079182109
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8734389079182109,
+      "accepted": true
+    },
+    {
+      "number": 109,
+      "text": "Now remember the boats.",
+      "attempts": [
+        {
+          "seed": 255229299306052,
+          "cosine": 0.7981224304002295
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7981224304002295,
+      "accepted": true
+    },
+    {
+      "number": 110,
+      "text": "Every island needed a way to get people there, so Nakheel gave a company called Penguin Marine the licence to run boat transport across the world.",
+      "attempts": [
+        {
+          "seed": 9679191050513,
+          "cosine": 0.8907306111961637
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8907306111961637,
+      "accepted": true
+    },
+    {
+      "number": 111,
+      "text": "Penguin paid a yearly fee for it, about one point three six million dollars.",
+      "attempts": [
+        {
+          "seed": 277633552149239,
+          "cosine": 0.8876037958156369
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8876037958156369,
+      "accepted": true
+    },
+    {
+      "number": 112,
+      "text": "And by two thousand and eleven, there wasn't much world to ferry anyone to.",
+      "attempts": [
+        {
+          "seed": 256421312644693,
+          "cosine": 0.8660094561756584
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8660094561756584,
+      "accepted": true
+    },
+    {
+      "number": 113,
+      "text": "Picture paying more than a million dollars a year to drive boats to islands where nobody lives.",
+      "attempts": [
+        {
+          "seed": 258747244004897,
+          "cosine": 0.8892783464001632
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8892783464001632,
+      "accepted": true
+    },
+    {
+      "number": 114,
+      "text": "Honestly, as a job description, that sounds amazing.",
+      "attempts": [
+        {
+          "seed": 157941869105434,
+          "cosine": 0.8524507867747247
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8524507867747247,
+      "accepted": true
+    },
+    {
+      "number": 115,
+      "text": "As a business plan, less so.",
+      "attempts": [
+        {
+          "seed": 178756638468097,
+          "cosine": 0.8731984994557485
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8731984994557485,
+      "accepted": true
+    },
+    {
+      "number": 116,
+      "text": "So Penguin went to the tribunal set up to handle Dubai World's disputes, and tried to get out of the contract.",
+      "attempts": [
+        {
+          "seed": 147722944950488,
+          "cosine": 0.8815026940005186
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8815026940005186,
+      "accepted": true
+    },
+    {
+      "number": 117,
+      "text": "And its lawyer said the sentence that went around the planet.",
+      "attempts": [
+        {
+          "seed": 204765726230932,
+          "cosine": 0.8471066255017027
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8471066255017027,
+      "accepted": true
+    },
+    {
+      "number": 118,
+      "text": "The islands, he said, were gradually falling back into the sea.",
+      "attempts": [
+        {
+          "seed": 84591387336189,
+          "cosine": 0.8657196114147359
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8657196114147359,
+      "accepted": true
+    },
+    {
+      "number": 119,
+      "text": "The project was effectively dead.",
+      "attempts": [
+        {
+          "seed": 265464726025835,
+          "cosine": 0.798428727494091
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.798428727494091,
+      "accepted": true
+    },
+    {
+      "number": 120,
+      "text": "Newspapers loved it.",
+      "attempts": [
+        {
+          "seed": 232030160329235,
+          "cosine": 0.726198221744329
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.726198221744329,
+      "accepted": true
+    },
+    {
+      "number": 121,
+      "text": "The world is sinking.",
+      "attempts": [
+        {
+          "seed": 229101096731665,
+          "cosine": 0.8286703536018667
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8286703536018667,
+      "accepted": true
+    },
+    {
+      "number": 122,
+      "text": "It was the perfect headline for a city that had just been rescued by its neighbour.",
+      "attempts": [
+        {
+          "seed": 121949555152383,
+          "cosine": 0.8529989518436978
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8529989518436978,
+      "accepted": true
+    },
+    {
+      "number": 123,
+      "text": "But here's the twist.",
+      "attempts": [
+        {
+          "seed": 71200209407604,
+          "cosine": 0.7844590463633931
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7844590463633931,
+      "accepted": true
+    },
+    {
+      "number": 124,
+      "text": "Nakheel denied it straight away.",
+      "attempts": [
+        {
+          "seed": 219364209376551,
+          "cosine": 0.8607651074523069
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8607651074523069,
+      "accepted": true
+    },
+    {
+      "number": 125,
+      "text": "It said the islands weren't sinking or eroding at all.",
+      "attempts": [
+        {
+          "seed": 128767223241776,
+          "cosine": 0.8347727749871545
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8347727749871545,
+      "accepted": true
+    },
+    {
+      "number": 126,
+      "text": "The three judges ruled against Penguin.",
+      "attempts": [
+        {
+          "seed": 3751164738271,
+          "cosine": 0.8158979656399634
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8158979656399634,
+      "accepted": true
+    },
+    {
+      "number": 127,
+      "text": "And in December two thousand and twelve, the tribunal ordered Penguin to pay Nakheel ten million dirhams.",
+      "attempts": [
+        {
+          "seed": 98967143969875,
+          "cosine": 0.8920912523383692
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8920912523383692,
+      "accepted": true
+    },
+    {
+      "number": 128,
+      "text": "An expert told the tribunal there was no erosion.",
+      "attempts": [
+        {
+          "seed": 236761378380951,
+          "cosine": 0.8009319650350248
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8009319650350248,
+      "accepted": true
+    },
+    {
+      "number": 129,
+      "text": "So the world wasn't sinking.",
+      "attempts": [
+        {
+          "seed": 35628869447239,
+          "cosine": 0.8244506790420258
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8244506790420258,
+      "accepted": true
+    },
+    {
+      "number": 130,
+      "text": "But that was never the real problem.",
+      "attempts": [
+        {
+          "seed": 175528334382071,
+          "cosine": 0.8020493554508399
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8020493554508399,
+      "accepted": true
+    },
+    {
+      "number": 131,
+      "text": "The real problem was that it was empty.",
+      "attempts": [
+        {
+          "seed": 186600858277020,
+          "cosine": 0.8568128799295074
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8568128799295074,
+      "accepted": true
+    },
+    {
+      "number": 132,
+      "text": "A few years later, someone counted.",
+      "attempts": [
+        {
+          "seed": 240225373988012,
+          "cosine": 0.8539913562559056
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8539913562559056,
+      "accepted": true
+    },
+    {
+      "number": 133,
+      "text": "Out of three hundred islands, only two had seen any development at all.",
+      "attempts": [
+        {
+          "seed": 38196865423910,
+          "cosine": 0.8885827483044197
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8885827483044197,
+      "accepted": true
+    },
+    {
+      "number": 134,
+      "text": "The only place you could actually visit was a beach club on the island called Lebanon, which opened in July two thousand and twelve.",
+      "attempts": [
+        {
+          "seed": 103087841716441,
+          "cosine": 0.8972090700559907
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8972090700559907,
+      "accepted": true
+    },
+    {
+      "number": 135,
+      "text": "By two thousand and sixteen, around nine islands had something on them.",
+      "attempts": [
+        {
+          "seed": 49048040441435,
+          "cosine": 0.8694559633903889
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8694559633903889,
+      "accepted": true
+    },
+    {
+      "number": 136,
+      "text": "First rule of island life here: bring your own electricity.",
+      "attempts": [
+        {
+          "seed": 196927574511269,
+          "cosine": 0.8482385868864111
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8482385868864111,
+      "accepted": true
+    },
+    {
+      "number": 137,
+      "text": "Think about why.",
+      "attempts": [
+        {
+          "seed": 94904978118926,
+          "cosine": 0.6219775015257929
+        },
+        {
+          "seed": 94904978118927,
+          "cosine": 0.6606447346885421
+        }
+      ],
+      "tries": 2,
+      "cosine": 0.6606447346885421,
+      "accepted": true
+    },
+    {
+      "number": 138,
+      "text": "The plan was to bring electricity from Dubai through cables under the sea.",
+      "attempts": [
+        {
+          "seed": 118029683430180,
+          "cosine": 0.8345310862217538
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8345310862217538,
+      "accepted": true
+    },
+    {
+      "number": 139,
+      "text": "As of twenty twenty-five, those cables still hadn't been laid.",
+      "attempts": [
+        {
+          "seed": 8039978820639,
+          "cosine": 0.8846765046993493
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8846765046993493,
+      "accepted": true
+    },
+    {
+      "number": 140,
+      "text": "Anyone building on an island had to make their own power with diesel generators.",
+      "attempts": [
+        {
+          "seed": 276212534361280,
+          "cosine": 0.8677003803812624
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8677003803812624,
+      "accepted": true
+    },
+    {
+      "number": 141,
+      "text": "An island with no bridge means every brick arrives by boat.",
+      "attempts": [
+        {
+          "seed": 184269584328897,
+          "cosine": 0.8234155605929002
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8234155605929002,
+      "accepted": true
+    },
+    {
+      "number": 142,
+      "text": "Every bag of cement, every worker, every fridge, every bottle of water.",
+      "attempts": [
+        {
+          "seed": 364576095304,
+          "cosine": 0.8285189672985072
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8285189672985072,
+      "accepted": true
+    },
+    {
+      "number": 143,
+      "text": "There's no sewer to plug into and no power line to connect.",
+      "attempts": [
+        {
+          "seed": 74646467192961,
+          "cosine": 0.8649505538135811
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8649505538135811,
+      "accepted": true
+    },
+    {
+      "number": 144,
+      "text": "Before you build a single villa, you have to build a tiny town's worth of pipes and cables, on your own, in the sea.",
+      "attempts": [
+        {
+          "seed": 173232567454018,
+          "cosine": 0.8562158778296871
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8562158778296871,
+      "accepted": true
+    },
+    {
+      "number": 145,
+      "text": "On the mainland, a developer buys land next to a road that's already there.",
+      "attempts": [
+        {
+          "seed": 41440486713850,
+          "cosine": 0.8599579611913328
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8599579611913328,
+      "accepted": true
+    },
+    {
+      "number": 146,
+      "text": "Out here, the road is the sea, and the sea doesn't care about your schedule.",
+      "attempts": [
+        {
+          "seed": 260926053598460,
+          "cosine": 0.8544271031741613
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8544271031741613,
+      "accepted": true
+    },
+    {
+      "number": 147,
+      "text": "Every delay costs money, every boat trip costs money, and the island makes nothing until it's finished.",
+      "attempts": [
+        {
+          "seed": 21551537871634,
+          "cosine": 0.8838843191187684
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8838843191187684,
+      "accepted": true
+    },
+    {
+      "number": 148,
+      "text": "That's why, for so many owners, the cheapest thing to do with their country was nothing at all.",
+      "attempts": [
+        {
+          "seed": 186576718818811,
+          "cosine": 0.8671433111312028
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8671433111312028,
+      "accepted": true
+    },
+    {
+      "number": 149,
+      "text": "And still, people try.",
+      "attempts": [
+        {
+          "seed": 184727551532602,
+          "cosine": 0.8385953634403632
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8385953634403632,
+      "accepted": true
+    },
+    {
+      "number": 150,
+      "text": "An Austrian developer, the Kleindienst Group, took the islands around Europe and started building something called the Heart of Europe.",
+      "attempts": [
+        {
+          "seed": 162482294525851,
+          "cosine": 0.883096851545284
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.883096851545284,
+      "accepted": true
+    },
+    {
+      "number": 151,
+      "text": "Hotels, beaches, floating villas.",
+      "attempts": [
+        {
+          "seed": 243200189521616,
+          "cosine": 0.7775641670867177
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7775641670867177,
+      "accepted": true
+    },
+    {
+      "number": 152,
+      "text": "It was supposed to be finished by two thousand and twenty-six.",
+      "attempts": [
+        {
+          "seed": 166665949644716,
+          "cosine": 0.8444709866537645
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8444709866537645,
+      "accepted": true
+    },
+    {
+      "number": 153,
+      "text": "Then the target moved to the end of two thousand and twenty-seven, with about half the construction done.",
+      "attempts": [
+        {
+          "seed": 137114401968384,
+          "cosine": 0.8969471500245965
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8969471500245965,
+      "accepted": true
+    },
+    {
+      "number": 154,
+      "text": "In October two thousand and twenty-four, the honest estimate was that the islands won't be complete for another decade at least, because getting anything out there costs so much.",
+      "attempts": [
+        {
+          "seed": 157814760307798,
+          "cosine": 0.8835998119216806
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8835998119216806,
+      "accepted": true
+    },
+    {
+      "number": 155,
+      "text": "Even the success stories don't last.",
+      "attempts": [
+        {
+          "seed": 38433122054611,
+          "cosine": 0.83893013766329
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.83893013766329,
+      "accepted": true
+    },
+    {
+      "number": 156,
+      "text": "A luxury resort opened on one of the islands in December two thousand and twenty-one.",
+      "attempts": [
+        {
+          "seed": 210444507221729,
+          "cosine": 0.8695911959052061
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8695911959052061,
+      "accepted": true
+    },
+    {
+      "number": 157,
+      "text": "In April two thousand and twenty-six, it closed.",
+      "attempts": [
+        {
+          "seed": 144010281340430,
+          "cosine": 0.8263572915035383
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8263572915035383,
+      "accepted": true
+    },
+    {
+      "number": 158,
+      "text": "So here's what Dubai actually built.",
+      "attempts": [
+        {
+          "seed": 81705823013000,
+          "cosine": 0.8115085785503708
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8115085785503708,
+      "accepted": true
+    },
+    {
+      "number": 159,
+      "text": "It took about five years to make a planet out of sand, and it worked.",
+      "attempts": [
+        {
+          "seed": 140266661584948,
+          "cosine": 0.8544415541928416
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8544415541928416,
+      "accepted": true
+    },
+    {
+      "number": 160,
+      "text": "The rock wall held.",
+      "attempts": [
+        {
+          "seed": 88135775170613,
+          "cosine": 0.7324099300699327
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7324099300699327,
+      "accepted": true
+    },
+    {
+      "number": 161,
+      "text": "The islands didn't wash away, whatever the lawyer said.",
+      "attempts": [
+        {
+          "seed": 175017929903658,
+          "cosine": 0.8301384641481956
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8301384641481956,
+      "accepted": true
+    },
+    {
+      "number": 162,
+      "text": "The hard part was never the sand.",
+      "attempts": [
+        {
+          "seed": 10233429472883,
+          "cosine": 0.8537807695294506
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8537807695294506,
+      "accepted": true
+    },
+    {
+      "number": 163,
+      "text": "It was everything you can't see from a plane.",
+      "attempts": [
+        {
+          "seed": 94327144681727,
+          "cosine": 0.8245701042575704
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8245701042575704,
+      "accepted": true
+    },
+    {
+      "number": 164,
+      "text": "The pipes, the power, the boat that has to come every single day, and the buyer who has to keep paying when the money stops.",
+      "attempts": [
+        {
+          "seed": 137072934898343,
+          "cosine": 0.8469417230874644
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8469417230874644,
+      "accepted": true
+    },
+    {
+      "number": 165,
+      "text": "And the supercar?",
+      "attempts": [
+        {
+          "seed": 77469454859590,
+          "cosine": 0.8205935311383596
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8205935311383596,
+      "accepted": true
+    },
+    {
+      "number": 166,
+      "text": "Turns out supercars don't love sand either.",
+      "attempts": [
+        {
+          "seed": 236022973153424,
+          "cosine": 0.8289272608597918
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8289272608597918,
+      "accepted": true
+    },
+    {
+      "number": 167,
+      "text": "Twenty years later, you can still fly over it and see every continent.",
+      "attempts": [
+        {
+          "seed": 151310192923914,
+          "cosine": 0.8755309186664064
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8755309186664064,
+      "accepted": true
+    },
+    {
+      "number": 168,
+      "text": "Ireland is still out there, four kilometers off the coast.",
+      "attempts": [
+        {
+          "seed": 256384975983189,
+          "cosine": 0.8852056764100094
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8852056764100094,
+      "accepted": true
+    },
+    {
+      "number": 169,
+      "text": "It's just waiting for somebody to move in.",
+      "attempts": [
+        {
+          "seed": 146787939240616,
+          "cosine": 0.8421747702426696
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8421747702426696,
+      "accepted": true
+    },
+    {
+      "number": 170,
+      "text": "Next time: a Soviet plane the size of a ship that was never allowed to climb.",
+      "attempts": [
+        {
+          "seed": 161627616927410,
+          "cosine": 0.8508168378034401
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.8508168378034401,
+      "accepted": true
+    },
+    {
+      "number": 171,
+      "text": "You'll find it on the channel.",
+      "attempts": [
+        {
+          "seed": 80640429516282,
+          "cosine": 0.7625756117457292
+        }
+      ],
+      "tries": 1,
+      "cosine": 0.7625756117457292,
+      "accepted": true
+    }
+  ],
+  "min": 0.6553107147676125,
+  "median": 0.8482208673514458,
+  "elapsedSeconds": 17.26
+}

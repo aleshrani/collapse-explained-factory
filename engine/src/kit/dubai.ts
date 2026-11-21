@@ -7,6 +7,9 @@ import {lam} from "../videos/bridge/build";
 import {camera, Model, painted, Point, wood} from "./shared";
 import {sign} from "./interior";
 import {sea} from "./sea";
+import {addPerson} from "./extras";
+import {firstHit,Ob} from "./collide";
+import {animate,circlingBoat,clouds,gulls,ripples,traffic} from "./motion";
 
 // The World, Dubai, built to match the ISS photo of 6 Apr 2022 (data/refs/dubai/SOURCES.md):
 // a thin oval rock breakwater, ~300 bare sand islands packed into continent outlines,
@@ -107,7 +110,7 @@ function ieFlag(){
 }
 
 // One developed island: a single villa, a diesel generator and fuel drums (no grid power reaches the islands).
-function villa(m:Model){
+function villa(m:Model,live:boolean){
   const [x,,z]=locations.villa,white=painted("#efe9dc"),glass=painted("#7fa6b2","glass");
   m.box(x,SAND_Y+1.6,z,9,3.2,6,white);m.box(x,SAND_Y+3.4,z,9.8,.4,6.8,painted("#d8cfbd"));
   m.box(x,SAND_Y+1.6,z+3.02,6,2.2,.06,glass);
@@ -115,6 +118,15 @@ function villa(m:Model){
   m.pipe([x+9.2,SAND_Y+1.8,z-1.4],[x+9.2,SAND_Y+3.6,z-1.4],.14,painted("#3b3d42"));
   for(let i=0;i<4;i++)m.pipe([x+7+i*.7,SAND_Y,z+1.6],[x+7+i*.7,SAND_Y+.9,z+1.6],.3,painted(i%2?"#2f5a7a":"#a8452f"));
   for(let i=0;i<10;i++)m.box(x-6+i*.62,SAND_Y+.2,z+6.5,.5,.06,2.6,wood());   // short jetty
+  if(!live)return;
+  // the generator chimney smokes, a flag flaps on the roof and a worker paces between the house and the drums (stickman card like everyone else)
+  const smoke=new THREE.MeshBasicMaterial({color:0xdfe3e6,transparent:true,opacity:.6,depthWrite:false}),puffs:THREE.Mesh[]=[];
+  for(let i=0;i<7;i++){const q=new THREE.Mesh(new THREE.SphereGeometry(.35,10,8),smoke);m.group.add(q);puffs.push(q);}
+  animate(m.group,t=>{puffs.forEach((q,i)=>{const u=((t/3.2+i/7)%1+1)%1;q.position.set(x+9.2+u*1.6+Math.sin(t+i)*.12,SAND_Y+3.7+u*3.2,z-1.4);q.scale.setScalar(.5+u*1.7);(q.material as THREE.MeshBasicMaterial).opacity=.55*(1-u);});});
+  const pole=painted("#d9d4c8");m.pipe([x-3.5,SAND_Y+3.6,z-2.2],[x-3.5,SAND_Y+6.1,z-2.2],.07,pole);
+  const flag=new THREE.Mesh(new THREE.PlaneGeometry(1.6,.95).translate(.8,0,0),new THREE.MeshBasicMaterial({color:0xc9553a,side:THREE.DoubleSide}));flag.position.set(x-3.5,SAND_Y+5.6,z-2.2);m.group.add(flag);
+  animate(m.group,t=>{flag.rotation.y=.45*Math.sin(t*3.1);flag.rotation.z=.08*Math.sin(t*5.3);});
+  addPerson(m.group,{x:x+4.8,y:SAND_Y,z:z+3.4,variant:2,scale:1,walk:{dx:3.2,period:8}});
 }
 
 export function build(params:{subject?:string},ctx:{light?:"day"|"golden"}={}){
@@ -125,7 +137,7 @@ export function build(params:{subject?:string},ctx:{light?:"day"|"golden"}={}){
   for(const [geo,mat] of [[g.sand,sand],[g.nz,sand],[g.grass,lawn]] as const){
     if(!survey){const mesh=new THREE.Mesh(geo,mat);mesh.receiveShadow=true;mesh.castShadow=mat===sand;m.group.add(mesh);}
   }
-  m.group.add(sea(ctx.light??"day"));
+  const ocean=sea(ctx.light??"day");m.group.add(ocean);animate(m.group,t=>{ocean.userData.clock.value=t;});
   if(!survey){
     breakwater(m);
     const flat=painted("#e9dcbc","sand");
@@ -135,12 +147,12 @@ export function build(params:{subject?:string},ctx:{light?:"day"|"golden"}={}){
     city.rotation.y=-Math.PI/2;city.position.set(SHORE_X-640,0,0);    // shore line z=-640 → x=SHORE_X
     m.group.add(city);
     irelandSign(m);
-    villa(m);
-    if(subject==="dredger"){buildDredger(m.group);const jet=new Jet(m.group);jet.set(0,1,0);}     // the rainbow of sand landing on an island
+    villa(m,subject==="villa");
+    if(subject==="dredger"){buildDredger(m.group);const jet=new Jet(m.group);jet.set(0,1,0);animate(m.group,t=>jet.set(0,1,t));}     // the rainbow of sand landing on an island
   }
   const timber=wood();
   if(!survey&&(subject==="landing"||subject==="delivery"||subject==="fridge")){
-    for(let i=0;i<36;i++)m.box(46,.83,-6.2+i*.31,2.45,.2,.295,timber);
+    for(let i=0;i<12;i++)m.box(46,.83,-6.2+i*.93,2.45,.2,.9,timber);   // 36 thin planks aliased into crawling dots in the ink pass
     for(let i=0;i<5;i++)for(const x of [44.9,47.1])m.pipe([x,-1,-6+i*2.5],[x,1.19,-6+i*2.5],.13,timber);
   }
   if(subject==="delivery"||subject==="survey"||subject==="landing"||subject==="fridge")delivery(m,survey);
@@ -156,12 +168,62 @@ export function build(params:{subject?:string},ctx:{light?:"day"|"golden"}={}){
   let look:Point=[x,y+(huge?0:big?1:.32),z];
   let wideCam=camera(eye(-.62,.55,1.25),look,46);
   if(subject==="coast"){look=[SHORE_X+90,55,40];wideCam=camera([x-70,y+9,z+30],look,38);}       // from the islands toward the skyline
+  if(subject==="breakwater")m.box(x,1.4,z,3.4,1.2,3.4,painted("#c8bfa9","earth"));
   const base=m.finish({wide:wideCam,medium:camera(eye(-.66,.48,1),look,43),close:camera(eye(-.43,.27,.68),look,36)});
   base.cameras.aerial=camera(eye(.01,huge?1.55:1.55,.24),look,huge?52:45);
   if(subject==="coast")base.cameras.aerial=camera([x-60,160,z+120],[SHORE_X,20,z],46);
   const feet:Point=unbuilt?[x+.55,SAND_Y,z+.25]:subject==="dredger"?[DREDGE[0]+1,4.96,DREDGE[2]+1]:survey?[43.5,.88,2.85]
-    :subject==="ireland"?[x+.4,SAND_Y,z+.6]:subject==="villa"?[x-3,SAND_Y,z+5]:subject==="coast"?[x,SAND_Y,z]:[46,.94,3.25];
+    :subject==="ireland"?[x+.4,SAND_Y,z+.6]:subject==="villa"?[x-3,SAND_Y,z+5]:false?[x,SAND_Y,z]
+    :subject==="hotel"?[HOTEL[0]-3,SAND_Y,HOTEL[2]+5]
+    :subject==="breakwater"?[x,2.0,z]                     // on the viewing platform built into the wall below
+    :subject==="palm"?[x,.6,z]                            // on the palm's trunk road
+    :subject==="archipelago"||subject==="beach"||subject==="coast"?(()=>{const near=[...list].filter(i=>i.kind==="map").sort((a,b)=>Math.hypot(a.c[0]-x,a.c[1]-z)-Math.hypot(b.c[0]-x,b.c[1]-z))[0];return near?[near.c[0],SAND_Y,near.c[1]] as Point:[x,SAND_Y,z] as Point;})()
+    :[46,.94,3.25];     // delivery, landing and fridge: the pier
+  // life: gulls over the subject, boats on the water, ripples round the moored boat, traffic on the coast road, drifting clouds
+  const scale=huge?5:large?2.5:big?1.5:1;
+  base.userData.islandPolys=(survey?[]:list).map(i=>i.poly);
+  gulls(base,[x,y,z],huge?9:5,12*scale,(huge?30:4.5)*scale,13,scale*.7);
+  const near=subject==="delivery"||subject==="landing"||subject==="survey"||subject==="fridge";
+  const polys=survey?[]:list;   // the survey view draws no islands
+  if(near){
+    let placed=0;
+    for(const [cx,cz,rx,rz] of [[30,4,9,6],[34,-6,8,5],[28,-2,6,4],[36,10,6,4],[24,6,5,3.5],[40,-10,5,3.5]])
+      if(placed<2&&clearWater(polys,m.obstacles,cx,cz,rx,rz)){circlingBoat(base,[cx,cz],rx,rz,.12,placed?2:2.6,16+placed*5,placed*.5,placed?"#f0dfba":"#e8e1cf",placed?"#a9553c":"#377574");placed++;}
+    ripples(base,[43,0,2.9],3,3.6,3.4);
+  }else if(!survey){
+    circlingBoat(base,[CENTRE[0],CENTRE[1]],RING[0]*1.2,RING[1]*1.25,.12,9,60,.1,"#e8e1cf","#377574");
+    circlingBoat(base,[CENTRE[0],CENTRE[1]],RING[0]*1.12,RING[1]*1.15,.12,7,52,.55,"#f0dfba","#a9553c");
+    circlingBoat(base,[CENTRE[0],CENTRE[1]],RING[0]*1.3,RING[1]*1.3,.12,12,80,.8,"#d9d4c8","#35546b");
+  }
+  // boats close to the subject, on a loop that stays clear of every island (searched outward from the subject)
+  if(!huge&&!near){
+    const rx=9*scale,rz=6*scale,cols=[["#e8e1cf","#377574"],["#f0dfba","#a9553c"],["#d9d4c8","#35546b"]];let placed=0;
+    for(let ring=1;ring<=6&&placed<2;ring++)for(let k=0;k<12&&placed<2;k++){
+      const a=k/12*Math.PI*2+ring,cx=x+Math.cos(a)*ring*rx*1.5,cz=z+Math.sin(a)*ring*rx*1.5;
+      if(!clearWater(list,m.obstacles,cx,cz,rx,rz))continue;
+      circlingBoat(base,[cx,cz],rx,rz,.12,Math.max(2.4,2.4*scale),18+placed*6,placed*.5,cols[placed][0],cols[placed][1]);placed++;
+    }
+  }
+  if(subject==="dredger"||subject==="coast"||subject==="palm"||subject==="breakwater"){for(const k of [1,.6,.35,.2])if(clearWater(polys,m.obstacles,DREDGE[0]-4,DREDGE[2]+6,26*k,16*k)){circlingBoat(base,[DREDGE[0]-4,DREDGE[2]+6],26*k,16*k,.12,4,22,0,"#f0dfba","#a9553c");break;}}
+  traffic(base,[SHORE_X+36,1.7,-260],[SHORE_X+36,1.7,320],14,16,3.2);traffic(base,[SHORE_X+42,1.7,330],[SHORE_X+42,1.7,-250],12,13,3.2);
+  if(!huge)clouds(base,[x,170,z],300,5,34,5);
   return {group:base,feet,place:"dubai"};
+}
+
+// true when an ellipse of boat track (centre, radii) crosses no island polygon
+// (sampled densely on the track itself and a hull-width either side, so a small island between samples is not missed)
+function clearWater(list:Island[],obs:Ob[],cx:number,cz:number,rx:number,rz:number){
+  for(let k=0;k<192;k++){
+    const d=[-2,0,3][k%3],a=Math.floor(k/3)/64*Math.PI*2,px=cx+Math.cos(a)*(rx+d),pz=cz+Math.sin(a)*(rz+d);
+    if(firstHit(obs,px,pz,3,-.5,1.5))return false;
+    for(const is of list){
+      if(Math.hypot(px-is.c[0],pz-is.c[1])>60)continue;
+      let inside=false;const q=is.poly;
+      for(let i=0,j=q.length-1;i<q.length;j=i++)if((q[i][1]>pz)!==(q[j][1]>pz)&&px<(q[j][0]-q[i][0])*(pz-q[i][1])/(q[j][1]-q[i][1])+q[i][0])inside=!inside;
+      if(inside)return false;
+    }
+  }
+  return true;
 }
 
 function delivery(m:Model,survey:boolean){

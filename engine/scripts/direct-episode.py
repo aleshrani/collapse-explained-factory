@@ -23,11 +23,13 @@ def chunks():
     word = sorted({round(float(w["t"]), 3) for w in words if 0 < float(w["t"]) < total})
     cuts, t = [0.0], 0.0
     while total - t > 5.0:
-        sent = [c for c in sentence if 3.0 <= c - t <= 5.0]
+        # never leave 5-6 s at the end: that cannot be split into two legal 3-5 s chunks
+        fits = lambda c: not 5.0 < total - c < 6.0
+        sent = [c for c in sentence if 3.0 <= c - t <= 5.0 and fits(c)]
         if sent:
             nxt = min(sent, key=lambda c: abs(c - t - 4.2))
         else:
-            cand = [c for c in word if 3.2 <= c - t <= 4.8] or [t + 4.0]
+            cand = [c for c in word if 3.2 <= c - t <= 4.8 and fits(c)] or [c for c in word if 3.0 <= c - t <= 5.0 and fits(c)] or [t + 4.0]
             nxt = min(cand, key=lambda c: abs(c - t - 4.0))
         if total - nxt < 3.0:                      # leave room for a legal last chunk
             nxt = t + (total - t) / 2
@@ -114,13 +116,34 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "llm"))
 _sp = runpy.run_path(str(Path(__file__).resolve().parents[1] / "llm" / "make-shotplan.py"))
 key_words = _sp["key_words"]
 SHARED = {k["id"] for k in json.loads((Path(__file__).resolve().parents[1] / "src/kit/catalog.json").read_text(encoding="utf-8-sig"))["kits"] if k.get("sharedBase")}
+def norm(x):
+    return re.sub(r"[^a-z0-9]+", " ", str(x).lower()).strip()
+STOP = set("but and or so that that's this these those you you'd you're you've i'm it's it there they he she we "
+           "according might not couldn't can't didn't wasn't isn't imagine picture place see came gave handed main "
+           "finished suddenly everyone real perfect honest one two leading expected".split())
+def good(w):
+    return key_words(w) and norm(w).replace(" ", "'") not in STOP and w.lower() not in STOP
+def run_of(line, taken=()):
+    """A readable 2-4 word run of the spoken line around its longest keyword not in `taken` (for a sign)."""
+    toks = [w.strip(".,!?\"'“”:;") for w in line.split()]
+    keys = [i for i, w in enumerate(toks) if good(w) and norm(w) not in taken]
+    if not keys:
+        return ""
+    i = max(keys, key=lambda k: len(toks[k]))
+    run = toks[max(0, i - 2):i + 2]
+    while len(run) > 1 and not good(run[0]): run = run[1:]
+    while len(run) > 1 and not good(run[-1]): run = run[:-1]
+    if len(run) == 1:  # stretch to the nearest other keyword (at most 3 words away), never end on "of"/"the"
+        after = [j for j in range(i + 1, min(len(toks), i + 4)) if good(toks[j])]
+        before = [j for j in range(max(0, i - 3), i) if good(toks[j])]
+        run = toks[i:after[0] + 1] if after else toks[before[-1]:i + 1] if before else run
+    text = " ".join(run)
+    return text[:1].upper() + text[1:]
 def shared_all():
     for s in shots:
         p = s["params"]
         if s["kit"] in SHARED and not key_words(s["line"]) & key_words(f'{p.get("subject","")} {p.get("detail","")}'):
-            picked = [w for w in re.findall(r"[A-Za-z0-9$%.,']+", s["line"]) if key_words(w)]
-            picked = sorted(picked, key=len, reverse=True)[:3]
-            p["detail"] = " ".join(w.strip(".,") for w in picked) or p["detail"]
+            p["detail"] = run_of(s["line"]) or p["detail"]
 
 
 shared_all()
@@ -132,7 +155,8 @@ FAMILY = {
     "desk": [(k, {}) for k in ["documents", "money", "timeline", "blueprint", "map", "studio", "boardroom", "skyline"]],
 }
 def family(kit):
-    return "dubai" if kit in ("dubai", "dubai-service") else "desk" if kit in dict(FAMILY["desk"]) else None
+    # interiors fall back to a desk kit, whose detail is then filled from the spoken line
+    return "dubai" if kit in ("dubai", "dubai-service") else "desk" if kit in dict(FAMILY["desk"]) or kit in ("property-office", "courtroom", "hotel-interior") else None
 def location(s):
     p = s["params"]
     variant = p.get("state") if s["kit"] in ("property-office", "courtroom", "hotel-interior") else None
@@ -157,6 +181,45 @@ for s in shots:
     placed.append(s)
 
 dress_all(); shared_all()
+# One text, one place: the overlay card, the big sign (subject) and the small sign (detail) must all
+# say different things. The big sign names the place or chapter, the small one carries words of the line.
+PLACE_SIGN = {"property-office": "Nakheel sales gallery", "courtroom": "Dubai courts", "finance-wall": "Trading floor",
+              "hotel-interior": "Island hotel"}
+def board_texts(p):
+    """Texts a board kit draws by itself (money value, timeline events, map pins)."""
+    out = [p.get("value", "")]
+    out += [f'{e.get("date","")} {e.get("label","")}' for e in p.get("events", [])] + [e.get("date", "") for e in p.get("events", [])]
+    out += [pin.get("label", "") for pin in p.get("pins", [])]
+    return [norm(t) for t in out if t]
+def dedupe_text():
+    for s in shots:
+        p = s["params"]
+        card = norm((s["overlay"] or {}).get("text", ""))
+        # the board already shows the figure: drop the card instead of saying it twice
+        if card and any(card == t or card in t for t in board_texts(p)):
+            s["overlay"] = None
+        # dubai draws its own place sign (IRELAND...): a card naming the same subject is dropped
+        if s["kit"] in ("dubai", "dubai-service") and card and card in norm(p.get("subject", "")):
+            s["overlay"] = None
+        if s["kit"] in ("dubai", "dubai-service") or "subject" not in p:
+            continue
+        card = norm((s["overlay"] or {}).get("text", ""))
+        chap = s.get("_chap", "")
+        if card and (norm(p["subject"]) in (card, norm(p.get("detail", ""))) or card in norm(p["subject"])):
+            p["subject"] = PLACE_SIGN.get(s["kit"]) or chap.split("·")[-1].strip() or "The World, Dubai"
+        if "detail" in p and norm(p["detail"]) in (card, norm(p["subject"])) or card and card in norm(p.get("detail", "")):
+            taken = set(card.split()) | set(norm(p["subject"]).split())
+            p["detail"] = run_of(s["line"], taken) or p["detail"]
+for s, (a, b, text, chap) in zip(shots, C):
+    s["_chap"] = chap
+dedupe_text()
+for s in shots:
+    s.pop("_chap", None)
+# QUALITY-RULES row 8: card, signs and board never show the same text (hard stop, not a warning)
+for i, s in enumerate(shots):
+    card, p = norm((s["overlay"] or {}).get("text", "")), s["params"]
+    if card and any(t and (card == t or card in t) for t in [norm(p.get("subject", "")), norm(p.get("detail", ""))] + board_texts(p)):
+        sys.exit(f"DUPLICATE TEXT in shot {i}: card {card!r} is also drawn in the scene")
 out = ep / "shots.json"
 out.write_text(json.dumps({"shots": shots}, indent=1, ensure_ascii=False), encoding="utf-8")
 print(f"{len(shots)} shots written")

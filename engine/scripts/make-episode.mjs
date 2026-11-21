@@ -61,7 +61,15 @@ try{
   acquire();locked=true;
   const voice=code("scripts/episode-voice.py"),plan=code("llm/make-shotplan.py"),render=code("scripts/render-episode.mjs");
   const models=path.join(root,"voice/models"),alignModel=fs.readdirSync(models).find(n=>n.startsWith("sherpa-onnx-nemo-parakeet"));
-  await stage("tts",[source,voice,path.join(models,"kokoro-v1.0.onnx"),path.join(models,"voices-v1.0.bin")],[file("vo.wav"),file("narration-timing.json")],python,[voice,source,out,"tts",...(mode?[mode]:[])]);
+  // Narrator = voice F cloned from voice/narrator/F-reference.wav (approved 21. 11.), one speaker gate per sentence.
+  // Three prefill shards clone in parallel into the cache first (CPU), then episode-voice.py only assembles.
+  const narrator=[code("scripts/fixed_narrator.py"),code("scripts/speaker_identity.py"),path.join(root,"voice/narrator/F-reference.wav")];
+  const prefill=code("scripts/prefill_clone.py");
+  await stage("tts",[source,voice,prefill,...narrator],[file("vo.wav"),file("narration-timing.json")],process.execPath,["-e",
+    `const {spawn}=require("child_process");const py=${JSON.stringify(python)},a=${JSON.stringify([prefill,source])};`+
+    `Promise.all([0,1,2].map(i=>new Promise((ok,no)=>spawn(py,[...a,String(i),"3"],{stdio:"inherit"}).on("exit",c=>c?no(Error("prefill shard "+i+" exit "+c)):ok()))))`+
+    `.then(()=>{const r=spawn(py,${JSON.stringify([voice,source,out,"tts","--engine","qwen-f",...(mode?[mode]:[])])},{stdio:"inherit"});r.on("exit",c=>process.exit(c))})`+
+    `.catch(e=>{console.error(e.message);process.exit(1)})`]);
   await stage("align",[file("vo.wav"),file("narration-timing.json"),voice,path.join(models,alignModel)],[file("words.json")],python,[voice,source,out,"align"]);
   const catalog=code("src/kit/catalog.json"),validator=code("scripts/validate-shots.py");
   const directed=!mode&&fs.existsSync(path.join(ep,"direction.txt"));   // hand-directed episode: never replace its plan with the local model

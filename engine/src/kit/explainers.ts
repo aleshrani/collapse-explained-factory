@@ -3,6 +3,7 @@ import {ctex} from "../videos/bridge/paint";
 import {lam} from "../videos/bridge/build";
 import {camera, Model, painted, wood, Point} from "./shared";
 import {addPerson} from "./extras";
+import {clouds,gulls,papers,pulseRing,slider,traffic} from "./motion";
 import {CONTINENTS} from "../videos/dubai3d/islands";
 
 export const bases=["map","documents","money","timeline","blueprint","boardroom","studio","skyline"] as const;
@@ -51,8 +52,8 @@ function artwork(base:Base,p:Params){
       g.fillStyle="#d3c49f";g.fillRect(700,176,242,282);g.strokeStyle=ink;g.lineWidth=3;g.strokeRect(700,176,242,282);
       for(let k=0;k<5;k++){g.fillStyle=k%2?"#72979b":"#bc644c";g.fillRect(720+k*42,438-(60+k*37%140),30,60+k*37%140);}
     }
-    g.fillStyle=cream;g.fillRect(26,23,972,110);lettering(g,p.subject,49,98,921,64);
-    g.fillStyle=ink;g.fillRect(26,506,972,51);g.fillStyle=cream;g.font="bold 31px Arial";g.fillText(p.detail,47,543,924);
+    if(p.subject.trim()){g.fillStyle=cream;g.fillRect(26,23,972,110);lettering(g,p.subject,49,98,921,64);}
+    if(p.detail.trim()){g.fillStyle=ink;g.fillRect(26,506,972,51);g.fillStyle=cream;g.font="bold 31px Arial";g.fillText(p.detail,47,543,924);}
   })}));
 }
 
@@ -63,7 +64,7 @@ function panelDesk(m:Model,base:Base,crowd:number){
   const n=Math.min(6,Math.max(1,crowd));
   for(let i=0;i<n;i++){
     const x=(i-(n-1)/2)*1.25;
-    addPerson(m.group,{x,y:-.35,z:.35,variant:i,scale:.95});
+    addPerson(m.group,{x,y:-.35,z:.35,variant:i,scale:.95,seated:true});
     m.box(x,1.25,1.5,.55,.05,.4,paper);                    // sheet at each seat
     m.pipe([x+.45,1.23,1.65],[x+.45,1.4,1.65],.045,dark);  // glass / mic stem
     m.box(x+.45,1.43,1.65,.08,.05,.08,base==="studio"?brass:dark);
@@ -95,6 +96,7 @@ function city(m:Model,mat:THREE.Material){
   m.box(0,12.3,-5.78,9.2,5.2,.3,steel);
   const sign=new THREE.Mesh(new THREE.PlaneGeometry(8.9,4.9),mat);sign.position.set(0,12.3,-5.6);m.group.add(sign);
   for(const x of [-3.6,3.6])m.beam([x,10,-5.9],[x*.9,9,-7.2],.1,steel);
+  for(const x of [-3.9,3.9])m.box(x,6.1,-5.75,.45,12.2,.45,steel);m.box(0,9.4,-5.75,8.4,.25,.25,steel);   // the billboard stands on two posts and a brace, in front of the tower
   for(let x=-14;x<=14;x+=4)for(const z of [-3,6]){m.pipe([x,0,z],[x,3.6,z],.07,steel);m.box(x+.3,3.6,z,.7,.12,.2,painted("#e6dbb8"));}
   for(const [x,z] of [[-7,5],[8,-3],[-9,-3]]){m.pipe([x,0,z],[x,1.3,z],.14,painted("#6a4f3a"));m.mound(x,1.3,z,1.1,1.5,1.1,painted("#7da16d","earth"),x);}
   m.box(0,.12,6.8,34,.2,.9,curb);
@@ -135,7 +137,7 @@ function deskScene(m:Model,base:Base){
   void floor;
 }
 export function build(base:Base,p:Params){
-  if(!p.subject?.trim()||!p.detail?.trim())throw Error("Missing episode dressing for "+base);
+  if(typeof p.subject!=="string"||typeof p.detail!=="string")throw Error("Missing episode dressing for "+base);   // empty is fine: the label card already says it
   const m=new Model(),mat=artwork(base,p),steel=painted("#56696d"),brass=painted("#c5a45d"),paper=painted("#e6ddc8");
   const wall=painted("#a8afa5","rib"),window=painted("#749da5","glass"),floor=wood();
   m.box(0,-.15,0,55,.28,40,base==="skyline"?painted("#b2a98e","earth"):floor,5);if(base!=="skyline")m.box(0,5,-8,53,10,.5,wall);
@@ -155,7 +157,7 @@ export function build(base:Base,p:Params){
     deskScene(m,base);
   }else{
     if(base!=="skyline")board(0,3.15,-2.6,8.48,4.77);
-    if(base==="map"||base==="timeline")for(const x of [-3.9,3.9])m.box(x,1,-2.7,.17,2,.22,brass);
+    if(base==="map"||base==="timeline")for(const x of [-3.9,3.9])m.box(x,1,-2.98,.17,2,.22,brass);   // behind the frame: a pole at the plate's z-fought and flickered
     if(base==="boardroom"||base==="studio")panelDesk(m,base,p.crowd??2);
     if(base==="boardroom"){
       // rug, clock, plant and mic stands give the decision room scale
@@ -170,10 +172,25 @@ export function build(base:Base,p:Params){
   const group=m.finish({wide:camera([5.5,5.8,10.2],target,48),medium:camera(desk?[1.4,5.6,4.1]:[.7,3.4,7.1],target,45),close:camera(desk?[.1,4.75,2.3]:[-.8,3,5.1],target,41)});
   if(desk)group.cameras.aerial=camera([-.3,8,.1],target,45);
   if(base==="skyline"){
-    group.cameras.wide=camera([2.5,6.2,16],[0,9,-6],56);group.cameras.medium=camera([3.2,4.4,11],[0,10,-6],48);group.cameras.close=camera([2.8,3.4,9.2],[0,11,-6],42);
+    group.cameras.wide=camera([2.5,2.6,16],[0,8,-6],56);group.cameras.medium=camera([3.2,4.4,11],[0,10,-6],48);group.cameras.close=camera([2.8,3.4,9.2],[0,11,-6],42);
     group.cameras.aerial=camera([6,22,12],[0,6,-5],60);group.cameras.low=camera([4,1.2,10.5],[0,10,-6],54);group.cameras.dolly=camera([-3,5,12.5],[0,10,-6],46);
   }
-  const feet:Point=desk?[3.3,0,2.6]:base==='skyline'?[4.4,.12,4.6]:[4.6,0,-.2];
+  // life: nothing on screen is ever still
+  const px=(cx:number)=>(cx/1024-.5)*8.48,py=(cy:number)=>3.15+(.5-cy/576)*4.77;
+  if(desk||base==="boardroom"||base==="studio")papers(group,desk?[0,1.7,.2]:[0,1.8,1.3],desk?6:5,desk?2.8:3.2,1.4);
+  if(base==="map")for(const [i,pin] of (p.pins??[]).entries()){const cx=48+(pin.lon+180)/360*922,cy=146+(82-pin.lat)/152*340;pulseRing(group,[px(cx),py(cy),-2.55],.5,1.6,i*.3);pulseRing(group,[px(cx),py(cy),-2.55],.5,1.6,i*.3+.5);}
+  if(base==="timeline"){slider(group,[px(110),py(324),-2.55],[px(904),py(324),-2.55],.11,7);for(const ev of (p.events??[]).keys()){const cx=110+ev*794/Math.max(1,(p.events??[]).length-1);pulseRing(group,[px(cx),py(324),-2.55],.35,2.2,ev*.37);}}
+  // one person always crosses the picture: an assistant with papers, pedestrians in the street
+  if(desk)addPerson(group,{x:-1.5,y:0,z:4.6,variant:3,carry:true,walk:{dx:4,period:10}});
+  if(base==="map"||base==="timeline")addPerson(group,{x:-1.8,y:0,z:.9,variant:4,carry:true,walk:{dx:3,period:9}});
+  if(base==="boardroom"||base==="studio")addPerson(group,{x:-2,y:0,z:5.4,variant:3,carry:true,walk:{dx:3.5,period:10}});
+  if(base==="skyline"){addPerson(group,{x:-6,y:.12,z:5.2,variant:2,walk:{dx:3.5,period:11}});addPerson(group,{x:7,y:.12,z:5.6,variant:5,carry:true,walk:{dx:3,period:9}});}
+  if(base==="skyline"){
+    traffic(group,[-17,.4,1.9],[17,.4,1.9],7,3.2,.9);traffic(group,[17,.4,.3],[-17,.4,.3],6,2.6,.9);
+    gulls(group,[0,14,-4],6,9,0,12,.9);clouds(group,[0,25,-14],26,5,5,.6);
+  }
+  if(desk)group.userData.hostSpots={close:[3.4,0,-3.1]};   // the close camera looks steeply down at the desk: the host stands behind it, where that camera can see
+  const feet:Point=desk?[3.3,0,2.6]:base==='skyline'?[4.4,.12,4.6]:base==='boardroom'||base==='studio'?[4.9,0,3.2]:[4.6,0,-.2];
   return {group,feet,place:base};
 }
 

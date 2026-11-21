@@ -107,6 +107,25 @@ $kok = "https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-file
 Get-Verified "$kok/kokoro-v1.0.onnx" (Join-Path $models "kokoro-v1.0.onnx") "7D5DF8ECF7D4B1878015A32686053FD0EEBE2BC377234608764CC0EF3636A6C5"
 Get-Verified "$kok/voices-v1.0.bin"  (Join-Path $models "voices-v1.0.bin")  "BCA610B8308E8D99F32E6FE4197E7EC01679264EFED0CAC9140FE9C29F1FBF7D"
 
+# Narrator voice (approved 21. 11.): Chatterbox English Q4 cloned from voice\narrator\F-reference.wav,
+# checked sentence by sentence with the CAM++ speaker model (engine\scripts\fixed_narrator.py).
+$cb = "https://huggingface.co/onnx-community/chatterbox-ONNX/resolve/3cab09af388d3f02bba43443fce88c1f4525ac43"
+$cbDir = Join-Path $models "chatterbox-en-q4"; New-Item -ItemType Directory -Force $cbDir | Out-Null
+$cbFiles = [ordered]@{
+    "onnx/conditional_decoder.onnx"      = "1656D0D31332BAE1854839959A3139300EBB67C178651DFA3F8C5FBFA5351351"
+    "onnx/conditional_decoder.onnx_data" = "51D58345A272747665EC9D5BB61E01835258A940E321A288582AC4C18CF01B5A"
+    "onnx/embed_tokens.onnx"             = "160722EC14789F616ABDB1E31916CBBF9223C03FDE0AB546D64CA74FB72E430B"
+    "onnx/embed_tokens.onnx_data"        = "898C563C3A5CA1B9EA10CE89B0CDCF252B0BB5AB460DFC4EADEA003B56E5D2EE"
+    "onnx/language_model_q4.onnx"        = "7F8CDCA83B2493536CBF3ACF421199808A3D68736F55F4EABD20EF8A99DA4313"
+    "onnx/language_model_q4.onnx_data"   = "5203D1E83C159316F9923C5C83759F6A34F87BE1322CE4AD0FACD9FC4AEF4790"
+    "onnx/speech_encoder.onnx"           = "8F1C8A0F89B77BF9CD5DD8F2E034EB2C79DC00FE70D41196B28C257643B00CCB"
+    "onnx/speech_encoder.onnx_data"      = "04431DCEF6325C54B02DE2219845888B464BCD1F1AC2F8839C2FECD1ED2EF294"
+    "tokenizer.json"                     = "ECDDF6AAAE85E271610A2743409F7E447886957D0B0836687C1EAEC5CCAC2891"
+    "config.json"                        = "A7D8518EDD1CF6346E4D2BE33201747EA4C476718DB756F42E6959E4828F4955"
+}
+foreach ($f in $cbFiles.Keys) { Get-Verified "$cb/$f" (Join-Path $cbDir (Split-Path $f -Leaf)) $cbFiles[$f] }
+Get-Verified "https://github.com/k2-fsa/sherpa-onnx/releases/download/speaker-recongition-models/3dspeaker_speech_campplus_sv_zh_en_16k-common_advanced.onnx" (Join-Path $models "3dspeaker_speech_campplus_sv_zh_en_16k-common_advanced.onnx") "53CAB20BA8F2EB2F6E2D89ECC18E88EF3222169B61B4419CBC13666744A4574B"
+
 $pkName = "sherpa-onnx-nemo-parakeet-tdt-0.6b-v2-int8"
 $pkDir = Join-Path $models $pkName
 $pkFiles = @{

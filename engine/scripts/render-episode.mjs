@@ -24,7 +24,7 @@ const run=(exe,args)=>{
   }
 };
 const audio=path.join(ep,"vo.wav"),raw=path.join(scratch,"picture.mp4"),pending=path.join(ep,"episode.pending.mp4");
-const start=Date.now();
+const start=Date.now(),collisions=[];
 try{
   const duration=Number(execFileSync("ffprobe",["-v","error","-show_entries","format=duration","-of","csv=p=0",audio],{encoding:"utf8"}).trim());
   run(python,[path.join(engine,"llm","make-shotplan.py"),ep,"--check","--duration",String(duration)]);
@@ -59,13 +59,14 @@ try{
         const clip=path.join(clipDir,hash+".mp4");
         if(!fs.existsSync(clip)){
           const tmp=path.join(clipDir,hash+"-"+process.pid+".mp4");
-          await renderMedia({...opts,inputProps:props,composition:{...composition,props,durationInFrames:stop-first},puppeteerInstance:browser,outputLocation:tmp,codec:"h264",crf:17,muted:true,concurrency:2,onBrowserLog:log=>{if(log.type==="error")console.error(log.text);}});
+          await renderMedia({...opts,inputProps:props,composition:{...composition,props,durationInFrames:stop-first},puppeteerInstance:browser,outputLocation:tmp,codec:"h264",crf:17,muted:true,concurrency:2,onBrowserLog:log=>{if(log.type==="error"){console.error(log.text);if(/COLLISION|FRAMING|FLOAT/.test(log.text))collisions.push("shot "+list.length+": "+log.text);}}});
           fs.renameSync(tmp,clip);rendered++;
         }else reused++;
         list.push("file '"+clip.replaceAll("\\","/").replaceAll("'","'\\''")+"'");
         console.log("Picture beat",list.length,"/",shots.length);
       }
     }finally{await browser.close({silent:true});}
+    if(collisions.length)throw Error("Collision check failed (nothing may pass through anything): "+[...new Set(collisions)].join(" | "));
     const concat=path.join(scratch,"clips.txt");fs.writeFileSync(concat,list.join("\n"));
     run("ffmpeg",["-v","error","-y","-f","concat","-safe","0","-i",concat,"-c:v","copy",raw]);
   }else{

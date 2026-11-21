@@ -60,7 +60,8 @@ export const buildMainland = (root: THREE.Object3D) => {
       tb.add(boxGeo(V(x - w / 2, 0, z - d / 2), V(x + w / 2, h * 0.9, z + d / 2), 30), m);
       tb.add(boxGeo(V(x - w / 2, h * 0.9, z - d / 2), V(x + w / 2 - w * 0.5, h, z + d / 2), 30), m);
     }
-    if (kind !== 2) for (let y = 12; y < h*.52; y += 14) {
+    // far skyline: the thin floor-band boxes every 14 m only crawled in the ink pass (the facade texture already has floor bands)
+    if (false as boolean) for (let y = 12; y < h*.52; y += 14) {
       tb.add(boxGeo(V(x-w*.51,y,z-d*.51),V(x+w*.51,y+1.15,z+d*.51),18),plate("skyBand","#72869a",1));
     }
     if (h > 110 && r() < 0.6) cyl(tb, col("mast", "#d9dde4"), 0.5, 0.15, h * 0.12, M4(x, h, z), 6);

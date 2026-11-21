@@ -1,6 +1,5 @@
-# Episode 01 hand direction, one row per chunk in chunks.txt (157). kit | params | camera | light | action | expression | card
+# remapped from direction.txt
 dubai | {"subject":"ireland"} | wide | day | point | smug | Ireland
-dubai | {"subject":"archipelago"} | aerial | day | explain | explaining | 4 km off Dubai
 money | {"subject":"Ireland island","value":"AED 142 million"} | close | day | shocked-jump | shocked | AED 142 million
 courtroom | {"state":"custody"} | wide | day | explain | shocked | Great Britain
 dubai | {"subject":"coast"} | wide | golden | stand | neutral |
@@ -10,27 +9,26 @@ dubai | {"subject":"villa"} | wide | day | explain | explaining | 20+ years
 dubai | {"subject":"beach"} | medium | day | shrug | smug | no power cable
 dubai | {"subject":"archipelago"} | wide | golden | explain | explaining | The World
 map | {"subject":"Dubai","pins":[{"label":"The World"}]} | wide | day | shrug | explaining |
-dubai | {"subject":"beach"} | aerial | day | point | explaining | every island still there
 property-office | {"state":"model","subject":"300 islands"} | wide | day | explain | explaining | 300 islands
 money | {"subject":"richest buyers"} | wide | day | count-fingers | explaining |
 dubai | {"subject":"archipelago"} | close | day | explain | explaining | mostly empty
 property-office | {"state":"model","subject":"Nakheel"} | medium | day | point | explaining | May 2003
-dubai | {"subject":"palm"} | aerial | day | point | explaining | Palm Jumeirah
 dubai | {"subject":"archipelago"} | medium | day | explain | smug | about 300 islands
+dubai | {"subject":"palm"} | aerial | day | point | explaining | Palm Jumeirah
 map | {"subject":"continents"} | aerial | day | point | explaining | Europe, Africa, Antarctica
 dubai | {"subject":"dredger"} | wide | day | point | explaining | dredgers
 dubai | {"subject":"survey"} | close | day | explain | explaining |
 blueprint | {"subject":"sand volume"} | wide | day | shocked-jump | shocked | 321 million m³
-money | {"subject":"Olympic pools","value":"128,000 pools"} | medium | day | count-fingers | shocked | 128,000 pools
+blueprint | {"subject":"sand volume"} | wide | day | shocked-jump | shocked | 321 million m³
 dubai | {"subject":"breakwater"} | close | day | point | explaining | 386 million tonnes of rock
 dubai-service | {"station":"breakwater","label":"waves vs map"} | wide | day | explain | explaining |
-dubai | {"subject":"archipelago"} | low | day | explain | explaining | looks finished
 dubai | {"subject":"beach"} | wide | day | shrug | smug | nothing on it
+dubai | {"subject":"archipelago"} | low | day | explain | explaining | looks finished
 dubai | {"subject":"landing"} | medium | day | count-fingers | explaining | no pipes, no power
 dubai | {"subject":"delivery"} | wide | day | point | explaining | boat only
 property-office | {"state":"signed","subject":"blank plot"} | close | day | explain | explaining | blank plot
+dubai | {"subject":"delivery"} | wide | day | point | explaining | boat only
 blueprint | {"subject":"7 x 9 km"} | medium | day | point | explaining | 7 x 9 km
-dubai | {"subject":"beach"} | low | day | explain | explaining | 2.3–8.4 hectares
 map | {"subject":"football pitches"} | close | day | count-fingers | explaining | 3–12 football pitches
 dubai | {"subject":"ireland"} | aerial | day | stand | smug |
 dubai | {"subject":"villa","gag":"supercar"} | wide | day | walk-in | smug |
@@ -38,69 +36,69 @@ dubai | {"subject":"beach","gag":"supercar"} | medium | day | shrug | laughing |
 dubai | {"subject":"coast","gag":"supercar"} | low | day | shrug | facepalm |
 dubai | {"subject":"breakwater"} | aerial | day | point | explaining | January 2008
 boardroom | {"subject":"Nakheel: done on schedule"} | wide | day | thumbs-up | smug |
+dubai | {"subject":"breakwater"} | aerial | day | point | explaining | January 2008
 dubai | {"subject":"archipelago"} | dolly | golden | explain | explaining | sold as a story
-property-office | {"state":"model","subject":"buy a country"} | low | day | point | smug |
+dubai | {"subject":"archipelago"} | dolly | golden | explain | explaining | sold as a story
 property-office | {"state":"signed","subject":"buy a country"} | dolly | day | laugh | laughing |
 studio | {"subject":"I own Ireland"} | wide | day | laugh | laughing |
-timeline | {"subject":"March 2007","events":[{"date":"2007","label":"Ireland sold"}]} | wide | day | point | explaining | March 2007
+property-office | {"state":"signed","subject":"buy a country"} | dolly | day | laugh | laughing |
+studio | {"subject":"I own Ireland"} | wide | day | laugh | laughing |
 dubai | {"subject":"ireland"} | medium | day | point | explaining | AED 142 million
 skyline | {"subject":"Ireland in the Sun"} | wide | day | explain | smug | Ireland in the Sun
 hotel-interior | {"state":"open","subject":"pubs, hotels, homes"} | wide | day | explain | explaining |
 documents | {"subject":"instalments"} | wide | day | point | explaining | paid in instalments
-money | {"subject":"prices only up"} | aerial | day | thumbs-up | smug |
 property-office | {"state":"model","subject":"deposit"} | aerial | day | explain | explaining | deposit
+money | {"subject":"prices only up"} | aerial | day | thumbs-up | smug |
 documents | {"subject":"worth more"} | close | day | thumbs-up | smug |
 money | {"subject":"borrow, buy next"} | low | day | count-fingers | explaining |
 boardroom | {"subject":"everybody wins"} | medium | day | laugh | laughing |
 money | {"subject":"price chart","gag":"price-chart"} | dolly | day | explain | smug |
 studio | {"subject":"2008","gag":"price-chart"} | medium | day | facepalm | facepalm |
 dubai | {"subject":"archipelago"} | aerial | golden | explain | explaining | 300 islands
+dubai | {"subject":"archipelago"} | aerial | golden | explain | explaining | 300 islands
 documents | {"subject":"next payment"} | medium | day | point | explaining |
 property-office | {"state":"signed","subject":"almost sold out"} | wide | day | shrug | smug |
-boardroom | {"subject":"Nakheel","detail":"70% sold"} | close | day | point | shocked | 70% sold
 timeline | {"subject":"2008","events":[{"date":"2008","label":"money stops"}]} | medium | golden | shocked-jump | shocked | 2008
 skyline | {"subject":"everywhere"} | aerial | golden | shrug | shocked |
 money | {"subject":"next payment"} | wide | golden | cover-eyes | shocked |
 finance-wall | {"state":"crash","subject":"global crisis","detail":"markets crash"} | wide | golden | shocked-jump | shocked | 2008 crash
 property-office | {"state":"signed","subject":"no buyers"} | close | golden | shrug | facepalm |
 dubai | {"subject":"beach"} | dolly | golden | shrug | facepalm | expensive sand
-documents | {"subject":"Ireland deal"} | low | golden | point | explaining | end of 2008
+dubai | {"subject":"beach"} | dolly | golden | shrug | facepalm | expensive sand
 boardroom | {"subject":"liquidation"} | low | golden | facepalm | facepalm | liquidation
 dubai | {"subject":"dredger"} | medium | golden | explain | explaining | 2009: work suspended
-dubai | {"subject":"beach"} | low | golden | shrug | facepalm | builders never came
 timeline | {"subject":"25 Nov 2009","events":[{"date":"25 Nov 2009","label":"standstill"}]} | low | golden | point | shocked | 25 Nov 2009
 skyline | {"subject":"Dubai World"} | wide | golden | explain | explaining | Dubai World
+timeline | {"subject":"25 Nov 2009","events":[{"date":"25 Nov 2009","label":"standstill"}]} | low | golden | point | shocked | 25 Nov 2009
 studio | {"subject":"please wait"} | medium | golden | shrug | explaining |
 money | {"subject":"debt freeze","value":"$25 billion"} | close | golden | shocked-jump | shocked | $25 billion
-finance-wall | {"state":"crash","subject":"Europe markets","detail":"Europe -3%"} | medium | golden | point | shocked | Europe -3%
 documents | {"subject":"Islamic bond"} | dolly | golden | explain | explaining | $3.5 billion bond
 boardroom | {"subject":"$3.5 billion due"} | wide | golden | facepalm | facepalm |
-dubai | {"subject":"ireland"} | close | golden | cover-eyes | shocked |
+boardroom | {"subject":"$3.5 billion due"} | wide | golden | facepalm | facepalm |
 studio | {"subject":"breaking news"} | dolly | golden | facepalm | shocked |
 timeline | {"subject":"14 Dec 2009","events":[{"date":"14 Dec 2009","label":"Abu Dhabi"}]} | dolly | day | point | explaining | 14 December
 finance-wall | {"state":"rescue","subject":"Abu Dhabi rescue","detail":"$10 billion"} | low | day | shocked-jump | shocked | $10 billion
 documents | {"subject":"bond repaid"} | wide | day | thumbs-up | smug | $4 billion
 dubai | {"subject":"archipelago"} | close | golden | shrug | neutral | islands not saved
+documents | {"subject":"bond repaid"} | wide | day | thumbs-up | smug | $4 billion
 property-office | {"state":"model","subject":"still buying"} | medium | day | explain | explaining | 2009
-dubai | {"subject":"archipelago"} | low | day | point | explaining | Great Britain
 boardroom | {"subject":"still buying"} | dolly | day | explain | explaining |
 documents | {"subject":"security cheques"} | close | day | explain | explaining |
+boardroom | {"subject":"still buying"} | dolly | day | explain | explaining |
 money | {"subject":"cheques cashed"} | medium | day | shocked-jump | shocked |
 documents | {"subject":"3 cheques","detail":"AED 189 million"} | aerial | day | point | shocked | AED 189 million
-courtroom | {"state":"exhibit"} | close | day | explain | neutral | January 2010
 courtroom | {"state":"custody"} | aerial | day | stand | neutral | 7 years
+courtroom | {"state":"exhibit"} | close | day | explain | neutral | January 2010
 timeline | {"subject":"2012 release","events":[{"date":"2012","label":"released"}]} | close | day | explain | neutral | 2012
 courtroom | {"state":"hearing"} | low | day | explain | neutral | sentence quashed
 dubai | {"subject":"ireland"} | low | golden | stand | neutral |
 dubai | {"subject":"beach"} | close | golden | shrug | neutral | behind bars
-boardroom | {"subject":"buyers, rescue, builders"} | aerial | day | count-fingers | explaining |
 studio | {"subject":"the bottom?"} | low | day | shrug | smug |
 dubai | {"subject":"breakwater"} | medium | day | point | explaining | strangest fight
 dubai | {"subject":"delivery"} | close | day | point | explaining | remember the boats
-dubai | {"subject":"landing"} | wide | day | explain | explaining |
 skyline | {"subject":"Penguin Marine"} | medium | day | point | explaining | Penguin Marine
 money | {"subject":"yearly fee","value":"$1.36 million"} | low | day | count-fingers | shocked | $1.36 million a year
-dubai | {"subject":"delivery"} | medium | day | shrug | smug | 2011
+skyline | {"subject":"Penguin Marine"} | medium | day | point | explaining | Penguin Marine
 dubai | {"subject":"landing"} | aerial | day | explain | explaining |
 dubai | {"subject":"archipelago"} | dolly | day | explain | explaining | nobody lives here
 dubai-service | {"station":"dispatch","label":"dream job"} | wide | day | laugh | laughing | dream job
@@ -109,6 +107,7 @@ documents | {"subject":"get out of contract"} | low | day | point | explaining |
 dubai | {"subject":"breakwater"} | low | day | shocked-jump | shocked | "falling back into the sea"
 studio | {"subject":"effectively dead"} | aerial | day | explain | shocked | "effectively dead"
 skyline | {"subject":"THE WORLD IS SINKING"} | low | day | laugh | laughing | The world is sinking
+studio | {"subject":"effectively dead"} | aerial | day | explain | shocked | "effectively dead"
 documents | {"subject":"perfect headline"} | wide | day | point | smug |
 boardroom | {"subject":"Nakheel: not sinking"} | wide | day | point | explaining | not sinking
 courtroom | {"state":"hearing"} | close | day | thumbs-up | smug | judges: no
@@ -117,41 +116,39 @@ courtroom | {"state":"exhibit"} | aerial | day | explain | explaining | no erosi
 dubai | {"subject":"archipelago"} | aerial | day | shrug | neutral | empty
 map | {"subject":"300 islands","detail":"2 developed"} | low | day | count-fingers | shocked | 2 of 300
 dubai | {"subject":"villa"} | medium | day | point | explaining |
-hotel-interior | {"state":"open","subject":"Lebanon beach club"} | medium | day | point | explaining | Lebanon, July 2012
+dubai | {"subject":"villa"} | medium | day | point | explaining |
 timeline | {"subject":"2016","events":[{"date":"2016","label":"9 islands"}]} | aerial | day | count-fingers | explaining | about 9 islands
 dubai | {"subject":"villa","gag":"hair-dryer"} | close | day | shrug | facepalm |
 dubai | {"subject":"beach","gag":"hair-dryer"} | wide | day | facepalm | facepalm |
-dubai | {"subject":"coast"} | aerial | day | point | explaining | cables from Dubai
+dubai | {"subject":"beach","gag":"hair-dryer"} | wide | day | facepalm | facepalm |
 blueprint | {"subject":"undersea cable"} | aerial | day | shrug | explaining | 2025: no cables
 dubai | {"subject":"villa"} | low | day | point | explaining | diesel generators
-dubai | {"subject":"delivery"} | dolly | day | explain | explaining | every brick by boat
 money | {"subject":"every bag, every worker"} | close | day | count-fingers | explaining |
+dubai | {"subject":"delivery"} | dolly | day | explain | explaining | every brick by boat
 blueprint | {"subject":"no sewer, no grid"} | close | day | shrug | explaining |
 dubai | {"subject":"villa"} | wide | day | explain | explaining |
 dubai-service | {"station":"channel","label":"pipes on your own"} | low | day | point | explaining |
 skyline | {"subject":"mainland road"} | close | day | explain | explaining |
 dubai | {"subject":"delivery"} | low | day | shrug | smug | the road is the sea
-money | {"subject":"every delay costs"} | medium | day | count-fingers | explaining |
 dubai | {"subject":"beach"} | medium | golden | shrug | neutral |
 property-office | {"state":"signed","subject":"do nothing"} | low | golden | shrug | smug |
-dubai | {"subject":"archipelago"} | aerial | golden | explain | explaining | still people try
-boardroom | {"subject":"Kleindienst Group"} | medium | day | point | explaining | Heart of Europe
+property-office | {"state":"signed","subject":"do nothing"} | low | golden | shrug | smug |
 hotel-interior | {"state":"open","subject":"floating villas"} | wide | day | explain | smug |
 timeline | {"subject":"target 2026","events":[{"date":"2026","label":"planned finish"}]} | wide | day | point | explaining | 2026
 documents | {"subject":"end of 2027"} | low | day | shrug | smug | end of 2027
 studio | {"subject":"October 2024"} | close | day | explain | explaining | October 2024
 dubai | {"subject":"delivery"} | wide | golden | facepalm | facepalm | another decade
-money | {"subject":"costs so much"} | wide | golden | count-fingers | explaining |
 hotel-interior | {"state":"open","subject":"luxury resort"} | close | golden | point | explaining | luxury resort
+money | {"subject":"costs so much"} | wide | golden | count-fingers | explaining |
 dubai | {"subject":"villa"} | close | golden | point | explaining | December 2021
 hotel-interior | {"state":"closed","subject":"closed"} | low | golden | shrug | neutral | April 2026: closed
 dubai | {"subject":"archipelago"} | wide | golden | explain | explaining | five years of sand
 dubai-service | {"station":"breakwater","label":"the wall held"} | wide | golden | thumbs-up | smug | the wall held
 dubai | {"subject":"beach"} | low | golden | point | smug |
 blueprint | {"subject":"what you cannot see"} | wide | golden | explain | explaining |
-dubai-service | {"station":"dispatch","label":"every single day"} | medium | golden | count-fingers | explaining |
 dubai | {"subject":"villa","gag":"supercar"} | aerial | golden | facepalm | laughing |
 dubai | {"subject":"beach","gag":"supercar"} | dolly | golden | laugh | laughing |
+dubai | {"subject":"villa","gag":"supercar"} | aerial | golden | facepalm | laughing |
 dubai | {"subject":"archipelago"} | close | golden | explain | neutral | every continent
 dubai | {"subject":"ireland"} | medium | golden | stand | neutral | Ireland, still empty
 studio | {"subject":"next: the Soviet flying ship"} | medium | day | point | smug | next episode

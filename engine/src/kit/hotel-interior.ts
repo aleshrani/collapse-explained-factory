@@ -1,4 +1,5 @@
 import {Model,painted,wood} from "./shared";
+import {addPerson} from "./extras";
 import {finish,paper,RoomParams,shell,sign} from "./interior";
 export function build(p:RoomParams){
   const m=new Model();shell(m,Math.max(13,Math.min(24,p.size??18)));
@@ -20,6 +21,7 @@ export function build(p:RoomParams){
   }
   m.box(3.46,.29,1.35,1.18,.47,.79,painted("#8c6959","rib"));
   for(const x of [3.08,3.84])m.box(x,.56,1.35,.083,.08,.81,brass);
+  addPerson(m.group,{x:-2.2,y:0,z:2.2,variant:3,carry:true,walk:{dx:4,period:10}});   // a bellboy crosses the lobby with luggage papers
   return finish(m,p.state==="closed"?[-1.55,1.96,-1.56]:[-.36,1.59,-1.35],"hotel-interior");
 }
 

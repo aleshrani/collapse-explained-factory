@@ -1,157 +1,154 @@
-001    0.00-   3.75 [Hook] Four businessmen from Ireland bought Ireland. Not the country.
-002    3.75-   7.99 [Hook] A pile of sand shaped like it, four kilometers off the coast
-003    7.99-  11.29 [Hook] of Dubai, for one hundred and forty-two million dirhams.
-004   11.29-  15.21 [Hook] A year later, a British developer bought Great Britain, and a few months
-005   15.21-  19.20 [Hook] after that he was sitting in a Dubai jail. And in a courtroom
-006   19.20-  23.28 [Hook] in two thousand and eleven, a lawyer told three judges that the whole
-007   23.28-  27.29 [Hook] world was falling back into the sea. Here's the craziest part.
-008   27.29-  31.37 [Hook] More than twenty years after the first island rose out of the water, there's
-009   31.37-  35.67 [Hook] still no power cable running out to them. This is the story of how
-010   35.67-  39.49 [Lock-in] Dubai sold the world before anybody lived on it. You see, the strange
-011   39.49-  42.88 [Lock-in] part isn't that the plan failed. Lots of plans fail.
-012   42.88-  46.88 [Lock-in] The strange part is that the islands are still out there, every one
-013   46.88-  50.85 [Lock-in] of them, and almost nobody has moved in. So how do you build three
-014   50.85-  54.85 [Lock-in] hundred islands, sell them to some of the richest people on the planet, and
-015   54.85-  58.81 [Lock-in] end up with a map that's mostly empty? In May two thousand
-016   58.81-  62.79 [Point one · Building a planet out of sand] and three, Dubai's state developer, Nakheel, announced its next idea.
-017   62.79-  66.67 [Point one · Building a planet out of sand] It already had a palm tree made of sand sticking out into the Gulf.
-018   66.67-  70.74 [Point one · Building a planet out of sand] Now it wanted the entire world. About three hundred islands, arranged so that
-019   70.74-  74.77 [Point one · Building a planet out of sand] from a plane you'd see the continents. Europe here, Africa there,
-020   74.77-  78.84 [Point one · Building a planet out of sand] a little Antarctica at the bottom. To make it, dredgers sucked sand off
-021   78.84-  83.08 [Point one · Building a planet out of sand] the seabed and sprayed it into place. That's where the first number comes from.
-022   83.08-  86.75 [Point one · Building a planet out of sand] Three hundred and twenty-one million cubic meters of sand.
-023   86.75-  90.79 [Point one · Building a planet out of sand] That's about one hundred and twenty-eight thousand Olympic swimming pools.
-024   90.79-  94.63 [Point one · Building a planet out of sand] Around it all, they piled three hundred and eighty-six million tonnes of
-025   94.63-  98.50 [Point one · Building a planet out of sand] rock into a wall, to keep the waves from eating the map.
-026   98.50- 102.29 [Point one · Building a planet out of sand] An island made like that has a catch. From above, it looks finished.
-027  102.29- 106.12 [Point one · Building a planet out of sand] Golden beach, blue water, a perfect shape. But nothing is on it.
-028  106.12- 111.12 [Point one · Building a planet out of sand] No pipes, no power, no road, no bridge. The only way to get there is a boat.
-029  111.12- 115.62 [Point one · Building a planet out of sand] So every island was sold as a blank plot, and the buyer would build the rest.
-030  115.62- 119.65 [Point one · Building a planet out of sand] And the plots weren't small. The whole map sits inside an area
-031  119.65- 123.53 [Point one · Building a planet out of sand] about seven by nine kilometers. A single island was anywhere from
-032  123.53- 127.73 [Point one · Building a planet out of sand] two point three to eight point four hectares. That's roughly three to
-033  127.73- 131.81 [Point one · Building a planet out of sand] twelve football pitches of brand new beach, each one surrounded by
-034  131.81- 135.46 [Point one · Building a planet out of sand] water on every side. If you owned one, you didn't have neighbours.
-035  135.46- 139.96 [Point one · Building a planet out of sand] You had a horizon. Right. Supercar, sunglasses, private island.   <<GAG: a red supercar rolls off a ferry onto an empty island; the architect steps out in sunglasses and looks around at nothing but sand>>
-036  139.96- 143.08 [Point one · Building a planet out of sand] So where's the party? Where are all the beautiful people?
-037  143.08- 146.08 [Point one · Building a planet out of sand] It's me and one seagull, and the seagull is leaving.
-038  146.08- 150.58 [Point one · Building a planet out of sand] In January two thousand and eight, the last stone went into the breakwater.
-039  150.58- 154.88 [Point one · Building a planet out of sand] Nakheel said the reclamation was done, on schedule. The world was built.
-040  154.88- 159.54 [Point one · Building a planet out of sand] Now somebody had to live on it. You see, the islands weren't really sold as land.
-041  159.54- 163.33 [Point two · Selling countries] They were sold as a story. You didn't buy plot number forty-two.
-042  163.33- 167.62 [Point two · Selling countries] You bought a country. And buyers loved it. Think about the dinner parties.
-043  167.62- 171.47 [Point two · Selling countries] "So, what do you do?" "Oh, I own Ireland." And technically, that
-044  171.47- 175.60 [Point two · Selling countries] wasn't even a lie. In March two thousand and seven, four
-045  175.60- 179.60 [Point two · Selling countries] Irish businessmen bought the island called Ireland for one hundred
-046  179.60- 183.79 [Point two · Selling countries] and forty-two million dirhams. They called the project Ireland in the Sun.
-047  183.79- 187.08 [Point two · Selling countries] Pubs, hotels, homes, a little piece of home in the Gulf.
-048  187.08- 191.21 [Point two · Selling countries] And like most deals in Dubai back then, they didn't pay it all at once.
-049  191.21- 196.12 [Point two · Selling countries] They paid in instalments, because everyone expected prices to keep going up.
-050  196.12- 200.17 [Point two · Selling countries] That was the whole engine of the city. You put down a deposit on
-051  200.17- 204.00 [Point two · Selling countries] something that doesn't exist yet. A few months later, it's worth more.
-052  204.00- 207.88 [Point two · Selling countries] You sell it, or you borrow against it, and you buy the next thing.
-053  207.88- 211.82 [Point two · Selling countries] As long as prices go up, everybody wins. Nakheel wins, the buyers
-054  211.82- 215.95 [Point two · Selling countries] win, the banks win. Prices only go up. That's not a law of physics,   <<GAG: the architect leans on a price chart that only goes up, smug; the chart line bends under his elbow and starts to droop>>
-055  215.95- 220.12 [Point two · Selling countries] by the way. Ask anyone who was there in two thousand and eight.
-056  220.12- 223.94 [Point two · Selling countries] So picture the scene. Three hundred islands, each one a plot of
-057  223.94- 228.71 [Point two · Selling countries] sand worth millions, and each one bought with a promise of the next payment.
-058  228.71- 233.29 [Point two · Selling countries] Nobody had built anything yet. But on paper, the world was almost sold out.
-059  233.29- 237.53 [Point two · Selling countries] At the end of December two thousand and eight, Nakheel announced that seventy
-060  237.53- 241.35 [Point two · Selling countries] percent of the islands had been sold. And then, in two thousand and
-061  241.35- 244.96 [Rehook] eight, the money stopped. Not just in Dubai. Everywhere.
-062  244.96- 248.80 [Rehook] And a city that ran on the next payment found out what happens when
-063  248.80- 252.74 [Rehook] the next payment doesn't come. When the global financial crisis hit, the
-064  252.74- 256.56 [Point three · The day the music stopped] first thing to vanish was the buyer. If you'd paid a deposit
-065  256.56- 260.64 [Point three · The day the music stopped] on an island, and you suddenly couldn't sell it, and the bank wouldn't lend,
-066  260.64- 264.30 [Point three · The day the music stopped] you were stuck holding a very expensive pile of sand. By the
-067  264.30- 268.30 [Point three · The day the music stopped] end of two thousand and eight, the company of the investor leading the
-068  268.30- 272.37 [Point three · The day the music stopped] Ireland deal was in liquidation. In two thousand and nine, work on the
-069  272.37- 277.08 [Point three · The day the music stopped] World was suspended. The dredgers had finished, but the builders never really started.
-070  277.08- 280.67 [Point three · The day the music stopped] Then came the twenty-fifth of November, two thousand and nine.
-071  280.67- 284.67 [Point three · The day the music stopped] The government of Dubai said that Dubai World, the giant state company
-072  284.67- 288.04 [Point three · The day the music stopped] that owned Nakheel, would ask its lenders to wait.
-073  288.04- 292.04 [Point three · The day the music stopped] To freeze about twenty-five billion dollars of debt until at least May
-074  292.04- 296.05 [Point three · The day the music stopped] of the next year. The next day, the main stock markets in Europe
-075  296.05- 299.95 [Point three · The day the music stopped] fell by more than three percent. Because a few weeks later, Nakheel had
-076  299.95- 303.75 [Point three · The day the music stopped] a three and a half billion dollar Islamic bond to repay.
-077  303.75- 307.70 [Point three · The day the music stopped] Imagine you're one of the people who bought an island. You turn on the
-078  307.70- 312.62 [Point three · The day the music stopped] news, and the company that sold you the world might not be able to pay its own bills.
-079  312.62- 316.74 [Point three · The day the music stopped] It came down to the last day. On the fourteenth of December, Abu
-080  316.74- 320.54 [Point three · The day the music stopped] Dhabi, Dubai's richer neighbour, handed over ten billion dollars.
-081  320.54- 324.53 [Point three · The day the music stopped] About four billion of it went straight to that bond. Dubai's stock market jumped
-082  324.53- 329.38 [Point three · The day the music stopped] about ten percent in a day. The city was saved. The islands were not.
-083  329.38- 333.21 [Point four · The man who bought Great Britain] In two thousand and nine, right in the middle of all   <<GAG: a red supercar rolls off a ferry onto an empty island; the architect steps out in sunglasses and looks around at nothing but sand>>
-084  333.21- 337.96 [Point four · The man who bought Great Britain] this, a British property developer named Safi Qurashi bought the island called Great Britain.
-085  337.96- 341.91 [Point four · The man who bought Great Britain] You see, he was one of the people still buying. And to secure the
-086  341.91- 346.01 [Point four · The man who bought Great Britain] deal, he handed over cheques. According to him, they were meant as security while
-087  346.01- 349.21 [Point four · The man who bought Great Britain] the money moved, not to be cashed. But they were cashed.
-088  349.21- 353.88 [Point four · The man who bought Great Britain] Three cheques, worth around one hundred and eighty-nine million dirhams, bounced.
-089  353.88- 358.08 [Point four · The man who bought Great Britain] In Dubai, a bounced cheque is a crime. In January two thousand and ten,
-090  358.08- 362.96 [Point four · The man who bought Great Britain] he was sentenced to seven years in jail. He always said he'd done nothing wrong.
-091  362.96- 366.63 [Point four · The man who bought Great Britain] In prison, he went on hunger strike for weeks. He was released
-092  366.63- 370.63 [Point four · The man who bought Great Britain] in two thousand and twelve, and later, Dubai's highest court quashed the
-093  370.63- 374.65 [Point four · The man who bought Great Britain] rest of his sentence. But by then, the man who bought Great
-094  374.65- 377.71 [Point four · The man who bought Great Britain] Britain had spent his time on the map behind bars.
-095  377.71- 381.71 [Rehook] So the buyers were in trouble, the company had needed a rescue, and the
-096  381.71- 385.63 [Rehook] builders had gone home. You'd think that was the bottom. But the strangest
-097  385.63- 389.54 [Rehook] fight about the world was still to come, and it wasn't about money.
-098  389.54- 393.79 [Rehook] It was about whether the islands were even still there. Now remember the boats.
-099  393.79- 397.71 [Point five · Is the world sinking?] Every island needed a way to get people there, so Nakheel gave
-100  397.71- 401.63 [Point five · Is the world sinking?] a company called Penguin Marine the licence to run boat transport
-101  401.63- 406.11 [Point five · Is the world sinking?] across the world. Penguin paid a yearly fee for it, about one point
-102  406.11- 409.98 [Point five · Is the world sinking?] three six million dollars. And by two thousand and eleven, there wasn't
-103  409.98- 413.80 [Point five · Is the world sinking?] much world to ferry anyone to. Picture paying more than a
-104  413.80- 417.88 [Point five · Is the world sinking?] million dollars a year to drive boats to islands where nobody lives.
-105  417.88- 422.83 [Point five · Is the world sinking?] Honestly, as a job description, that sounds amazing. As a business plan, less so.
-106  422.83- 426.91 [Point five · Is the world sinking?] So Penguin went to the tribunal set up to handle Dubai World's disputes, and
-107  426.91- 430.93 [Point five · Is the world sinking?] tried to get out of the contract. And its lawyer said the sentence
-108  430.93- 434.90 [Point five · Is the world sinking?] that went around the planet. The islands, he said, were gradually falling back
-109  434.90- 439.50 [Point five · Is the world sinking?] into the sea. The project was effectively dead. Newspapers loved it.
-110  439.50- 443.60 [Point five · Is the world sinking?] The world is sinking. It was the perfect headline for a city that
-111  443.60- 446.92 [Point five · Is the world sinking?] had just been rescued by its neighbour. But here's the twist.
-112  446.92- 451.75 [Point five · Is the world sinking?] Nakheel denied it straight away. It said the islands weren't sinking or eroding at all.
-113  451.75- 456.20 [Point five · Is the world sinking?] The three judges ruled against Penguin. And in December two thousand and
-114  456.20- 460.54 [Point five · Is the world sinking?] twelve, the tribunal ordered Penguin to pay Nakheel ten million dirhams.
-115  460.54- 465.25 [Point five · Is the world sinking?] An expert told the tribunal there was no erosion. So the world wasn't sinking.
-116  465.25- 469.67 [Rehook] But that was never the real problem. The real problem was that it was empty.
-117  469.67- 473.75 [Point six · A map with nobody on it] A few years later, someone counted. Out of three hundred islands, only
-118  473.75- 477.88 [Point six · A map with nobody on it] two had seen any development at all. The only place you could actually
-119  477.88- 481.96 [Point six · A map with nobody on it] visit was a beach club on the island called Lebanon, which opened
-120  481.96- 485.88 [Point six · A map with nobody on it] in July two thousand and twelve. By two thousand and sixteen,
-121  485.88- 489.98 [Point six · A map with nobody on it] around nine islands had something on them. First rule of island
-122  489.98- 493.21 [Point six · A map with nobody on it] life here: bring your own electricity. Think about why.
-123  493.21- 497.71 [Point six · A map with nobody on it] The plan was to bring electricity from Dubai through cables under the sea.
-124  497.71- 501.25 [Point six · A map with nobody on it] As of twenty twenty-five, those cables still hadn't been laid.
-125  501.25- 506.17 [Point six · A map with nobody on it] Anyone building on an island had to make their own power with diesel generators.
-126  506.17- 509.88 [Point six · A map with nobody on it] An island with no bridge means every brick arrives by boat.
-127  509.88- 514.38 [Point six · A map with nobody on it] Every bag of cement, every worker, every fridge, every bottle of water.
-128  514.38- 517.96 [Point six · A map with nobody on it] There's no sewer to plug into and no power line to connect.
-129  517.96- 521.96 [Point six · A map with nobody on it] Before you build a single villa, you have to build a tiny town's worth
-130  521.96- 525.84 [Point six · A map with nobody on it] of pipes and cables, on your own, in the sea. On the mainland,
-131  525.84- 529.29 [Point six · A map with nobody on it] a developer buys land next to a road that's already there.
-132  529.29- 533.42 [Point six · A map with nobody on it] Out here, the road is the sea, and the sea doesn't care about your schedule.
-133  533.42- 537.42 [Point six · A map with nobody on it] Every delay costs money, every boat trip costs money, and the
-134  537.42- 541.47 [Point six · A map with nobody on it] island makes nothing until it's finished. That's why, for so many owners,
-135  541.47- 545.00 [Point six · A map with nobody on it] the cheapest thing to do with their country was nothing at all.
-136  545.00- 548.82 [Point seven · The comeback that keeps slipping] And still, people try. An Austrian developer, the Kleindienst Group,
-137  548.82- 552.66 [Point seven · The comeback that keeps slipping] took the islands around Europe and started building something called
-138  552.66- 556.54 [Point seven · The comeback that keeps slipping] the Heart of Europe. Hotels, beaches, floating villas.
-139  556.54- 560.04 [Point seven · The comeback that keeps slipping] It was supposed to be finished by two thousand and twenty-six.
-140  560.04- 564.20 [Point seven · The comeback that keeps slipping] Then the target moved to the end of two thousand and twenty-seven, with
-141  564.20- 568.28 [Point seven · The comeback that keeps slipping] about half the construction done. In October two thousand and twenty-four, the
-142  568.28- 572.28 [Point seven · The comeback that keeps slipping] honest estimate was that the islands won't be complete for another
-143  572.28- 576.42 [Point seven · The comeback that keeps slipping] decade at least, because getting anything out there costs so much.
-144  576.42- 580.38 [Point seven · The comeback that keeps slipping] Even the success stories don't last. A luxury resort opened on
-145  580.38- 583.96 [Point seven · The comeback that keeps slipping] one of the islands in December two thousand and twenty-one.
-146  583.96- 586.96 [Point seven · The comeback that keeps slipping] In April two thousand and twenty-six, it closed.
-147  586.96- 591.00 [Closing] So here's what Dubai actually built. It took about five years to make a
-148  591.00- 594.50 [Closing] planet out of sand, and it worked. The rock wall held.
-149  594.50- 597.58 [Closing] The islands didn't wash away, whatever the lawyer said.
-150  597.58- 602.04 [Closing] The hard part was never the sand. It was everything you can't see from a plane.
-151  602.04- 605.88 [Closing] The pipes, the power, the boat that has to come every single day, and
-152  605.88- 610.38 [Closing] the buyer who has to keep paying when the money stops. And the supercar?   <<GAG: back on the empty island, the supercar's wheels spin in the sand, sinking to the doors>>
-153  610.38- 614.44 [Closing] Turns out supercars don't love sand either. Twenty years later, you
-154  614.44- 618.29 [Closing] can still fly over it and see every continent. Ireland is still
-155  618.29- 623.04 [Closing] out there, four kilometers off the coast. It's just waiting for somebody to move in.
-156  623.04- 626.23 [CTA] Next time: a Soviet plane the size of a ship that
-157  626.23- 629.42 [CTA] was never allowed to climb. You'll find it on the channel.
+001    0.00-   4.58 [Hook] Four businessmen from Ireland bought Ireland. Not the country.
+002    4.58-   8.50 [Hook] A pile of sand shaped like it, four kilometers off the coast of Dubai,
+003    8.50-  12.63 [Hook] for one hundred and forty-two million dirhams. A year later, a British developer bought
+004   12.63-  16.92 [Hook] Great Britain, and a few months after that he was sitting in a Dubai jail.
+005   16.92-  21.00 [Hook] And in a courtroom in two thousand and eleven, a lawyer told three judges that the
+006   21.00-  24.96 [Hook] whole world was falling back into the sea. Here's the craziest part.
+007   24.96-  29.04 [Hook] More than twenty years after the first island rose out of the water, there's still
+008   29.04-  32.69 [Hook] no power cable running out to them. This is the story
+009   32.69-  36.08 [Lock-in] of how Dubai sold the world before anybody lived on it.
+010   36.08-  40.92 [Lock-in] You see, the strange part isn't that the plan failed. Lots of plans fail.
+011   40.92-  44.84 [Lock-in] The strange part is that the islands are still out there, every one of
+012   44.84-  48.95 [Lock-in] them, and almost nobody has moved in. So how do you build three hundred islands, sell
+013   48.95-  53.42 [Lock-in] them to some of the richest people on the planet, and end up with a map that's mostly empty?
+014   53.42-  57.34 [Point one · Building a planet out of sand] In May two thousand and three, Dubai's state developer, Nakheel,
+015   57.34-  61.33 [Point one · Building a planet out of sand] announced its next idea. It already had a palm tree made of
+016   61.33-  65.08 [Point one · Building a planet out of sand] sand sticking out into the Gulf. Now it wanted the entire world.
+017   65.08-  69.62 [Point one · Building a planet out of sand] About three hundred islands, arranged so that from a plane you'd see the continents.
+018   69.62-  73.33 [Point one · Building a planet out of sand] Europe here, Africa there, a little Antarctica at the bottom.
+019   73.33-  77.25 [Point one · Building a planet out of sand] To make it, dredgers sucked sand off the seabed and sprayed it into place.
+020   77.25-  81.14 [Point one · Building a planet out of sand] That's where the first number comes from. Three hundred and twenty-one million
+021   81.14-  85.03 [Point one · Building a planet out of sand] cubic meters of sand. That's about one hundred and twenty-eight
+022   85.03-  89.67 [Point one · Building a planet out of sand] thousand Olympic swimming pools. Around it all, they piled three hundred and eighty-six
+023   89.67-  94.58 [Point one · Building a planet out of sand] million tonnes of rock into a wall, to keep the waves from eating the map.
+024   94.58-  99.08 [Point one · Building a planet out of sand] An island made like that has a catch. From above, it looks finished.
+025   99.08- 103.04 [Point one · Building a planet out of sand] Golden beach, blue water, a perfect shape.
+026  103.04- 107.26 [Point one · Building a planet out of sand] But nothing is on it. No pipes, no power, no road,
+027  107.26- 111.20 [Point one · Building a planet out of sand] no bridge. The only way to get there is a boat. So every island was
+028  111.20- 114.88 [Point one · Building a planet out of sand] sold as a blank plot, and the buyer would build the rest.
+029  114.88- 118.90 [Point one · Building a planet out of sand] And the plots weren't small. The whole map sits inside an area about
+030  118.90- 122.78 [Point one · Building a planet out of sand] seven by nine kilometers. A single island was anywhere from two point three
+031  122.78- 126.90 [Point one · Building a planet out of sand] to eight point four hectares. That's roughly three to twelve football pitches
+032  126.90- 131.29 [Point one · Building a planet out of sand] of brand new beach, each one surrounded by water on every side.
+033  131.29- 135.25 [Point one · Building a planet out of sand] If you owned one, you didn't have neighbours. You had a horizon.
+034  135.25- 139.25 [Point one · Building a planet out of sand] Right. Supercar, sunglasses, private island.   <<GAG: a red supercar rolls off a ferry onto an empty island; the architect steps out in sunglasses and looks around at nothing but sand>>
+035  139.25- 142.33 [Point one · Building a planet out of sand] So where's the party? Where are all the beautiful people?
+036  142.33- 145.54 [Point one · Building a planet out of sand] It's me and one seagull, and the seagull is leaving.
+037  145.54- 149.62 [Point one · Building a planet out of sand] In January two thousand and eight, the last stone went into the breakwater.
+038  149.62- 153.71 [Point one · Building a planet out of sand] Nakheel said the reclamation was done, on schedule. The world was built.
+039  153.71- 157.81 [Point one · Building a planet out of sand] Now somebody had to live on it. You see, the islands weren't
+040  157.81- 161.25 [Point two · Selling countries] really sold as land. They were sold as a story.
+041  161.25- 164.88 [Point two · Selling countries] You didn't buy plot number forty-two. You bought a country.
+042  164.88- 168.21 [Point two · Selling countries] And buyers loved it. Think about the dinner parties.
+043  168.21- 172.05 [Point two · Selling countries] "So, what do you do?" "Oh, I own Ireland." And
+044  172.05- 176.26 [Point two · Selling countries] technically, that wasn't even a lie. In March two thousand and
+045  176.26- 180.74 [Point two · Selling countries] seven, four Irish businessmen bought the island called Ireland for one hundred and
+046  180.74- 184.83 [Point two · Selling countries] forty-two million dirhams. They called the project Ireland in the Sun.
+047  184.83- 189.46 [Point two · Selling countries] Pubs, hotels, homes, a little piece of home in the Gulf.
+048  189.46- 193.96 [Point two · Selling countries] And like most deals in Dubai back then, they didn't pay it all at once.
+049  193.96- 198.17 [Point two · Selling countries] They paid in instalments, because everyone expected prices to keep going up.
+050  198.17- 202.06 [Point two · Selling countries] That was the whole engine of the city. You put down a deposit on
+051  202.06- 205.75 [Point two · Selling countries] something that doesn't exist yet. A few months later, it's worth more.
+052  205.75- 210.00 [Point two · Selling countries] You sell it, or you borrow against it, and you buy the next thing.
+053  210.00- 213.95 [Point two · Selling countries] As long as prices go up, everybody wins. Nakheel wins, the
+054  213.95- 217.96 [Point two · Selling countries] buyers win, the banks win. Prices only go up.   <<GAG: the architect leans on a price chart that only goes up, smug; the chart line bends under his elbow and starts to droop>>
+055  217.96- 221.92 [Point two · Selling countries] That's not a law of physics, by the way. Ask anyone who was there
+056  221.92- 225.33 [Point two · Selling countries] in two thousand and eight. So picture the scene.
+057  225.33- 229.33 [Point two · Selling countries] Three hundred islands, each one a plot of sand worth millions, and each
+058  229.33- 233.57 [Point two · Selling countries] one bought with a promise of the next payment. Nobody had built
+059  233.57- 238.08 [Point two · Selling countries] anything yet. But on paper, the world was almost sold out.
+060  238.08- 242.08 [Point two · Selling countries] At the end of December two thousand and eight, Nakheel announced that seventy percent of
+061  242.08- 247.00 [Point two · Selling countries] the islands had been sold. And then, in two thousand and eight, the money stopped.
+062  247.00- 250.90 [Rehook] Not just in Dubai. Everywhere. And a city that ran
+063  250.90- 254.79 [Rehook] on the next payment found out what happens when the next payment doesn't come.
+064  254.79- 259.29 [Point three · The day the music stopped] When the global financial crisis hit, the first thing to vanish was the buyer.
+065  259.29- 263.13 [Point three · The day the music stopped] If you'd paid a deposit on an island, and you suddenly couldn't sell it,
+066  263.13- 267.50 [Point three · The day the music stopped] and the bank wouldn't lend, you were stuck holding a very expensive pile of sand.
+067  267.50- 271.58 [Point three · The day the music stopped] By the end of two thousand and eight, the company of the investor leading the
+068  271.58- 275.53 [Point three · The day the music stopped] Ireland deal was in liquidation. In two thousand and nine, work on the
+069  275.53- 279.92 [Point three · The day the music stopped] World was suspended. The dredgers had finished, but the builders never really started.
+070  279.92- 283.42 [Point three · The day the music stopped] Then came the twenty-fifth of November, two thousand and nine.
+071  283.42- 287.50 [Point three · The day the music stopped] The government of Dubai said that Dubai World, the giant state company that
+072  287.50- 291.61 [Point three · The day the music stopped] owned Nakheel, would ask its lenders to wait. To freeze about twenty-five billion
+073  291.61- 295.12 [Point three · The day the music stopped] dollars of debt until at least May of the next year.
+074  295.12- 298.96 [Point three · The day the music stopped] The next day, the main stock markets in Europe fell by more than three percent.
+075  298.96- 303.04 [Point three · The day the music stopped] Because a few weeks later, Nakheel had a three and a half
+076  303.04- 307.96 [Point three · The day the music stopped] billion dollar Islamic bond to repay. Imagine you're one of the people who bought an island.
+077  307.96- 312.04 [Point three · The day the music stopped] You turn on the news, and the company that sold you the world might not be able to
+078  312.04- 315.25 [Point three · The day the music stopped] pay its own bills. It came down to the last day.
+079  315.25- 319.09 [Point three · The day the music stopped] On the fourteenth of December, Abu Dhabi, Dubai's richer neighbour,
+080  319.09- 322.98 [Point three · The day the music stopped] handed over ten billion dollars. About four billion of it went
+081  322.98- 327.50 [Point three · The day the music stopped] straight to that bond. Dubai's stock market jumped about ten percent in a day.
+082  327.50- 330.75 [Point three · The day the music stopped] The city was saved. The islands were not.
+083  330.75- 334.83 [Point four · The man who bought Great Britain] In two thousand and nine, right in the middle of all this, a British   <<GAG: a red supercar rolls off a ferry onto an empty island; the architect steps out in sunglasses and looks around at nothing but sand>>
+084  334.83- 338.25 [Point four · The man who bought Great Britain] property developer named Safi Qurashi bought the island called Great Britain.
+085  338.25- 342.19 [Point four · The man who bought Great Britain] You see, he was one of the people still buying. And to secure the deal,
+086  342.19- 346.26 [Point four · The man who bought Great Britain] he handed over cheques. According to him, they were meant as security while the
+087  346.26- 349.38 [Point four · The man who bought Great Britain] money moved, not to be cashed. But they were cashed.
+088  349.38- 354.04 [Point four · The man who bought Great Britain] Three cheques, worth around one hundred and eighty-nine million dirhams, bounced.
+089  354.04- 358.25 [Point four · The man who bought Great Britain] In Dubai, a bounced cheque is a crime. In January two thousand and ten, he
+090  358.25- 362.96 [Point four · The man who bought Great Britain] was sentenced to seven years in jail. He always said he'd done nothing wrong.
+091  362.96- 366.50 [Point four · The man who bought Great Britain] In prison, he went on hunger strike for weeks. He was released
+092  366.50- 370.58 [Point four · The man who bought Great Britain] in two thousand and twelve, and later, Dubai's highest court quashed the
+093  370.58- 374.64 [Point four · The man who bought Great Britain] rest of his sentence. But by then, the man who bought Great Britain had
+094  374.64- 378.67 [Point four · The man who bought Great Britain] spent his time on the map behind bars. So the buyers were in trouble, the
+095  378.67- 383.50 [Rehook] company had needed a rescue, and the builders had gone home. You'd think that was the bottom.
+096  383.50- 388.21 [Rehook] But the strangest fight about the world was still to come, and it wasn't about money.
+097  388.21- 392.96 [Rehook] It was about whether the islands were even still there. Now remember the boats.
+098  392.96- 396.72 [Point five · Is the world sinking?] Every island needed a way to get people there, so Nakheel gave a
+099  396.72- 400.71 [Point five · Is the world sinking?] company called Penguin Marine the licence to run boat transport across the world.
+100  400.71- 405.29 [Point five · Is the world sinking?] Penguin paid a yearly fee for it, about one point three six million dollars.
+101  405.29- 409.54 [Point five · Is the world sinking?] And by two thousand and eleven, there wasn't much world to ferry anyone to.
+102  409.54- 413.46 [Point five · Is the world sinking?] Picture paying more than a million dollars a year to drive boats to
+103  413.46- 417.92 [Point five · Is the world sinking?] islands where nobody lives. Honestly, as a job description, that sounds amazing.
+104  417.92- 421.88 [Point five · Is the world sinking?] As a business plan, less so. So Penguin went to the tribunal
+105  421.88- 426.29 [Point five · Is the world sinking?] set up to handle Dubai World's disputes, and tried to get out of the contract.
+106  426.29- 429.46 [Point five · Is the world sinking?] And its lawyer said the sentence that went around the planet.
+107  429.46- 433.04 [Point five · Is the world sinking?] The islands, he said, were gradually falling back into the sea.
+108  433.04- 436.83 [Point five · Is the world sinking?] The project was effectively dead. Newspapers loved it.
+109  436.83- 440.90 [Point five · Is the world sinking?] The world is sinking. It was the perfect headline for a city that had just
+110  440.90- 445.83 [Point five · Is the world sinking?] been rescued by its neighbour. But here's the twist. Nakheel denied it straight away.
+111  445.83- 449.91 [Point five · Is the world sinking?] It said the islands weren't sinking or eroding at all. The three judges
+112  449.91- 453.84 [Point five · Is the world sinking?] ruled against Penguin. And in December two thousand and twelve, the
+113  453.84- 457.12 [Point five · Is the world sinking?] tribunal ordered Penguin to pay Nakheel ten million dirhams.
+114  457.12- 460.21 [Point five · Is the world sinking?] An expert told the tribunal there was no erosion.
+115  460.21- 464.08 [Rehook] So the world wasn't sinking. But that was never the real problem.
+116  464.08- 469.00 [Rehook] The real problem was that it was empty. A few years later, someone counted.
+117  469.00- 473.33 [Point six · A map with nobody on it] Out of three hundred islands, only two had seen any development at all.
+118  473.33- 477.09 [Point six · A map with nobody on it] The only place you could actually visit was a beach club on
+119  477.09- 480.83 [Point six · A map with nobody on it] the island called Lebanon, which opened in July two thousand and twelve.
+120  480.83- 485.12 [Point six · A map with nobody on it] By two thousand and sixteen, around nine islands had something on them.
+121  485.12- 489.21 [Point six · A map with nobody on it] First rule of island life here: bring your own electricity.   <<GAG: the architect plugs a hair dryer into a palm tree; nothing happens; he tries a coconut>>
+122  489.21- 493.10 [Point six · A map with nobody on it] Think about why. The plan was to bring electricity from Dubai through
+123  493.10- 496.94 [Point six · A map with nobody on it] cables under the sea. As of twenty twenty-five, those cables still
+124  496.94- 501.08 [Point six · A map with nobody on it] hadn't been laid. Anyone building on an island had to make their
+125  501.08- 506.08 [Point six · A map with nobody on it] own power with diesel generators. An island with no bridge means every brick arrives by boat.
+126  506.08- 510.67 [Point six · A map with nobody on it] Every bag of cement, every worker, every fridge, every bottle of water.
+127  510.67- 514.25 [Point six · A map with nobody on it] There's no sewer to plug into and no power line to connect.
+128  514.25- 518.25 [Point six · A map with nobody on it] Before you build a single villa, you have to build a tiny town's
+129  518.25- 521.88 [Point six · A map with nobody on it] worth of pipes and cables, on your own, in the sea.
+130  521.88- 526.38 [Point six · A map with nobody on it] On the mainland, a developer buys land next to a road that's already there.
+131  526.38- 530.38 [Point six · A map with nobody on it] Out here, the road is the sea, and the sea doesn't care about your schedule.
+132  530.38- 535.00 [Point six · A map with nobody on it] Every delay costs money, every boat trip costs money, and the island makes nothing until it's finished.
+133  535.00- 539.54 [Point six · A map with nobody on it] That's why, for so many owners, the cheapest thing to do with their country was nothing at all.
+134  539.54- 543.86 [Point seven · The comeback that keeps slipping] And still, people try. An Austrian developer, the Kleindienst Group, took the
+135  543.86- 547.96 [Point seven · The comeback that keeps slipping] islands around Europe and started building something called the Heart of Europe.
+136  547.96- 551.79 [Point seven · The comeback that keeps slipping] Hotels, beaches, floating villas. It was supposed
+137  551.79- 555.77 [Point seven · The comeback that keeps slipping] to be finished by two thousand and twenty-six. Then the target moved to the
+138  555.77- 559.33 [Point seven · The comeback that keeps slipping] end of two thousand and twenty-seven, with about half the construction done.
+139  559.33- 563.41 [Point seven · The comeback that keeps slipping] In October two thousand and twenty-four, the honest estimate was that the islands
+140  563.41- 567.17 [Point seven · The comeback that keeps slipping] won't be complete for another decade at least, because getting anything out
+141  567.17- 571.08 [Point seven · The comeback that keeps slipping] there costs so much. Even the success stories don't last.
+142  571.08- 575.79 [Point seven · The comeback that keeps slipping] A luxury resort opened on one of the islands in December two thousand and twenty-one.
+143  575.79- 578.96 [Point seven · The comeback that keeps slipping] In April two thousand and twenty-six, it closed.
+144  578.96- 582.89 [Closing] So here's what Dubai actually built. It took about five years to make
+145  582.89- 586.50 [Closing] a planet out of sand, and it worked. The rock wall held.
+146  586.50- 589.71 [Closing] The islands didn't wash away, whatever the lawyer said.
+147  589.71- 594.29 [Closing] The hard part was never the sand. It was everything you can't see from a plane.
+148  594.29- 598.37 [Closing] The pipes, the power, the boat that has to come every single day,
+149  598.37- 602.46 [Closing] and the buyer who has to keep paying when the money stops.
+150  602.46- 606.25 [Closing] And the supercar? Turns out supercars don't love sand either.   <<GAG: back on the empty island, the supercar's wheels spin in the sand, sinking to the doors>>
+151  606.25- 609.75 [Closing] Twenty years later, you can still fly over it and see every continent.
+152  609.75- 613.38 [Closing] Ireland is still out there, four kilometers off the coast.
+153  613.38- 617.31 [Closing] It's just waiting for somebody to move in. Next time: a Soviet plane
+154  617.31- 622.00 [CTA] the size of a ship that was never allowed to climb. You'll find it on the channel.

@@ -2,7 +2,8 @@ import React from "react";
 import { Overlay } from "./types";
 const ink="#262235",cream="#fff0cd",teal="#4d9693";
 export function Graphic({item,age}:{item:Overlay;age:number}){
-  const visible=1,scale=1;
+  // the card settles in over 0.2 s instead of popping on the cut
+  const k=Math.min(1,Math.max(0,age/.2)),ease=1-(1-k)**3,visible=ease,scale=.9+.1*ease;
   const style:React.CSSProperties={position:"absolute",top:66,left:84,maxWidth:710,padding:"14px 25px",background:cream,color:ink,
     border:"5px solid "+ink,borderRadius:14,boxShadow:"7px 8px 0 #29263bb0",transformOrigin:"top left",
     transform:"scale("+scale+")",opacity:visible,fontFamily:"Arial, sans-serif",fontWeight:800};
@@ -39,20 +40,31 @@ export function Inset({kind,age}:{kind:string;age:number}){
 }
 const filler=new Set("a an and are as at be been but by did do for from had has have he her him his i in is it its of on or she so than that the their them then there they this to was we were will with you your how rise now try might can could would should some somebody something also where when what why which who whom quite just still before after get got doing does then off up out above far below indeed frankly much good those these need needs way every other enough one".split(" "));
 const clean=(s:string)=>s.replace(/(\d)\.(?=\d)/g,"$1 point ").replace(/[’]/g,"'").replace(/[^\p{L}\p{N} ']/gu,"").replace(/(^|\s)'+|'+(?=\s|$)/g,"$1").trim();
-export function caption(words:{w:string;t:number}[],time:number){
+const UNIT=/^(million|billion|thousand|hundred|percent|per|cent|years?|km|kilometers?|metres?|meters?|dirhams?|dollars?|islands?|pools?|pitches)$/i;
+const digits=(s:string)=>s.replace(/\D/g,"");
+/** Long form flashes only spoken figures (the card carries the words). One figure = one fixed phrase held for HOLD seconds,
+ *  so the text never changes or re-centres word by word; skipped when the card on screen already shows that figure. */
+export const HOLD=1.4;
+export function caption(words:{w:string;t:number}[],time:number,card=""){
   let lo=0,hi=words.length;
-  while(lo<hi){const j=(lo+hi)>>1;if(words[j].t<=time)lo=j+1;else hi=j;}
-  for(let j=lo-1;j>=0&&time-words[j].t<.7;j--){
+  while(lo<hi){const j=(lo+hi)>>1;if(words[j].t<=time+.05)lo=j+1;else hi=j;}
+  for(let j=lo-1;j>=0&&time-words[j].t<HOLD;j--){
     const w=clean(words[j].w);
-    if(!w||filler.has(w.toLowerCase()))continue;
-    if(!/\d/.test(w))continue;   // long form: flash only spoken figures; the card carries the words
+    if(!w||!/\d/.test(w))continue;
+    if(j>0&&/\d/.test(clean(words[j-1].w))&&words[j].t-words[j-1].t<.6)continue;   // part of a figure that started earlier
+    if(card&&digits(card).includes(digits(w)))return {text:"",age:0};
     const phrase=[w];
-    for(let k=j-1;k>=0&&phrase.length<3&&words[j].t-words[k].t<.72;k--){
+    for(let k=j-1;k>=0&&phrase.length<2&&words[j].t-words[k].t<.72;k--){
       const prior=clean(words[k].w);
       if(!prior||filler.has(prior.toLowerCase())||/[.!?,]$/.test(words[k].w))break;
       phrase.unshift(prior);
     }
-    return phrase.join(" ").split(/\s+/).slice(-3).join(" ");
+    for(let k=j+1;k<words.length&&phrase.length<4&&words[k].t-words[j].t<.9;k++){
+      const next=clean(words[k].w);
+      if(!(UNIT.test(next)||/\d/.test(next)))break;
+      phrase.push(next);
+    }
+    return {text:phrase.join(" "),age:time-words[j].t};
   }
-  return "";
+  return {text:"",age:0};
 }
