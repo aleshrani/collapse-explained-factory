@@ -3530,9 +3530,9 @@
    "params": {
     "subject": "breakwater"
    },
-   "camera": "low",
+   "camera": "aerial",
    "light": "day",
-   "visual_idea": "dubai breakwater seen low: And its lawyer said the sentence that went around the planet.",
+   "visual_idea": "dubai breakwater seen aerial: And its lawyer said the sentence that went around the planet.",
    "direction": {
     "subject": "breakwater",
     "environment": "dubai",

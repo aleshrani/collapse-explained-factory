@@ -104,7 +104,7 @@ dubai | {"subject":"archipelago"} | dolly | day | explain | explaining | nobody 
 dubai-service | {"station":"dispatch","label":"dream job"} | wide | day | laugh | laughing | dream job
 courtroom | {"state":"hearing"} | wide | day | explain | explaining | tribunal
 documents | {"subject":"get out of contract"} | low | day | point | explaining |
-dubai | {"subject":"breakwater"} | low | day | shocked-jump | shocked | "falling back into the sea"
+dubai | {"subject":"breakwater"} | aerial | day | shocked-jump | shocked | "falling back into the sea"
 studio | {"subject":"effectively dead"} | aerial | day | explain | shocked | "effectively dead"
 skyline | {"subject":"THE WORLD IS SINKING"} | low | day | laugh | laughing | The world is sinking
 studio | {"subject":"effectively dead"} | aerial | day | explain | shocked | "effectively dead"

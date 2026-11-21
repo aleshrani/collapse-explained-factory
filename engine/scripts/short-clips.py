@@ -145,7 +145,9 @@ def plan_episode_one(ep):
     """Resolve the marked episode-01 edits against the current F word onsets."""
     import bisect
     import soundfile as sf
-    from qwen_narrator import QwenNarrator, PROFILES
+    import numpy as np
+    from fixed_narrator import FixedNarrator, THRESHOLD, MAX_TRIES, version
+    from speaker_identity import Verifier, REFERENCE
 
     timing=read(ep/"narration-timing.json")
     rows=timing["segments"]
@@ -188,15 +190,22 @@ def plan_episode_one(ep):
         text="" if b else marker["loop"]+" "+marker.get("cta",CTA)
         ending=None;tail=0
         if text:
-            key=hashlib.sha256((repr(PROFILES["qwen-f"])+text).encode()).hexdigest()
+            # The loop + CTA ending is the same narrator as the episode: cloned from F-reference.wav and
+            # checked by the speaker gate (QUALITY-RULES row 10), never a separately designed voice.
+            key=hashlib.sha256((version()+"\0teaser\0"+text).encode()).hexdigest()
             wav=cache/(key+".wav")
             if not wav.exists():
-                if speaker is None:speaker=QwenNarrator()
-                audio,sr=speaker.synthesize(text,"qwen-f")
+                if speaker is None:
+                    speaker=FixedNarrator();verify=Verifier();ref=verify.embedding(*sf.read(REFERENCE,dtype="float32"))
+                for attempt in range(1,MAX_TRIES+1):
+                    audio,sr=speaker.synthesize(text,int(key[:12],16)+attempt)
+                    pcm=np.clip(np.rint(audio*32768),-32768,32767).astype(np.int16)
+                    if float(verify.embedding(pcm.astype(np.float32)/32768,sr)@ref)>=THRESHOLD:break
+                else:raise ValueError("Speaker gate failed for short ending: "+text)
                 with tempfile.NamedTemporaryFile(dir=cache,suffix=".wav",delete=False) as f:temp=Path(f.name)
-                sf.write(temp,audio,sr);temp.replace(wav)
+                sf.write(temp,pcm,sr);temp.replace(wav)
             seconds=sf.info(wav).duration;tail=math.ceil(seconds*FPS)
-            ending=dict(file=wav.relative_to(ep).as_posix(),voice="qwen-f",text=text,seconds=seconds,frames=tail)
+            ending=dict(file=wav.relative_to(ep).as_posix(),voice="qwen-f-clone",text=text,seconds=seconds,frames=tail)
             if seconds>6:flags.append("Spoken loop and CTA exceed the six-second ending limit.")
         duration=(sum(r["frames"] for r in ranges)+tail)/FPS
         if not 30<=duration<=55:flags.append("Duration outside 30–55 seconds.")
@@ -204,7 +213,7 @@ def plan_episode_one(ep):
                         loopLine=marker.get("loop","") if not b else "",ctaLine=marker.get("cta",CTA) if not b else "",
                         stopBefore=marker.get("stop-before"),duration=duration,flags=flags,
                         omittedMarkerCTA=marker.get("cta") if b else None))
-    result=dict(episode=ep.name,voice="qwen-f",sourceDuration=timing["duration"],fps=FPS,shorts=out)
+    result=dict(episode=ep.name,voice="qwen-f-clone",sourceDuration=timing["duration"],fps=FPS,shorts=out)
     path=ep/"shorts-plan.json";tmp=path.with_suffix(".json.new")
     tmp.write_text(json.dumps(result,indent=2,ensure_ascii=False),encoding="utf8");tmp.replace(path)
     return result
